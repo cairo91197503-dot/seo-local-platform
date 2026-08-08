@@ -146,6 +146,8 @@ Inicialmente utilizaremos XP.
 
 ## Primeira missão
 
+
+
 ### Peça sua primeira avaliação
 
 Objetivo:
@@ -161,13 +163,61 @@ A plataforma deve incentivar avaliações autênticas.
 Não devemos ensinar ou incentivar:
 
 - compra de avaliações;
-
 - avaliações falsas;
-
 - manipulação de notas;
-
 - pressão indevida sobre clientes;
-
 - seleção enganosa de quais clientes podem avaliar.
 
 A solicitação deve acontecer de maneira natural após uma experiência real com o negócio.
+
+## Modelo inicial de microlição
+
+As lições devem ser curtas, visuais e fáceis de entender.
+
+O objetivo não é reproduzir uma aula tradicional.
+
+A experiência deve se aproximar de um pequeno conteúdo educativo animado.
+
+### Estrutura
+
+Uma microlição poderá ser dividida em cenas.
+
+Cada cena pode conter futuramente:
+
+- fala do mascote;
+
+- texto curto;
+
+- ilustração;
+
+- animação;
+
+- destaque visual;
+
+- áudio/narração;
+
+- interação do usuário.
+
+### Fluxo
+
+Introdução → Explicação → Exemplo → Ação
+
+Ao final da lição, o usuário deve receber uma ação prática relacionada ao conteúdo.
+
+### Duração
+
+Preferencialmente entre 30 segundos e 3 minutos.
+
+### Primeira microlição
+
+Título:
+
+"Por que as avaliações importam?"
+
+Objetivo:
+
+Explicar de forma simples como avaliações autênticas ajudam outras pessoas a conhecer e confiar em um negócio.
+
+Ação relacionada:
+
+Missão "Peça sua primeira avaliação".

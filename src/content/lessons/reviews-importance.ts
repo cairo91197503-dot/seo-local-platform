@@ -1,0 +1,33 @@
+import type { Lesson } from './types'
+
+export const reviewsImportanceLesson: Lesson = {
+  id: 'reviews-importance',
+  title: 'Por que as avaliações importam?',
+  duration: '1 min',
+  level: 'Iniciante',
+  futureReward: '20 XP',
+  scenes: [
+    {
+      id: 'intro',
+      title: 'Antes de escolher, as pessoas pesquisam',
+      text: 'Quando alguém encontra uma empresa no Google, as avaliações ajudam a entender como foi a experiência de outros clientes.',
+    },
+    {
+      id: 'trust',
+      title: 'Avaliações ajudam a gerar confiança',
+      text: 'Experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer seu negócio.',
+    },
+    {
+      id: 'timing',
+      title: 'Quando pedir uma avaliação?',
+      text: 'Depois de um atendimento ou experiência real, você pode convidar o cliente a compartilhar espontaneamente a opinião dele.',
+      highlight:
+        'Peça uma opinião sincera. Não peça uma nota específica.',
+    },
+    {
+      id: 'action',
+      title: 'Agora é sua vez',
+      text: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
+    },
+  ],
+}

@@ -13,7 +13,7 @@ function renderPage(
     case 'home':
       return <HomePage onNavigate={onNavigate} />
     case 'learn':
-      return <LearnPage />
+      return <LearnPage onNavigate={onNavigate} />
     case 'missions':
       return <MissionsPage />
     case 'tools':
