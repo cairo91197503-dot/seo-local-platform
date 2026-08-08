@@ -71,14 +71,12 @@ Painel principal do usuário.
 Deve mostrar futuramente:
 
 - progresso;
-
 - XP;
-
 - nível;
-
 - sequência de dias;
-
 - próxima missão recomendada.
+
+
 
 ### Aprender
 
@@ -107,3 +105,69 @@ Outras ferramentas serão adicionadas conforme necessidades reais forem validada
 O Mentor IA e a integração com o Perfil da Empresa no Google serão incorporados progressivamente.
 
 Eles não são requisitos para a primeira estrutura navegável do produto.
+
+## Modelo inicial de missão
+
+Uma missão transforma aprendizado em uma ação prática no negócio do usuário.
+
+Cada missão deve possuir:
+
+### 1. Título
+
+Explica claramente o que o usuário fará.
+
+### 2. Objetivo
+
+Explica por que aquela ação é importante para o negócio.
+
+### 3. Explicação curta
+
+Ensina o conceito necessário antes da execução.
+
+### 4. Passos
+
+Mostra exatamente o que o usuário precisa fazer.
+
+### 5. Ação
+
+O usuário executa a tarefa no mundo real ou utilizando uma ferramenta da plataforma.
+
+### 6. Confirmação
+
+O usuário informa que concluiu a tarefa.
+
+No MVP, essa confirmação poderá ser manual.
+
+### 7. Recompensa
+
+Ao concluir, o usuário recebe uma recompensa de gamificação.
+
+Inicialmente utilizaremos XP.
+
+## Primeira missão
+
+### Peça sua primeira avaliação
+
+Objetivo:
+
+Ensinar o empresário a transformar um atendimento bem-sucedido em uma oportunidade legítima de receber uma avaliação no Google.
+
+Fluxo inicial:
+
+Aprender → Preparar → Pedir → Confirmar → Ganhar XP
+
+A plataforma deve incentivar avaliações autênticas.
+
+Não devemos ensinar ou incentivar:
+
+- compra de avaliações;
+
+- avaliações falsas;
+
+- manipulação de notas;
+
+- pressão indevida sobre clientes;
+
+- seleção enganosa de quais clientes podem avaliar.
+
+A solicitação deve acontecer de maneira natural após uma experiência real com o negócio.
