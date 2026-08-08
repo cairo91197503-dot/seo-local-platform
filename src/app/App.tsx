@@ -5,10 +5,13 @@ import { LearnPage } from '../pages/LearnPage'
 import { MissionsPage } from '../pages/MissionsPage'
 import { ToolsPage } from '../pages/ToolsPage'
 
-function renderPage(activeArea: AppArea) {
+function renderPage(
+  activeArea: AppArea,
+  onNavigate: (area: AppArea) => void,
+) {
   switch (activeArea) {
     case 'home':
-      return <HomePage />
+      return <HomePage onNavigate={onNavigate} />
     case 'learn':
       return <LearnPage />
     case 'missions':
@@ -23,7 +26,9 @@ function App() {
 
   return (
     <div className="app-shell">
-      <main className="app-content">{renderPage(activeArea)}</main>
+      <main className="app-content">
+        {renderPage(activeArea, setActiveArea)}
+      </main>
       <BottomNav activeArea={activeArea} onNavigate={setActiveArea} />
     </div>
   )
