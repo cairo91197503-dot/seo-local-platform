@@ -9,13 +9,9 @@ Criar uma plataforma brasileira que ensina pequenos empresários a melhorar sua 
 Muitos pequenos empresários:
 
 - não sabem configurar corretamente o Perfil da Empresa no Google;
-
 - não entendem SEO local;
-
 - não sabem quando ou como pedir avaliações;
-
 - não mantêm uma rotina de atualização do perfil;
-
 - têm dificuldade para entender quais ações realmente ajudam a gerar mais clientes.
 
 ## Solução
@@ -35,18 +31,14 @@ Pequenos empresários brasileiros, prestadores de serviços e negócios locais c
 ## Diferenciais
 
 - aprendizado em microlições;
-
 - conteúdo visual e animado;
-
 - missões práticas;
-
 - gamificação;
-
 - mentor com inteligência artificial;
-
 - ferramentas para avaliações e SEO local;
-
 - futura integração com o Perfil da Empresa no Google.
+
+
 
 ## Princípio central
 
@@ -67,3 +59,51 @@ Quando integrações oficiais estiverem disponíveis, elas devem automatizar e e
 O nome comercial definitivo ainda não foi escolhido.
 
 `seo-local-platform` é apenas o nome técnico atual do repositório.
+
+## Estrutura inicial do MVP
+
+A experiência principal será organizada inicialmente em quatro áreas:
+
+### Início
+
+Painel principal do usuário.
+
+Deve mostrar futuramente:
+
+- progresso;
+
+- XP;
+
+- nível;
+
+- sequência de dias;
+
+- próxima missão recomendada.
+
+### Aprender
+
+Área educacional da plataforma.
+
+Será composta por trilhas e microlições curtas, visuais e práticas.
+
+### Missões
+
+Transforma conhecimento em ações reais no negócio.
+
+Cada missão deve ter um objetivo claro e contribuir para a evolução da presença digital do usuário.
+
+### Ferramentas
+
+Recursos práticos para ajudar o empresário.
+
+Primeira ferramenta planejada:
+
+- geração de QR Code para solicitar avaliações.
+
+Outras ferramentas serão adicionadas conforme necessidades reais forem validadas.
+
+## Evolução futura
+
+O Mentor IA e a integração com o Perfil da Empresa no Google serão incorporados progressivamente.
+
+Eles não são requisitos para a primeira estrutura navegável do produto.
