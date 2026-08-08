@@ -1,0 +1,32 @@
+---
+description: Regras principais do projeto
+alwaysApply: true
+---
+
+# Regras principais
+
+Antes de implementar, modificar ou remover código:
+
+1. Leia `.ai/context.md`.
+2. Leia `.ai/stack.md`.
+3. Leia `.ai/rules.md`.
+4. Consulte a documentação em `docs/` relacionada à tarefa.
+5. Siga as decisões registradas nesses arquivos.
+
+## Comportamento
+
+- Entenda a tarefa antes de programar.
+- Não invente requisitos.
+- Não altere a arquitetura sem explicar o motivo.
+- Não instale dependências desnecessariamente.
+- Faça alterações pequenas e rastreáveis.
+- Não exponha credenciais ou segredos.
+- Preserve funcionalidades existentes.
+- Use português do Brasil nas interfaces destinadas ao usuário.
+- Antes de considerar uma tarefa concluída, verifique erros, build e testes disponíveis.
+
+## Prioridade
+
+Em caso de conflito entre uma sugestão do agente e a documentação do projeto, a documentação do projeto tem prioridade.
+
+Se uma decisão importante não estiver documentada, pergunte antes de assumir.

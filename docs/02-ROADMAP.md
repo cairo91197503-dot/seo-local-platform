@@ -1,0 +1,175 @@
+# Roadmap do Projeto
+
+## Fase 0 — Fundação
+
+Objetivo: preparar o projeto para desenvolvimento profissional e assistido por IA.
+
+Entregas:
+
+- Git e GitHub configurados
+
+- Cursor configurado
+
+- documentação inicial criada
+
+- regras para agentes de IA
+
+- Node.js 22 definido no `.nvmrc`
+
+- estrutura inicial do repositório
+
+Status: em andamento
+
+## Fase 1 — Identidade e Produto
+
+Objetivo: definir claramente o produto antes de desenvolver telas.
+
+Entregas:
+
+- nome comercial definitivo
+
+- posicionamento da marca
+
+- identidade visual
+
+- paleta de cores
+
+- tipografia
+
+- mascote
+
+- estilo das animações
+
+- design system inicial
+
+## Fase 2 — MVP Técnico
+
+Objetivo: criar a base funcional do webapp.
+
+Entregas:
+
+- React + TypeScript + Vite
+
+- roteamento
+
+- estrutura de layouts
+
+- Firebase
+
+- autenticação
+
+- banco de dados inicial
+
+- deploy no Render
+
+- ambiente de desenvolvimento consistente
+
+## Fase 3 — Academia
+
+Objetivo: lançar a primeira experiência educacional.
+
+Entregas:
+
+- trilhas de aprendizado
+
+- microlições
+
+- progresso do usuário
+
+- quizzes
+
+- primeira lição animada
+
+- conclusão de aulas
+
+## Fase 4 — Gamificação
+
+Objetivo: transformar aprendizado em ações práticas.
+
+Entregas:
+
+- XP
+
+- níveis
+
+- missões
+
+- conquistas
+
+- sequência de dias
+
+- progresso visual
+
+## Fase 5 — Ferramentas Práticas
+
+Objetivo: ajudar o empresário a aplicar o aprendizado no negócio.
+
+Entregas:
+
+- QR Code para avaliações
+
+- link de avaliação
+
+- modelos de solicitação de avaliação
+
+- gerador de respostas
+
+- gerador de postagens
+
+- checklists
+
+## Fase 6 — Mentor IA
+
+Objetivo: disponibilizar um mentor contextualizado.
+
+Entregas:
+
+- chat do mentor
+
+- contexto do negócio do usuário
+
+- respostas por segmento
+
+- recomendações baseadas no estágio do usuário
+
+- limites e segurança de uso
+
+## Fase 7 — Integração Google
+
+Objetivo: automatizar tarefas quando houver acesso oficial às APIs necessárias.
+
+Possíveis entregas:
+
+- conectar conta Google
+
+- listar empresas administradas pelo usuário
+
+- avaliações
+
+- respostas
+
+- métricas permitidas
+
+- informações do perfil
+
+A integração com Google não deve ser requisito para o funcionamento principal da plataforma.
+
+## Fase 8 — Comercialização
+
+Objetivo: transformar o produto em negócio recorrente.
+
+Entregas:
+
+- landing page
+
+- planos
+
+- pagamentos
+
+- onboarding
+
+- analytics
+
+- programa beta
+
+- primeiros clientes
