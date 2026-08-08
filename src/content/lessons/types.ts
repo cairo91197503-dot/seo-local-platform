@@ -1,12 +1,23 @@
+export type SceneIllustration = {
+  src: string
+  alt: string
+}
+
+export type SceneNarration = {
+  script: string
+  audioSrc?: string
+}
+
 export type LessonScene = {
   id: string
   title: string
   text: string
   highlight?: string
   mascot?: string
-  illustration?: string
+  illustration?: SceneIllustration
   animation?: string
-  audio?: string
+  narration?: SceneNarration
+  estimatedDurationSeconds?: number
 }
 
 export type Lesson = {
