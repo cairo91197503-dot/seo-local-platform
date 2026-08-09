@@ -11,6 +11,11 @@ export const reviewsImportanceLesson: Lesson = {
       id: 'intro',
       title: 'Antes de escolher, as pessoas pesquisam',
       text: 'Quando alguém encontra uma empresa no Google, as avaliações ajudam a entender como foi a experiência de outros clientes.',
+      narration: {
+        script: 'Antes de escolher uma empresa, muitas pessoas pesquisam no Google. Nesse momento, as avaliações mostram como foi a experiência de outros clientes. E ajudam quem está pesquisando a conhecer melhor o seu negócio.',
+        audioSrc: '/audio/lessons/reviews-importance/cena-01.wav',
+      },
+      estimatedDurationSeconds: 15,
     },
     {
       id: 'trust',
