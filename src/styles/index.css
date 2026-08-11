@@ -4,7 +4,23 @@
   box-sizing: border-box;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 body {
+  --bottom-nav-control-height: 3.25rem;
+  --bottom-nav-height: calc(
+    var(--bottom-nav-control-height) + env(safe-area-inset-bottom)
+  );
   margin: 0;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
@@ -20,8 +36,9 @@ body {
 }
 
 .app-content {
-  flex: 1;
-  padding: 1.5rem 1rem 5.5rem;
+  height: calc(100dvh - var(--bottom-nav-height));
+  padding: 1rem;
+  overflow-y: auto;
   max-width: 48rem;
   margin: 0 auto;
   width: 100%;
@@ -51,7 +68,9 @@ body {
   left: 0;
   right: 0;
   border-top: 1px solid #e0e0e0;
+  padding-bottom: env(safe-area-inset-bottom);
   background: #fff;
+  z-index: 10;
 }
 
 .bottom-nav__list {
@@ -69,6 +88,7 @@ body {
 .bottom-nav__button {
   display: block;
   width: 100%;
+  min-height: var(--bottom-nav-control-height);
   padding: 0.75rem 0.5rem;
   border: none;
   background: transparent;
@@ -284,6 +304,25 @@ body {
   gap: 1rem;
 }
 
+.learn-page--lesson {
+  position: fixed;
+  top: env(safe-area-inset-top);
+  right: env(safe-area-inset-right);
+  bottom: var(--bottom-nav-height);
+  left: env(safe-area-inset-left);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0, 64rem);
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-content: center;
+  gap: clamp(0.375rem, 1vh, 0.625rem);
+  height: auto;
+  min-height: 0;
+  padding: clamp(0.375rem, 1.2vh, 0.75rem);
+  overflow: hidden;
+  background: #101113;
+}
+
 .learn-page__header {
   margin: 0;
 }
@@ -315,100 +354,253 @@ body {
 }
 
 .lesson-scene {
+  display: grid;
+  grid-column: 1;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(0.375rem, 1vh, 0.625rem);
+  min-height: 0;
   margin: 0;
-  padding: 1rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 0.5rem;
-  background: #fafafa;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .lesson-scene__progress {
-  margin: 0 0 0.75rem;
-  font-size: 0.875rem;
-  color: #666;
-}
-
-.lesson-scene__title {
-  margin: 0 0 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.lesson-scene__text {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.625rem;
   margin: 0;
-  color: #444;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 72%);
+}
+
+.lesson-scene__progress progress {
+  display: block;
+  width: 100%;
+  height: 0.375rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 22%);
+}
+
+.lesson-scene__progress progress::-webkit-progress-bar {
+  border-radius: 999px;
+  background: rgb(255 255 255 / 22%);
+}
+
+.lesson-scene__progress progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: #fff;
+}
+
+.lesson-scene__progress progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: #fff;
+}
+
+.lesson-scene__visual {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 0.25rem;
+  background: #202124;
+}
+
+.lesson-scene__visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 34%) 0,
+    transparent 24%,
+    transparent 56%,
+    rgb(0 0 0 / 36%) 100%
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.lesson-scene__visual--fallback {
+  background: linear-gradient(145deg, #454545, #202020);
 }
 
 .lesson-scene__illustration {
   display: block;
   width: 100%;
-  height: auto;
-  margin: 0 0 1rem;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.lesson-scene__title {
+  position: absolute;
+  top: clamp(0.5rem, 2vh, 1rem);
+  left: clamp(0.5rem, 2vw, 1rem);
+  z-index: 1;
+  max-width: min(calc(100% - 9.5rem), 30rem);
+  margin: 0;
+  padding: 0.375rem 0.625rem;
   border-radius: 0.375rem;
-}
-
-.lesson-scene__highlight {
-  margin: 1rem 0 0;
-  padding: 0.75rem 1rem;
-  border-left: 3px solid #ccc;
-  background: #fff;
+  background: rgb(0 0 0 / 46%);
+  color: #fff;
+  font-size: clamp(0.8125rem, 2vh, 1.0625rem);
   font-weight: 600;
-  color: #1a1a1a;
+  line-height: 1.25;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 65%);
 }
 
-.lesson-scene__duration {
-  margin: 1rem 0 0;
-  font-size: 0.875rem;
-  color: #666;
+.lesson-scene__caption {
+  position: absolute;
+  right: clamp(0.5rem, 2vw, 1rem);
+  bottom: clamp(0.5rem, 2vh, 1rem);
+  left: clamp(0.5rem, 2vw, 1rem);
+  z-index: 1;
+  max-width: 40rem;
+  min-height: calc(2lh + clamp(1rem, 3.4vh, 1.75rem));
+  max-height: calc(2lh + clamp(1rem, 3.4vh, 1.75rem));
+  margin: 0 auto;
+  padding: clamp(0.5rem, 1.7vh, 0.875rem) clamp(0.625rem, 2vw, 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 0.375rem;
+  background: rgb(0 0 0 / 74%);
+  color: #fff;
+  font-size: clamp(0.8125rem, 1.9vh, 1.0625rem);
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.lesson-scene__text,
+.lesson-scene__segment {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.lesson-scene__segment {
+  color: rgb(255 255 255 / 88%);
+  transition: color 180ms ease, opacity 180ms ease, text-shadow 180ms ease;
+}
+
+.lesson-scene__segment--active {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 0.4rem rgb(255 255 255 / 45%);
 }
 
 .lesson-scene__narration {
-  margin-top: 1rem;
+  position: absolute;
+  top: clamp(0.5rem, 2vh, 1rem);
+  right: clamp(0.5rem, 2vw, 1rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .lesson-scene__audio-button {
-  padding: 0.625rem 0.875rem;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  background: #fff;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.6875rem;
+  border: 1px solid rgb(255 255 255 / 32%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 58%);
   font: inherit;
-  font-size: 0.9375rem;
-  color: #1a1a1a;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
   cursor: pointer;
 }
 
+.lesson-scene__audio-button:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
 .lesson-scene__audio-button:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid #fff;
   outline-offset: 2px;
 }
 
 .lesson-scene__audio-error {
-  margin: 0.5rem 0 0;
-  font-size: 0.875rem;
-  color: #666;
+  max-width: 8.5rem;
+  margin: 0;
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.25rem;
+  background: rgb(0 0 0 / 72%);
+  font-size: 0.8125rem;
+  color: #fff;
+  text-align: center;
 }
 
 .lesson-scene__actions {
+  grid-column: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   gap: 0.5rem;
+  min-height: 3rem;
+}
+
+.lesson-scene__actions .home-block__button {
+  width: auto;
+  min-width: min(11rem, 58vw);
+  min-height: 3rem;
+  border-color: #fff;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
+  color: #101113;
 }
 
 .lesson-scene__back {
-  padding: 0.5rem;
+  min-height: 3rem;
+  padding: 0.5rem 0.75rem;
   border: none;
   background: transparent;
   font: inherit;
   font-size: 0.9375rem;
-  color: #666;
+  color: rgb(255 255 255 / 82%);
   cursor: pointer;
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+@media (max-height: 600px) {
+  .lesson-scene__caption {
+    min-height: calc(2lh + 1rem);
+    max-height: calc(2lh + 1rem);
+    font-size: clamp(0.75rem, 2.2vh, 0.875rem);
+    line-height: 1.3;
+  }
+
+  .lesson-scene__title {
+    font-size: clamp(0.8125rem, 2.3vh, 1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-scene__segment {
+    transition: none;
+  }
 }
 
 .lesson-scene__back:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid #fff;
   outline-offset: 2px;
 }
 
@@ -435,8 +627,12 @@ body {
 }
 
 @media (min-width: 768px) {
+  body {
+    --bottom-nav-control-height: 3.5rem;
+  }
+
   .app-content {
-    padding: 2rem 1.5rem 5.5rem;
+    padding: 1.5rem;
   }
 
   .page__title {
@@ -450,5 +646,13 @@ body {
   .bottom-nav__button {
     font-size: 0.875rem;
     padding: 0.875rem 0.5rem;
+  }
+
+  .learn-page--lesson {
+    padding: clamp(0.75rem, 2vh, 1.5rem) clamp(1rem, 3vw, 2rem);
+  }
+
+  .lesson-scene__visual {
+    border-radius: 0.75rem;
   }
 }

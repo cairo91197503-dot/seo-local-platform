@@ -65,8 +65,9 @@ export function LearnPage({ onNavigate }: LearnPageProps) {
     const isLastScene = sceneIndex === totalScenes - 1
 
     return (
-      <div className="learn-page">
+      <div className="learn-page learn-page--lesson">
         <SceneView
+          key={scene.id}
           scene={scene}
           sceneNumber={sceneIndex + 1}
           totalScenes={totalScenes}

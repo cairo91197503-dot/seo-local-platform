@@ -7,9 +7,45 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Credentials / keys
+credentials.json
+credentials.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+*.ppk
+
+# Dependencies
 node_modules
-dist
-dist-ssr
+
+# Build outputs
+build/
+dist/
+dist-ssr/
+
+# Caches
+.cache/
+cache/
+.cache-*/
+.pytest_cache/
+__pycache__/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
 *.local
 
 # Editor directories and files

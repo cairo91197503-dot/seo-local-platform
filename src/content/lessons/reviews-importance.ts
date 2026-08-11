@@ -18,8 +18,25 @@ export const reviewsImportanceLesson: Lesson = {
       narration: {
         script: 'Antes de escolher uma empresa, muitas pessoas pesquisam no Google. Nesse momento, as avaliações mostram como foi a experiência de outros clientes. E ajudam quem está pesquisando a conhecer melhor o seu negócio.',
         audioSrc: '/audio/lessons/reviews-importance/cena-01.wav',
+        segments: [
+          {
+            text: 'Antes de escolher uma empresa, muita gente pesquisa no Google.',
+            startSeconds: 0,
+            endSeconds: 3.16,
+          },
+          {
+            text: 'As avaliações mostram a experiência de outros clientes.',
+            startSeconds: 3.16,
+            endSeconds: 5.99,
+          },
+          {
+            text: 'E ajudam a decidir em qual negócio confiar.',
+            startSeconds: 5.99,
+            endSeconds: 8.36,
+          },
+        ],
       },
-      estimatedDurationSeconds: 15,
+      estimatedDurationSeconds: 8.53,
     },
     {
       id: 'trust',

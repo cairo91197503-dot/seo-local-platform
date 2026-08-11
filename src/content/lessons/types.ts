@@ -3,9 +3,16 @@ export type SceneIllustration = {
   alt: string
 }
 
+export type NarrationSegment = {
+  text: string
+  startSeconds: number
+  endSeconds: number
+}
+
 export type SceneNarration = {
   script: string
   audioSrc?: string
+  segments?: NarrationSegment[]
 }
 
 export type LessonScene = {
