@@ -20,9 +20,13 @@ A plataforma deve funcionar como um treinador digital.
 
 O usuário aprende uma pequena lição, executa uma missão prática e acompanha sua evolução.
 
+O objetivo educacional é ajudar pequenos empresários a cuidar da presença local do negócio de forma prática e contínua: ser encontrados, ajudar o cliente a entender e escolher o negócio, construir reputação e manter o perfil atualizado. O foco não é formar especialistas técnicos em SEO, mas transformar aprendizado acessível em ações reais.
+
 Fluxo principal:
 
 Aprender → Executar → Ganhar XP → Evoluir → Repetir
+
+A fonte da verdade sobre princípios, jornada e estrutura educacional é `docs/08-ARQUITETURA-PEDAGOGICA.md`.
 
 ## Público-alvo
 

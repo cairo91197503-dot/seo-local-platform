@@ -42,9 +42,9 @@ O conceito definido mostra uma pessoa pesquisando empresas locais antes de escol
 
 A proporção estudada foi `1536x1024` (`3:2`). Antes de gerar uma imagem com outro modelo, deve-se confirmar se dimensão e proporção continuam adequadas.
 
-### Próxima sessão
+### Próximo passo previsto naquele momento
 
-Começar pela investigação do Cloudflare Workers AI para geração de imagens. Não retomar a pesquisa de TTS, os testes com Chatterbox/Kokoro ou alterações na narração Faber aprovada.
+Naquele momento, o próximo passo previsto era começar pela investigação do Cloudflare Workers AI para geração de imagens. A pesquisa de TTS, os testes com Chatterbox/Kokoro e alterações na narração Faber aprovada não deveriam ser retomados.
 
 Antes de qualquer geração:
 
@@ -56,3 +56,5 @@ Antes de qualquer geração:
 6. escolher o modelo mais adequado para a Cena 1;
 7. preparar uma única geração experimental;
 8. parar antes de gerar ou consumir cota e pedir autorização.
+
+Posteriormente, a investigação do Cloudflare Workers AI e a geração definitiva de imagens foram **PAUSADAS**. Este changelog preserva o histórico e não define a tarefa vigente. Consulte `.ai/context.md` para o estado operacional atual e não retome itens pausados sem solicitação explícita.

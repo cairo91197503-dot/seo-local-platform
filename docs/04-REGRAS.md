@@ -72,23 +72,9 @@ Padrões:
 
 ## Inteligência Artificial
 
-Antes de modificar o projeto, todo agente deve ler:
+`AGENTS.md` é a única fonte da ordem global de leitura. Os limites permanentes do agente estão em `.ai/rules.md` e o fluxo operacional está em `.ai/workflow.md`.
 
-1. `.ai/context.md`
-
-2. `.ai/stack.md`
-
-3. `.ai/rules.md`
-
-4. `docs/01-PROJETO.md`
-
-5. `docs/02-ROADMAP.md`
-
-6. `docs/03-ARQUITETURA.md`
-
-7. `docs/04-REGRAS.md`
-
-Se houver dúvida sobre requisito, arquitetura ou regra de negócio, o agente deve perguntar antes de assumir.
+Se houver dúvida sobre requisito, arquitetura ou regra de negócio necessária à tarefa, o agente deve perguntar antes de assumir.
 
 ## Regra principal
 

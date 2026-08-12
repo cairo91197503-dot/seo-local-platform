@@ -1,45 +1,36 @@
-# Stack Tecnológica
+# Stack Tecnológica e Ambientes
 
-## Frontend
+Este documento diferencia o que está implementado, planejado ou em avaliação. A presença de uma tecnologia nesta lista não autoriza instalação ou configuração.
 
-- React
-- TypeScript
-- Vite
+## Implementado no repositório
 
-## Backend e serviços
+- React e React DOM;
+- TypeScript;
+- Vite;
+- ESLint;
+- Node.js 22, definido em `.nvmrc`;
+- npm, com `package-lock.json`.
 
-- Firebase
-- Firebase Authentication
-- Firestore
+Antes de usar versões ou comandos específicos, confira os arquivos atuais do repositório, especialmente `package.json`, `package-lock.json` e `.nvmrc`.
 
-## Hospedagem e infraestrutura
+## Planejado
 
-- Render
-- Oracle Cloud — ambiente remoto futuro
+- Firebase;
+- Firebase Authentication;
+- Firestore;
+- Render para hospedagem/deploy;
+- integração futura com APIs do Google.
 
-## Desenvolvimento
+Não foi confirmada neste repositório uma configuração ativa de Firebase ou Render. Não trate esses serviços como implementados sem nova inspeção.
 
-- Linux Mint
-- Node.js 22 LTS
-- NVM
-- npm
-- Git
-- GitHub
-- Cursor
+## Em avaliação
 
-## Inteligência Artificial
-
-O projeto deve ser preparado para trabalhar com diferentes agentes de IA.
-
-Não devemos criar dependência desnecessária de um único fornecedor.
-
-Possíveis ferramentas:
-
-- Cursor
-- ChatGPT
-- Claude
-- Gemini
-- outros agentes compatíveis no futuro
+- biblioteca de componentes e interface;
+- solução para animações educacionais;
+- sistema definitivo de gamificação;
+- provedor e modelo de IA;
+- arquitetura de funções de backend;
+- estratégia definitiva de deploy.
 
 ## Princípio de arquitetura
 
@@ -47,19 +38,33 @@ Sempre que possível:
 
 Frontend → serviços → APIs externas
 
-Integrações externas devem ficar desacopladas da interface.
+Integrações externas devem ficar desacopladas da interface. A aplicação deve continuar oferecendo valor educacional quando uma API externa estiver indisponível.
 
-A aplicação deve continuar oferecendo valor educacional mesmo quando uma API externa estiver indisponível.
+## Ambientes
 
-## Decisões ainda não tomadas
+### PC principal
 
-Ainda serão avaliados:
+- ambiente principal de desenvolvimento local nesta etapa do projeto;
+- possui recursos, ferramentas e arquivos locais próprios;
+- diretório, branch, dependências e estado do worktree devem ser verificados em cada sessão.
 
-- biblioteca de componentes/interface;
-- solução para animações educacionais;
-- sistema de gamificação;
-- provedor/modelo de IA;
-- arquitetura das funções de backend;
-- integração futura com APIs do Google;
-- estratégia definitiva de deploy.
+### Oracle VM
 
+- ambiente remoto real atualmente utilizado;
+- pode possuir clone, dependências, ferramentas e estado Git diferentes do PC principal;
+- não presumir sincronização automática nem a existência de arquivos do PC;
+- caminhos e estado devem ser verificados dentro da própria VM.
+
+### GitHub
+
+- repositório remoto e mecanismo de versionamento e sincronização;
+- não é ambiente de execução;
+- referências remotas locais podem estar desatualizadas até uma operação de rede explicitamente autorizada.
+
+### Celular / Termux
+
+- utilizado como terminal de acesso remoto;
+- não presumir que o projeto ou suas dependências devam ser instalados diretamente no celular;
+- confirmar o destino da sessão SSH antes de executar comandos.
+
+Não registrar no repositório IPs privados, senhas, tokens, chaves, credenciais ou outros segredos. Caminhos específicos de cada máquina dependem de verificação no ambiente correspondente.

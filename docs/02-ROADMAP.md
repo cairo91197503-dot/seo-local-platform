@@ -18,7 +18,7 @@ Entregas:
 
 - estrutura inicial do repositório
 
-Status: em andamento
+Status: em andamento. Git, documentação inicial, regras para agentes, Node.js e estrutura do repositório já foram iniciados ou configurados. A documentação operacional para IA está em consolidação.
 
 ## Fase 1 — Identidade e Produto
 
@@ -42,6 +42,8 @@ Entregas:
 
 - design system inicial
 
+Status: em andamento. A arquitetura pedagógica e o padrão inicial de lições foram documentados; nome, identidade e padrão visual definitivo continuam abertos.
+
 ## Fase 2 — MVP Técnico
 
 Objetivo: criar a base funcional do webapp.
@@ -64,6 +66,8 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
+Status: parcial. React, TypeScript, Vite, roteamento e estrutura inicial de interface estão implementados. Firebase, autenticação, banco de dados e deploy no Render continuam planejados.
+
 ## Fase 3 — Academia
 
 Objetivo: lançar a primeira experiência educacional.
@@ -81,6 +85,8 @@ Entregas:
 - primeira lição animada
 
 - conclusão de aulas
+
+Status: parcial. A primeira microlição e a primeira cena audiovisual foram iniciadas. Trilhas, progresso persistente, quizzes e critérios pedagógicos de conclusão continuam planejados ou dependem de decisão.
 
 ## Fase 4 — Gamificação
 
@@ -100,6 +106,8 @@ Entregas:
 
 - progresso visual
 
+Status: planejado. O modelo definitivo de XP, persistência e validação de missões depende de decisão.
+
 ## Fase 5 — Ferramentas Práticas
 
 Objetivo: ajudar o empresário a aplicar o aprendizado no negócio.
@@ -118,6 +126,8 @@ Entregas:
 
 - checklists
 
+Status: planejado.
+
 ## Fase 6 — Mentor IA
 
 Objetivo: disponibilizar um mentor contextualizado.
@@ -133,6 +143,8 @@ Entregas:
 - recomendações baseadas no estágio do usuário
 
 - limites e segurança de uso
+
+Status: planejado.
 
 ## Fase 7 — Integração Google
 
@@ -154,6 +166,8 @@ Possíveis entregas:
 
 A integração com Google não deve ser requisito para o funcionamento principal da plataforma.
 
+Status: planejado.
+
 ## Fase 8 — Comercialização
 
 Objetivo: transformar o produto em negócio recorrente.
@@ -173,3 +187,5 @@ Entregas:
 - programa beta
 
 - primeiros clientes
+
+Status: planejado.
