@@ -33,6 +33,9 @@ build/
 dist/
 dist-ssr/
 
+# Generated lesson drafts (kept local until human review)
+content-drafts/
+
 # Caches
 .cache/
 cache/

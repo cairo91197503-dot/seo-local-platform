@@ -128,6 +128,110 @@ As lições devem incentivar uma rotina de manutenção, especialmente quando ho
 - não tratar um conceito visual de uma cena como padrão visual definitivo;
 - preservar roteiro, áudio e timestamps aprovados quando a tarefa não autorizar sua alteração.
 
+## Contrato técnico atual da microlição
+
+O contrato implementado está definido pelos tipos em `src/content/lessons/types.ts`, pela primeira lição em `src/content/lessons/reviews-importance.ts` e pelo consumo em `src/pages/LearnPage.tsx` e `src/components/learn/SceneView.tsx`. A pipeline de rascunhos deve gerar `lesson.json` com esta mesma forma:
+
+```ts
+type Lesson = {
+  id: string
+  title: string
+  duration: string
+  level: string
+  futureReward: string
+  scenes: LessonScene[]
+}
+
+type LessonScene = {
+  id: string
+  title: string
+  text: string
+  highlight?: string
+  mascot?: string
+  illustration?: {
+    src: string
+    alt: string
+  }
+  animation?: string
+  narration?: {
+    script: string
+    audioSrc?: string
+    segments?: Array<{
+      text: string
+      startSeconds: number
+      endSeconds: number
+    }>
+  }
+  estimatedDurationSeconds?: number
+}
+```
+
+### Semântica consumida pela interface
+
+- `Lesson.scenes` define a ordem de navegação. `LessonScene.id` também é usado como `key` da cena e deve ser único na lição.
+- `title` é o título visível da cena. `text` é o texto visual padrão; `highlight`, quando presente, compõe o transcript acessível de uma cena sem `narration.script`.
+- `illustration.src` é passado diretamente ao elemento `img`; a lição 1 usa uma URL pública absoluta, `/images/lessons/reviews-importance/cena-01.png`. `illustration.alt` é o texto alternativo da imagem.
+- `narration.audioSrc` é passado diretamente ao elemento `audio`; a lição 1 usa `/audio/lessons/reviews-importance/cena-01.wav`.
+- `narration.script` é o transcript acessível completo. Ele não precisa ser idêntico a cada legenda resumida: na cena 1 atual, o transcript aprovado e os textos dos segmentos têm redações diferentes.
+- `narration.segments` controla a legenda sincronizada. Um segmento fica ativo quando `currentTime >= startSeconds` e `currentTime < endSeconds`. Sem segmentos, a interface exibe `scene.text`; com segmentos, pode haver um intervalo sem legenda se nenhum segmento cobrir o tempo corrente.
+- `estimatedDurationSeconds` registra a duração estimada da cena; a interface atual não usa esse campo para controlar o áudio.
+- `mascot` e `animation` fazem parte do tipo, mas ainda não são consumidos por `SceneView`.
+
+Na primeira lição, somente a cena `intro` possui atualmente ilustração, áudio, transcript, segmentos e duração. As outras três cenas demonstram que esses campos são opcionais. A pipeline gera esses artefatos para todas as cenas do novo rascunho, sem alterar essa lição aprovada.
+
+## Pipeline assistida para rascunhos
+
+O comando fica fora do app React e não publica conteúdo:
+
+```bash
+npm run generate:lesson -- \
+  --lesson-id horario-especial \
+  --topic "Horário especial no Perfil da Empresa" \
+  --outline "Explique quando revisar e atualizar o horário especial." \
+  --piper-model /caminho/local/pt_BR-voz-medium.onnx
+```
+
+Antes de executar, defina `GOOGLE_AI_STUDIO_API_KEY` somente no ambiente local. O executável pode ser configurado por `PIPER_BIN` e o modelo de texto por `GEMINI_MODEL`; o modelo padrão é `gemini-2.5-flash`. O arquivo de voz Piper é obrigatório em cada execução porque uma voz global para as lições ainda não foi aprovada.
+
+O CLI usa adapters separados para:
+
+1. gerar o roteiro textual estruturado com Gemini;
+2. gerar um WAV por cena com o Piper local;
+3. ler a duração do WAV e distribuir proporcionalmente as legendas na linha do tempo;
+4. redigir com Gemini um prompt textual por cena para uso manual no Meta AI.
+
+A distribuição proporcional gera timestamps iniciais de edição, não alinhamento fonético ou por palavra. A revisão humana deve ouvir o áudio e corrigir `startSeconds` e `endSeconds` quando necessário.
+
+Cada execução cria `content-drafts/<lesson-id>/` com:
+
+```text
+README.md
+script.json
+audio-timings.json
+lesson.json
+audio/cena-01.wav
+image-prompts/cena-01.txt
+images/                    # destino das imagens baixadas manualmente
+```
+
+O número de arquivos por cena varia conforme o roteiro. O diretório `content-drafts/` é ignorado pelo Git para evitar publicação acidental. O comando recusa sobrescrever uma pasta de rascunho existente.
+
+### Fluxo de revisão e publicação
+
+```text
+gerar rascunho
+→ revisar roteiro
+→ ouvir áudio e revisar timestamps/cenas
+→ colar cada prompt manualmente no Meta AI
+→ baixar e salvar cada PNG com o nome indicado no README do rascunho
+→ realizar revisão humana final
+→ copiar manualmente os assets aprovados para public/
+→ converter/revisar lesson.json como conteúdo TypeScript
+→ publicar manualmente no catálogo
+```
+
+O CLI não chama API de geração de imagem, não copia arquivos para `public/` e não altera catálogo, páginas, componentes ou rotas. Os caminhos `/images/lessons/<lesson-id>/...` e `/audio/lessons/<lesson-id>/...` em `lesson.json` representam os destinos públicos esperados apenas para a etapa manual posterior.
+
 A voz padrão para todas as lições e o padrão visual definitivo permanecem como `DECISÃO NECESSÁRIA`.
 
 ## Decisões ainda abertas

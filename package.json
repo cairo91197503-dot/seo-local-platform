@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "generate:lesson": "node --experimental-strip-types scripts/generate-lesson.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
