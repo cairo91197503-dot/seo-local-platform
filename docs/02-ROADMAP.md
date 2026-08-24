@@ -42,7 +42,7 @@ Entregas:
 
 - design system inicial
 
-Status: em andamento. A arquitetura pedagógica e o padrão inicial de lições foram documentados. Paleta de cores, tipografia e conceito de mascote foram decididos (ver `docs/06-DESIGN-SYSTEM.md`); nome comercial, posicionamento de marca e estilo detalhado de animações continuam abertos.
+Status: quase concluída. Nome comercial (Estrelar), posicionamento de marca, identidade visual, paleta, tipografia e mascote foram decididos (ver `docs/01-PROJETO.md` e `docs/06-DESIGN-SYSTEM.md`). Falta apenas o detalhamento do estilo de animações; design system inicial começou a ser aplicado ao código (tokens + componente da mascote), mas ainda não foi migrado para todas as telas do MVP.
 
 ## Fase 2 — MVP Técnico
 

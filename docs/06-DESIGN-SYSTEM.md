@@ -1,6 +1,6 @@
 # Design System
 
-**Status:** direção principal decidida (2026-08-24). Falta nome comercial definitivo, posicionamento formal de marca e o detalhamento do estilo de animações.
+**Status:** direção principal, nome comercial e posicionamento de marca decididos (2026-08-24). Falta o detalhamento do estilo de animações e a aplicação dos tokens em todas as telas existentes.
 
 Canvas de referência (paleta, tipografia, mascote e duas alternativas descartadas): https://claude.ai/code/artifact/c979ad0e-cb41-43ad-84d3-5a1eae4c13a1
 
@@ -38,7 +38,7 @@ Corpo de estrela de 5 pontas arredondadas (não pontas afiadas), rosto simples c
 - **Comemorando** — braços erguidos, fagulhas ao redor; usado ao concluir missão/ganhar XP.
 - **Pensando** — leve inclinação de cabeça; usado antes de uma dica ou pergunta.
 
-O nome "Estrelo" é um apelido de trabalho, independente do nome comercial da marca (ainda não escolhido — ver `docs/01-PROJETO.md`, seção "Nome").
+O nome "Estrelo" é um apelido de trabalho para a mascote, independente do nome comercial da marca (**Estrelar** — ver `docs/01-PROJETO.md`, seção "Nome").
 
 ## Estilo de animações (direção inicial, não detalhada)
 
@@ -46,6 +46,5 @@ Movimento suave, tipo "squash and stretch" leve, sem exageros — reforça calor
 
 ## Em aberto
 
-- Nome comercial definitivo e posicionamento formal de marca (`docs/01-PROJETO.md`).
 - Aplicação da paleta/tipografia em todas as telas existentes do MVP (ainda não migradas para os tokens acima).
 - Biblioteca/abordagem técnica de animação.

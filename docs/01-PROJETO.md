@@ -32,6 +32,14 @@ A fonte da verdade sobre princípios, jornada e estrutura educacional é `docs/0
 
 Pequenos empresários brasileiros, prestadores de serviços e negócios locais com pouco conhecimento de marketing digital.
 
+## Posicionamento de marca (decidido em 2026-08-24)
+
+Para o pequeno empresário brasileiro que sabe que precisa aparecer bem no Google, mas não tem tempo nem paciência para aprender marketing digital sozinho, o **Estrelar** é o treinador digital que transforma aprendizado em ação prática, uma missão de cada vez — diferente de cursos genéricos de SEO ou consultorias caras, porque ensina só o necessário para a situação real do negócio, no momento em que ela importa, e comemora cada progresso junto com o usuário.
+
+Tom de voz: parceiro de confiança que entende de internet, não professor de cima para baixo nem vendedor de curso milagroso. Prático, encorajador, honesto — nunca promete hack de algoritmo ou posição garantida no Google (ver "Princípio central" abaixo). Caloroso como um negócio de bairro, não frio como um SaaS corporativo; adulto e direto, não infantilizado, mesmo usando uma mascote.
+
+Este posicionamento orienta copy, tom da mascote (`docs/06-DESIGN-SYSTEM.md`) e critérios de priorização de funcionalidades (`docs/02-ROADMAP.md`).
+
 ## Diferenciais
 
 - aprendizado em microlições;

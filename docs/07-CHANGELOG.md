@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-24 — Posicionamento de marca decidido; Fase 1 do roadmap praticamente concluída
+
+Posicionamento de marca redigido e registrado em `docs/01-PROJETO.md` (seção "Posicionamento de marca"): público, promessa central, diferencial frente a cursos/consultorias de SEO genéricos, e tom de voz (parceiro caloroso e honesto, não vendedor nem professor de cima para baixo). Com isso, a Fase 1 do roadmap fica com todos os itens centrais decididos — falta apenas o detalhamento do estilo de animações e a migração de telas existentes para os novos tokens visuais.
+
 ## 2026-08-24 — Nome comercial definido e herança do LocalPulse documentada
 
 Nome comercial decidido em conversa com o usuário: **Estrelar** (domínio principal planejado: `estrelar.app`). Entre as opções levantadas (Estrelar, Estrelo, Brilha, Bairrista), o usuário escolheu Estrelar. Uma checagem informal por busca identificou uma empresa de outro ramo (provedor de internet no Rio de Janeiro) já usando "Estrelar Web"/`estrelarweb.com.br`; o risco foi levado ao usuário e aceito conscientemente por serem mercados diferentes. Nenhuma checagem formal de marca (INPI) ou de disponibilidade de domínio foi feita ainda. Detalhes em `docs/01-PROJETO.md`, seção "Nome".

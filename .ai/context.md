@@ -22,7 +22,8 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Os timestamps dessa narração foram recalculados.
 - A arquitetura pedagógica e o padrão inicial de lições foram definidos documentalmente e estão em consolidação.
 - Direção de identidade visual da Fase 1 (paleta, tipografia, conceito de mascote "Estrelo") foi decidida; ver `docs/06-DESIGN-SYSTEM.md`.
-- Nome comercial definido: **Estrelar** (domínio principal planejado: `estrelar.app`). Ver `docs/01-PROJETO.md`, seção "Nome", incluindo o risco de marca conhecido e aceito. Posicionamento formal de marca continua aberto.
+- Nome comercial definido: **Estrelar** (domínio principal planejado: `estrelar.app`). Ver `docs/01-PROJETO.md`, seção "Nome", incluindo o risco de marca conhecido e aceito.
+- Posicionamento de marca decidido; ver `docs/01-PROJETO.md`, seção "Posicionamento de marca". Fase 1 do roadmap (identidade e produto) está com todos os itens centrais decididos — falta só o detalhamento do estilo de animações.
 - Este projeto é uma reconstrução do LocalPulse; funcionalidades já exploradas nos protótipos anteriores (diagnóstico de reputação com IA, conexão Google/GMB, assistente de resposta a avaliações, tarefas diárias, dashboard) estão documentadas em `docs/10-HERANCA-LOCALPULSE.md`.
 
 ## Modelo de governança (desde 2026-08-24)
