@@ -27,6 +27,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Este projeto é uma reconstrução do LocalPulse; funcionalidades já exploradas nos protótipos anteriores (diagnóstico de reputação com IA, conexão Google/GMB, assistente de resposta a avaliações, tarefas diárias, dashboard) estão documentadas em `docs/10-HERANCA-LOCALPULSE.md`.
 - O pipeline de rascunhos de lição (`scripts/generate-lesson.ts`) agora gera imagens automaticamente via API Gemini, além de roteiro e narração; ver `docs/09-PADRAO-DE-LICOES.md`. Revisão humana antes de publicar continua obrigatória.
 - Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
+- A navegação por abas foi substituída por roteamento real por URL (`react-router-dom`): `/`, `/aprender`, `/missoes`, `/ferramentas`. Ver `docs/02-ROADMAP.md` (Fase 2) e `docs/07-CHANGELOG.md`.
 
 ## Modelo de governança (desde 2026-08-24)
 
@@ -34,7 +35,7 @@ A IA atua como gerente do projeto: decide e implementa diretamente (produto, ped
 
 ## Foco vigente
 
-Consolidar a documentação do projeto e a documentação operacional para IA, e então avançar autonomamente pelo roadmap (`docs/02-ROADMAP.md`), começando pelas fases em aberto. Com a Fase 3 pausada (ver abaixo) e os tokens visuais já aplicados às telas existentes, o próximo grande item do roadmap é a Fase 2 (MVP técnico), que deve esbarrar em bloqueios de criação de conta/credenciais que só o usuário pode resolver.
+Avançar autonomamente pela Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) com a Fase 3 pausada (ver abaixo). Roteamento real por URL já foi implementado. O que resta da Fase 2 — Firebase, autenticação, banco de dados, deploy no Render — depende de criação de conta e credenciais, ação que a IA não está autorizada a executar (`.ai/rules.md`); a IA deve preparar o que puder estruturalmente (arquitetura, scaffolding com variáveis de ambiente, regras de segurança em rascunho) e sinalizar claramente ao usuário o que só ele pode fazer.
 
 ## Itens pausados
 

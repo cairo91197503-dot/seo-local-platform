@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-08-24 — Roteamento real por URL (Fase 2)
+
+Com a Fase 3 pausada e a migração visual concluída, a IA avançou autonomamente para a Fase 2 do roadmap (MVP técnico). O que a navegação por abas fazia com `useState` (sem URL própria, sem suporte a voltar do navegador, sem deep link) foi substituído por roteamento real com `react-router-dom`: `/` (Início), `/aprender`, `/missoes` e `/ferramentas`, com fallback de rota desconhecida redirecionando para `/`. `BottomNav` passou a usar `NavLink` (marcando a rota ativa automaticamente via `aria-current`), e `HomePage`/`LearnPage` passaram a navegar com `useNavigate` em vez de receber um callback `onNavigate` repassado manualmente por toda a árvore de componentes.
+
+Essa é uma mudança de infraestrutura de navegação, não de conteúdo — nenhum texto, lógica ou estrutura pedagógica da lição em `LearnPage` foi alterado, respeitando a pausa da Fase 3.
+
+`package-lock.json` foi atualizado para incluir a nova dependência (`react-router-dom` e suas transitivas `react-router`, `cookie`, `set-cookie-parser`); os metadados `libc` de pacotes opcionais não relacionados, que a versão de npm deste ambiente remove incidentalmente a cada instalação, foram restaurados manualmente para manter o diff limitado à mudança real, como em ciclos anteriores.
+
+Validado com `npm run build`, `npm run lint`, `npm ci` limpo (lockfile íntegro) e verificação funcional com Playwright: navegação por clique nos 4 links do menu inferior, link direto/deep link com reload em `/aprender`, e botão "voltar" do navegador — todos funcionando corretamente, sem regressão visual nas capturas de tela.
+
+Deploy real (Fase 2: Firebase, autenticação, banco de dados, deploy no Render) continua bloqueado por depender de criação de contas e credenciais, ação que a IA não está autorizada a executar; ver `.ai/rules.md`. Ao deployar como site estático, será necessário configurar uma regra de rewrite (todas as rotas para `/index.html`) para o roteamento funcionar em produção — anotado em `docs/02-ROADMAP.md`.
+
 ## 2026-08-24 — Design system aplicado às telas existentes; Fase 3 (Academia) pausada
 
 A pedido do usuário, a Fase 3 do roadmap (conteúdo educacional/Academia, incluindo o pipeline de lições) foi pausada por completo — nenhum item dessa fase deve ser retomado sem solicitação explícita. Ver `.ai/context.md`, seção "Itens pausados".

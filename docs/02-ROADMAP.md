@@ -66,7 +66,7 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
-Status: parcial. React, TypeScript, Vite, roteamento e estrutura inicial de interface estão implementados. Firebase, autenticação, banco de dados e deploy no Render continuam planejados.
+Status: parcial. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Firebase, autenticação, banco de dados e deploy no Render continuam planejados; deploy exigirá regra de rewrite (todas as rotas para `/index.html`) por ser SPA.
 
 ## Fase 3 — Academia
 

@@ -7,6 +7,7 @@ Este documento diferencia o que está implementado, planejado ou em avaliação.
 - React e React DOM;
 - TypeScript;
 - Vite;
+- React Router (`react-router-dom`), para roteamento real por URL entre as áreas do app;
 - ESLint;
 - Node.js 22, definido em `.nvmrc`;
 - npm, com `package-lock.json`.
