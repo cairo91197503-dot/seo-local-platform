@@ -68,3 +68,8 @@ export interface SceneStructureGenerator {
 export interface ImagePromptGenerator {
   generateImagePrompt(sceneDescription: string): Promise<string>
 }
+
+export interface ImageGenerator {
+  /** Gera a imagem a partir do prompt e grava o PNG em outputFile. */
+  generateImage(prompt: string, outputFile: string): Promise<void>
+}

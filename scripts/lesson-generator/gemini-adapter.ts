@@ -1,12 +1,19 @@
+import { writeFile } from 'node:fs/promises'
 import type {
+  ImageGenerator,
   ImagePromptGenerator,
   ScriptDraft,
   ScriptGenerator,
 } from './types.ts'
 
+type GeminiPart = {
+  text?: string
+  inlineData?: { mimeType?: string; data?: string }
+}
+
 type GeminiResponse = {
   candidates?: Array<{
-    content?: { parts?: Array<{ text?: string }> }
+    content?: { parts?: GeminiPart[] }
     finishReason?: string
   }>
   error?: { message?: string }
@@ -56,13 +63,21 @@ const scriptSchema = {
   required: ['lesson', 'scenes'],
 } as const
 
-export class GeminiAdapter implements ScriptGenerator, ImagePromptGenerator {
+export class GeminiAdapter
+  implements ScriptGenerator, ImagePromptGenerator, ImageGenerator
+{
   private readonly apiKey: string
   private readonly model: string
+  private readonly imageModel: string
 
-  constructor(apiKey: string, model = 'gemini-2.5-flash') {
+  constructor(
+    apiKey: string,
+    model = 'gemini-2.5-flash',
+    imageModel = 'gemini-3.1-flash-image',
+  ) {
     this.apiKey = apiKey
     this.model = model
+    this.imageModel = imageModel
   }
 
   async generateScript(
@@ -97,13 +112,33 @@ Siga estas regras:
   }
 
   async generateImagePrompt(sceneDescription: string): Promise<string> {
-    const prompt = `Redija somente um prompt em português do Brasil, pronto para colar manualmente no Meta AI, para criar uma ilustração educacional.
+    const prompt = `Redija somente um prompt em português do Brasil, para gerar uma ilustração educacional com um modelo de geração de imagem.
 
 Descrição da cena: ${sceneDescription}
 
-O prompt deve pedir uma imagem sem texto legível, sem logotipos e sem marcas. Não gere imagem, não inclua explicações, título, Markdown ou variações.`
+O prompt deve pedir uma imagem sem texto legível, sem logotipos e sem marcas. Não inclua explicações, título, Markdown ou variações — apenas o prompt em si.`
 
     return this.requestText(prompt)
+  }
+
+  async generateImage(prompt: string, outputFile: string): Promise<void> {
+    const body = await this.postGenerateContent(this.imageModel, prompt, {
+      responseModalities: ['TEXT', 'IMAGE'],
+    })
+
+    const imagePart = body.candidates?.[0]?.content?.parts?.find(
+      (part) => part.inlineData?.data,
+    )
+
+    if (!imagePart?.inlineData?.data) {
+      const reason =
+        body.promptFeedback?.blockReason ??
+        body.candidates?.[0]?.finishReason ??
+        'nenhuma imagem retornada'
+      throw new Error(`O Gemini não retornou uma imagem: ${reason}`)
+    }
+
+    await writeFile(outputFile, Buffer.from(imagePart.inlineData.data, 'base64'))
   }
 
   private async requestJson<T>(prompt: string, schema: object): Promise<T> {
@@ -130,7 +165,30 @@ O prompt deve pedir uma imagem sem texto legível, sem logotipos e sem marcas. N
     prompt: string,
     generationConfig?: Record<string, unknown>,
   ): Promise<string> {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(this.model)}:generateContent`
+    const body = await this.postGenerateContent(this.model, prompt, generationConfig)
+
+    const text = body.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text ?? '')
+      .join('')
+      .trim()
+
+    if (!text) {
+      const reason =
+        body.promptFeedback?.blockReason ??
+        body.candidates?.[0]?.finishReason ??
+        'resposta vazia'
+      throw new Error(`O Gemini não retornou conteúdo utilizável: ${reason}`)
+    }
+
+    return text
+  }
+
+  private async postGenerateContent(
+    model: string,
+    prompt: string,
+    generationConfig?: Record<string, unknown>,
+  ): Promise<GeminiResponse> {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`
     let response: Response
 
     try {
@@ -159,20 +217,7 @@ O prompt deve pedir uma imagem sem texto legível, sem logotipos e sem marcas. N
       )
     }
 
-    const text = body.candidates?.[0]?.content?.parts
-      ?.map((part) => part.text ?? '')
-      .join('')
-      .trim()
-
-    if (!text) {
-      const reason =
-        body.promptFeedback?.blockReason ??
-        body.candidates?.[0]?.finishReason ??
-        'resposta vazia'
-      throw new Error(`O Gemini não retornou conteúdo utilizável: ${reason}`)
-    }
-
-    return text
+    return body
   }
 }
 

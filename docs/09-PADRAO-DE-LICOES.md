@@ -191,16 +191,18 @@ npm run generate:lesson -- \
   --piper-model /caminho/local/pt_BR-voz-medium.onnx
 ```
 
-Antes de executar, defina `GOOGLE_AI_STUDIO_API_KEY` somente no ambiente local. O executável pode ser configurado por `PIPER_BIN` e o modelo de texto por `GEMINI_MODEL`; o modelo padrão é `gemini-2.5-flash`. O arquivo de voz Piper é obrigatório em cada execução porque uma voz global para as lições ainda não foi aprovada.
+Antes de executar, defina `GOOGLE_AI_STUDIO_API_KEY` somente no ambiente local. O executável Piper pode ser configurado por `PIPER_BIN`, o modelo de texto por `GEMINI_MODEL` (padrão `gemini-2.5-flash`) e o modelo de imagem por `GEMINI_IMAGE_MODEL` (padrão `gemini-3.1-flash-image`, a versão atual do "Nano Banana"). O arquivo de voz Piper é obrigatório em cada execução porque uma voz global para as lições ainda não foi aprovada.
 
-O CLI usa adapters separados para:
+**Desde 2026-08-24 o pipeline é ponta a ponta automático até a geração dos artefatos de rascunho**, incluindo as imagens — deixou de exigir colar prompts manualmente no Meta AI. O CLI usa adapters separados para:
 
 1. gerar o roteiro textual estruturado com Gemini;
 2. gerar um WAV por cena com o Piper local;
 3. ler a duração do WAV e distribuir proporcionalmente as legendas na linha do tempo;
-4. redigir com Gemini um prompt textual por cena para uso manual no Meta AI.
+4. redigir com Gemini um prompt de imagem por cena e, na sequência, chamar a própria API Gemini (`GeminiAdapter.generateImage`) para gerar e salvar o PNG de cada cena automaticamente.
 
-A distribuição proporcional gera timestamps iniciais de edição, não alinhamento fonético ou por palavra. A revisão humana deve ouvir o áudio e corrigir `startSeconds` e `endSeconds` quando necessário.
+Cada chamada de geração de imagem consome a cota paga da chave `GOOGLE_AI_STUDIO_API_KEY` configurada localmente — isso só acontece quando um humano roda o comando, nunca de forma agendada ou automática pela IA.
+
+A distribuição proporcional gera timestamps iniciais de edição, não alinhamento fonético ou por palavra. A revisão humana deve ouvir o áudio e corrigir `startSeconds` e `endSeconds` quando necessário. As imagens geradas também não são aprovadas automaticamente — são um rascunho a revisar, como o resto do conteúdo.
 
 Cada execução cria `content-drafts/<lesson-id>/` com:
 
@@ -211,7 +213,7 @@ audio-timings.json
 lesson.json
 audio/cena-01.wav
 image-prompts/cena-01.txt
-images/                    # destino das imagens baixadas manualmente
+images/cena-01.png         # já gerada automaticamente; ainda não revisada
 ```
 
 O número de arquivos por cena varia conforme o roteiro. O diretório `content-drafts/` é ignorado pelo Git para evitar publicação acidental. O comando recusa sobrescrever uma pasta de rascunho existente.
@@ -219,18 +221,17 @@ O número de arquivos por cena varia conforme o roteiro. O diretório `content-d
 ### Fluxo de revisão e publicação
 
 ```text
-gerar rascunho
+gerar rascunho (roteiro + áudio + imagens, tudo automático)
 → revisar roteiro
 → ouvir áudio e revisar timestamps/cenas
-→ colar cada prompt manualmente no Meta AI
-→ baixar e salvar cada PNG com o nome indicado no README do rascunho
+→ revisar cada imagem gerada; ajustar o prompt e regenerar a cena se necessário
 → realizar revisão humana final
 → copiar manualmente os assets aprovados para public/
 → converter/revisar lesson.json como conteúdo TypeScript
 → publicar manualmente no catálogo
 ```
 
-O CLI não chama API de geração de imagem, não copia arquivos para `public/` e não altera catálogo, páginas, componentes ou rotas. Os caminhos `/images/lessons/<lesson-id>/...` e `/audio/lessons/<lesson-id>/...` em `lesson.json` representam os destinos públicos esperados apenas para a etapa manual posterior.
+O CLI não copia arquivos para `public/` e não altera catálogo, páginas, componentes ou rotas — isso continua manual e depende de aprovação humana. Os caminhos `/images/lessons/<lesson-id>/...` e `/audio/lessons/<lesson-id>/...` em `lesson.json` representam os destinos públicos esperados apenas para a etapa manual posterior à aprovação.
 
 A voz padrão para todas as lições e o padrão visual definitivo permanecem como `DECISÃO NECESSÁRIA`.
 

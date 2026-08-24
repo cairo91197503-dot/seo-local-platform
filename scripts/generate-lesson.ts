@@ -31,8 +31,13 @@ Ambiente obrigatório:
   GOOGLE_AI_STUDIO_API_KEY
 
 Ambiente opcional:
-  GEMINI_MODEL      Padrão: gemini-2.5-flash
-  PIPER_BIN         Padrão: piper`
+  GEMINI_MODEL        Padrão: gemini-2.5-flash (roteiro e prompts de imagem)
+  GEMINI_IMAGE_MODEL  Padrão: gemini-3.1-flash-image (geração das imagens)
+  PIPER_BIN           Padrão: piper
+
+Este comando chama a API Gemini para gerar texto e imagens, consumindo a cota
+paga da sua chave. Cada execução completa gera 1 chamada de roteiro + 1 chamada
+de prompt e 1 de imagem por cena.`
 
 async function main(): Promise<void> {
   if (process.argv.includes('--help')) {
@@ -58,6 +63,7 @@ async function main(): Promise<void> {
   const gemini = new GeminiAdapter(
     apiKey,
     process.env.GEMINI_MODEL?.trim() || 'gemini-2.5-flash',
+    process.env.GEMINI_IMAGE_MODEL?.trim() || 'gemini-3.1-flash-image',
   )
   const piper = new PiperCliAdapter(
     resolve(options.piperModel),
@@ -90,22 +96,27 @@ async function main(): Promise<void> {
   const lesson = sceneGenerator.generateSceneStructure(script, audioTimings)
   await writeJson(resolve(draftDirectory, 'lesson.json'), lesson)
 
-  console.log('4/4 Redigindo prompts de imagem com Gemini...')
-  const expectedImages: string[] = []
+  console.log('4/4 Gerando prompts e imagens com Gemini...')
+  const generatedImages: string[] = []
   for (const [index, scene] of script.scenes.entries()) {
     const number = String(index + 1).padStart(2, '0')
+    console.log(`   cena ${number}: prompt...`)
     const prompt = await gemini.generateImagePrompt(scene.sceneDescription)
     await writeFile(
       resolve(promptDirectory, `cena-${number}.txt`),
       `${prompt.trim()}\n`,
       'utf8',
     )
-    expectedImages.push(`images/cena-${number}.png`)
+
+    console.log(`   cena ${number}: imagem...`)
+    const imageFile = `cena-${number}.png`
+    await gemini.generateImage(prompt, resolve(imageDirectory, imageFile))
+    generatedImages.push(`images/${imageFile}`)
   }
 
   await writeFile(
     resolve(draftDirectory, 'README.md'),
-    buildReadme(options.lessonId, expectedImages),
+    buildReadme(options.lessonId, generatedImages),
     'utf8',
   )
 
@@ -169,27 +180,25 @@ function writeJson(filePath: string, value: unknown): Promise<void> {
   return writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
 }
 
-function buildReadme(lessonId: string, expectedImages: string[]): string {
-  const imageSteps = expectedImages
-    .map(
-      (image, index) =>
-        `- Cole \`image-prompts/cena-${String(index + 1).padStart(2, '0')}.txt\` no Meta AI, baixe a imagem e salve como \`${image}\` nesta pasta.`,
-    )
+function buildReadme(lessonId: string, generatedImages: string[]): string {
+  const imageList = generatedImages
+    .map((image, index) => `- Cena ${String(index + 1).padStart(2, '0')}: \`${image}\``)
     .join('\n')
 
   return `# Rascunho da lição ${lessonId}
 
 Este diretório é um rascunho local e não foi publicado no catálogo.
 
+Todas as imagens abaixo já foram geradas automaticamente pela API Gemini a partir dos prompts em \`image-prompts/\`. Nenhuma delas foi revisada ou aprovada ainda.
+
+${imageList}
+
 ## Revisão obrigatória
 
 1. Revise o roteiro em \`script.json\`.
 2. Ouça todos os arquivos em \`audio/\` e confira \`audio-timings.json\`.
 3. Revise o contrato final de cenas e timestamps em \`lesson.json\`.
-4. Gere cada imagem manualmente:
-
-${imageSteps}
-
+4. Revise cada imagem em \`images/\`. Se alguma não ficar boa, ajuste o prompt em \`image-prompts/cena-XX.txt\` e gere novamente essa cena (o CLI não sobrescreve uma pasta de rascunho existente; gere em uma pasta nova ou apague o PNG específico e regenere manualmente com o adapter).
 5. Faça a revisão humana final de texto, áudio, legendas, acessibilidade e imagens.
 6. Somente depois da aprovação, copie os assets para os caminhos públicos registrados em \`lesson.json\` e publique a lição manualmente no catálogo. Ajuste o conteúdo TypeScript conforme o contrato documentado; este CLI nunca publica automaticamente.
 `

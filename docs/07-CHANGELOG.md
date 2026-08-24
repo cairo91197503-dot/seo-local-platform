@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-24 — Geração de imagens do pipeline de lições passa a ser automática
+
+A pedido do usuário, o pipeline assistido de rascunhos (`scripts/generate-lesson.ts`) deixou de exigir colar prompts manualmente no Meta AI para gerar as imagens de cada cena. `GeminiAdapter` ganhou um método `generateImage`, usando o mesmo modelo de imagem da família "Nano Banana" (`gemini-3.1-flash-image` por padrão, configurável por `GEMINI_IMAGE_MODEL`) e a mesma chave já usada para texto (`GOOGLE_AI_STUDIO_API_KEY`) — nenhuma credencial nova foi introduzida. Essa foi uma retomada explícita e pontual do item "geração definitiva de imagens", que estava pausado em `.ai/context.md` desde 2026-08-09; a investigação de Cloudflare Workers AI (outro item pausado, não usado aqui) continua pausada.
+
+O CLI agora gera e salva o PNG de cada cena automaticamente dentro de `content-drafts/<lesson-id>/images/`, mas essas imagens continuam sendo rascunho — a revisão humana antes de promover qualquer asset para `public/` continua obrigatória, sem exceção. Cada execução completa do comando consome cota paga da API Gemini (1 chamada de roteiro + 1 de prompt e 1 de imagem por cena); isso só acontece quando um humano roda o comando localmente. Validado com `tsc --noEmit` (via `npm run lint`), `npm run build` e um teste de fumaça do CLI sem credenciais reais — a chamada de rede real não pôde ser testada neste ambiente (a API do Gemini não está na allowlist de rede do sandbox usado pela IA) e depende de teste manual do usuário com sua própria chave. Detalhes em `docs/09-PADRAO-DE-LICOES.md`.
+
 ## 2026-08-24 — Posicionamento de marca decidido; Fase 1 do roadmap praticamente concluída
 
 Posicionamento de marca redigido e registrado em `docs/01-PROJETO.md` (seção "Posicionamento de marca"): público, promessa central, diferencial frente a cursos/consultorias de SEO genéricos, e tom de voz (parceiro caloroso e honesto, não vendedor nem professor de cima para baixo). Com isso, a Fase 1 do roadmap fica com todos os itens centrais decididos — falta apenas o detalhamento do estilo de animações e a migração de telas existentes para os novos tokens visuais.
