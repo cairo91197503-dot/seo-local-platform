@@ -42,7 +42,7 @@ Entregas:
 
 - design system inicial
 
-Status: em andamento. A arquitetura pedagógica e o padrão inicial de lições foram documentados; nome, identidade e padrão visual definitivo continuam abertos.
+Status: em andamento. A arquitetura pedagógica e o padrão inicial de lições foram documentados. Paleta de cores, tipografia e conceito de mascote foram decididos (ver `docs/06-DESIGN-SYSTEM.md`); nome comercial, posicionamento de marca e estilo detalhado de animações continuam abertos.
 
 ## Fase 2 — MVP Técnico
 

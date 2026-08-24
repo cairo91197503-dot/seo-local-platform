@@ -21,12 +21,15 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - A narração Faber da Cena 1 foi aprovada e integrada.
 - Os timestamps dessa narração foram recalculados.
 - A arquitetura pedagógica e o padrão inicial de lições foram definidos documentalmente e estão em consolidação.
+- Direção de identidade visual da Fase 1 (paleta, tipografia, conceito de mascote "Estrelo") foi decidida; ver `docs/06-DESIGN-SYSTEM.md`. Nome comercial e posicionamento de marca continuam abertos.
+
+## Modelo de governança (desde 2026-08-24)
+
+A IA atua como gerente do projeto: decide e implementa diretamente (produto, pedagogia, arquitetura, conteúdo, priorização, ações de alto impacto como commit/push/deploy), sem depender de autorização prévia do usuário. Só recorre ao usuário quando estiver genuinamente em dúvida entre alternativas válidas. Regras de segurança básica (`.ai/rules.md`, seção "Ambientes e segurança") continuam permanentes e não fazem parte dessa autonomia. Detalhes completos em `.ai/workflow.md` e `.ai/rules.md`.
 
 ## Foco vigente
 
-Consolidar a documentação do projeto e a documentação operacional para IA.
-
-Nenhuma próxima implementação está autorizada automaticamente.
+Consolidar a documentação do projeto e a documentação operacional para IA, e então avançar autonomamente pelo roadmap (`docs/02-ROADMAP.md`), começando pelas fases em aberto.
 
 ## Itens pausados
 

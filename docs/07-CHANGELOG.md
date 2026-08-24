@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-08-24 — IA passa a atuar como gerente do projeto
+
+A pedido do usuário, `.ai/workflow.md` e `.ai/rules.md` foram reescritos: a IA passa a decidir e executar diretamente produto, pedagogia, arquitetura, conteúdo, priorização e ações antes classificadas como sensíveis (`git commit`, `git push`, deploy, uso de cota paga, sobrescrita de asset aprovado, alteração de credenciais/infraestrutura), sem depender de autorização prévia do usuário. A IA só recorre ao usuário quando estiver genuinamente em dúvida entre alternativas válidas.
+
+Regras permanentes de segurança (nunca gravar segredos no repositório, nunca expor segredos no frontend, menor privilégio) não fazem parte dessa autonomia e continuam valendo sem exceção. Uma instrução explícita do usuário durante uma conversa continua prevalecendo sobre esses documentos.
+
+Consulte `.ai/context.md` para o resumo do modelo de governança vigente.
+
+## 2026-08-24 — Direção de identidade visual (Fase 1)
+
+Primeira decisão da IA sob o novo modelo de governança: paleta de cores, tipografia e conceito de mascote ("Estrelo", uma estrela de avaliação antropomorfizada) para a plataforma, ainda sem nome comercial definitivo. Duas alternativas de baixa fidelidade (mascote-tucano; selo minimalista sem mascote) foram exploradas e descartadas por enquanto. Detalhes e racional em `docs/06-DESIGN-SYSTEM.md`; canvas de referência publicado em https://claude.ai/code/artifact/c979ad0e-cb41-43ad-84d3-5a1eae4c13a1.
+
+Nome comercial, posicionamento formal de marca e estilo detalhado de animações continuam em aberto — não fazem parte desta decisão.
+
 ## 2026-08-09 — Pipeline audiovisual da primeira microlição
 
 ### Narração da Cena 1
