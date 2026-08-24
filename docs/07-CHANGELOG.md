@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-08-24 — Design system aplicado às telas existentes; Fase 3 (Academia) pausada
+
+A pedido do usuário, a Fase 3 do roadmap (conteúdo educacional/Academia, incluindo o pipeline de lições) foi pausada por completo — nenhum item dessa fase deve ser retomado sem solicitação explícita. Ver `.ai/context.md`, seção "Itens pausados".
+
+Em seguida, a IA aplicou os tokens de paleta e tipografia já decididos (`docs/06-DESIGN-SYSTEM.md`) às telas existentes do MVP em `src/styles/index.css`: fundo, texto principal, texto secundário, linhas/cartões e as duas cores de acento (estrela/dourado para avaliação-XP-conquista, verde-crescimento para CTA/confirmação) foram tokenizados em `body`, cabeçalhos, navegação inferior, cartões da Home, missões, ferramentas e lista de lições; tipografia (Fredoka para títulos/conquistas, Work Sans para corpo) foi aplicada de forma universal, inclusive dentro da tela imersiva escura de lição. O botão primário de ação (`.home-block__button`, usado em todo o app) foi separado do botão secundário de atalho (`.quick-access__button`, específico da Home) para que só o primário use a cor de ação verde — o secundário permanece neutro.
+
+Decisão consciente de escopo: as cores de fundo/overlay da tela imersiva escura de lição (`.learn-page--lesson`) foram **propositalmente mantidas** com suas cores literais originais, por ser um modo visual distinto (imersivo/escuro) e não uma tela "padrão" do app; apenas a tipografia foi unificada lá. Superfícies elevadas como cartões (`.home-block`, `.bottom-nav`) mantêm `#fff` literal, por representar um papel de "superfície elevada" acima do fundo tokenizado, não uma cor de marca.
+
+Validado com `npm run build` (bundle CSS cresceu de 9.03 kB para 10.18 kB, gzip 2.26→2.45 kB), `npm run lint` e `git diff --check`. Verificação visual adicional feita com Playwright (Chromium headless, viewport 390×844) capturando as telas Home, lista de Missões, missão ativa e lista de Aprender contra um build local (`vite preview`); as quatro capturas foram revisadas e não mostraram quebra de layout, contraste ou legibilidade.
+
 ## 2026-08-24 — Geração de imagens do pipeline de lições passa a ser automática
 
 A pedido do usuário, o pipeline assistido de rascunhos (`scripts/generate-lesson.ts`) deixou de exigir colar prompts manualmente no Meta AI para gerar as imagens de cada cena. `GeminiAdapter` ganhou um método `generateImage`, usando o mesmo modelo de imagem da família "Nano Banana" (`gemini-3.1-flash-image` por padrão, configurável por `GEMINI_IMAGE_MODEL`) e a mesma chave já usada para texto (`GOOGLE_AI_STUDIO_API_KEY`) — nenhuma credencial nova foi introduzida. Essa foi uma retomada explícita e pontual do item "geração definitiva de imagens", que estava pausado em `.ai/context.md` desde 2026-08-09; a investigação de Cloudflare Workers AI (outro item pausado, não usado aqui) continua pausada.

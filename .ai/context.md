@@ -26,6 +26,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Posicionamento de marca decidido; ver `docs/01-PROJETO.md`, seção "Posicionamento de marca". Fase 1 do roadmap (identidade e produto) está com todos os itens centrais decididos — falta só o detalhamento do estilo de animações.
 - Este projeto é uma reconstrução do LocalPulse; funcionalidades já exploradas nos protótipos anteriores (diagnóstico de reputação com IA, conexão Google/GMB, assistente de resposta a avaliações, tarefas diárias, dashboard) estão documentadas em `docs/10-HERANCA-LOCALPULSE.md`.
 - O pipeline de rascunhos de lição (`scripts/generate-lesson.ts`) agora gera imagens automaticamente via API Gemini, além de roteiro e narração; ver `docs/09-PADRAO-DE-LICOES.md`. Revisão humana antes de publicar continua obrigatória.
+- Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
 
 ## Modelo de governança (desde 2026-08-24)
 
@@ -33,7 +34,7 @@ A IA atua como gerente do projeto: decide e implementa diretamente (produto, ped
 
 ## Foco vigente
 
-Consolidar a documentação do projeto e a documentação operacional para IA, e então avançar autonomamente pelo roadmap (`docs/02-ROADMAP.md`), começando pelas fases em aberto.
+Consolidar a documentação do projeto e a documentação operacional para IA, e então avançar autonomamente pelo roadmap (`docs/02-ROADMAP.md`), começando pelas fases em aberto. Com a Fase 3 pausada (ver abaixo) e os tokens visuais já aplicados às telas existentes, o próximo grande item do roadmap é a Fase 2 (MVP técnico), que deve esbarrar em bloqueios de criação de conta/credenciais que só o usuário pode resolver.
 
 ## Itens pausados
 
@@ -43,7 +44,8 @@ Não retomar sem solicitação explícita do usuário:
 - nova pesquisa de TTS;
 - Chatterbox;
 - Kokoro;
-- substituição da narração Faber.
+- substituição da narração Faber;
+- Fase 3 do roadmap (Academia/conteúdo educacional) por completo, incluindo o pipeline de lições (`scripts/generate-lesson.ts`) e qualquer produção ou revisão de lição — pausada em 2026-08-24 a pedido explícito do usuário.
 
 Retomado em 2026-08-24, a pedido explícito do usuário: geração automática de imagens no pipeline de rascunhos (`docs/09-PADRAO-DE-LICOES.md`), via API Gemini. Continua exigindo revisão humana antes de qualquer imagem virar asset aprovado.
 

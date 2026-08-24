@@ -1,6 +1,6 @@
 # Design System
 
-**Status:** direção principal, nome comercial e posicionamento de marca decididos (2026-08-24). Falta o detalhamento do estilo de animações e a aplicação dos tokens em todas as telas existentes.
+**Status:** direção principal, nome comercial e posicionamento de marca decididos (2026-08-24). Os tokens de paleta e tipografia já foram aplicados às telas existentes do MVP. Falta apenas o detalhamento do estilo de animações.
 
 Canvas de referência (paleta, tipografia, mascote e duas alternativas descartadas): https://claude.ai/code/artifact/c979ad0e-cb41-43ad-84d3-5a1eae4c13a1
 
@@ -46,5 +46,4 @@ Movimento suave, tipo "squash and stretch" leve, sem exageros — reforça calor
 
 ## Em aberto
 
-- Aplicação da paleta/tipografia em todas as telas existentes do MVP (ainda não migradas para os tokens acima).
 - Biblioteca/abordagem técnica de animação.
