@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-08-24 — Arquitetura de Firebase (auth, dados, deploy) preparada (Fase 2)
+
+Com o roteamento real já implementado, a IA avançou no que restava da Fase 2 que não depende de criar contas: arquitetura e scaffolding de código para Firebase, Firestore e deploy no Render, mantendo o limite de nunca criar contas/credenciais (`.ai/rules.md`) e de não inferir decisões pedagógicas marcadas `DECISÃO NECESSÁRIA` (`docs/08-ARQUITETURA-PEDAGOGICA.md`).
+
+**Decisão de produto:** autenticação apenas com conta Google (Firebase Authentication, sem e-mail/senha), pelo menor atrito para o público-alvo e por já haver dependência do ecossistema Google. Racional completo em `src/lib/auth/AuthContext.tsx`.
+
+**Código adicionado** (nada disso está conectado a nenhuma tela ainda — é infraestrutura, não integração de UI):
+
+- `src/lib/firebase.ts`: inicialização do Firebase App/Auth/Firestore lendo configuração só de variáveis de ambiente (`VITE_FIREBASE_*`); lança um erro claro listando as variáveis faltando em vez de falhar silenciosamente.
+- `src/lib/auth/auth-context.ts`, `AuthContext.tsx`, `useAuth.ts`: contexto de autenticação (usuário atual, `signInWithGoogle`, `signOut`), separado em três arquivos para respeitar a regra do ESLint sobre Fast Refresh (`react-refresh/only-export-components`).
+- `firestore.rules`: regras de segurança em rascunho — cada usuário só lê/escreve o próprio documento em `users/{uid}`; qualquer outro caminho é bloqueado por padrão (menor privilégio, `docs/04-REGRAS.md`).
+- `render.yaml`: blueprint de deploy em rascunho para site estático, incluindo a regra de rewrite de SPA (`/* → /index.html`, necessária por causa do roteamento real) e variáveis de ambiente do Firebase declaradas com `sync: false` (nunca vão para o repositório).
+- `.env.example`: adicionada a seção de variáveis `VITE_FIREBASE_*`, com nota explicando que a config web do Firebase não é secreta por natureza, mas segue o mesmo padrão de variável de ambiente do projeto.
+- `docs/05-BANCO-DE-DADOS.md`: preenchido pela primeira vez — coleção `users/{uid}` com identidade/perfil básico definida; progresso, XP, missões e lições explicitamente listados como bloqueados pelas decisões pedagógicas pendentes, para não serem inferidos por engano depois.
+- `firebase` foi adicionado a `package.json`/`package-lock.json` (SDK oficial). Como em ciclos anteriores, os metadados `libc` de pacotes opcionais não relacionados — removidos incidentalmente pela versão de npm deste ambiente a cada instalação — foram restaurados manualmente para manter o diff do lockfile limitado à mudança real.
+
+Validado com `npm run build`, `npm run lint`, `npm ci` limpo, e dois testes de fumaça funcionais via `vite` (`ssrLoadModule`, aplicando a substituição real de `import.meta.env`): sem variáveis de ambiente configuradas, `src/lib/firebase.ts` lança o erro esperado listando exatamente o que falta; com variáveis de teste locais (nunca reais, nunca commitadas), App/Auth/Firestore inicializam corretamente. Nenhuma chamada de rede real ao Firebase foi feita — e não seria possível a partir deste ambiente de qualquer forma.
+
+**Continua bloqueado, depende do usuário:** criar o projeto Firebase de fato, habilitar o provedor de login Google, criar o banco Firestore, publicar `firestore.rules` nele, criar a conta/serviço no Render e preencher as variáveis de ambiente reais (no Render e/ou em `.env.local` local). Nenhuma dessas ações foi ou pode ser feita pela IA (`.ai/rules.md`).
+
 ## 2026-08-24 — Roteamento real por URL (Fase 2)
 
 Com a Fase 3 pausada e a migração visual concluída, a IA avançou autonomamente para a Fase 2 do roadmap (MVP técnico). O que a navegação por abas fazia com `useState` (sem URL própria, sem suporte a voltar do navegador, sem deep link) foi substituído por roteamento real com `react-router-dom`: `/` (Início), `/aprender`, `/missoes` e `/ferramentas`, com fallback de rota desconhecida redirecionando para `/`. `BottomNav` passou a usar `NavLink` (marcando a rota ativa automaticamente via `aria-current`), e `HomePage`/`LearnPage` passaram a navegar com `useNavigate` em vez de receber um callback `onNavigate` repassado manualmente por toda a árvore de componentes.

@@ -28,6 +28,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - O pipeline de rascunhos de lição (`scripts/generate-lesson.ts`) agora gera imagens automaticamente via API Gemini, além de roteiro e narração; ver `docs/09-PADRAO-DE-LICOES.md`. Revisão humana antes de publicar continua obrigatória.
 - Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
 - A navegação por abas foi substituída por roteamento real por URL (`react-router-dom`): `/`, `/aprender`, `/missoes`, `/ferramentas`. Ver `docs/02-ROADMAP.md` (Fase 2) e `docs/07-CHANGELOG.md`.
+- Arquitetura de Firebase (autenticação só com Google, Firestore, regras de segurança) e deploy no Render preparadas em código e documentação, mas nenhum projeto/conta real foi criado — só o usuário pode fazer isso. Ver `docs/05-BANCO-DE-DADOS.md`, `firestore.rules`, `render.yaml` e `docs/07-CHANGELOG.md`.
 
 ## Modelo de governança (desde 2026-08-24)
 
@@ -35,7 +36,7 @@ A IA atua como gerente do projeto: decide e implementa diretamente (produto, ped
 
 ## Foco vigente
 
-Avançar autonomamente pela Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) com a Fase 3 pausada (ver abaixo). Roteamento real por URL já foi implementado. O que resta da Fase 2 — Firebase, autenticação, banco de dados, deploy no Render — depende de criação de conta e credenciais, ação que a IA não está autorizada a executar (`.ai/rules.md`); a IA deve preparar o que puder estruturalmente (arquitetura, scaffolding com variáveis de ambiente, regras de segurança em rascunho) e sinalizar claramente ao usuário o que só ele pode fazer.
+A Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) está com roteamento real e a arquitetura/scaffolding de Firebase e Render prontos em código. O que falta — criar o projeto Firebase de fato, habilitar login Google, criar o Firestore, publicar `firestore.rules`, criar a conta/serviço no Render e preencher as variáveis de ambiente reais — depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode executar sozinha (`.ai/rules.md`). Enquanto isso não acontece, a Fase 2 técnica está bloqueada para avançar mais; a IA deve aguardar o usuário ou buscar a próxima tarefa que não dependa disso.
 
 ## Itens pausados
 

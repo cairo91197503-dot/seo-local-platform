@@ -14,15 +14,15 @@ Este documento diferencia o que está implementado, planejado ou em avaliação.
 
 Antes de usar versões ou comandos específicos, confira os arquivos atuais do repositório, especialmente `package.json`, `package-lock.json` e `.nvmrc`.
 
-## Planejado
+## Planejado (scaffolding no código, nenhum serviço real conectado)
 
-- Firebase;
-- Firebase Authentication;
-- Firestore;
-- Render para hospedagem/deploy;
+- Firebase (SDK instalado; `src/lib/firebase.ts` lê configuração só de variáveis de ambiente `VITE_FIREBASE_*`, ainda não definidas em nenhum lugar real);
+- Firebase Authentication (login com Google; `src/lib/auth/AuthContext.tsx`, ainda não conectado a nenhuma tela);
+- Firestore (regras de segurança em rascunho em `firestore.rules`; modelo de dados em `docs/05-BANCO-DE-DADOS.md`);
+- Render para hospedagem/deploy (`render.yaml` em rascunho);
 - integração futura com APIs do Google.
 
-Não foi confirmada neste repositório uma configuração ativa de Firebase ou Render. Não trate esses serviços como implementados sem nova inspeção.
+Nenhum projeto Firebase ou serviço Render real foi criado. O código acima só funciona depois que essas contas existirem e as variáveis de ambiente forem preenchidas — não trate como operacional sem nova inspeção.
 
 ## Em avaliação
 
