@@ -60,9 +60,13 @@ Quando integrações oficiais estiverem disponíveis, elas devem automatizar e e
 
 ## Nome
 
-O nome comercial definitivo ainda não foi escolhido.
+**Nome comercial: Estrelar** (decidido em 2026-08-24). Amarra com a identidade visual já definida (mascote nasce do símbolo de estrela de avaliação — ver `docs/06-DESIGN-SYSTEM.md`) e com o verbo real do português ("estrelar" = ser o protagonista / ganhar estrelas).
 
-`seo-local-platform` é apenas o nome técnico atual do repositório.
+Domínio principal planejado: `estrelar.app`. Ainda não há confirmação de registro nem de disponibilidade de `estrelar.com.br`.
+
+**Risco de marca conhecido:** existe uma empresa registrada no Rio de Janeiro, "Estrelar Web Serviços de Internet Ltda" (provedor de internet), com app próprio nas lojas e o domínio `estrelarweb.com.br` já em uso. É um mercado diferente (telecom/ISP vs. SaaS de reputação), então não deve haver conflito formal de classe no INPI, mas existe risco de confusão de busca/marca. Aceito conscientemente; reavaliar se uma checagem formal de marca (INPI) ou de disponibilidade de domínio apontar problema real.
+
+`seo-local-platform` continua sendo o nome técnico do repositório; não é necessário renomear o repositório para adotar o nome comercial.
 
 ## Estrutura inicial do MVP
 

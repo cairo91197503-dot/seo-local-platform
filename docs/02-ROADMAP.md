@@ -126,6 +126,8 @@ Entregas:
 
 - checklists
 
+Já explorado no protótipo anterior (LocalPulse): QR Code e gerador de respostas a avaliações. Ver `docs/10-HERANCA-LOCALPULSE.md`.
+
 Status: planejado.
 
 ## Fase 6 — Mentor IA
@@ -143,6 +145,8 @@ Entregas:
 - recomendações baseadas no estágio do usuário
 
 - limites e segurança de uso
+
+O protótipo anterior explorou um diagnóstico de reputação com IA que pode informar este desenho. Ver `docs/10-HERANCA-LOCALPULSE.md`.
 
 Status: planejado.
 
@@ -165,6 +169,8 @@ Possíveis entregas:
 - informações do perfil
 
 A integração com Google não deve ser requisito para o funcionamento principal da plataforma.
+
+O protótipo anterior (LocalPulse) chegou a implementar login OAuth e um proxy para dados do Google Business Profile, mas nunca obteve acesso oficial à API — esse foi o principal motivo de a evolução ter parado. Ver `docs/10-HERANCA-LOCALPULSE.md`.
 
 Status: planejado.
 

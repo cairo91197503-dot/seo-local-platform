@@ -21,7 +21,9 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - A narração Faber da Cena 1 foi aprovada e integrada.
 - Os timestamps dessa narração foram recalculados.
 - A arquitetura pedagógica e o padrão inicial de lições foram definidos documentalmente e estão em consolidação.
-- Direção de identidade visual da Fase 1 (paleta, tipografia, conceito de mascote "Estrelo") foi decidida; ver `docs/06-DESIGN-SYSTEM.md`. Nome comercial e posicionamento de marca continuam abertos.
+- Direção de identidade visual da Fase 1 (paleta, tipografia, conceito de mascote "Estrelo") foi decidida; ver `docs/06-DESIGN-SYSTEM.md`.
+- Nome comercial definido: **Estrelar** (domínio principal planejado: `estrelar.app`). Ver `docs/01-PROJETO.md`, seção "Nome", incluindo o risco de marca conhecido e aceito. Posicionamento formal de marca continua aberto.
+- Este projeto é uma reconstrução do LocalPulse; funcionalidades já exploradas nos protótipos anteriores (diagnóstico de reputação com IA, conexão Google/GMB, assistente de resposta a avaliações, tarefas diárias, dashboard) estão documentadas em `docs/10-HERANCA-LOCALPULSE.md`.
 
 ## Modelo de governança (desde 2026-08-24)
 
@@ -49,6 +51,7 @@ Não retomar sem solicitação explícita do usuário:
 - O produto não ensina hacks de algoritmo nem promete primeira posição no Google.
 - Documentação oficial sustenta afirmações sobre produto, política e ranking; relatos servem apenas como evidência prática ou anedótica.
 - Assets aprovados não podem ser substituídos sem autorização explícita.
+- Nome comercial: Estrelar. Domínio principal: `estrelar.app`.
 
 ## Decisões abertas
 
@@ -61,6 +64,7 @@ Uma decisão aberta só bloqueia uma tarefa quando essa tarefa depende dela.
 - Produto e escopo: `docs/01-PROJETO.md`.
 - Arquitetura pedagógica: `docs/08-ARQUITETURA-PEDAGOGICA.md`.
 - Produção de lições: `docs/09-PADRAO-DE-LICOES.md`.
+- Herança do LocalPulse (funcionalidades já exploradas antes): `docs/10-HERANCA-LOCALPULSE.md`.
 - Tecnologias e ambientes: `.ai/stack.md`.
 - Fluxo de trabalho: `.ai/workflow.md`.
 - Histórico: `docs/07-CHANGELOG.md`.

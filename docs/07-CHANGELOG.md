@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-24 — Nome comercial definido e herança do LocalPulse documentada
+
+Nome comercial decidido em conversa com o usuário: **Estrelar** (domínio principal planejado: `estrelar.app`). Entre as opções levantadas (Estrelar, Estrelo, Brilha, Bairrista), o usuário escolheu Estrelar. Uma checagem informal por busca identificou uma empresa de outro ramo (provedor de internet no Rio de Janeiro) já usando "Estrelar Web"/`estrelarweb.com.br`; o risco foi levado ao usuário e aceito conscientemente por serem mercados diferentes. Nenhuma checagem formal de marca (INPI) ou de disponibilidade de domínio foi feita ainda. Detalhes em `docs/01-PROJETO.md`, seção "Nome".
+
+O usuário informou que este projeto é uma reconstrução do produto anterior **LocalPulse** (4 repositórios: `LocalPulse`, `LocalPulse-WEB`, `LocalPulse-WEB-V2`, `LocalPulse-v2.0`), que tinha funcionalidades além do módulo educacional e não evoluiu principalmente por falta de acesso oficial à API do Google Business Profile. Essas funcionalidades foram levantadas e documentadas em `docs/10-HERANCA-LOCALPULSE.md`, com referências cruzadas nas fases 5, 6 e 7 de `docs/02-ROADMAP.md`. Nenhuma delas foi aprovada para implementação só por ter existido antes.
+
 ## 2026-08-24 — IA passa a atuar como gerente do projeto
 
 A pedido do usuário, `.ai/workflow.md` e `.ai/rules.md` foram reescritos: a IA passa a decidir e executar diretamente produto, pedagogia, arquitetura, conteúdo, priorização e ações antes classificadas como sensíveis (`git commit`, `git push`, deploy, uso de cota paga, sobrescrita de asset aprovado, alteração de credenciais/infraestrutura), sem depender de autorização prévia do usuário. A IA só recorre ao usuário quando estiver genuinamente em dúvida entre alternativas válidas.
