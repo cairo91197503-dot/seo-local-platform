@@ -4,6 +4,23 @@
   box-sizing: border-box;
 }
 
+/*
+ * Tokens de marca (docs/06-DESIGN-SYSTEM.md), decididos em 2026-08-24.
+ * Ainda não aplicados às telas existentes abaixo — isso fica para uma
+ * migração dedicada. Disponíveis desde já para componentes novos
+ * (ex.: src/components/mascot/Mascot.tsx).
+ */
+:root {
+  --color-bg: #faf6ef;
+  --color-ink: #2a2420;
+  --color-ink-secondary: #8c8478;
+  --color-line: #e7e1d6;
+  --color-accent-star: #e3a23c;
+  --color-accent-growth: #4e9e6e;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -113,6 +130,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.home-page__greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
 }
 
 .home-page__title {

@@ -1,4 +1,5 @@
 import type { AppArea } from '../components/layout/BottomNav'
+import { Mascot } from '../components/mascot/Mascot'
 
 type HomePageProps = {
   onNavigate: (area: AppArea) => void
@@ -8,7 +9,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="home-page">
       <header className="home-page__greeting">
-        <h1 className="home-page__title">Olá 👋</h1>
+        <Mascot pose="neutral" size={44} />
+        <h1 className="home-page__title">Olá</h1>
       </header>
 
       <section className="home-block" aria-labelledby="progress-heading">
