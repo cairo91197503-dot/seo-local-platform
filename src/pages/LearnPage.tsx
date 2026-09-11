@@ -5,7 +5,7 @@ import { useLessonProgress } from '../hooks/useLessonProgress'
 const lessonMeta = reviewsImportanceLesson
 
 export function LearnPage() {
-  const { isCompleted } = useLessonProgress('1')
+  const { isCompleted } = useLessonProgress(lessonMeta.id)
 
   return (
     <div className="learn-page">
@@ -34,7 +34,7 @@ export function LearnPage() {
             </dd>
           </div>
         </dl>
-        <Link className="home-block__button" to="/licao/1">
+        <Link className="home-block__button" to={`/licao/${lessonMeta.id}`}>
           {isCompleted ? 'Rever lição' : 'Começar lição'}
         </Link>
       </article>

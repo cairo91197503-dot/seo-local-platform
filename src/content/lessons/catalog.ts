@@ -9,7 +9,7 @@ export type LessonCatalogItem = {
 
 export const lessonCatalog: LessonCatalogItem[] = [
   {
-    id: '1',
+    id: 'reviews-importance',
     title: 'Por que as avaliações importam?',
     description:
       'Entenda como avaliações autênticas ajudam outras pessoas a conhecer e confiar em um negócio.',

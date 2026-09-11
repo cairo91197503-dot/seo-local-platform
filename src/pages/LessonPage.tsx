@@ -18,7 +18,7 @@ export function LessonPage() {
   if (
     !catalogLesson ||
     catalogLesson.status !== 'disponivel' ||
-    catalogLesson.id !== '1'
+    catalogLesson.id !== reviewsImportanceLesson.id
   ) {
     return (
       <section className="home-block lesson-not-found" role="alert">
