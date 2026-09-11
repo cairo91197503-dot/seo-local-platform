@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { Mascot } from '../components/mascot/Mascot'
+import { useJourney } from '../state/useJourney'
 
 export function HomePage() {
   const navigate = useNavigate()
+  const { journey, level, nextAction } = useJourney()
 
   return (
     <div className="home-page">
@@ -18,11 +20,11 @@ export function HomePage() {
         <dl className="progress-stats">
           <div className="progress-stats__item">
             <dt className="progress-stats__label">Nível</dt>
-            <dd className="progress-stats__value">Iniciante</dd>
+            <dd className="progress-stats__value">{level}</dd>
           </div>
           <div className="progress-stats__item">
             <dt className="progress-stats__label">XP</dt>
-            <dd className="progress-stats__value">0</dd>
+            <dd className="progress-stats__value">{journey.xp}</dd>
           </div>
           <div className="progress-stats__item">
             <dt className="progress-stats__label">Sequência</dt>
@@ -35,16 +37,14 @@ export function HomePage() {
         <h2 id="next-mission-heading" className="home-block__title">
           Próxima missão
         </h2>
-        <h3 className="home-block__subtitle">Peça sua primeira avaliação</h3>
-        <p className="home-block__text">
-          Convide um cliente satisfeito a avaliar sua empresa no Google.
-        </p>
+        <h3 className="home-block__subtitle">{nextAction.title}</h3>
+        <p className="home-block__text">{nextAction.description}</p>
         <button
           type="button"
           className="home-block__button"
-          onClick={() => navigate('/missoes')}
+          onClick={() => navigate(nextAction.to)}
         >
-          Ver missão
+          {nextAction.label}
         </button>
       </section>
 

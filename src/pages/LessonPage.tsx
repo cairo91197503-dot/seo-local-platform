@@ -4,6 +4,7 @@ import { SceneView } from '../components/learn/SceneView'
 import { lessonCatalog } from '../content/lessons/catalog'
 import { reviewsImportanceLesson } from '../content/lessons/reviews-importance'
 import { useLessonProgress } from '../hooks/useLessonProgress'
+import { useJourney } from '../state/useJourney'
 
 const { scenes } = reviewsImportanceLesson
 const totalScenes = scenes.length
@@ -13,6 +14,7 @@ export function LessonPage() {
   const [sceneIndex, setSceneIndex] = useState(0)
   const [isFinished, setIsFinished] = useState(false)
   const { markAsCompleted } = useLessonProgress(id ?? '')
+  const { completeLesson } = useJourney()
   const catalogLesson = lessonCatalog.find((lesson) => lesson.id === id)
 
   if (
@@ -40,6 +42,7 @@ export function LessonPage() {
     }
 
     markAsCompleted()
+    completeLesson(id ?? '')
     setIsFinished(true)
   }
 
