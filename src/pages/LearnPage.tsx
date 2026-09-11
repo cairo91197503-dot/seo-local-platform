@@ -1,18 +1,15 @@
 import { useState } from 'react'
-import type { AppArea } from '../components/layout/BottomNav'
+import { useNavigate } from 'react-router-dom'
 import { SceneView } from '../components/learn/SceneView'
 import { reviewsImportanceLesson } from '../content/lessons/reviews-importance'
-
-type LearnPageProps = {
-  onNavigate: (area: AppArea) => void
-}
 
 type LearnView = 'list' | 'lesson' | 'completed'
 
 const { scenes, ...lessonMeta } = reviewsImportanceLesson
 const totalScenes = scenes.length
 
-export function LearnPage({ onNavigate }: LearnPageProps) {
+export function LearnPage() {
+  const navigate = useNavigate()
   const [view, setView] = useState<LearnView>('list')
   const [sceneIndex, setSceneIndex] = useState(0)
 
@@ -50,7 +47,7 @@ export function LearnPage({ onNavigate }: LearnPageProps) {
           <button
             type="button"
             className="home-block__button"
-            onClick={() => onNavigate('missions')}
+            onClick={() => navigate('/missoes')}
           >
             Ir para a missão
           </button>

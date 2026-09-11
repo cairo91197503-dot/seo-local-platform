@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import { BottomNav, type AppArea } from '../components/layout/BottomNav'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { BottomNav } from '../components/layout/BottomNav'
 import { HomePage } from '../pages/HomePage'
 import { LearnPage } from '../pages/LearnPage'
 import { MissionsPage } from '../pages/MissionsPage'
 import { ToolsPage } from '../pages/ToolsPage'
 
-function renderPage(
-  activeArea: AppArea,
-  onNavigate: (area: AppArea) => void,
-) {
-  switch (activeArea) {
-    case 'home':
-      return <HomePage onNavigate={onNavigate} />
-    case 'learn':
-      return <LearnPage onNavigate={onNavigate} />
-    case 'missions':
-      return <MissionsPage />
-    case 'tools':
-      return <ToolsPage />
-  }
-}
-
 function App() {
-  const [activeArea, setActiveArea] = useState<AppArea>('home')
-
   return (
     <div className="app-shell">
       <main className="app-content">
-        {renderPage(activeArea, setActiveArea)}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/aprender" element={<LearnPage />} />
+          <Route path="/missoes" element={<MissionsPage />} />
+          <Route path="/ferramentas" element={<ToolsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
-      <BottomNav activeArea={activeArea} onNavigate={setActiveArea} />
+      <BottomNav />
     </div>
   )
 }

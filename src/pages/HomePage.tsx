@@ -1,14 +1,14 @@
-import type { AppArea } from '../components/layout/BottomNav'
+import { useNavigate } from 'react-router-dom'
+import { Mascot } from '../components/mascot/Mascot'
 
-type HomePageProps = {
-  onNavigate: (area: AppArea) => void
-}
+export function HomePage() {
+  const navigate = useNavigate()
 
-export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="home-page">
       <header className="home-page__greeting">
-        <h1 className="home-page__title">Olá 👋</h1>
+        <Mascot pose="neutral" size={44} />
+        <h1 className="home-page__title">Olá</h1>
       </header>
 
       <section className="home-block" aria-labelledby="progress-heading">
@@ -42,7 +42,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <button
           type="button"
           className="home-block__button"
-          onClick={() => onNavigate('missions')}
+          onClick={() => navigate('/missoes')}
         >
           Ver missão
         </button>
@@ -57,7 +57,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <button
               type="button"
               className="quick-access__button"
-              onClick={() => onNavigate('learn')}
+              onClick={() => navigate('/aprender')}
             >
               Aprender
             </button>
@@ -66,7 +66,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <button
               type="button"
               className="quick-access__button"
-              onClick={() => onNavigate('missions')}
+              onClick={() => navigate('/missoes')}
             >
               Missões
             </button>
@@ -75,7 +75,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <button
               type="button"
               className="quick-access__button"
-              onClick={() => onNavigate('tools')}
+              onClick={() => navigate('/ferramentas')}
             >
               Ferramentas
             </button>

@@ -21,12 +21,22 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - A narração Faber da Cena 1 foi aprovada e integrada.
 - Os timestamps dessa narração foram recalculados.
 - A arquitetura pedagógica e o padrão inicial de lições foram definidos documentalmente e estão em consolidação.
+- Direção de identidade visual da Fase 1 (paleta, tipografia, conceito de mascote "Estrelo") foi decidida; ver `docs/06-DESIGN-SYSTEM.md`.
+- Nome comercial definido: **Estrelar** (domínio principal planejado: `estrelar.app`). Ver `docs/01-PROJETO.md`, seção "Nome", incluindo o risco de marca conhecido e aceito.
+- Posicionamento de marca decidido; ver `docs/01-PROJETO.md`, seção "Posicionamento de marca". Fase 1 do roadmap (identidade e produto) está com todos os itens centrais decididos — falta só o detalhamento do estilo de animações.
+- Este projeto é uma reconstrução do LocalPulse; funcionalidades já exploradas nos protótipos anteriores (diagnóstico de reputação com IA, conexão Google/GMB, assistente de resposta a avaliações, tarefas diárias, dashboard) estão documentadas em `docs/10-HERANCA-LOCALPULSE.md`.
+- O pipeline de rascunhos de lição (`scripts/generate-lesson.ts`) agora gera imagens automaticamente via API Gemini, além de roteiro e narração; ver `docs/09-PADRAO-DE-LICOES.md`. Revisão humana antes de publicar continua obrigatória.
+- Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
+- A navegação por abas foi substituída por roteamento real por URL (`react-router-dom`): `/`, `/aprender`, `/missoes`, `/ferramentas`. Ver `docs/02-ROADMAP.md` (Fase 2) e `docs/07-CHANGELOG.md`.
+- Arquitetura de Firebase (autenticação só com Google, Firestore, regras de segurança) e deploy no Render preparadas em código e documentação, mas nenhum projeto/conta real foi criado — só o usuário pode fazer isso. Ver `docs/05-BANCO-DE-DADOS.md`, `firestore.rules`, `render.yaml` e `docs/07-CHANGELOG.md`.
+
+## Modelo de governança (desde 2026-08-24)
+
+A IA atua como gerente do projeto: decide e implementa diretamente (produto, pedagogia, arquitetura, conteúdo, priorização, ações de alto impacto como commit/push/deploy), sem depender de autorização prévia do usuário. Só recorre ao usuário quando estiver genuinamente em dúvida entre alternativas válidas. Regras de segurança básica (`.ai/rules.md`, seção "Ambientes e segurança") continuam permanentes e não fazem parte dessa autonomia. Detalhes completos em `.ai/workflow.md` e `.ai/rules.md`.
 
 ## Foco vigente
 
-Consolidar a documentação do projeto e a documentação operacional para IA.
-
-Nenhuma próxima implementação está autorizada automaticamente.
+A Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) está com roteamento real e a arquitetura/scaffolding de Firebase e Render prontos em código. O que falta — criar o projeto Firebase de fato, habilitar login Google, criar o Firestore, publicar `firestore.rules`, criar a conta/serviço no Render e preencher as variáveis de ambiente reais — depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode executar sozinha (`.ai/rules.md`). Enquanto isso não acontece, a Fase 2 técnica está bloqueada para avançar mais; a IA deve aguardar o usuário ou buscar a próxima tarefa que não dependa disso.
 
 ## Itens pausados
 
@@ -37,7 +47,9 @@ Não retomar sem solicitação explícita do usuário:
 - Chatterbox;
 - Kokoro;
 - substituição da narração Faber;
-- geração definitiva de imagens.
+- Fase 3 do roadmap (Academia/conteúdo educacional) por completo, incluindo o pipeline de lições (`scripts/generate-lesson.ts`) e qualquer produção ou revisão de lição — pausada em 2026-08-24 a pedido explícito do usuário.
+
+Retomado em 2026-08-24, a pedido explícito do usuário: geração automática de imagens no pipeline de rascunhos (`docs/09-PADRAO-DE-LICOES.md`), via API Gemini. Continua exigindo revisão humana antes de qualquer imagem virar asset aprovado.
 
 ## Decisões aprovadas relevantes
 
@@ -46,6 +58,7 @@ Não retomar sem solicitação explícita do usuário:
 - O produto não ensina hacks de algoritmo nem promete primeira posição no Google.
 - Documentação oficial sustenta afirmações sobre produto, política e ranking; relatos servem apenas como evidência prática ou anedótica.
 - Assets aprovados não podem ser substituídos sem autorização explícita.
+- Nome comercial: Estrelar. Domínio principal: `estrelar.app`.
 
 ## Decisões abertas
 
@@ -58,6 +71,7 @@ Uma decisão aberta só bloqueia uma tarefa quando essa tarefa depende dela.
 - Produto e escopo: `docs/01-PROJETO.md`.
 - Arquitetura pedagógica: `docs/08-ARQUITETURA-PEDAGOGICA.md`.
 - Produção de lições: `docs/09-PADRAO-DE-LICOES.md`.
+- Herança do LocalPulse (funcionalidades já exploradas antes): `docs/10-HERANCA-LOCALPULSE.md`.
 - Tecnologias e ambientes: `.ai/stack.md`.
 - Fluxo de trabalho: `.ai/workflow.md`.
 - Histórico: `docs/07-CHANGELOG.md`.

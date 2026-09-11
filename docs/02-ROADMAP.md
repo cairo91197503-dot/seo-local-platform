@@ -42,7 +42,7 @@ Entregas:
 
 - design system inicial
 
-Status: em andamento. A arquitetura pedagógica e o padrão inicial de lições foram documentados; nome, identidade e padrão visual definitivo continuam abertos.
+Status: quase concluída. Nome comercial (Estrelar), posicionamento de marca, identidade visual, paleta, tipografia e mascote foram decididos (ver `docs/01-PROJETO.md` e `docs/06-DESIGN-SYSTEM.md`). Falta apenas o detalhamento do estilo de animações; design system inicial começou a ser aplicado ao código (tokens + componente da mascote), mas ainda não foi migrado para todas as telas do MVP.
 
 ## Fase 2 — MVP Técnico
 
@@ -66,7 +66,7 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
-Status: parcial. React, TypeScript, Vite, roteamento e estrutura inicial de interface estão implementados. Firebase, autenticação, banco de dados e deploy no Render continuam planejados.
+Status: parcial. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Firebase, autenticação (Google), banco de dados e deploy no Render têm arquitetura e scaffolding prontos no código (`src/lib/firebase.ts`, `src/lib/auth/AuthContext.tsx`, `firestore.rules`, `render.yaml`, `docs/05-BANCO-DE-DADOS.md`), mas nenhum projeto Firebase ou serviço Render real foi criado — isso depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode fazer sozinha.
 
 ## Fase 3 — Academia
 
@@ -126,6 +126,8 @@ Entregas:
 
 - checklists
 
+Já explorado no protótipo anterior (LocalPulse): QR Code e gerador de respostas a avaliações. Ver `docs/10-HERANCA-LOCALPULSE.md`.
+
 Status: planejado.
 
 ## Fase 6 — Mentor IA
@@ -143,6 +145,8 @@ Entregas:
 - recomendações baseadas no estágio do usuário
 
 - limites e segurança de uso
+
+O protótipo anterior explorou um diagnóstico de reputação com IA que pode informar este desenho. Ver `docs/10-HERANCA-LOCALPULSE.md`.
 
 Status: planejado.
 
@@ -165,6 +169,8 @@ Possíveis entregas:
 - informações do perfil
 
 A integração com Google não deve ser requisito para o funcionamento principal da plataforma.
+
+O protótipo anterior (LocalPulse) chegou a implementar login OAuth e um proxy para dados do Google Business Profile, mas nunca obteve acesso oficial à API — esse foi o principal motivo de a evolução ter parado. Ver `docs/10-HERANCA-LOCALPULSE.md`.
 
 Status: planejado.
 

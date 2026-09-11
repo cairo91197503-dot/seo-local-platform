@@ -44,6 +44,7 @@ Leia apenas os documentos adicionais relacionados à tarefa:
 | Histórico | `docs/07-CHANGELOG.md`, somente quando necessário |
 | Banco de dados | `docs/05-BANCO-DE-DADOS.md`, quando definido e relevante |
 | Design ou assets | `docs/06-DESIGN-SYSTEM.md`, quando definido e relevante |
+| Funcionalidades além do módulo educacional (ferramentas, IA, integração Google) | `docs/10-HERANCA-LOCALPULSE.md` |
 
 ## Responsabilidade dos documentos
 

@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// Regras de segurança do Firestore — RASCUNHO, ainda não aplicado a um
+// projeto Firebase real (nenhum projeto foi criado ainda; ver
+// docs/05-BANCO-DE-DADOS.md e .ai/context.md).
+//
+// Princípio: menor privilégio, negar por padrão (docs/04-REGRAS.md,
+// seção "Segurança"). Cada usuário só pode ler e escrever o próprio
+// documento de perfil; qualquer coleção não listada explicitamente aqui
+// fica bloqueada por padrão, então adicionar uma coleção nova ao produto
+// exige adicionar a regra correspondente aqui antes de usá-la.
+//
+// Estas regras cobrem apenas o que já está decidido: identidade e perfil
+// básico do usuário. Coleções de progresso, XP, missões e lições NÃO estão
+// aqui porque o formato definitivo desses dados ainda é uma
+// `DECISÃO NECESSÁRIA` pedagógica (docs/08-ARQUITETURA-PEDAGOGICA.md) — não
+// devem ser inferidas. Antes de revisar para produção, reler
+// docs/04-REGRAS.md, item "Revisar regras de segurança do Firebase antes de
+// produção".
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Bloqueio explícito por padrão para qualquer outro caminho.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

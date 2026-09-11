@@ -32,6 +32,14 @@ A fonte da verdade sobre princípios, jornada e estrutura educacional é `docs/0
 
 Pequenos empresários brasileiros, prestadores de serviços e negócios locais com pouco conhecimento de marketing digital.
 
+## Posicionamento de marca (decidido em 2026-08-24)
+
+Para o pequeno empresário brasileiro que sabe que precisa aparecer bem no Google, mas não tem tempo nem paciência para aprender marketing digital sozinho, o **Estrelar** é o treinador digital que transforma aprendizado em ação prática, uma missão de cada vez — diferente de cursos genéricos de SEO ou consultorias caras, porque ensina só o necessário para a situação real do negócio, no momento em que ela importa, e comemora cada progresso junto com o usuário.
+
+Tom de voz: parceiro de confiança que entende de internet, não professor de cima para baixo nem vendedor de curso milagroso. Prático, encorajador, honesto — nunca promete hack de algoritmo ou posição garantida no Google (ver "Princípio central" abaixo). Caloroso como um negócio de bairro, não frio como um SaaS corporativo; adulto e direto, não infantilizado, mesmo usando uma mascote.
+
+Este posicionamento orienta copy, tom da mascote (`docs/06-DESIGN-SYSTEM.md`) e critérios de priorização de funcionalidades (`docs/02-ROADMAP.md`).
+
 ## Diferenciais
 
 - aprendizado em microlições;
@@ -60,9 +68,13 @@ Quando integrações oficiais estiverem disponíveis, elas devem automatizar e e
 
 ## Nome
 
-O nome comercial definitivo ainda não foi escolhido.
+**Nome comercial: Estrelar** (decidido em 2026-08-24). Amarra com a identidade visual já definida (mascote nasce do símbolo de estrela de avaliação — ver `docs/06-DESIGN-SYSTEM.md`) e com o verbo real do português ("estrelar" = ser o protagonista / ganhar estrelas).
 
-`seo-local-platform` é apenas o nome técnico atual do repositório.
+Domínio principal planejado: `estrelar.app`. Ainda não há confirmação de registro nem de disponibilidade de `estrelar.com.br`.
+
+**Risco de marca conhecido:** existe uma empresa registrada no Rio de Janeiro, "Estrelar Web Serviços de Internet Ltda" (provedor de internet), com app próprio nas lojas e o domínio `estrelarweb.com.br` já em uso. É um mercado diferente (telecom/ISP vs. SaaS de reputação), então não deve haver conflito formal de classe no INPI, mas existe risco de confusão de busca/marca. Aceito conscientemente; reavaliar se uma checagem formal de marca (INPI) ou de disponibilidade de domínio apontar problema real.
+
+`seo-local-platform` continua sendo o nome técnico do repositório; não é necessário renomear o repositório para adotar o nome comercial.
 
 ## Estrutura inicial do MVP
 

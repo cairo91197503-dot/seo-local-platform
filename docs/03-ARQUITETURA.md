@@ -56,11 +56,13 @@ Isso permitirá substituir ou modificar uma integração sem reconstruir toda a 
 
 Uso inicial planejado:
 
-- Authentication — usuários
+- Authentication — usuários (login apenas com conta Google no MVP)
 
 - Firestore — dados da aplicação
 
 Outros serviços do Firebase serão avaliados conforme a necessidade.
+
+Modelo de dados, regras de segurança e o que ainda depende de decisão pedagógica: `docs/05-BANCO-DE-DADOS.md`. Nenhum projeto Firebase real foi criado ainda.
 
 ## Inteligência Artificial
 
