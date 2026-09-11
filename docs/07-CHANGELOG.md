@@ -130,3 +130,22 @@ Antes de qualquer geração:
 8. parar antes de gerar ou consumir cota e pedir autorização.
 
 Posteriormente, a investigação do Cloudflare Workers AI e a geração definitiva de imagens foram **PAUSADAS**. Este changelog preserva o histórico e não define a tarefa vigente. Consulte `.ai/context.md` para o estado operacional atual e não retome itens pausados sem solicitação explícita.
+
+## 2026-08-13 — MVP do pipeline reproduzível de mídia
+
+Foi implementada a primeira arquitetura local do pipeline de narração e alinhamento, com:
+
+- `MediaPipeline` em TypeScript;
+- interfaces substituíveis para narração, alinhamento e imagem;
+- adapters iniciais para Piper e whisper.cpp;
+- manifesto por lição com hashes, versões e estados;
+- separação entre asset corrente e candidato;
+- fluxo explícito de geração, validação, revisão, aprovação e integração;
+- workspace experimental `.media/` separado de `public/`;
+- proteção contra sobrescrita de asset público com hash diferente;
+- cache por fingerprint do provider, modelo, parâmetros e entradas;
+- legendas derivadas do roteiro canônico por offsets, sem cópia textual divergente.
+
+O WAV e o PNG aprovados da Cena 1 não foram alterados. Os assets existentes foram importados no manifesto como legado aprovado e integrado.
+
+A validação confirmou hashes, estrutura e duração do WAV, cobertura dos timestamps e preservação dos assets. Depois da instalação local do Node.js 22 e das dependências travadas, `npm run build`, `npm run lint`, a compilação da CLI, `media:status` e `media:validate` passaram. Piper/Faber e whisper.cpp com modelo tiny e suporte DTW também foram confirmados na VM, sem executar geração ou alinhamento.

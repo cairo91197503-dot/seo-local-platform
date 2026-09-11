@@ -247,3 +247,11 @@ As decisões estruturais completas são mantidas em `docs/08-ARQUITETURA-PEDAGOG
 - **DECISÃO NECESSÁRIA:** modelo definitivo de missão;
 - **DECISÃO NECESSÁRIA:** voz padrão para todas as lições;
 - **DECISÃO NECESSÁRIA:** padrão visual definitivo.
+
+## Fonte canônica de roteiro e legendas
+
+O campo `narration.script` da cena é a fonte oficial do roteiro narrado. Manifestos de mídia devem referenciá-lo por ID e hash, sem copiar o texto como outra fonte editorial.
+
+Legendas sincronizadas devem usar offsets `textStart` e `textEnd` sobre o roteiro canônico. Transcrições produzidas por ferramentas de alinhamento são diagnósticas: não substituem automaticamente roteiro, legenda ou transcrição acessível.
+
+Alterar o roteiro invalida a narração e os timestamps dependentes. Alterar o WAV invalida os timestamps, mas não altera o roteiro.

@@ -29,14 +29,21 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
 - A navegação por abas foi substituída por roteamento real por URL (`react-router-dom`): `/`, `/aprender`, `/missoes`, `/ferramentas`. Ver `docs/02-ROADMAP.md` (Fase 2) e `docs/07-CHANGELOG.md`.
 - Arquitetura de Firebase (autenticação só com Google, Firestore, regras de segurança) e deploy no Render preparadas em código e documentação, mas nenhum projeto/conta real foi criado — só o usuário pode fazer isso. Ver `docs/05-BANCO-DE-DADOS.md`, `firestore.rules`, `render.yaml` e `docs/07-CHANGELOG.md`.
+- O MVP local do pipeline de narração e alinhamento foi implementado com providers substituíveis, manifestos, candidatos separados e aprovação explícita.
 
-## Modelo de governança (desde 2026-08-24)
+## Modelo de governança
 
-A IA atua como gerente do projeto: decide e implementa diretamente (produto, pedagogia, arquitetura, conteúdo, priorização, ações de alto impacto como commit/push/deploy), sem depender de autorização prévia do usuário. Só recorre ao usuário quando estiver genuinamente em dúvida entre alternativas válidas. Regras de segurança básica (`.ai/rules.md`, seção "Ambientes e segurança") continuam permanentes e não fazem parte dessa autonomia. Detalhes completos em `.ai/workflow.md` e `.ai/rules.md`.
+A IA pode atuar de forma autônoma na implementação das tarefas já definidas e aprovadas no escopo do projeto, respeitando `.ai/rules.md`, `.ai/workflow.md` e as regras operacionais atuais. Decisões que dependam de criação de contas, credenciais, serviços externos ou escolhas genuinamente abertas continuam dependendo do usuário.
+
+Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seguir as regras de segurança do projeto e o fluxo operacional vigente.
 
 ## Foco vigente
 
+O MVP do pipeline de mídia está validado na Oracle VM com Node.js, Piper/Faber e whisper.cpp configurados.
+
 A Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) está com roteamento real e a arquitetura/scaffolding de Firebase e Render prontos em código. O que falta — criar o projeto Firebase de fato, habilitar login Google, criar o Firestore, publicar `firestore.rules`, criar a conta/serviço no Render e preencher as variáveis de ambiente reais — depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode executar sozinha (`.ai/rules.md`). Enquanto isso não acontece, a Fase 2 técnica está bloqueada para avançar mais; a IA deve aguardar o usuário ou buscar a próxima tarefa que não dependa disso.
+
+Nenhuma geração, aprovação ou substituição de asset está autorizada automaticamente.
 
 ## Itens pausados
 

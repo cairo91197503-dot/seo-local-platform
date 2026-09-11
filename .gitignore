@@ -32,6 +32,8 @@ node_modules
 build/
 dist/
 dist-ssr/
+.media/
+.media-build/
 
 # Generated lesson drafts (kept local until human review)
 content-drafts/

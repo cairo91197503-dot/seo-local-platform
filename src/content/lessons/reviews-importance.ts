@@ -1,4 +1,4 @@
-import type { Lesson } from './types'
+import type { Lesson } from './types.js'
 
 export const reviewsImportanceLesson: Lesson = {
   id: 'reviews-importance',
@@ -20,17 +20,20 @@ export const reviewsImportanceLesson: Lesson = {
         audioSrc: '/audio/lessons/reviews-importance/cena-01.wav',
         segments: [
           {
-            text: 'Antes de escolher uma empresa, muita gente pesquisa no Google.',
+            textStart: 0,
+            textEnd: 67,
             startSeconds: 0,
             endSeconds: 3.16,
           },
           {
-            text: 'As avaliações mostram a experiência de outros clientes.',
+            textStart: 67,
+            textEnd: 147,
             startSeconds: 3.16,
             endSeconds: 5.99,
           },
           {
-            text: 'E ajudam a decidir em qual negócio confiar.',
+            textStart: 147,
+            textEnd: 210,
             startSeconds: 5.99,
             endSeconds: 8.36,
           },

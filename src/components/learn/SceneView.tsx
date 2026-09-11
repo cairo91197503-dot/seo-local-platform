@@ -20,7 +20,12 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
     (segment) =>
       currentTime >= segment.startSeconds && currentTime < segment.endSeconds,
   )
-  const captionText = segments?.length ? activeSegment?.text : scene.text
+  const activeSegmentText = activeSegment
+    ? scene.narration?.script
+        .slice(activeSegment.textStart, activeSegment.textEnd)
+        .trim()
+    : undefined
+  const captionText = segments?.length ? activeSegmentText : scene.text
   const accessibleTranscript =
     scene.narration?.script ??
     [scene.text, scene.highlight].filter(Boolean).join(' ')
@@ -123,7 +128,7 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
           <div className="lesson-scene__caption" aria-hidden="true">
             {activeSegment ? (
               <p className="lesson-scene__segment lesson-scene__segment--active">
-                {activeSegment.text}
+                {activeSegmentText}
               </p>
             ) : (
               <p className="lesson-scene__text">{captionText}</p>

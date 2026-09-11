@@ -121,3 +121,23 @@ Nunca armazenar no repositório:
 Não adicionar complexidade antecipadamente.
 
 Uma tecnologia nova só deve entrar no projeto quando resolver um problema concreto.
+## Pipeline de mídia das lições
+
+A produção de mídia usa uma camada de orquestração independente dos provedores:
+
+```text
+conteúdo canônico da lição
+→ MediaPipeline
+→ provider substituível
+→ candidato em workspace experimental
+→ validação
+→ revisão
+→ aprovação
+→ integração em public/
+```
+
+Piper e whisper.cpp são adapters iniciais de `NarrationProvider` e `AlignmentProvider`. Providers de imagem e TTS pagos podem ser adicionados sem alterar as regras do pipeline.
+
+O roteiro oficial permanece no conteúdo da lição. Manifestos guardam referências, hashes, estado e proveniência, sem duplicar o texto. Assets aprovados são imutáveis: regenerações criam candidatos e versões novas.
+
+A configuração de executáveis e modelos depende do ambiente. Caminhos locais e credenciais não pertencem ao repositório.

@@ -4,7 +4,8 @@ export type SceneIllustration = {
 }
 
 export type NarrationSegment = {
-  text: string
+  textStart: number
+  textEnd: number
   startSeconds: number
   endSeconds: number
 }
