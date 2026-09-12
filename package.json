@@ -17,6 +17,7 @@
     "media:review": "npm run media -- review",
     "media:approve": "npm run media -- approve",
     "media:integrate": "npm run media -- integrate",
+    "media:generate-all": "node scripts/media/generate-all.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

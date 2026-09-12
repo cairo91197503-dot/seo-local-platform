@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "lessonId": "photos-help-customers-decide",
+  "lessonSource": {
+    "module": "src/content/lessons/photos-help-customers-decide.ts"
+  },
+  "scenes": {
+    "intro": {
+      "script": {
+        "ref": "scenes[intro].narration.script",
+        "sha256": "8fdf5d311efb2b20109ae384f0d81db8cb7ecddea2a4cf633f1faf486d53b227"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    },
+    "what-photos-do": {
+      "script": {
+        "ref": "scenes[what-photos-do].narration.script",
+        "sha256": "eb010ecd980bae0d71421cc4e76c31c3077970f714ab253bfc2d660dbdbfc6b3"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    },
+    "trust": {
+      "script": {
+        "ref": "scenes[trust].narration.script",
+        "sha256": "b9db085f11ece2a92583652bc68826a382ec8e53c0fc42aa786ea30df029f6b6"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    },
+    "action": {
+      "script": {
+        "ref": "scenes[action].narration.script",
+        "sha256": "8f573ee8026683cbf1413c147123f62295fd362db02f78d8ddb4fbb1dea08253"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    }
+  }
+}

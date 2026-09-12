@@ -116,6 +116,108 @@
           "status": "approved"
         }
       }
+    },
+    "trust": {
+      "script": {
+        "ref": "scenes[trust].narration.script",
+        "sha256": "dad77033db246e54f6c31e6d8c6ad69059ec8b3c0610512f2887705c3d88fe30"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    },
+    "timing": {
+      "script": {
+        "ref": "scenes[timing].narration.script",
+        "sha256": "d6d2ea6e387507fbd0120d25660007452a3d799a551eddaf6fec3f3ac5530666"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
+    },
+    "action": {
+      "script": {
+        "ref": "scenes[action].narration.script",
+        "sha256": "427d8108130c6d3ad832b1777c1dae5f78d435104a0e22f83fc3b95c19c3a4d5"
+      },
+      "narration": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      },
+      "alignment": {
+        "assetVersion": 0,
+        "status": "pending",
+        "validation": {
+          "status": "not-run",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
+      }
     }
   }
 }

@@ -1,13 +1,8 @@
-import { reviewsImportanceLesson } from '../../src/content/lessons/reviews-importance.js'
-import type { Lesson } from '../../src/content/lessons/types.js'
+import { lessonRegistry } from '../../src/content/lessons/registry.js'
 import type { LessonSceneSource } from './types.js'
 
-const lessons: Record<string, Lesson> = {
-  [reviewsImportanceLesson.id]: reviewsImportanceLesson,
-}
-
 export function readLessonScene(lessonId: string, sceneId: string): LessonSceneSource {
-  const lesson = lessons[lessonId]
+  const lesson = lessonRegistry[lessonId]
   if (!lesson) throw new Error(`Lição não encontrada: ${lessonId}`)
   const scene = lesson.scenes.find((candidate) => candidate.id === sceneId)
   if (!scene) throw new Error(`Cena não encontrada: ${lessonId}/${sceneId}`)
@@ -17,7 +12,7 @@ export function readLessonScene(lessonId: string, sceneId: string): LessonSceneS
 }
 
 export function listLessonScenes(lessonId: string): LessonSceneSource[] {
-  const lesson = lessons[lessonId]
+  const lesson = lessonRegistry[lessonId]
   if (!lesson) throw new Error(`Lição não encontrada: ${lessonId}`)
   return lesson.scenes
     .filter((scene) => scene.narration?.script)

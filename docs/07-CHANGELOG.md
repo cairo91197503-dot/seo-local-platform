@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-12 — Roteiros de narração escritos para as 48 cenas; pipeline de áudio habilitado para todas as lições (Fase 3)
+
+A pedido do usuário ("agora preciso do comando para gerar os áudios e subir pro GitHub", confirmando o escopo via pergunta: "roteiro para as 4 cenas de todas as 12 lições"), foi escrito o campo `narration.script` em cada uma das 48 cenas do currículo (12 lições × 4 cenas). Cada roteiro é uma paráfrase falada natural do `title`/`text`/`highlight` da cena — não necessariamente idêntica ao texto visual, como já previsto em `docs/09-PADRAO-DE-LICOES.md`.
+
+**Pipeline de mídia (`scripts/media/`) habilitado para as 12 lições:** antes, `scripts/media/lesson-source.ts` só registrava manualmente `reviewsImportanceLesson`, deixando as outras 11 lições inutilizáveis pelo CLI (`npm run media -- ...`). Trocado para importar `lessonRegistry` de `src/content/lessons/registry.ts` (já existia e registra as 12 lições), eliminando a lista manual duplicada.
+
+**Bug encontrado e corrigido:** `src/content/lessons/registry.ts` importava os módulos de lição sem a extensão `.js` exigida pelo `moduleResolution: "NodeNext"` do projeto — isso quebrava `npm run build` (`tsc -b`) assim que o arquivo passou a ser usado pelo pipeline de mídia. Corrigido adicionando `.js` em todos os 12 imports, seguindo o mesmo padrão já usado nos outros arquivos de lição.
+
+**Manifestos do pipeline criados:** `npm run media -- status <lição>` e os demais comandos exigem um arquivo `media/manifests/<lessonId>.json` pré-existente (não há criação automática). Criado um manifesto inicial (status `pending` em todas as cenas) para as 11 lições que ainda não tinham um, com o hash do roteiro de cada cena já calculado — assim os comandos `narration generate`/`alignment generate`/`prepare` já funcionam de primeira, sem passo manual extra.
+
+**Áudio já existente restaurado:** a cena `intro` de `reviews-importance` já tinha narração gerada, validada, revisada, aprovada e integrada num momento anterior (registrado em `media/manifests/reviews-importance.json`, com o arquivo `public/audio/lessons/reviews-importance/cena-01.wav` ainda presente no projeto) — só o campo `audioSrc`/`segments` no `.ts` da lição tinha sido removido quando a narração foi tirada temporariamente. Como o roteiro reescrito bateu exatamente com o hash já registrado no manifesto (confirmado por SHA-256), `audioSrc` e `segments` foram restaurados nessa cena sem precisar gerar áudio de novo.
+
+Validado com `npm run lint`, `npm run build` (incluindo `tsc -p tsconfig.media.json`) e `npm run media -- status <lição>`/`validate` para lições novas e a já integrada — todos limpos.
+
+**Orquestrador criado para gerar as 47 cenas restantes sem trabalho manual repetitivo:** o fluxo do pipeline (`prepare` → `review --accept` → `approve` → `integrate`, duas vezes para narração e duas para alinhamento, com edição manual do `.ts` da lição entre as duas chamadas de `integrate`) exigiria dezenas de passos manuais por cena. Criado `scripts/media/generate-all.mjs` (roda com `npm run media:generate-all -- [--by "Nome"] [--lesson <id>]`), que percorre as 12 lições/48 cenas, roda o pipeline completo cena a cena, faz o parsing da saída de `integrate` para extrair o `audioSrc`/`segments` gerados e aplica a edição automaticamente no `.ts` da lição via um novo `scripts/media/apply-audio-field.mjs`, recompilando entre as chamadas. Cenas já integradas são puladas (idempotente — pode ser interrompido e rodado de novo). Falha em uma cena não interrompe as demais; um resumo final lista o que deu certo e o que falhou. Testado neste ambiente (sem Piper/whisper.cpp instalados) até o ponto em que o provedor de narração é chamado — confirma que a orquestração, o parsing e a aplicação de patch funcionam; a geração de áudio de verdade só roda na VM do usuário, onde Piper e whisper.cpp estão configurados.
+
+Também corrigido: o manifesto `media/manifests/reviews-importance.json` só tinha a cena `intro` (criado antes desta sessão) — adicionadas as cenas `trust`, `timing` e `action` que faltavam.
+
 ## 2026-09-12 — Legenda visível removida de todas as lições; só narração (Fase 3)
 
 A pedido do usuário ("quero retirar as legendas das lições e deixar apenas narração"), `SceneView` (`src/components/learn/SceneView.tsx`) deixou de renderizar `title` e o texto/legenda da cena na tela. A experiência visual de uma cena passa a ser só a ilustração (quando existir) mais o controle de áudio de narração (quando existir) — nada de texto sobreposto.

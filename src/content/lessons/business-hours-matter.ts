@@ -15,6 +15,10 @@ export const businessHoursMatterLesson: Lesson = {
         src: '/images/lessons/business-hours-matter/cena-01.jpg',
         alt: 'Cliente em frente a uma loja fechada, enquanto o celular mostra o perfil informando que o negócio está aberto.',
       },
+      narration: {
+        script:
+          'Um horário errado pode fazer um cliente ir até o seu negócio e encontrar a porta fechada — e isso já é uma má primeira experiência.',
+      },
     },
     {
       id: 'special-hours',
@@ -26,6 +30,10 @@ export const businessHoursMatterLesson: Lesson = {
         src: '/images/lessons/business-hours-matter/cena-02.jpg',
         alt: 'Calendário com um feriado marcado e um banner de horário especial sendo salvo no perfil.',
       },
+      narration: {
+        script:
+          'Além do horário normal, o Google permite informar horários especiais, como feriados e fechamentos temporários. Esses horários podem e devem ser atualizados sempre que mudarem — não só no dia a dia comum, mas também nessas situações especiais.',
+      },
     },
     {
       id: 'consequence',
@@ -35,6 +43,10 @@ export const businessHoursMatterLesson: Lesson = {
         src: '/images/lessons/business-hours-matter/cena-03.jpg',
         alt: 'Sequência mostrando o celular indicando aberto e depois o mesmo cliente encontrando a porta fechada.',
       },
+      narration: {
+        script:
+          'Na prática, um cliente que vê "aberto" no perfil, vai até lá num feriado e encontra tudo fechado, acaba perdendo confiança — mesmo sem culpa do negócio em si.',
+      },
     },
     {
       id: 'action',
@@ -43,6 +55,10 @@ export const businessHoursMatterLesson: Lesson = {
       illustration: {
         src: '/images/lessons/business-hours-matter/cena-04.jpg',
         alt: 'Empresária conferindo no calendário do perfil os horários e os próximos feriados.',
+      },
+      narration: {
+        script:
+          'Agora é sua vez: confira se o horário do seu perfil está correto, incluindo os próximos feriados ou exceções que você já souber.',
       },
     },
   ],

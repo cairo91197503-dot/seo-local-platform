@@ -15,6 +15,10 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
         src: '/images/lessons/profile-represents-your-business/cena-01.jpg',
         alt: 'Fachada real de um café ao lado do celular mostrando o Perfil da Empresa do mesmo negócio no Google.',
       },
+      narration: {
+        script:
+          'O Perfil da Empresa no Google costuma ser o primeiro contato de alguém com o seu negócio — muitas vezes antes mesmo de visitar ou ligar.',
+      },
     },
     {
       id: 'first-impression',
@@ -26,6 +30,10 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
         src: '/images/lessons/profile-represents-your-business/cena-02.jpg',
         alt: 'Comparação entre um perfil desatualizado e um perfil cuidado do mesmo negócio.',
       },
+      narration: {
+        script:
+          'Nome, fotos e descrição ajudam a formar essa primeira impressão. Um perfil desatualizado pode passar a impressão errada, mesmo quando o negócio real é ótimo. O perfil não substitui o negócio — ele representa o negócio para quem ainda não o conhece.',
+      },
     },
     {
       id: 'control',
@@ -35,6 +43,10 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
         src: '/images/lessons/profile-represents-your-business/cena-03.jpg',
         alt: 'Empresária ajustando com confiança as informações do próprio perfil no celular.',
       },
+      narration: {
+        script:
+          'A boa notícia é que isso está sob o seu controle: você pode revisar e ajustar as informações do perfil sempre que quiser, para que ele reflita melhor o negócio de verdade.',
+      },
     },
     {
       id: 'action',
@@ -43,6 +55,9 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
       illustration: {
         src: '/images/lessons/profile-represents-your-business/cena-04.jpg',
         alt: 'Empresária sentada, abrindo o próprio perfil no celular para dar uma olhada geral.',
+      },
+      narration: {
+        script: 'Você já entende o papel do perfil. Agora, a próxima missão é dar uma olhada geral nele.',
       },
     },
   ],

@@ -15,6 +15,10 @@ export const accurateBusinessInfoLesson: Lesson = {
         src: '/images/lessons/accurate-business-info/cena-01.jpg',
         alt: 'Empresária revisando no celular os campos de nome, endereço, telefone, categoria e horário do perfil do negócio.',
       },
+      narration: {
+        script:
+          'Quando as informações do seu Perfil da Empresa estão corretas e completas, o Google entende melhor o seu negócio — e pode mostrá-lo para mais pessoas que procuram por ele.',
+      },
     },
     {
       id: 'what-matters',
@@ -26,6 +30,10 @@ export const accurateBusinessInfoLesson: Lesson = {
         src: '/images/lessons/accurate-business-info/cena-02.jpg',
         alt: 'Ícones de nome, endereço, telefone, categoria e horário ao redor de uma lupa, representando o Google entendendo o negócio.',
       },
+      narration: {
+        script:
+          'Nome, endereço, telefone, categoria e horário de funcionamento estão entre as informações que ajudam o Google a relacionar o seu negócio a buscas relevantes. Vale lembrar: informações completas e corretas ajudam o Google a entender seu negócio, mas isso não garante uma posição específica nos resultados.',
+      },
     },
     {
       id: 'keep-updated',
@@ -35,6 +43,10 @@ export const accurateBusinessInfoLesson: Lesson = {
         src: '/images/lessons/accurate-business-info/cena-03.jpg',
         alt: 'Empresário atualizando o telefone no perfil logo depois de uma mudança real no negócio.',
       },
+      narration: {
+        script:
+          'O trabalho não termina na primeira configuração. Sempre que algo mudar — um novo horário, um novo telefone, um novo endereço — atualize o quanto antes, porque um perfil desatualizado pode confundir seus clientes.',
+      },
     },
     {
       id: 'action',
@@ -43,6 +55,10 @@ export const accurateBusinessInfoLesson: Lesson = {
       illustration: {
         src: '/images/lessons/accurate-business-info/cena-04.jpg',
         alt: 'Empresário conferindo o horário de funcionamento no próprio perfil, com selo de "conferido".',
+      },
+      narration: {
+        script:
+          'Você já sabe por que manter as informações corretas importa. A próxima missão é revisar uma informação essencial do seu negócio.',
       },
     },
   ],

@@ -15,11 +15,26 @@ export const reviewsImportanceLesson: Lesson = {
         src: '/images/lessons/reviews-importance/cena-01.png',
         alt: 'Pequeno empresário observa no celular avaliações de clientes ao pesquisar um negócio local.',
       },
+      narration: {
+        script:
+          'Antes de escolher uma empresa, muitas pessoas pesquisam no Google. Nesse momento, as avaliações mostram como foi a experiência de outros clientes. E ajudam quem está pesquisando a conhecer melhor o seu negócio.',
+        audioSrc: '/audio/lessons/reviews-importance/cena-01.wav',
+        segments: [
+          { textStart: 0, textEnd: 67, startSeconds: 0, endSeconds: 3.16 },
+          { textStart: 67, textEnd: 147, startSeconds: 3.16, endSeconds: 5.99 },
+          { textStart: 147, textEnd: 210, startSeconds: 5.99, endSeconds: 8.36 },
+        ],
+      },
+      estimatedDurationSeconds: 8.53,
     },
     {
       id: 'trust',
       title: 'Avaliações ajudam a gerar confiança',
       text: 'Experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer seu negócio.',
+      narration: {
+        script:
+          'Avaliações também ajudam a gerar confiança: experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer o seu negócio.',
+      },
     },
     {
       id: 'timing',
@@ -27,11 +42,18 @@ export const reviewsImportanceLesson: Lesson = {
       text: 'Depois de um atendimento ou experiência real, você pode convidar o cliente a compartilhar espontaneamente a opinião dele.',
       highlight:
         'Peça uma opinião sincera. Não peça uma nota específica.',
+      narration: {
+        script:
+          'O melhor momento para pedir uma avaliação é depois de um atendimento ou experiência real — você pode convidar o cliente a compartilhar espontaneamente a opinião dele. E o importante é pedir uma opinião sincera, nunca uma nota específica.',
+      },
     },
     {
       id: 'action',
       title: 'Agora é sua vez',
       text: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
+      narration: {
+        script: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
+      },
     },
   ],
 }
