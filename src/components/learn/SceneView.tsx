@@ -12,20 +12,8 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
   const [audioState, setAudioState] = useState<
     'idle' | 'playing' | 'paused' | 'ended' | 'blocked' | 'error'
   >('idle')
-  const [currentTime, setCurrentTime] = useState(0)
 
   const audioSrc = scene.narration?.audioSrc
-  const segments = scene.narration?.segments
-  const activeSegment = segments?.find(
-    (segment) =>
-      currentTime >= segment.startSeconds && currentTime < segment.endSeconds,
-  )
-  const activeSegmentText = activeSegment
-    ? scene.narration?.script
-        .slice(activeSegment.textStart, activeSegment.textEnd)
-        .trim()
-    : undefined
-  const captionText = segments?.length ? activeSegmentText : scene.text
   const accessibleTranscript =
     scene.narration?.script ??
     [scene.text, scene.highlight].filter(Boolean).join(' ')
@@ -74,7 +62,6 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
 
     if (audioState === 'ended' || audioState === 'blocked') {
       audioElement.currentTime = 0
-      setCurrentTime(0)
     }
 
     try {
@@ -120,21 +107,9 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
           />
         ) : null}
 
-        <h2 className="lesson-scene__title">{scene.title}</h2>
+        <h2 className="visually-hidden">{scene.title}</h2>
 
         <p className="visually-hidden">{accessibleTranscript}</p>
-
-        {captionText ? (
-          <div className="lesson-scene__caption" aria-hidden="true">
-            {activeSegment ? (
-              <p className="lesson-scene__segment lesson-scene__segment--active">
-                {activeSegmentText}
-              </p>
-            ) : (
-              <p className="lesson-scene__text">{captionText}</p>
-            )}
-          </div>
-        ) : null}
 
         {audioSrc ? (
           <div className="lesson-scene__narration">
@@ -149,9 +124,6 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
                 }
               }}
               onEnded={() => setAudioState('ended')}
-              onTimeUpdate={(event) =>
-                setCurrentTime(event.currentTarget.currentTime)
-              }
               onError={() => setAudioState('error')}
             />
             <button

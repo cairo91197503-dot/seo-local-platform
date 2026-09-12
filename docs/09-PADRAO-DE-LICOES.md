@@ -169,15 +169,14 @@ type LessonScene = {
 ### Semântica consumida pela interface
 
 - `Lesson.scenes` define a ordem de navegação. `LessonScene.id` também é usado como `key` da cena e deve ser único na lição.
-- `title` é o título visível da cena. `text` é o texto visual padrão; `highlight`, quando presente, compõe o transcript acessível de uma cena sem `narration.script`.
+- **Desde 2026-09-12, `title` e `text` não aparecem mais na tela.** A pedido do usuário ("retirar as legendas e deixar apenas narração"), `SceneView` deixou de renderizar o título e o texto da cena como legenda visível — a experiência visual passou a ser só ilustração (quando existir) + áudio de narração (quando existir). `title`, `text` e `highlight` continuam existindo nos dados e compõem o `accessibleTranscript`, renderizado como texto visualmente oculto (`.visually-hidden`) para leitores de tela — sem eles, uma cena sem `narration.script` ficaria sem nenhuma alternativa textual para acessibilidade.
 - `illustration.src` é passado diretamente ao elemento `img`; a lição 1 usa uma URL pública absoluta, `/images/lessons/reviews-importance/cena-01.png`. `illustration.alt` é o texto alternativo da imagem.
-- `narration.audioSrc` é passado diretamente ao elemento `audio`; a lição 1 usa `/audio/lessons/reviews-importance/cena-01.wav`.
-- `narration.script` é o transcript acessível completo. Ele não precisa ser idêntico a cada legenda resumida: na cena 1 atual, o transcript aprovado e os textos dos segmentos têm redações diferentes.
-- `narration.segments` controla a legenda sincronizada. Um segmento fica ativo quando `currentTime >= startSeconds` e `currentTime < endSeconds`. Sem segmentos, a interface exibe `scene.text`; com segmentos, pode haver um intervalo sem legenda se nenhum segmento cobrir o tempo corrente.
-- `estimatedDurationSeconds` registra a duração estimada da cena; a interface atual não usa esse campo para controlar o áudio.
+- `narration.audioSrc` é passado diretamente ao elemento `audio`.
+- `narration.script`, quando presente, substitui `[text, highlight]` como transcript acessível completo.
+- `narration.segments` (legenda sincronizada) e `estimatedDurationSeconds` continuam fazendo parte do tipo, mas não têm mais efeito visual nenhum — a interface não exibe legenda sincronizada nem estática. Novo conteúdo não precisa mais gerar `segments`.
 - `mascot` e `animation` fazem parte do tipo, mas ainda não são consumidos por `SceneView`.
 
-Na primeira lição, somente a cena `intro` possui atualmente ilustração, áudio, transcript, segmentos e duração. As outras três cenas demonstram que esses campos são opcionais. A pipeline gera esses artefatos para todas as cenas do novo rascunho, sem alterar essa lição aprovada.
+Nenhuma lição tem narração no momento (a única que tinha, a cena `intro` de `reviews-importance`, teve o áudio removido em 2026-09-12, a pedido do usuário — ver `docs/07-CHANGELOG.md`). Isso significa que, hoje, todas as cenas de todas as lições aparecem só com a ilustração (quando existir) e sem nenhum texto ou áudio visível/audível — a experiência de leitura de texto foi deliberadamente removida antes de haver narração pronta para substituí-la. Produzir narração para as lições é o próximo passo pendente para essa experiência voltar a ter conteúdo perceptível além da imagem.
 
 ## Pipeline assistida para rascunhos
 

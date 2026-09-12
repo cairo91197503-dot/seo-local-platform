@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-12 — Legenda visível removida de todas as lições; só narração (Fase 3)
+
+A pedido do usuário ("quero retirar as legendas das lições e deixar apenas narração"), `SceneView` (`src/components/learn/SceneView.tsx`) deixou de renderizar `title` e o texto/legenda da cena na tela. A experiência visual de uma cena passa a ser só a ilustração (quando existir) mais o controle de áudio de narração (quando existir) — nada de texto sobreposto.
+
+Esclarecido com o usuário antes de mexer no código: "legenda" aqui significa o texto visível de cada cena (título + texto), não a legenda sincronizada com áudio palavra por palavra. Ele confirmou explicitamente que queria a mudança em todas as 12 lições imediatamente, mesmo sabendo que **nenhuma lição tem narração agora** (a única que tinha, a cena 1 de `reviews-importance`, teve o áudio removido momentos antes, também a pedido dele) — então, até haver áudio, a maioria das cenas fica sem nenhum conteúdo perceptível na tela além da imagem (quando existir).
+
+**O que mudou no código:**
+- `title` passou a usar a classe `.visually-hidden` em vez de `.lesson-scene__title` (deixa de aparecer sobreposto à imagem, mas continua existindo como heading para leitores de tela).
+- O bloco de legenda visível (`.lesson-scene__caption`, incluindo a legenda sincronizada por `narration.segments`) foi removido inteiramente de `SceneView.tsx`.
+- `accessibleTranscript` (já existente, renderizado como `.visually-hidden`) continua cobrindo `title`/`text`/`highlight`/`narration.script` para acessibilidade — remover a legenda visível não removeu o conteúdo para quem usa leitor de tela.
+- Código morto removido: `currentTime`, `activeSegment`, `activeSegmentText`, `captionText` e o handler `onTimeUpdate` (só existiam para calcular a legenda sincronizada, que não é mais exibida).
+- CSS morto removido de `src/styles/index.css`: `.lesson-scene__title` (estilo de sobreposição visual), `.lesson-scene__caption`, `.lesson-scene__text`, `.lesson-scene__segment`, `.lesson-scene__segment--active`, e as regras de mídia associadas.
+
+`docs/09-PADRAO-DE-LICOES.md` e `docs/13-CURRICULO-MVP.md` atualizados para descrever o novo comportamento (texto/legenda não é mais renderizado; `narration.segments` deixou de ter efeito visual; produzir narração em áudio para as 12 lições passa a ser o próximo passo pendente para a experiência ficar completa de novo). Validado com `npm run lint` e `npm run build`, ambos limpos.
+
 ## 2026-09-12 — Projeto Firebase real criado; login com Google funcionando (Fase 2)
 
 O usuário criou o projeto Firebase real "Estrelar" (`estrelar-cc725`) no console, resolvendo a dependência de credencial/conta que só ele podia resolver (mesma restrição já documentada para o Gemini). Passos feitos manualmente pelo usuário no console, guiados passo a passo:
