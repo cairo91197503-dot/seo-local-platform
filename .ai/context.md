@@ -32,7 +32,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Login com Google conectado à interface em 2026-09-12: todo o app exige login antes de qualquer rota (`AuthGate` em `src/app/App.tsx`). Ainda não funciona de fato porque nenhum projeto Firebase real existe — ver item acima e `docs/07-CHANGELOG.md`.
 - Código-fonte dos 4 repositórios anteriores do LocalPulse foi arquivado em `legacy/` em 2026-09-12, como referência (não como dependência do build — `eslint.config.js` o ignora). Ver `legacy/README.md` e `docs/10-HERANCA-LOCALPULSE.md`.
 - O MVP local do pipeline de narração e alinhamento foi implementado com providers substituíveis, manifestos, candidatos separados e aprovação explícita.
-- A lição 2 do currículo mínimo ("Como fazer um pedido de avaliação genuíno") e a missão 2 ("Prepare uma mensagem de solicitação respeitosa") foram implementadas em 2026-09-12. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md`.
+- O currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` foi concluído em 2026-09-12: as 3 lições e 3 missões (avaliações → pedido de avaliação → informações corretas do negócio) estão implementadas. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens, derivado do catálogo de lições; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md`.
 
 ## Modelo de governança
 
@@ -44,8 +44,8 @@ Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seg
 
 **Prioridade definida pelo usuário em 2026-09-12** (ver `docs/02-ROADMAP.md`, seção "Prioridade atual", para o texto completo): nesta ordem,
 
-1. currículo/lições (Fase 3) — concluir o currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` (lições 2 e 3);
-2. QR Code e link para avaliações (Fase 5, adiantada);
+1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12: as 3 lições e 3 missões do currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` estão implementadas;
+2. QR Code e link para avaliações (Fase 5, adiantada) — **próxima prioridade a atacar**;
 3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real, variáveis de ambiente, deploy no Render).
 
 **Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) fica como está; não iniciar trabalho novo nela sem pedido explícito.

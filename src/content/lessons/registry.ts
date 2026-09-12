@@ -1,4 +1,5 @@
 import type { Lesson } from './types.js'
+import { accurateBusinessInfoLesson } from './accurate-business-info'
 import { reviewRequestMessageLesson } from './review-request-message'
 import { reviewsImportanceLesson } from './reviews-importance'
 
@@ -10,4 +11,5 @@ import { reviewsImportanceLesson } from './reviews-importance'
 export const lessonRegistry: Record<string, Lesson> = {
   [reviewsImportanceLesson.id]: reviewsImportanceLesson,
   [reviewRequestMessageLesson.id]: reviewRequestMessageLesson,
+  [accurateBusinessInfoLesson.id]: accurateBusinessInfoLesson,
 }

@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-12 — Lição 3 e missão 3: currículo mínimo completo (Fase 3)
+
+Terceira e última lição/missão do currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md`:
+
+- `src/content/lessons/accurate-business-info.ts`: lição 3, "Informações corretas ajudam o cliente a entender o negócio" (4 cenas, texto apenas — sem áudio/ilustração, mesmo padrão da lição 2). Baseada nos princípios "SER ENCONTRADO" e "MANTER TUDO ATUALIZADO" de `docs/08-ARQUITETURA-PEDAGOGICA.md`; o destaque da cena 2 evita prometer posição específica nos resultados de busca, conforme a regra de não fazer promessa de ranking.
+- Missão 3, "Revise uma informação essencial do negócio", adicionada a `src/content/missions/catalog.ts`: pede para o usuário conferir e, se preciso, atualizar telefone ou horário de funcionamento no Perfil da Empresa real — ações citadas como exemplo em `docs/08-ARQUITETURA-PEDAGOGICA.md` ("conferir horário", "conferir telefone").
+
+**Generalização adicional em `src/content/missions/types.ts` e `MissionsPage.tsx`:** as missões 1 e 2 giram em torno de uma mensagem para um cliente, mas a missão 3 não — ela é uma autoconferência. `messageExample`/`messageExampleNote` viraram opcionais (a seção "Ajuda prática" só aparece quando a missão define um exemplo), e a pergunta final antes de declarar a ação passou a vir do catálogo (`confirmationPrompt`) em vez de um texto fixo sobre "cliente".
+
+Graças à generalização do modelo de estado feita na entrega anterior, `src/state/journey.ts` não precisou de nenhuma alteração para suportar a terceira lição/missão — o currículo (`CURRICULUM`) é derivado automaticamente do catálogo de lições.
+
+**Com esta entrega, as 3 lições e 3 missões do currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` estão implementadas**, fechando a prioridade nº 1 definida pelo usuário em 2026-09-12 (ver entrada "Prioridade de execução redefinida" abaixo). A prioridade nº 2 (QR Code/link de avaliações) é o próximo passo.
+
+Validado com `npm run lint`, `npm run build`, e o mesmo teste da máquina de estados usado na entrega anterior, estendido para cobrir o ciclo completo das 3 lições/missões (35 verificações, todas passando) — incluindo o caso da missão sem exemplo de mensagem. Teste pelo navegador real segue bloqueado neste ambiente pela mesma razão já registrada: login Google real exigido, sem projeto Firebase configurado aqui.
+
 ## 2026-09-12 — Lição 2 e missão 2 do currículo mínimo; modelo de estado generalizado (Fase 3)
 
 Primeira entrega da prioridade nº 1 definida pelo usuário (ver entrada anterior deste changelog). O currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` tinha só 1 de 3 lições; agora tem 2.

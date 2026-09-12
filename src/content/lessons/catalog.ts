@@ -29,4 +29,12 @@ export const lessonCatalog: LessonCatalogItem[] = [
     status: 'disponivel',
     missionId: 'prepare-request-message',
   },
+  {
+    id: 'accurate-business-info',
+    title: 'Informações corretas ajudam o cliente a entender o negócio',
+    description:
+      'Entenda por que manter nome, endereço, telefone, categoria e horário corretos ajuda o Google e seus clientes a entenderem seu negócio.',
+    status: 'disponivel',
+    missionId: 'review-business-info',
+  },
 ]

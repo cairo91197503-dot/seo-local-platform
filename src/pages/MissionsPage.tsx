@@ -178,23 +178,25 @@ export function MissionsPage() {
         </ol>
       </section>
 
-      <section className="home-block" aria-labelledby="mission-help">
-        <h2 id="mission-help" className="home-block__title">
-          Ajuda prática
-        </h2>
-        <blockquote className="message-example">
-          <p className="message-example__text">{mission.messageExample}</p>
-        </blockquote>
-        <p className="message-example__note">{mission.messageExampleNote}</p>
-      </section>
+      {mission.messageExample ? (
+        <section className="home-block" aria-labelledby="mission-help">
+          <h2 id="mission-help" className="home-block__title">
+            Ajuda prática
+          </h2>
+          <blockquote className="message-example">
+            <p className="message-example__text">{mission.messageExample}</p>
+          </blockquote>
+          {mission.messageExampleNote ? (
+            <p className="message-example__note">{mission.messageExampleNote}</p>
+          ) : null}
+        </section>
+      ) : null}
 
       <section className="home-block" aria-labelledby="mission-action">
         <h2 id="mission-action" className="home-block__title">
           Conclusão
         </h2>
-        <p className="home-block__text">
-          Já realizou a ação com um cliente que teve uma boa experiência?
-        </p>
+        <p className="home-block__text">{mission.confirmationPrompt}</p>
         <button
           type="button"
           className="home-block__button"

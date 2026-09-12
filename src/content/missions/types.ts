@@ -6,6 +6,12 @@ export type MissionCatalogItem = {
   objective: string
   explanation: string
   steps: string[]
-  messageExample: string
-  messageExampleNote: string
+  /** Pergunta exibida na etapa final, antes de declarar a ação como realizada. */
+  confirmationPrompt: string
+  /**
+   * Exemplo de mensagem pronta (ex.: para pedir uma avaliação a um cliente).
+   * Opcional — nem toda missão envolve mandar uma mensagem para alguém.
+   */
+  messageExample?: string
+  messageExampleNote?: string
 }
