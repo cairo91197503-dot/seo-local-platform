@@ -66,7 +66,7 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
-Status: parcial. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Firebase, autenticação (Google), banco de dados e deploy no Render têm arquitetura e scaffolding prontos no código (`src/lib/firebase.ts`, `src/lib/auth/AuthContext.tsx`, `firestore.rules`, `render.yaml`, `docs/05-BANCO-DE-DADOS.md`), mas nenhum projeto Firebase ou serviço Render real foi criado — isso depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode fazer sozinha.
+Status: parcial. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`, `docs/07-CHANGELOG.md`, 2026-09-12) e todo o app exige login antes de qualquer rota. Firebase (auth + Firestore) e deploy no Render têm arquitetura e scaffolding prontos no código (`src/lib/firebase.ts`, `src/lib/auth/AuthContext.tsx`, `firestore.rules`, `render.yaml`, `docs/05-BANCO-DE-DADOS.md`), mas nenhum projeto Firebase ou serviço Render real foi criado — isso depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode fazer sozinha. Enquanto isso não acontece, o app roda localmente mostrando um aviso de configuração ausente em vez de quebrar.
 
 ## Fase 3 — Academia
 

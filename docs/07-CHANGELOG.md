@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-12 — Login com Google conectado à interface (Fase 2)
+
+A pedido do usuário, a autenticação com Google — que já tinha arquitetura e código prontos desde 24/08 (`src/lib/auth/AuthContext.tsx`), mas não estava conectada a nenhuma tela — passou a ser exigida antes de qualquer rota do app, conforme o fluxo já definido em `docs/12-ESPECIFICACAO-MVP.md` ("Login Google → Onboarding → Home → ..."). A funcionalidade foi resgatada como referência do protótipo anterior mais evoluído (`legacy/web-localpulse-v2/src/pages/Login.tsx`), adaptada à identidade visual do Estrelar e à decisão já tomada de login **só com Google** (sem e-mail/senha, diferente do protótipo original).
+
+**O que foi adicionado:**
+
+- `src/pages/LoginPage.tsx`: tela de login com a mascote, texto de boas-vindas e botão "Entrar com o Google", usando `useAuth().signInWithGoogle`.
+- `src/app/App.tsx`: novo `AuthGate`, um portão no topo da árvore de rotas (mesmo padrão do `OnboardingGuard` já existente) que trata três estados — configuração do Firebase ausente, carregando, ou não autenticado — antes de liberar `/onboarding` e o resto do app.
+- `src/lib/auth/AuthContext.tsx`: `AuthProvider` agora expõe `configError` (mensagem clara quando `VITE_FIREBASE_*` não está definido, em vez de deixar o app quebrar com uma tela em branco); a checagem de configuração foi movida para fora do `useEffect` para não violar a regra de lint `react-hooks/set-state-in-effect`.
+- `src/lib/auth/userProfile.ts`: grava/atualiza `users/{uid}` (identidade e perfil básico, conforme `docs/05-BANCO-DE-DADOS.md`) a cada login — `createdAt` só na primeira vez.
+- `src/components/layout/AppShell.tsx`: cabeçalho ganhou saudação com o primeiro nome do usuário e botão "Sair".
+
+**Continua bloqueado, depende do usuário:** login só funciona de verdade depois que um projeto Firebase real existir, o provedor Google estiver habilitado e as variáveis `VITE_FIREBASE_*` estiverem preenchidas (`.env.example`) — nenhuma dessas ações pôde ser feita pela IA. Sem isso, o app mostra a tela "Firebase ainda não configurado" em vez de travar.
+
+Validado com `npm run lint`, `npm run build` e teste funcional via Playwright (Chromium headless): sem configuração, a tela de aviso aparece corretamente, sem erros de console; com variáveis de teste locais (nunca reais, nunca commitadas), a tela de login renderiza e o botão fica pronto para o fluxo real do Google — o popup de login do Google em si não pôde ser testado neste ambiente por depender de um projeto Firebase real.
+
+Também corrigido neste commit: `eslint.config.js` passou a ignorar `legacy/` (arquivado em 2026-09-12), que não segue os padrões de lint deste projeto e estava quebrando `npm run lint` para o repositório inteiro.
+
 ## 2026-08-24 — Arquitetura de Firebase (auth, dados, deploy) preparada (Fase 2)
 
 Com o roteamento real já implementado, a IA avançou no que restava da Fase 2 que não depende de criar contas: arquitetura e scaffolding de código para Firebase, Firestore e deploy no Render, mantendo o limite de nunca criar contas/credenciais (`.ai/rules.md`) e de não inferir decisões pedagógicas marcadas `DECISÃO NECESSÁRIA` (`docs/08-ARQUITETURA-PEDAGOGICA.md`).
