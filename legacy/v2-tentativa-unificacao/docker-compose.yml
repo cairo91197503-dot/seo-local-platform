@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  android-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: localpulse_android_test
+    environment:
+      # Inject the API Key and other secrets from the environment or .env file
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-YOUR_GEMINI_API_KEY_HERE}
+      - WEB_CLIENT_ID=${WEB_CLIENT_ID:-YOUR_WEB_CLIENT_ID_HERE}
+    volumes:
+      # Mount the current directory so tests run on the latest code
+      - .:/workspace
+      # Cache Gradle downloads to speed up subsequent runs
+      - gradle-cache:/root/.gradle
+    command: ["./gradlew", "test", "lint", "--no-daemon"]
+
+volumes:
+  gradle-cache:

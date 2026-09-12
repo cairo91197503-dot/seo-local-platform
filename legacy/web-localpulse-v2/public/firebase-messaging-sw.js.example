@@ -1,0 +1,26 @@
+importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js');
+
+firebase.initializeApp({
+  "projectId": "REDACTED",
+  "appId": "REDACTED",
+  "apiKey": "REDACTED",
+  "authDomain": "REDACTED.firebaseapp.com",
+  "storageBucket": "REDACTED.firebasestorage.app",
+  "messagingSenderId": "REDACTED",
+  "measurementId": ""
+});
+
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage((payload) => {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  const notificationTitle = payload.notification?.title || 'Nova Notificação';
+  const notificationOptions = {
+    body: payload.notification?.body,
+    icon: '/vite.svg',
+    data: payload.data,
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});

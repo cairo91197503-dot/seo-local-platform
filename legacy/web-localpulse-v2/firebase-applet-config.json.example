@@ -1,0 +1,9 @@
+{
+  "projectId": "REDACTED",
+  "appId": "REDACTED",
+  "apiKey": "REDACTED",
+  "authDomain": "REDACTED.firebaseapp.com",
+  "storageBucket": "REDACTED.firebasestorage.app",
+  "messagingSenderId": "REDACTED",
+  "measurementId": "REDACTED"
+}

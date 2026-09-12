@@ -1,0 +1,26 @@
+{
+  "project_info": {
+    "project_number": "REDACTED",
+    "firebase_url": "https://REDACTED.firebaseio.com",
+    "project_id": "REDACTED",
+    "storage_bucket": "REDACTED.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "REDACTED",
+        "android_client_info": {
+          "package_name": "com.aistudio.localpulse.hswtxb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "REDACTED"
+        }
+      ],
+      "services": {}
+    }
+  ],
+  "configuration_version": "1"
+}
