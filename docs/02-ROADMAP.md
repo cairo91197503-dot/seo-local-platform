@@ -1,5 +1,15 @@
 # Roadmap do Projeto
 
+## Prioridade atual (definida pelo usuário em 2026-09-12)
+
+As fases abaixo continuam descrevendo o escopo completo do produto, mas **não representam mais a ordem de execução**. A prioridade real, na ordem em que devem ser atacadas, é:
+
+1. **Currículo/lições (Fase 3).** Concluir o currículo mínimo definido em `docs/12-ESPECIFICACAO-MVP.md` (lições 2 e 3, além da 1ª já existente). A pausa da Fase 3 registrada em `.ai/context.md` em 2026-08-24 está **encerrada** — retomar a produção de lições é explicitamente a prioridade nº 1.
+2. **QR Code e link para avaliações (Fase 5, adiantada).** Prioridade nº 2, à frente de partes do roadmap numericamente anteriores (Fase 4). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", para o comportamento esperado.
+3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (em andamento), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
+
+**Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) permanece funcionando como está — não deve ser removido — mas não deve receber novo trabalho (mais mecânicas, conquistas, sequência de dias etc.) até que as três prioridades acima estejam concluídas ou o usuário mude essa decisão explicitamente.
+
 ## Fase 0 — Fundação
 
 Objetivo: preparar o projeto para desenvolvimento profissional e assistido por IA.

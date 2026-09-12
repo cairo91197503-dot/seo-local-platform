@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-12 — Prioridade de execução redefinida; Fase 3 volta a ser retomável
+
+O usuário definiu explicitamente a ordem de prioridade do trabalho daqui pra frente, registrada em `docs/02-ROADMAP.md` (seção "Prioridade atual") e em `.ai/context.md` ("Foco vigente"):
+
+1. currículo/lições (Fase 3) — concluir as lições 2 e 3 do currículo mínimo (`docs/12-ESPECIFICACAO-MVP.md`);
+2. QR Code e link para avaliações (Fase 5, adiantada na prioridade em relação à Fase 4);
+3. colocar o app no ar (finalizar a parte de Fase 2 que depende do usuário: projeto Firebase real, variáveis de ambiente, deploy no Render).
+
+**Gamificação (Fase 4) deixou de ser prioridade.** O que já existe (XP, níveis, progresso) continua funcionando como está, mas não deve receber trabalho novo até as três prioridades acima estarem concluídas ou o usuário mudar essa decisão.
+
+Como consequência direta, a pausa da Fase 3 registrada em `.ai/context.md` em 2026-08-24 está encerrada — o pipeline de lições (`scripts/generate-lesson.ts`) e a produção/revisão de conteúdo pedagógico podem ser retomados.
+
+Essa decisão veio logo após uma auditoria completa do repositório contra `docs/08`, `docs/09`, `docs/11` e `docs/12` (entregue ao usuário fora do repositório, não commitada), que mostrou, entre outros pontos, que só 1 das 3 lições do currículo mínimo existe e que a ferramenta de QR Code/link ainda não tem nenhuma linha de código.
+
 ## 2026-09-12 — Login com Google conectado à interface (Fase 2)
 
 A pedido do usuário, a autenticação com Google — que já tinha arquitetura e código prontos desde 24/08 (`src/lib/auth/AuthContext.tsx`), mas não estava conectada a nenhuma tela — passou a ser exigida antes de qualquer rota do app, conforme o fluxo já definido em `docs/12-ESPECIFICACAO-MVP.md` ("Login Google → Onboarding → Home → ..."). A funcionalidade foi resgatada como referência do protótipo anterior mais evoluído (`legacy/web-localpulse-v2/src/pages/Login.tsx`), adaptada à identidade visual do Estrelar e à decisão já tomada de login **só com Google** (sem e-mail/senha, diferente do protótipo original).

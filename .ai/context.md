@@ -41,9 +41,19 @@ Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seg
 
 ## Foco vigente
 
+**Prioridade definida pelo usuário em 2026-09-12** (ver `docs/02-ROADMAP.md`, seção "Prioridade atual", para o texto completo): nesta ordem,
+
+1. currículo/lições (Fase 3) — concluir o currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` (lições 2 e 3);
+2. QR Code e link para avaliações (Fase 5, adiantada);
+3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real, variáveis de ambiente, deploy no Render).
+
+**Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) fica como está; não iniciar trabalho novo nela sem pedido explícito.
+
+Uma auditoria completa do repositório contra `docs/08`, `docs/09`, `docs/11` e `docs/12` foi feita em 2026-09-12 e entregue ao usuário fora do repositório (não commitada) — ela lista com precisão o que está implementado, parcial, ausente ou contraditório em cada uma dessas três frentes, e vale como ponto de partida antes de detalhar qualquer uma delas em tarefas menores.
+
 O MVP do pipeline de mídia está validado na Oracle VM com Node.js, Piper/Faber e whisper.cpp configurados.
 
-A Fase 2 do roadmap (MVP técnico, `docs/02-ROADMAP.md`) está com roteamento real e a arquitetura/scaffolding de Firebase e Render prontos em código. O que falta — criar o projeto Firebase de fato, habilitar login Google, criar o Firestore, publicar `firestore.rules`, criar a conta/serviço no Render e preencher as variáveis de ambiente reais — depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode executar sozinha (`.ai/rules.md`). Enquanto isso não acontece, a Fase 2 técnica está bloqueada para avançar mais; a IA deve aguardar o usuário ou buscar a próxima tarefa que não dependa disso.
+Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`), mas depende do projeto Firebase real (item 3 acima) para funcionar de fato — ver `docs/07-CHANGELOG.md`, 2026-09-12.
 
 Nenhuma geração, aprovação ou substituição de asset está autorizada automaticamente.
 
@@ -55,8 +65,9 @@ Não retomar sem solicitação explícita do usuário:
 - nova pesquisa de TTS;
 - Chatterbox;
 - Kokoro;
-- substituição da narração Faber;
-- Fase 3 do roadmap (Academia/conteúdo educacional) por completo, incluindo o pipeline de lições (`scripts/generate-lesson.ts`) e qualquer produção ou revisão de lição — pausada em 2026-08-24 a pedido explícito do usuário.
+- substituição da narração Faber.
+
+**Fase 3 (Academia/conteúdo educacional) NÃO está mais pausada.** Havia sido pausada em 2026-08-24 a pedido explícito do usuário; a pausa foi encerrada em 2026-09-12, quando o usuário definiu lições como prioridade nº 1 (ver "Foco vigente" acima). O pipeline de lições (`scripts/generate-lesson.ts`) e a produção/revisão de lições podem ser retomados normalmente.
 
 Retomado em 2026-08-24, a pedido explícito do usuário: geração automática de imagens no pipeline de rascunhos (`docs/09-PADRAO-DE-LICOES.md`), via API Gemini. Continua exigindo revisão humana antes de qualquer imagem virar asset aprovado.
 
@@ -68,6 +79,7 @@ Retomado em 2026-08-24, a pedido explícito do usuário: geração automática d
 - Documentação oficial sustenta afirmações sobre produto, política e ranking; relatos servem apenas como evidência prática ou anedótica.
 - Assets aprovados não podem ser substituídos sem autorização explícita.
 - Nome comercial: Estrelar. Domínio principal: `estrelar.app`.
+- Prioridade de execução (2026-09-12): 1) lições, 2) QR Code/link de avaliação, 3) colocar o app no ar. Gamificação não é prioridade — ver "Foco vigente".
 
 ## Decisões abertas
 
