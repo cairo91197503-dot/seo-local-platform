@@ -4,7 +4,7 @@
 
 As fases abaixo continuam descrevendo o escopo completo do produto, mas **não representam mais a ordem de execução**. A prioridade real, na ordem em que devem ser atacadas, é:
 
-1. **Currículo/lições (Fase 3).** ✅ Concluído em 2026-09-12 — as 3 lições e 3 missões do currículo mínimo definido em `docs/12-ESPECIFICACAO-MVP.md` estão implementadas. Ver `docs/07-CHANGELOG.md`.
+1. **Currículo/lições (Fase 3).** ✅ Concluído em 2026-09-12 — as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas (texto; produção audiovisual pendente, lição por lição). Ver `docs/07-CHANGELOG.md`.
 2. **QR Code e link para avaliações (Fase 5, adiantada).** Prioridade nº 2, à frente de partes do roadmap numericamente anteriores (Fase 4). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", para o comportamento esperado.
 3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (em andamento), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
 
@@ -96,7 +96,7 @@ Entregas:
 
 - conclusão de aulas
 
-Status: currículo mínimo concluído. As 3 lições do currículo mínimo (`docs/12-ESPECIFICACAO-MVP.md`) estão implementadas — "Por que as avaliações importam?" (com a primeira cena audiovisual), "Como fazer um pedido de avaliação genuíno" e "Informações corretas ajudam o cliente a entender o negócio" (essas duas últimas só texto, sem áudio/ilustração ainda). O modelo de estado (`src/state/journey.ts`) suporta qualquer número de lições/missões via um currículo derivado do catálogo, em vez de uma lição/missão fixa — acrescentar novas lições não exige mudar a lógica de estado. Trilhas, progresso persistente entre dispositivos, quizzes e "retomar da última cena" continuam planejados ou dependem de decisão. Ver `docs/07-CHANGELOG.md`, 2026-09-12.
+Status: currículo do MVP concluído. As 12 lições e 12 missões de `docs/13-CURRICULO-MVP.md` (1 trilha, 5 módulos) estão implementadas em texto; só a primeira cena da lição "Por que as avaliações importam?" tem áudio/imagem aprovados — produção audiovisual das outras 11 é trabalho separado, lição por lição, via `scripts/generate-lesson.ts`. O modelo de estado (`src/state/journey.ts`) suporta qualquer número de lições/missões via um currículo derivado do catálogo, em vez de uma lição/missão fixa — acrescentar novas lições não exigiu mudar a lógica de estado. Progresso persistente entre dispositivos, quizzes e "retomar da última cena" continuam planejados ou dependem de decisão. Ver `docs/07-CHANGELOG.md` e `docs/13-CURRICULO-MVP.md`.
 
 ## Fase 4 — Gamificação
 

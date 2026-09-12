@@ -117,10 +117,10 @@ Esses exemplos não constituem currículo completo nem definem validação autom
 
 Os itens abaixo não devem ser inferidos ou implementados sem aprovação:
 
-- **DECISÃO NECESSÁRIA:** currículo completo;
-- **DECISÃO NECESSÁRIA:** quantidade de trilhas;
-- **DECISÃO NECESSÁRIA:** quantidade de módulos;
-- **DECISÃO NECESSÁRIA:** quantidade fixa de cenas;
+- ✅ ~~currículo completo~~ — decidido em 2026-09-12, ver `docs/13-CURRICULO-MVP.md`;
+- ✅ ~~quantidade de trilhas~~ — 1 trilha no MVP, ver `docs/13-CURRICULO-MVP.md`;
+- ✅ ~~quantidade de módulos~~ — 5 módulos no MVP, ver `docs/13-CURRICULO-MVP.md`;
+- **DECISÃO NECESSÁRIA:** quantidade fixa de cenas (na prática, as lições já implementadas usam quantidade variável; segue sem decisão formal além disso);
 - **DECISÃO NECESSÁRIA:** critérios de conclusão pedagógica;
 - **DECISÃO NECESSÁRIA:** sistema definitivo de XP;
 - **DECISÃO NECESSÁRIA:** persistência de progresso;
@@ -129,7 +129,7 @@ Os itens abaixo não devem ser inferidos ou implementados sem aprovação:
 - **DECISÃO NECESSÁRIA:** métricas de sucesso;
 - **DECISÃO NECESSÁRIA:** voz padrão para todas as lições;
 - **DECISÃO NECESSÁRIA:** padrão visual definitivo;
-- **DECISÃO NECESSÁRIA:** currículo final do MVP.
+- ✅ ~~currículo final do MVP~~ — decidido em 2026-09-12, ver `docs/13-CURRICULO-MVP.md`.
 
 ## Fontes oficiais
 

@@ -1,8 +1,6 @@
 import { lessonCatalog } from '../content/lessons/catalog'
 
 export const JOURNEY_STORAGE_KEY = 'estrelar-journey-v2'
-export const REVIEWS_IMPORTANCE_LESSON_ID = 'reviews-importance'
-export const FIRST_MISSION_ID = 'request-first-review'
 
 const LESSON_COMPLETION_XP = 20
 const MISSION_COMPLETION_XP = 40
@@ -46,6 +44,15 @@ export type CurriculumItem = {
 export const CURRICULUM: CurriculumItem[] = lessonCatalog
   .filter((lesson) => lesson.status === 'disponivel')
   .map((lesson) => ({ lessonId: lesson.id, missionId: lesson.missionId }))
+
+/**
+ * A missão associada à primeira lição disponível do currículo (não um id
+ * fixo): é ela que recebe o bônus de "jornada inicial" (ver
+ * `confirmMission`). Derivar de `CURRICULUM[0]` em vez de fixar um id evita
+ * que reordenar o currículo (`docs/13-CURRICULO-MVP.md`) deixe o bônus preso
+ * numa missão que passou a ser a segunda, terceira etc.
+ */
+const FIRST_MISSION_ID: string | undefined = CURRICULUM[0]?.missionId
 
 export type CurrentMissionState =
   | { kind: 'locked'; lessonId: string }

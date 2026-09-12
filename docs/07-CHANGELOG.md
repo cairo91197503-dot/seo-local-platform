@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-09-12 — As 12 lições e 12 missões do currículo do MVP implementadas (Fase 3)
+
+Produzidas as 9 lições/missões que faltavam de `docs/13-CURRICULO-MVP.md` (entrada anterior deste changelog), completando o currículo do MVP inteiro — 12 lições, 12 missões, 1 trilha, 5 módulos.
+
+**Lições novas** (`src/content/lessons/`, todas em texto, sem áudio/imagem, registradas em `registry.ts`): `why-appear-in-local-search`, `profile-represents-your-business`, `business-hours-matter`, `explain-what-you-offer`, `photos-help-customers-decide`, `how-to-respond-to-reviews`, `keep-your-profile-updated`, `first-profile-checkup`, `choose-your-next-action`. Cada uma segue o mesmo padrão de 4 cenas (contexto → conceito/destaque → exemplo/consequência → ação) já usado nas lições anteriores, com afirmações factuais limitadas à lista "Fatos oficiais do Google" de `docs/08-ARQUITETURA-PEDAGOGICA.md`.
+
+**Missões novas** (`src/content/missions/catalog.ts`): `discover-search-presence`, `basic-profile-checkup`, `review-business-hours`, `review-services`, `review-photos`, `respond-to-a-review`, `quick-profile-review`, `identify-three-improvements`, `execute-one-improvement`. Nenhuma pede nota específica, oferece incentivo por avaliação ou sugere seleção de quem pode avaliar (`docs/09-PADRAO-DE-LICOES.md`). A missão de responder avaliações (`respond-to-a-review`) não tem exemplo de mensagem pronto — respostas a avaliações negativas variam caso a caso demais para um modelo único ser uma boa ideia.
+
+**Todas as 12 lições em `src/content/lessons/catalog.ts` agora têm `status: 'disponivel'`** (as 9 novas estavam como `em-breve`). Nenhuma mudança foi necessária em `src/state/journey.ts` além da correção de bug já feita na entrega anterior (bônus inicial derivado de `CURRICULUM[0]`) — o currículo se expandiu inteiramente a partir do catálogo, confirmando que a generalização do modelo de estado feita mais cedo cumpriu o que se propôs.
+
+Validado com `npm run lint`, `npm run build`, e um novo teste que percorre `CURRICULUM` programaticamente do início ao fim (em vez de encadear cada lição manualmente) — 62 verificações, incluindo XP final (730 = 12×20 + 12×40 + 10 de bônus), 25 marcos únicos em `awardedMilestoneIds`, e uma checagem textual simples de que nenhuma missão sugere nota específica ou troca por avaliação. Teste pelo navegador real segue bloqueado neste ambiente pela mesma razão de sempre: login Google real exigido, sem projeto Firebase configurado aqui.
+
+**Com esta entrega, a prioridade nº 1 do usuário (lições) está concluída em sua forma ampliada** (currículo de 12, não mais o mínimo de 3). Próximo passo: prioridade nº 2 (QR Code e link para avaliações).
+
+## 2026-09-12 — Currículo do MVP fechado: 1 trilha, 5 módulos, 12 lições (`docs/13-CURRICULO-MVP.md`)
+
+O usuário trouxe uma proposta de currículo completo (avaliada contra `docs/08`, `docs/09` e `docs/12`) e decidiu adotá-la, criando `docs/13-CURRICULO-MVP.md`. Esse documento fecha, para o P0, quatro itens que `docs/08-ARQUITETURA-PEDAGOGICA.md` listava como `DECISÃO NECESSÁRIA`: currículo completo, quantidade de trilhas (1), quantidade de módulos (5) e currículo final do MVP (12 lições) — marcados como resolvidos em `docs/08`, seção "Decisões ainda abertas".
+
+**O currículo mínimo de 3 lições/missões entregue nesta mesma data (ver entradas abaixo) passa a ocupar novas posições** dentro do currículo de 12 — nenhum conteúdo já escrito foi descartado, só reordenado:
+
+| Antes | Depois | Lição |
+| --- | --- | --- |
+| 1ª | 3ª (módulo 1) | Informações corretas ajudam o cliente a entender o negócio (`accurate-business-info`) |
+| 2ª | 7ª (módulo 3) | Por que as avaliações importam? (`reviews-importance`) |
+| 3ª | 8ª (módulo 3) | Como fazer um pedido de avaliação genuíno (`review-request-message`) |
+
+As outras 9 lições do currículo (módulos 1, 2, 4 e 5) foram adicionadas a `src/content/lessons/catalog.ts` com status `em-breve` — aparecem em "Aprender" como planejadas, mas sem conteúdo ainda; produção lição a lição continua sendo o próximo trabalho.
+
+**Bug encontrado e corrigido durante a reordenação:** o bônus de 10 XP de "jornada inicial" (`docs/12-ESPECIFICACAO-MVP.md`, "após concluir a primeira lição e a primeira missão") estava implementado em `journey.ts` como um id fixo (`FIRST_MISSION_ID = 'request-first-review'`). Ao reordenar o currículo, `request-first-review` deixou de ser a primeira missão — o bônus teria ficado preso na missão errada. Corrigido: `FIRST_MISSION_ID` agora é derivado de `CURRICULUM[0]`, sempre a missão que efetivamente é a primeira do currículo vigente, e não pode mais ficar dessincronizado se o currículo for reordenado de novo no futuro. Também removida a constante `REVIEWS_IMPORTANCE_LESSON_ID`, que ficou sem uso depois que `getNextAction` passou a percorrer `CURRICULUM` (entrega anterior).
+
+Validado com `npm run lint`, `npm run build`, e o teste da máquina de estados (agora 38 verificações), reescrito para a nova ordem do currículo e para confirmar que o bônus inicial segue a missão certa após a reordenação.
+
 ## 2026-09-12 — Lição 3 e missão 3: currículo mínimo completo (Fase 3)
 
 Terceira e última lição/missão do currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md`:

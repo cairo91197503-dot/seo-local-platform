@@ -32,7 +32,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Login com Google conectado à interface em 2026-09-12: todo o app exige login antes de qualquer rota (`AuthGate` em `src/app/App.tsx`). Ainda não funciona de fato porque nenhum projeto Firebase real existe — ver item acima e `docs/07-CHANGELOG.md`.
 - Código-fonte dos 4 repositórios anteriores do LocalPulse foi arquivado em `legacy/` em 2026-09-12, como referência (não como dependência do build — `eslint.config.js` o ignora). Ver `legacy/README.md` e `docs/10-HERANCA-LOCALPULSE.md`.
 - O MVP local do pipeline de narração e alinhamento foi implementado com providers substituíveis, manifestos, candidatos separados e aprovação explícita.
-- O currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` foi concluído em 2026-09-12: as 3 lições e 3 missões (avaliações → pedido de avaliação → informações corretas do negócio) estão implementadas. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens, derivado do catálogo de lições; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md`.
+- O currículo do MVP foi fechado em 2026-09-12 em `docs/13-CURRICULO-MVP.md` (1 trilha, 5 módulos, 12 lições, resolvendo "currículo completo", "quantidade de trilhas", "quantidade de módulos" e "currículo final do MVP", antes `DECISÃO NECESSÁRIA` em `docs/08`) e, na mesma data, todas as 12 lições e 12 missões foram implementadas em texto (as 9 que faltavam foram escritas depois de o usuário confirmar "continuar com as lições"). Só a cena 1 de "Por que as avaliações importam?" tem áudio/imagem aprovados; produção audiovisual das outras 11 segue pendente, lição por lição. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens, derivado do catálogo de lições — as 9 lições novas não exigiram nenhuma mudança em `journey.ts`; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md` e `docs/13-CURRICULO-MVP.md`.
 
 ## Modelo de governança
 
@@ -44,7 +44,7 @@ Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seg
 
 **Prioridade definida pelo usuário em 2026-09-12** (ver `docs/02-ROADMAP.md`, seção "Prioridade atual", para o texto completo): nesta ordem,
 
-1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12: as 3 lições e 3 missões do currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` estão implementadas;
+1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12: as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas em texto. Produção audiovisual de cada lição (exceto a já feita) é trabalho separado, sem prioridade definida — não iniciar sem pedido explícito;
 2. QR Code e link para avaliações (Fase 5, adiantada) — **próxima prioridade a atacar**;
 3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real, variáveis de ambiente, deploy no Render).
 
@@ -84,7 +84,7 @@ Retomado em 2026-08-24, a pedido explícito do usuário: geração automática d
 
 ## Decisões abertas
 
-As decisões pedagógicas abertas estão registradas em `docs/08-ARQUITETURA-PEDAGOGICA.md`. Entre elas estão currículo, trilhas, módulos, conclusão pedagógica, XP definitivo, persistência, quizzes, modelo definitivo de missão, métricas, voz geral e padrão visual definitivo.
+As decisões pedagógicas abertas estão registradas em `docs/08-ARQUITETURA-PEDAGOGICA.md`. Currículo, trilhas e módulos foram decididos em 2026-09-12 (`docs/13-CURRICULO-MVP.md`); seguem abertos: conclusão pedagógica, XP definitivo, persistência, quizzes, modelo definitivo de missão, métricas, voz geral e padrão visual definitivo.
 
 Uma decisão aberta só bloqueia uma tarefa quando essa tarefa depende dela.
 
@@ -93,6 +93,7 @@ Uma decisão aberta só bloqueia uma tarefa quando essa tarefa depende dela.
 - Produto e escopo: `docs/01-PROJETO.md`.
 - Arquitetura pedagógica: `docs/08-ARQUITETURA-PEDAGOGICA.md`.
 - Produção de lições: `docs/09-PADRAO-DE-LICOES.md`.
+- Currículo do MVP (trilha, módulos, ordem das 12 lições): `docs/13-CURRICULO-MVP.md`.
 - Herança do LocalPulse (funcionalidades já exploradas antes): `docs/10-HERANCA-LOCALPULSE.md`.
 - Tecnologias e ambientes: `.ai/stack.md`.
 - Fluxo de trabalho: `.ai/workflow.md`.
