@@ -11,6 +11,10 @@ export const businessHoursMatterLesson: Lesson = {
       id: 'intro',
       title: 'Uma porta fechada é uma má primeira experiência',
       text: 'Um horário errado pode fazer um cliente ir até o seu negócio e encontrar a porta fechada.',
+      illustration: {
+        src: '/images/lessons/business-hours-matter/cena-01.jpg',
+        alt: 'Cliente em frente a uma loja fechada, enquanto o celular mostra o perfil informando que o negócio está aberto.',
+      },
     },
     {
       id: 'special-hours',
@@ -18,16 +22,28 @@ export const businessHoursMatterLesson: Lesson = {
       text: 'Além do horário normal, o Google permite informar horários especiais, como feriados e fechamentos temporários.',
       highlight:
         'Os horários podem e devem ser atualizados sempre que mudarem — inclusive em situações especiais, não só no dia a dia comum.',
+      illustration: {
+        src: '/images/lessons/business-hours-matter/cena-02.jpg',
+        alt: 'Calendário com um feriado marcado e um banner de horário especial sendo salvo no perfil.',
+      },
     },
     {
       id: 'consequence',
       title: 'O que isso causa na prática',
       text: 'Um cliente que vê "aberto" no perfil, vai até lá num feriado e encontra fechado perde confiança — mesmo sem culpa do negócio em si.',
+      illustration: {
+        src: '/images/lessons/business-hours-matter/cena-03.jpg',
+        alt: 'Sequência mostrando o celular indicando aberto e depois o mesmo cliente encontrando a porta fechada.',
+      },
     },
     {
       id: 'action',
       title: 'Agora é sua vez',
       text: 'Confira se o horário do seu perfil está correto, incluindo os próximos feriados ou exceções que você já souber.',
+      illustration: {
+        src: '/images/lessons/business-hours-matter/cena-04.jpg',
+        alt: 'Empresária conferindo no calendário do perfil os horários e os próximos feriados.',
+      },
     },
   ],
 }

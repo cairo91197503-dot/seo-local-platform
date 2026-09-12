@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-12 — Imagens implementadas nas lições 1 a 5; narração removida da lição 7 (Fase 3)
+
+O usuário gerou manualmente (via Gemini, usando os prompts de `docs/14-PROMPTS-DE-IMAGEM-LICOES.md`) as 4 imagens de cada uma das lições 1 a 5 do currículo (`why-appear-in-local-search`, `profile-represents-your-business`, `accurate-business-info`, `business-hours-matter`, `explain-what-you-offer`) e conectou a pasta com os arquivos (`OneDrive\Imagens\seo`, subpastas "Nova pasta" a "Nova pasta (5)", 4 imagens cada). Pediu para colocar todas no projeto até a lição 5, e para tirar a narração por enquanto.
+
+**Imagens identificadas e integradas:** como os arquivos vinham com nomes genéricos do Gemini (sem indicar a cena), cada uma das 20 imagens foi aberta e comparada ao conteúdo real de cada cena para determinar a correspondência correta antes de copiar. Copiadas para `public/images/lessons/<lesson-id>/cena-0N.jpg` (formato JPEG, mantido como veio — as imagens anteriores usavam PNG, mas não há motivo técnico para converter) e referenciadas no campo `illustration` de cada cena em `src/content/lessons/{why-appear-in-local-search,profile-represents-your-business,accurate-business-info,business-hours-matter,explain-what-you-offer}.ts`. As 5 lições passam a ter as 4 cenas ilustradas, seguindo a paleta de `docs/06-DESIGN-SYSTEM.md`.
+
+**Qualidade:** a maioria das imagens saiu fiel ao prompt e ao estilo esperado; algumas têm pequenos defeitos de texto típicos de geração por IA (uma palavra cortada, um símbolo de cor tipo "#8C8478" aparecendo como texto literal em vez de virar cor, um número de estrelas ilegível) — nada que comprometa o uso, mas vale uma olhada do usuário com calma depois.
+
+**Narração removida da lição 7 (`reviews-importance`):** a pedido explícito do usuário ("vamos tirar a narração por enquanto"), o campo `narration` (script, áudio, segmentos) e `estimatedDurationSeconds` foram removidos da cena `intro`, mantendo a `illustration` já aprovada (`cena-01.png`). O arquivo de áudio (`public/audio/lessons/reviews-importance/cena-01.wav`) não foi apagado, só deixou de ser referenciado — nenhuma lição usa áudio no momento.
+
+`docs/13-CURRICULO-MVP.md` atualizado para refletir o novo status de cada lição na tabela do currículo. Validado com `npm run lint` e `npm run build` (ambos limpos).
+
+## 2026-09-12 — Prompts de imagem para as 4 cenas de todas as 12 lições (`docs/14-PROMPTS-DE-IMAGEM-LICOES.md`)
+
+O usuário pediu para criar e implementar as imagens das lições no app. Isso esbarra na mesma restrição já conhecida do Firebase: gerar as imagens reais depende de `GOOGLE_AI_STUDIO_API_KEY` (pipeline em `scripts/generate-lesson.ts`, `docs/09-PADRAO-DE-LICOES.md`), que não está configurada neste ambiente e que a IA não pode criar ou obter sozinha; também não há nenhuma ferramenta de geração de imagem disponível nesta sessão. Diante disso, o usuário escolheu (via pergunta explícita) que eu preparasse os prompts de imagem, para gerar/rodar depois manualmente ou na VM Oracle — e, num segundo pedido, pediu explicitamente cobertura completa: pelo menos 4 imagens por lição (uma por cena), prompts separados e completos, lição por lição.
+
+`docs/14-PROMPTS-DE-IMAGEM-LICOES.md` foi expandido para cobrir as 4 cenas de todas as 12 lições — 48 prompts no total, um por cena, cada um completo e independente (pode ser colado sozinho no Gemini sem precisar consultar o resto do documento). Das 48, 1 já está aprovada e implementada (`reviews-importance`, cena 1) e não é regenerada; as outras 47 são novas. Cada prompt usa a paleta de `docs/06-DESIGN-SYSTEM.md` (evitando azul/cinza corporativo, ao contrário do ícone de busca azul já presente em `cena-01.png`, que permanece como está — asset aprovado não é alterado) e descreve uma composição específica alinhada ao conteúdo real de cada cena. O documento também registra o fluxo manual de revisão e publicação esperado depois que uma imagem for gerada.
+
+**Nenhuma imagem foi gerada, nenhum asset aprovado foi tocado, nenhuma lição foi alterada** — este é só o material de apoio para quando a geração puder ser feita (por conta do usuário, ou fornecendo a chave de API).
+
 ## 2026-09-12 — As 12 lições e 12 missões do currículo do MVP implementadas (Fase 3)
 
 Produzidas as 9 lições/missões que faltavam de `docs/13-CURRICULO-MVP.md` (entrada anterior deste changelog), completando o currículo do MVP inteiro — 12 lições, 12 missões, 1 trilha, 5 módulos.
