@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-09-12 — Lição 2 e missão 2 do currículo mínimo; modelo de estado generalizado (Fase 3)
+
+Primeira entrega da prioridade nº 1 definida pelo usuário (ver entrada anterior deste changelog). O currículo mínimo de `docs/12-ESPECIFICACAO-MVP.md` tinha só 1 de 3 lições; agora tem 2.
+
+**O que foi adicionado:**
+
+- `src/content/lessons/review-request-message.ts`: conteúdo da lição 2, "Como fazer um pedido de avaliação genuíno" (4 cenas, sem áudio/ilustração ainda — o pipeline de mídia em `scripts/generate-lesson.ts` roda separadamente, na Oracle VM). Segue as regras de `docs/09-PADRAO-DE-LICOES.md`: não pede nota específica, não sugere incentivo/troca por avaliação, linguagem simples em pt-BR.
+- `src/content/lessons/registry.ts`: mapa `id → Lesson`, usado por `LessonPage` para carregar qualquer lição do catálogo (antes, `LessonPage` importava diretamente `reviewsImportanceLesson`, hardcoded).
+- `src/content/missions/types.ts` e `src/content/missions/catalog.ts`: a missão "Peça sua primeira avaliação" (antes hardcoded dentro de `MissionsPage.tsx`) foi extraída para um catálogo, e a missão 2, "Prepare uma mensagem de solicitação respeitosa", foi adicionada — ela é desbloqueada ao concluir a lição 2.
+- `src/content/lessons/catalog.ts`: ganhou o campo `missionId`, ligando cada lição à missão que ela desbloqueia.
+
+**O que foi generalizado (`src/state/journey.ts`, `journey-context.ts`, `JourneyProvider.tsx`):** o modelo de estado só suportava uma lição e uma missão fixas. Agora:
+
+- `missionStatus` (um valor único) virou `missionStatuses` (um mapa `missionId → status`), permitindo qualquer número de missões.
+- `CURRICULUM`, derivado do catálogo de lições, define a ordem lição→missão a percorrer.
+- `startFirstMission`/`declareFirstMissionAction`/`confirmFirstMission` viraram `startMission`/`declareMissionAction`/`confirmMission`, todas recebendo `missionId` — a mesma lógica agora serve qualquer missão do currículo, não só a primeira.
+- Nova função `getCurrentMissionState`: devolve o ponto atual do usuário no currículo (lição bloqueada, missão em algum estado, ou "todas concluídas"), usada por `MissionsPage` para decidir o que mostrar sem precisar conhecer o currículo inteiro.
+- O bônus de "jornada inicial" (10 XP) continua exclusivo da primeira missão (`request-first-review`), como já era.
+- Chave do `localStorage` mudou de `estrelar-journey-v1` para `estrelar-journey-v2` (com `version: 2`), já que o formato do estado salvo mudou; jornadas antigas salvas localmente são descartadas e recomeçadas — aceitável nesta fase (nenhum usuário real ainda).
+
+**O que foi corrigido de passagem (bug encontrado na auditoria de 2026-09-12, item "duas fontes de verdade para lição concluída"):** `LessonPage.tsx` e `LearnPage.tsx` usavam **dois** armazenamentos independentes para saber se uma lição foi concluída — o hook `useLessonProgress` (chave `lesson-progress`) e `journey.completedLessonIds` (chave `estrelar-journey-v1`), que podiam divergir. `src/hooks/useLessonProgress.ts` foi removido; agora `journey.completedLessonIds` é a única fonte de verdade.
+
+**Também ajustado (achado da mesma auditoria, item "confirmação manual sem aviso"):** a tela de confirmação de missão agora exibe o texto "Esta confirmação é manual: o sistema registra sua declaração, mas não verifica a ação de forma externa.", conforme exigido por `docs/12-ESPECIFICACAO-MVP.md` ("o sistema registra que se trata de confirmação manual, não de verificação externa").
+
+**Fora do escopo desta entrega, propositalmente:** lição 3 do currículo mínimo; persistir a cena em que o usuário parou dentro de uma lição ("retomar de onde parou"); a divergência entre os limiares de XP por nível no código (20/40/70) e em `docs/12` (20/60/100), ambas já sinalizadas na auditoria e ainda pendentes de decisão do usuário; a sequência de dias falsa ("Sequência: 0 dias") na Home.
+
+Validado com `npm run lint`, `npm run build` (`tsc -b` limpo em todo o projeto) e um teste funcional da máquina de estados (`journey.ts`) fora da interface, cobrindo o fluxo completo — onboarding → lição 1 → missão 1 → lição 2 → missão 2 → currículo concluído —, idempotência de cada ação e XP final. O percurso pela interface via navegador não pôde ser testado ponta a ponta neste ambiente pelo mesmo motivo já registrado na entrega de login: o app exige login Google real antes de qualquer rota, e nenhum projeto Firebase real está configurado aqui.
+
 ## 2026-09-12 — Prioridade de execução redefinida; Fase 3 volta a ser retomável
 
 O usuário definiu explicitamente a ordem de prioridade do trabalho daqui pra frente, registrada em `docs/02-ROADMAP.md` (seção "Prioridade atual") e em `.ai/context.md` ("Foco vigente"):

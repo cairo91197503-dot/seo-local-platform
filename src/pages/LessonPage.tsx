@@ -2,26 +2,30 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { SceneView } from '../components/learn/SceneView'
 import { lessonCatalog } from '../content/lessons/catalog'
-import { reviewsImportanceLesson } from '../content/lessons/reviews-importance'
-import { useLessonProgress } from '../hooks/useLessonProgress'
+import { lessonRegistry } from '../content/lessons/registry'
 import { useJourney } from '../state/useJourney'
-
-const { scenes } = reviewsImportanceLesson
-const totalScenes = scenes.length
 
 export function LessonPage() {
   const { id } = useParams()
   const [sceneIndex, setSceneIndex] = useState(0)
   const [isFinished, setIsFinished] = useState(false)
-  const { markAsCompleted } = useLessonProgress(id ?? '')
+  const [renderedForId, setRenderedForId] = useState(id)
   const { completeLesson } = useJourney()
-  const catalogLesson = lessonCatalog.find((lesson) => lesson.id === id)
 
-  if (
-    !catalogLesson ||
-    catalogLesson.status !== 'disponivel' ||
-    catalogLesson.id !== reviewsImportanceLesson.id
-  ) {
+  const catalogLesson = lessonCatalog.find((lesson) => lesson.id === id)
+  const lesson = id ? lessonRegistry[id] : undefined
+
+  // Garante que trocar de lição (via navegação para outro :id) comece do
+  // início, mesmo que o componente da rota não seja remontado. Ajustar
+  // estado durante a renderização (em vez de em um efeito) é o padrão
+  // recomendado para "resetar estado quando uma prop muda".
+  if (id !== renderedForId) {
+    setRenderedForId(id)
+    setSceneIndex(0)
+    setIsFinished(false)
+  }
+
+  if (!catalogLesson || catalogLesson.status !== 'disponivel' || !lesson) {
     return (
       <section className="home-block lesson-not-found" role="alert">
         <h1 className="lesson-not-found__title">Lição não encontrada</h1>
@@ -35,14 +39,16 @@ export function LessonPage() {
     )
   }
 
+  const { scenes } = lesson
+  const totalScenes = scenes.length
+
   const goToNextScene = () => {
     if (sceneIndex < totalScenes - 1) {
       setSceneIndex((current) => current + 1)
       return
     }
 
-    markAsCompleted()
-    completeLesson(id ?? '')
+    completeLesson(lesson.id)
     setIsFinished(true)
   }
 
@@ -51,9 +57,7 @@ export function LessonPage() {
       <div className="learn-page">
         <section className="home-block lesson-complete" aria-live="polite">
           <h1 className="lesson-complete__title">Lição concluída!</h1>
-          <p className="lesson-complete__message">
-            Você aprendeu por que avaliações autênticas são importantes.
-          </p>
+          <p className="lesson-complete__message">Você concluiu "{lesson.title}".</p>
           <Link className="home-block__button" to="/">
             Voltar para o início
           </Link>

@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
-import { reviewsImportanceLesson } from '../content/lessons/reviews-importance'
-import { useLessonProgress } from '../hooks/useLessonProgress'
-
-const lessonMeta = reviewsImportanceLesson
+import { lessonCatalog } from '../content/lessons/catalog'
+import { useJourney } from '../state/useJourney'
 
 export function LearnPage() {
-  const { isCompleted } = useLessonProgress(lessonMeta.id)
+  const { journey } = useJourney()
 
   return (
     <div className="learn-page">
@@ -16,28 +14,30 @@ export function LearnPage() {
         </p>
       </header>
 
-      <article className="home-block lesson-card">
-        <h2 className="home-block__subtitle">{lessonMeta.title}</h2>
-        <dl className="lesson-meta">
-          <div className="lesson-meta__item">
-            <dt className="lesson-meta__label">Duração</dt>
-            <dd className="lesson-meta__value">{lessonMeta.duration}</dd>
-          </div>
-          <div className="lesson-meta__item">
-            <dt className="lesson-meta__label">Nível</dt>
-            <dd className="lesson-meta__value">{lessonMeta.level}</dd>
-          </div>
-          <div className="lesson-meta__item">
-            <dt className="lesson-meta__label">Status</dt>
-            <dd className="lesson-meta__value">
-              {isCompleted ? 'Concluída' : 'Disponível'}
-            </dd>
-          </div>
-        </dl>
-        <Link className="home-block__button" to={`/licao/${lessonMeta.id}`}>
-          {isCompleted ? 'Rever lição' : 'Começar lição'}
-        </Link>
-      </article>
+      {lessonCatalog.map((lessonMeta) => {
+        const isCompleted = journey.completedLessonIds.includes(lessonMeta.id)
+        const isAvailable = lessonMeta.status === 'disponivel'
+
+        return (
+          <article key={lessonMeta.id} className="home-block lesson-card">
+            <h2 className="home-block__subtitle">{lessonMeta.title}</h2>
+            <p className="home-block__text">{lessonMeta.description}</p>
+            <dl className="lesson-meta">
+              <div className="lesson-meta__item">
+                <dt className="lesson-meta__label">Status</dt>
+                <dd className="lesson-meta__value">
+                  {!isAvailable ? 'Em breve' : isCompleted ? 'Concluída' : 'Disponível'}
+                </dd>
+              </div>
+            </dl>
+            {isAvailable ? (
+              <Link className="home-block__button" to={`/licao/${lessonMeta.id}`}>
+                {isCompleted ? 'Rever lição' : 'Começar lição'}
+              </Link>
+            ) : null}
+          </article>
+        )
+      })}
     </div>
   )
 }

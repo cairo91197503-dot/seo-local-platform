@@ -32,6 +32,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Login com Google conectado à interface em 2026-09-12: todo o app exige login antes de qualquer rota (`AuthGate` em `src/app/App.tsx`). Ainda não funciona de fato porque nenhum projeto Firebase real existe — ver item acima e `docs/07-CHANGELOG.md`.
 - Código-fonte dos 4 repositórios anteriores do LocalPulse foi arquivado em `legacy/` em 2026-09-12, como referência (não como dependência do build — `eslint.config.js` o ignora). Ver `legacy/README.md` e `docs/10-HERANCA-LOCALPULSE.md`.
 - O MVP local do pipeline de narração e alinhamento foi implementado com providers substituíveis, manifestos, candidatos separados e aprovação explícita.
+- A lição 2 do currículo mínimo ("Como fazer um pedido de avaliação genuíno") e a missão 2 ("Prepare uma mensagem de solicitação respeitosa") foram implementadas em 2026-09-12. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md`.
 
 ## Modelo de governança
 

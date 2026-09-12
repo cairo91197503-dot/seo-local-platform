@@ -2,13 +2,14 @@ import { type ReactNode, useCallback, useMemo, useState } from 'react'
 import {
   completeLesson,
   completeOnboarding,
-  confirmFirstMission,
-  declareFirstMissionAction,
+  confirmMission,
+  declareMissionAction,
+  getCurrentMissionState,
   getJourneyLevel,
   getNextAction,
   persistJourney,
   readJourney,
-  startFirstMission,
+  startMission,
   type JourneyState,
 } from './journey'
 import { JourneyContext, type JourneyContextValue } from './journey-context'
@@ -34,12 +35,16 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
       journey,
       level: getJourneyLevel(journey.xp),
       nextAction: getNextAction(journey),
+      currentMissionState: getCurrentMissionState(journey),
       completeOnboarding: () => updateJourney(completeOnboarding),
       completeLesson: (lessonId) =>
         updateJourney((currentJourney) => completeLesson(currentJourney, lessonId)),
-      startFirstMission: () => updateJourney(startFirstMission),
-      declareFirstMissionAction: () => updateJourney(declareFirstMissionAction),
-      confirmFirstMission: () => updateJourney(confirmFirstMission),
+      startMission: (missionId) =>
+        updateJourney((currentJourney) => startMission(currentJourney, missionId)),
+      declareMissionAction: (missionId) =>
+        updateJourney((currentJourney) => declareMissionAction(currentJourney, missionId)),
+      confirmMission: (missionId) =>
+        updateJourney((currentJourney) => confirmMission(currentJourney, missionId)),
     }),
     [journey, updateJourney],
   )

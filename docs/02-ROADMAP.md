@@ -96,7 +96,7 @@ Entregas:
 
 - conclusão de aulas
 
-Status: parcial. A primeira microlição e a primeira cena audiovisual foram iniciadas. Trilhas, progresso persistente, quizzes e critérios pedagógicos de conclusão continuam planejados ou dependem de decisão.
+Status: parcial. 2 das 3 lições do currículo mínimo (`docs/12-ESPECIFICACAO-MVP.md`) estão implementadas — "Por que as avaliações importam?" (com a primeira cena audiovisual) e "Como fazer um pedido de avaliação genuíno" (só texto, sem áudio/ilustração ainda). O modelo de estado (`src/state/journey.ts`) agora suporta qualquer número de lições/missões via um currículo derivado do catálogo, em vez de uma lição/missão fixa. Falta a lição 3. Trilhas, progresso persistente entre dispositivos, quizzes e "retomar da última cena" continuam planejados ou dependem de decisão. Ver `docs/07-CHANGELOG.md`, 2026-09-12.
 
 ## Fase 4 — Gamificação
 

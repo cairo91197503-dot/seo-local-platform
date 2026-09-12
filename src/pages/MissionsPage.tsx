@@ -1,32 +1,12 @@
 import { Link } from 'react-router-dom'
+import { missionCatalog } from '../content/missions/catalog'
 import { useJourney } from '../state/useJourney'
 
-const MISSION = {
-  title: 'Peça sua primeira avaliação',
-  difficulty: 'Fácil',
-  reward: '+40 XP',
-  objective:
-    'Transforme um bom atendimento em uma oportunidade de receber uma avaliação autêntica no Google.',
-  explanation:
-    'As avaliações ajudam novos clientes a conhecerem a experiência de outras pessoas com seu negócio. O melhor momento para pedir uma avaliação é depois de uma experiência positiva e real.',
-  steps: [
-    'Escolha um cliente que acabou de ter uma experiência real com seu negócio.',
-    'Agradeça pela preferência e pergunte educadamente se ele gostaria de deixar uma avaliação.',
-    'Envie o link de avaliação do seu Perfil da Empresa no Google.',
-  ],
-  messageExample:
-    'Obrigado pela preferência! Se você gostou do nosso atendimento, poderia compartilhar sua experiência no Google? Sua avaliação ajuda muito nosso negócio.',
-} as const
-
 export function MissionsPage() {
-  const {
-    journey,
-    startFirstMission,
-    declareFirstMissionAction,
-    confirmFirstMission,
-  } = useJourney()
+  const { currentMissionState, startMission, declareMissionAction, confirmMission } =
+    useJourney()
 
-  if (journey.missionStatus === 'locked') {
+  if (currentMissionState.kind === 'locked') {
     return (
       <div className="missions-page">
         <header className="missions-page__header">
@@ -42,9 +22,13 @@ export function MissionsPage() {
             Missão bloqueada
           </h2>
           <p className="home-block__text">
-            Primeiro, conclua a lição sobre por que as avaliações importam.
+            Primeiro, conclua a lição correspondente para desbloquear esta
+            missão.
           </p>
-          <Link className="home-block__button" to="/licao/reviews-importance">
+          <Link
+            className="home-block__button"
+            to={`/licao/${currentMissionState.lessonId}`}
+          >
             Fazer lição
           </Link>
         </section>
@@ -52,24 +36,43 @@ export function MissionsPage() {
     )
   }
 
-  if (journey.missionStatus === 'completed') {
+  if (currentMissionState.kind === 'all-done') {
     return (
       <div className="missions-page">
         <section className="home-block mission-complete" aria-live="polite">
-          <h1 className="mission-complete__title">Missão concluída!</h1>
-          <p className="mission-complete__reward">+40 XP</p>
+          <h1 className="mission-complete__title">
+            Você concluiu todas as missões disponíveis!
+          </h1>
           <p className="mission-complete__message">
-            Você deu mais um passo para fortalecer a reputação do seu negócio.
+            Você deu passos importantes para fortalecer a reputação do seu
+            negócio. Em breve, novas lições e missões.
           </p>
           <Link className="home-block__button" to="/aprender">
-            Próximo aprendizado
+            Rever lições
           </Link>
         </section>
       </div>
     )
   }
 
-  if (journey.missionStatus === 'available') {
+  const { missionId, status } = currentMissionState
+  const mission = missionCatalog.find((item) => item.id === missionId)
+
+  if (!mission) {
+    return (
+      <section className="home-block lesson-not-found" role="alert">
+        <h1 className="lesson-not-found__title">Missão não encontrada</h1>
+        <p className="lesson-not-found__message">
+          Esta missão ainda não está disponível.
+        </p>
+        <Link className="home-block__button" to="/">
+          Voltar para o início
+        </Link>
+      </section>
+    )
+  }
+
+  if (status === 'available') {
     return (
       <div className="missions-page">
         <header className="missions-page__header">
@@ -80,17 +83,17 @@ export function MissionsPage() {
         </header>
 
         <article className="home-block mission-card">
-          <h2 className="home-block__subtitle">{MISSION.title}</h2>
+          <h2 className="home-block__subtitle">{mission.title}</h2>
 
           <dl className="mission-meta">
             <div className="mission-meta__item">
               <dt className="mission-meta__label">Dificuldade</dt>
-              <dd className="mission-meta__value">{MISSION.difficulty}</dd>
+              <dd className="mission-meta__value">{mission.difficulty}</dd>
             </div>
 
             <div className="mission-meta__item">
               <dt className="mission-meta__label">Recompensa</dt>
-              <dd className="mission-meta__value">{MISSION.reward}</dd>
+              <dd className="mission-meta__value">{mission.reward}</dd>
             </div>
 
             <div className="mission-meta__item">
@@ -102,7 +105,7 @@ export function MissionsPage() {
           <button
             type="button"
             className="home-block__button"
-            onClick={startFirstMission}
+            onClick={() => startMission(mission.id)}
           >
             Começar missão
           </button>
@@ -111,7 +114,7 @@ export function MissionsPage() {
     )
   }
 
-  if (journey.missionStatus === 'action_completed') {
+  if (status === 'action_completed') {
     return (
       <div className="missions-page">
         <section className="home-block" aria-labelledby="mission-confirm">
@@ -122,10 +125,14 @@ export function MissionsPage() {
             Você declarou que realizou a ação. Confirme para registrar a
             conclusão da missão e receber o XP.
           </p>
+          <p className="message-example__note">
+            Esta confirmação é manual: o sistema registra sua declaração, mas
+            não verifica a ação de forma externa.
+          </p>
           <button
             type="button"
             className="home-block__button"
-            onClick={confirmFirstMission}
+            onClick={() => confirmMission(mission.id)}
           >
             Confirmar missão
           </button>
@@ -134,10 +141,11 @@ export function MissionsPage() {
     )
   }
 
+  // status === 'in_progress'
   return (
     <div className="missions-page">
       <header className="missions-page__header">
-        <h1 className="page__title">{MISSION.title}</h1>
+        <h1 className="page__title">{mission.title}</h1>
         <p className="page__description">
           Coloque o aprendizado em prática no seu negócio.
         </p>
@@ -147,14 +155,14 @@ export function MissionsPage() {
         <h2 id="mission-objective" className="home-block__title">
           Objetivo
         </h2>
-        <p className="home-block__text">{MISSION.objective}</p>
+        <p className="home-block__text">{mission.objective}</p>
       </section>
 
       <section className="home-block" aria-labelledby="mission-explanation">
         <h2 id="mission-explanation" className="home-block__title">
           Por que isso importa
         </h2>
-        <p className="home-block__text">{MISSION.explanation}</p>
+        <p className="home-block__text">{mission.explanation}</p>
       </section>
 
       <section className="home-block" aria-labelledby="mission-steps">
@@ -162,7 +170,7 @@ export function MissionsPage() {
           Passos
         </h2>
         <ol className="mission-steps">
-          {MISSION.steps.map((step) => (
+          {mission.steps.map((step) => (
             <li key={step} className="mission-steps__item">
               {step}
             </li>
@@ -175,12 +183,9 @@ export function MissionsPage() {
           Ajuda prática
         </h2>
         <blockquote className="message-example">
-          <p className="message-example__text">{MISSION.messageExample}</p>
+          <p className="message-example__text">{mission.messageExample}</p>
         </blockquote>
-        <p className="message-example__note">
-          Este é apenas um modelo de mensagem. Você poderá personalizá-lo no
-          futuro.
-        </p>
+        <p className="message-example__note">{mission.messageExampleNote}</p>
       </section>
 
       <section className="home-block" aria-labelledby="mission-action">
@@ -193,7 +198,7 @@ export function MissionsPage() {
         <button
           type="button"
           className="home-block__button"
-          onClick={declareFirstMissionAction}
+          onClick={() => declareMissionAction(mission.id)}
         >
           Registrar ação realizada
         </button>
