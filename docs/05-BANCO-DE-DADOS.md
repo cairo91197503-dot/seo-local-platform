@@ -4,7 +4,7 @@
 
 ## Serviço
 
-Firestore (Firebase), conforme `docs/03-ARQUITETURA.md`. Nenhum projeto Firebase real foi criado ainda; este documento descreve o modelo planejado para quando o projeto existir.
+Firestore (Firebase), conforme `docs/03-ARQUITETURA.md`. O projeto Firebase real ("Estrelar", `estrelar-cc725`) foi criado em 2026-09-12: Authentication (provedor Google) e Firestore (modo produção, região `southamerica-east1`) estão ativos, e as regras de segurança abaixo já foram publicadas no console. Login com Google testado e funcionando. Deploy do app (Render) ainda depende de ação do usuário — ver `docs/02-ROADMAP.md`.
 
 ## Autenticação
 

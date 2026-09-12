@@ -29,7 +29,7 @@ O produto está em fase inicial de reconstrução. A estrutura navegável e a pr
 - Os tokens de paleta e tipografia do design system foram aplicados às telas existentes do MVP (Home, Missões, Ferramentas, Aprender), preservando propositalmente as cores escuras da tela imersiva de lição. Ver `docs/06-DESIGN-SYSTEM.md` e `docs/07-CHANGELOG.md`.
 - A navegação por abas foi substituída por roteamento real por URL (`react-router-dom`): `/`, `/aprender`, `/missoes`, `/ferramentas`. Ver `docs/02-ROADMAP.md` (Fase 2) e `docs/07-CHANGELOG.md`.
 - Arquitetura de Firebase (autenticação só com Google, Firestore, regras de segurança) e deploy no Render preparadas em código e documentação, mas nenhum projeto/conta real foi criado — só o usuário pode fazer isso. Ver `docs/05-BANCO-DE-DADOS.md`, `firestore.rules`, `render.yaml` e `docs/07-CHANGELOG.md`.
-- Login com Google conectado à interface em 2026-09-12: todo o app exige login antes de qualquer rota (`AuthGate` em `src/app/App.tsx`). Ainda não funciona de fato porque nenhum projeto Firebase real existe — ver item acima e `docs/07-CHANGELOG.md`.
+- Login com Google conectado à interface em 2026-09-12: todo o app exige login antes de qualquer rota (`AuthGate` em `src/app/App.tsx`). **Projeto Firebase real criado no mesmo dia** (`estrelar-cc725`): Authentication (Google) e Firestore (produção, `southamerica-east1`) ativos, regras de segurança publicadas, `.env.local` configurado no PC do usuário — login testado e funcionando de verdade. Ver `docs/07-CHANGELOG.md` e `docs/05-BANCO-DE-DADOS.md`.
 - Código-fonte dos 4 repositórios anteriores do LocalPulse foi arquivado em `legacy/` em 2026-09-12, como referência (não como dependência do build — `eslint.config.js` o ignora). Ver `legacy/README.md` e `docs/10-HERANCA-LOCALPULSE.md`.
 - O MVP local do pipeline de narração e alinhamento foi implementado com providers substituíveis, manifestos, candidatos separados e aprovação explícita.
 - O currículo do MVP foi fechado em 2026-09-12 em `docs/13-CURRICULO-MVP.md` (1 trilha, 5 módulos, 12 lições, resolvendo "currículo completo", "quantidade de trilhas", "quantidade de módulos" e "currículo final do MVP", antes `DECISÃO NECESSÁRIA` em `docs/08`) e, na mesma data, todas as 12 lições e 12 missões foram implementadas em texto (as 9 que faltavam foram escritas depois de o usuário confirmar "continuar com as lições"). Só a cena 1 de "Por que as avaliações importam?" tem áudio/imagem aprovados; produção audiovisual das outras 11 segue pendente, lição por lição. O modelo de estado (`src/state/journey.ts`) deixou de ser fixo para uma lição/missão e passou a suportar um currículo com qualquer número de itens, derivado do catálogo de lições — as 9 lições novas não exigiram nenhuma mudança em `journey.ts`; a chave de armazenamento local mudou de `estrelar-journey-v1` para `estrelar-journey-v2`. Ver `docs/07-CHANGELOG.md` e `docs/13-CURRICULO-MVP.md`.
@@ -48,7 +48,7 @@ Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seg
 
 1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12: as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas em texto. Produção audiovisual de cada lição (exceto a já feita) é trabalho separado, sem prioridade definida — não iniciar sem pedido explícito;
 2. QR Code e link para avaliações (Fase 5, adiantada) — **próxima prioridade a atacar**;
-3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real, variáveis de ambiente, deploy no Render).
+3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real ✅ concluído em 2026-09-12, variáveis de ambiente, deploy no Render — ainda pendente).
 
 **Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) fica como está; não iniciar trabalho novo nela sem pedido explícito.
 
@@ -56,7 +56,7 @@ Uma auditoria completa do repositório contra `docs/08`, `docs/09`, `docs/11` e 
 
 O MVP do pipeline de mídia está validado na Oracle VM com Node.js, Piper/Faber e whisper.cpp configurados.
 
-Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`), mas depende do projeto Firebase real (item 3 acima) para funcionar de fato — ver `docs/07-CHANGELOG.md`, 2026-09-12.
+Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`) e funciona de fato desde 2026-09-12, com o projeto Firebase real criado e configurado — ver `docs/07-CHANGELOG.md`.
 
 Nenhuma geração, aprovação ou substituição de asset está autorizada automaticamente.
 

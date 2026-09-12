@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-12 — Projeto Firebase real criado; login com Google funcionando (Fase 2)
+
+O usuário criou o projeto Firebase real "Estrelar" (`estrelar-cc725`) no console, resolvendo a dependência de credencial/conta que só ele podia resolver (mesma restrição já documentada para o Gemini). Passos feitos manualmente pelo usuário no console, guiados passo a passo:
+
+- **Authentication:** provedor Google ativado em "Método de login".
+- **Firestore Database:** criado em modo produção, região `southamerica-east1` (São Paulo).
+- **Regras de segurança:** o conteúdo de `firestore.rules` (negar por padrão; cada usuário só lê/escreve o próprio documento em `/users/{userId}`) foi colado e publicado no console.
+- **App Web registrado:** "Estrelar Web", gerando a config do SDK (`apiKey`, `authDomain`, `projectId`, `storageBucket`, `messagingSenderId`, `appId`).
+
+Com os 6 valores da config, criado `.env.local` na raiz do projeto (só localmente no PC do usuário — arquivo já coberto por `.gitignore`, nunca commitado). O `measurementId` do Firebase Analytics veio no config copiado do console, mas foi deixado de fora: o código atual (`src/lib/firebase.ts`) só inicializa Auth e Firestore, Analytics não faz parte do escopo decidido até agora.
+
+**Login com Google testado pelo usuário e confirmado funcionando de verdade** — antes disso o app rodava só com a interface pronta, mostrando aviso de configuração ausente. `docs/02-ROADMAP.md`, `docs/05-BANCO-DE-DADOS.md` e `.ai/context.md` atualizados para refletir que a Fase 2 está quase concluída — falta só o deploy real no Render (depende de o usuário criar a conta/serviço lá; `render.yaml` já está pronto).
+
 ## 2026-09-12 — Imagens implementadas nas lições 1 a 5; narração removida da lição 7 (Fase 3)
 
 O usuário gerou manualmente (via Gemini, usando os prompts de `docs/14-PROMPTS-DE-IMAGEM-LICOES.md`) as 4 imagens de cada uma das lições 1 a 5 do currículo (`why-appear-in-local-search`, `profile-represents-your-business`, `accurate-business-info`, `business-hours-matter`, `explain-what-you-offer`) e conectou a pasta com os arquivos (`OneDrive\Imagens\seo`, subpastas "Nova pasta" a "Nova pasta (5)", 4 imagens cada). Pediu para colocar todas no projeto até a lição 5, e para tirar a narração por enquanto.

@@ -6,7 +6,7 @@ As fases abaixo continuam descrevendo o escopo completo do produto, mas **não r
 
 1. **Currículo/lições (Fase 3).** ✅ Concluído em 2026-09-12 — as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas (texto; produção audiovisual pendente, lição por lição). Ver `docs/07-CHANGELOG.md`.
 2. **QR Code e link para avaliações (Fase 5, adiantada).** Prioridade nº 2, à frente de partes do roadmap numericamente anteriores (Fase 4). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", para o comportamento esperado.
-3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (em andamento), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
+3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (✅ concluído em 2026-09-12 — Authentication com Google e Firestore ativos, login testado e funcionando), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
 
 **Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) permanece funcionando como está — não deve ser removido — mas não deve receber novo trabalho (mais mecânicas, conquistas, sequência de dias etc.) até que as três prioridades acima estejam concluídas ou o usuário mude essa decisão explicitamente.
 
@@ -76,7 +76,7 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
-Status: parcial. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`, `docs/07-CHANGELOG.md`, 2026-09-12) e todo o app exige login antes de qualquer rota. Firebase (auth + Firestore) e deploy no Render têm arquitetura e scaffolding prontos no código (`src/lib/firebase.ts`, `src/lib/auth/AuthContext.tsx`, `firestore.rules`, `render.yaml`, `docs/05-BANCO-DE-DADOS.md`), mas nenhum projeto Firebase ou serviço Render real foi criado — isso depende de ação do usuário (criação de conta/credenciais), fora do que a IA pode fazer sozinha. Enquanto isso não acontece, o app roda localmente mostrando um aviso de configuração ausente em vez de quebrar.
+Status: quase concluída. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`, `docs/07-CHANGELOG.md`, 2026-09-12) e todo o app exige login antes de qualquer rota. **O projeto Firebase real foi criado em 2026-09-12** (`estrelar-cc725`): Authentication (Google) e Firestore (produção, `southamerica-east1`) ativos, regras de segurança publicadas, `.env.local` configurado localmente — login testado e funcionando de verdade. Falta só o deploy: nenhum serviço Render real foi criado ainda — isso depende de ação do usuário (criação de conta), fora do que a IA pode fazer sozinha; `render.yaml` já está pronto para quando isso acontecer.
 
 ## Fase 3 — Academia
 
