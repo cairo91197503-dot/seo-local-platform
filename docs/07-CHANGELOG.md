@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-13 — QR Code e link de avaliações implementados (Fase 5, adiantada)
+
+A pedido do usuário ("implementa o qr code"), implementada a ferramenta de link e QR Code para avaliações descrita em `docs/12-ESPECIFICACAO-MVP.md`, fechando a prioridade nº 2 do roadmap (`docs/02-ROADMAP.md`).
+
+**Estado novo:** `src/state/reviewLink.ts` — mesmo padrão de `state/journey.ts` (localStorage, versionado, funções puras testáveis). Guarda só a URL configurada e quando foi configurada; não há histórico de versões anteriores (atualizar substitui a configuração atual, como pede a especificação). `isValidReviewLinkUrl` faz só validação de formato (`http`/`https`) — a especificação é explícita que isso não confirma propriedade, perfil associado, destino final ou vínculo real com o Google, e a interface deixa isso claro para o usuário.
+
+**Interface:** `src/pages/ToolsPage.tsx` deixou de ser um placeholder. Sem link configurado, mostra um formulário com instruções de onde encontrar o link no Perfil da Empresa do Google. Com link válido, mostra o QR Code (gerado 100% no dispositivo, sem chamar nenhum serviço externo — biblioteca `qrcode`, nova dependência), o link em texto, e os botões "Copiar link", "Baixar QR Code" (baixa um PNG pronto pra imprimir) e "Trocar link". Testado que o QR Code gerado decodifica de volta pro link exato.
+
+Pequeno ajuste de conteúdo: o passo 3 da missão "Peça sua primeira avaliação" (`request-first-review`, em `src/content/missions/catalog.ts`) passou a mencionar que o link/QR Code pode ser configurado em Ferramentas.
+
+Como no resto do app, nenhuma XP é concedida por configurar ou trocar o link — isso é function de ferramenta, não de progresso no currículo, conforme a seção "Repetição e duplicidade" de `docs/12`. `docs/02-ROADMAP.md` atualizado com a conclusão desta prioridade. Validado com `npm run lint` e `npm run build`, ambos limpos.
+
 ## 2026-09-13 — App transformado em PWA instalável, preparando publicação na Google Play
 
 A pedido do usuário ("quero otimizar o app para android pois vou publicar na googleplaystory"), avaliadas as duas abordagens possíveis para publicar um app web na Play Store — TWA (Trusted Web Activity, abre o site real dentro de um app fino) e Capacitor (empacota o build dentro de um app nativo). Decidido com o usuário usar **TWA**: mais leve, não precisa de Android Studio para gerar o pacote, e atualiza automaticamente junto com o site — trade-off aceito é depender do app já estar publicado numa URL HTTPS real antes de gerar o pacote Android (o deploy no Render, prioridade nº 3 do roadmap, já estava pendente de qualquer forma).

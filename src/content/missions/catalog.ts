@@ -120,7 +120,7 @@ export const missionCatalog: MissionCatalogItem[] = [
     steps: [
       'Escolha um cliente que acabou de ter uma experiência real com seu negócio.',
       'Agradeça pela preferência e pergunte educadamente se ele gostaria de deixar uma avaliação.',
-      'Envie o link de avaliação do seu Perfil da Empresa no Google.',
+      'Envie o link de avaliação do seu Perfil da Empresa no Google — você pode configurá-lo e gerar um QR Code pronto para compartilhar em Ferramentas.',
     ],
     confirmationPrompt: 'Já realizou a ação com um cliente que teve uma boa experiência?',
     messageExample:

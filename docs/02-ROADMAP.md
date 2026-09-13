@@ -5,7 +5,7 @@
 As fases abaixo continuam descrevendo o escopo completo do produto, mas **não representam mais a ordem de execução**. A prioridade real, na ordem em que devem ser atacadas, é:
 
 1. **Currículo/lições (Fase 3).** ✅ Concluído em 2026-09-12 — as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas (texto; produção audiovisual pendente, lição por lição). Ver `docs/07-CHANGELOG.md`.
-2. **QR Code e link para avaliações (Fase 5, adiantada).** Prioridade nº 2, à frente de partes do roadmap numericamente anteriores (Fase 4). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", para o comportamento esperado.
+2. **QR Code e link para avaliações (Fase 5, adiantada).** ✅ Concluído em 2026-09-13 — ferramenta implementada em `/ferramentas`: o usuário cola o link de avaliação, o app valida formato de URL e gera um QR Code (com opção de baixar como PNG e copiar o link). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", e `docs/07-CHANGELOG.md`.
 3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (✅ concluído em 2026-09-12 — Authentication com Google e Firestore ativos, login testado e funcionando), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
 
 **Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) permanece funcionando como está — não deve ser removido — mas não deve receber novo trabalho (mais mecânicas, conquistas, sequência de dias etc.) até que as três prioridades acima estejam concluídas ou o usuário mude essa decisão explicitamente.

@@ -715,6 +715,123 @@ body {
   color: var(--color-accent-star);
 }
 
+.tools-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tools-page__header {
+  display: block;
+}
+
+.review-link-qr {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.review-link-qr__image {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+.review-link-tool__url {
+  margin: 0 0 1rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  background: var(--color-bg);
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+.review-link-tool__url-label {
+  color: var(--color-ink-secondary);
+}
+
+.review-link-tool__url-value {
+  font-weight: 600;
+}
+
+.review-link-tool__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.review-link-tool__actions .home-block__button,
+.review-link-tool__actions .quick-access__button {
+  width: auto;
+  flex: 1 1 9rem;
+}
+
+.review-link-tool__help {
+  margin: 0 0 1rem;
+  padding: 0.75rem;
+  border-left: 3px solid var(--color-accent-star);
+  border-radius: 0.25rem;
+  background: var(--color-bg);
+  font-size: 0.875rem;
+  color: var(--color-ink-secondary);
+}
+
+.review-link-tool__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.review-link-tool__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.review-link-tool__input {
+  padding: 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  font: inherit;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+  background: #fff;
+}
+
+.review-link-tool__input:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.review-link-tool__input[aria-invalid='true'] {
+  border-color: #c0392b;
+}
+
+.review-link-tool__error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #c0392b;
+}
+
+.review-link-tool__notice {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-ink-secondary);
+}
+
+.review-link-tool__note {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-ink-secondary);
+}
+
 @media (min-width: 768px) {
   body {
     --bottom-nav-control-height: 3.5rem;
