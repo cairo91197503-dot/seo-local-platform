@@ -51,13 +51,14 @@ export const chooseYourNextActionLesson: Lesson = {
     {
       id: 'action',
       title: 'Agora é sua vez',
-      text: 'Escolha uma das melhorias que você identificou e coloque em prática agora.',
+      text: 'Escolha uma das melhorias que você identificou e coloque em prática agora. Você já sabe cuidar disso sozinho — e, no futuro, o Estrelar vai poder ajudar a fazer parte disso por você, sempre com a sua aprovação antes de qualquer mudança.',
       illustration: {
         src: '/images/lessons/choose-your-next-action/cena-04.jpg',
         alt: 'Empresário já em ação, editando no celular a melhoria escolhida agora mesmo.',
       },
       narration: {
-        script: 'Escolha uma das melhorias que você identificou e coloque em prática agora.',
+        script:
+          'Escolha uma das melhorias que você identificou e coloque em prática agora. Você já sabe cuidar disso sozinho — e, no futuro, o Estrelar vai poder ajudar a fazer parte disso por você, sempre com a sua aprovação antes de qualquer mudança.',
       },
     },
   ],

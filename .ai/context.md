@@ -49,15 +49,34 @@ A IA pode atuar de forma autônoma na implementação das tarefas já definidas 
 
 Alterações destrutivas, mudanças de escopo e ações irreversíveis devem seguir as regras de segurança do projeto e o fluxo operacional vigente.
 
+## Reposicionamento estratégico (decisão fechada em 2026-09-13)
+
+O usuário fechou uma mudança de posicionamento do produto, a partir de análise própria de viabilidade de mercado (~24 milhões de pequenos negócios no Brasil, 52% já usando IA, concorrência nacional cobrando R$197–R$700/mês por gestão de perfil). Resumo:
+
+- Produto deixa de ser "curso de SEO local com IA" e passa a ser **"o assistente do pequeno negócio para cuidar do Perfil da Empresa no Google"**.
+- **Free = Aprender** (currículo, missões, gamificação, QR Code — continua tudo gratuito, mas agora é o motor de aquisição/onboarding de um SaaS, não o produto final).
+- **Premium = Fazer** (assinatura, referência inicial R$19,90/mês por 1 negócio; conecta a conta Google via OAuth e usa as APIs oficiais do Business Profile/Performance/Reviews para diagnosticar, sugerir e — sempre com aprovação explícita do usuário antes de publicar — executar).
+- **Risco já conhecido deste projeto, não hipotético:** o LocalPulse (versão anterior) parou de evoluir justamente por nunca ter conseguido acesso oficial à API do Google Business Profile (ver `docs/10-HERANCA-LOCALPULSE.md`) — por isso, pedir esse acesso (ação do usuário: conta Google, projeto no Google Cloud, justificativa comercial, site válido; análise de até 14 dias) é tratado como a ação mais urgente do roadmap, antes de qualquer código de integração.
+- Detalhes completos da nova ordem de prioridade (P0–P4) em `docs/02-ROADMAP.md`, seção "Reposicionamento estratégico". Esboço de arquitetura da integração Google em `docs/17-INTEGRACAO-GOOGLE-BUSINESS-PROFILE.md`.
+- A Lição 12 (`choose-your-next-action`) passou a plantar a semente do Premium futuro no texto/narração — sem criar nenhum botão ou CTA funcional, já que OAuth/integração Google ainda não existem no código. Ver `docs/07-CHANGELOG.md`.
+
 ## Foco vigente
 
-**Prioridade definida pelo usuário em 2026-09-12** (ver `docs/02-ROADMAP.md`, seção "Prioridade atual", para o texto completo): nesta ordem,
+**Prioridade definida pelo usuário em 2026-09-13, P0–P4** (ver `docs/02-ROADMAP.md`, seção "Prioridade atual (P0–P4...)", para o texto completo — substitui a prioridade de 2026-09-12 listada logo abaixo):
 
-1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12: as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas em texto. Produção audiovisual: as 12 lições têm imagem nas 4 cenas desde 2026-09-13; 43 das 48 cenas já têm narração em áudio integrada (Piper/whisper.cpp, via VM Oracle) — próximo passo é gerar e integrar o áudio das 5 cenas restantes (1 em `business-hours-matter`, 4 em `choose-your-next-action`);
-2. ✅ QR Code e link para avaliações (Fase 5, adiantada) — concluído em 2026-09-13, ver acima;
-3. colocar o app no ar (concluir a parte de Fase 2 que depende do usuário: projeto Firebase real ✅ concluído em 2026-09-12, variáveis de ambiente, deploy no Render — ainda pendente; agora também pré-requisito da publicação Android, ver `docs/15-PUBLICACAO-ANDROID.md`) — **próxima prioridade a atacar**.
+- **P0 — Produto Free:** ✅ currículo (12 lições, 43 das 48 cenas com áudio — faltam 1 cena de `business-hours-matter` e as 4 de `choose-your-next-action`) e ✅ QR Code/link de avaliações concluídos; falta onboarding/conta, landing page e o deploy real (Render) — **próxima ação prática a atacar**, porque agora também é pré-requisito de P1 e da publicação Android (`docs/15-PUBLICACAO-ANDROID.md`).
+- **P1 — Monetização:** assinatura Premium, Google OAuth, conexão ao Business Profile, avaliações com resposta sugerida por IA. **Bloqueado até a API do Google ser aprovada** (ação do usuário, ver acima).
+- **P2 — Assistente:** fotos, posts, alertas, check-up automático, IA contextual por tarefa.
+- **P3 — Inteligência:** performance (buscas/chamadas/rotas/termos) traduzida em linguagem simples pela IA.
+- **P4 — Escala:** planos Profissional/Agência (múltiplos negócios — nunca no plano de R$19,90) e canal B2B2C (contadores, associações, Sebrae local, agências).
 
 **Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) fica como está; não iniciar trabalho novo nela sem pedido explícito.
+
+### Prioridade anterior (2026-09-12, para referência histórica)
+
+1. ✅ currículo/lições (Fase 3) — concluído em 2026-09-12.
+2. ✅ QR Code e link para avaliações (Fase 5, adiantada) — concluído em 2026-09-13.
+3. colocar o app no ar — projeto Firebase real ✅ concluído em 2026-09-12; variáveis de ambiente e deploy no Render ainda pendentes.
 
 Uma auditoria completa do repositório contra `docs/08`, `docs/09`, `docs/11` e `docs/12` foi feita em 2026-09-12 e entregue ao usuário fora do repositório (não commitada) — ela lista com precisão o que está implementado, parcial, ausente ou contraditório em cada uma dessas três frentes, e vale como ponto de partida antes de detalhar qualquer uma delas em tarefas menores.
 
@@ -89,7 +108,8 @@ Retomado em 2026-08-24, a pedido explícito do usuário: geração automática d
 - Documentação oficial sustenta afirmações sobre produto, política e ranking; relatos servem apenas como evidência prática ou anedótica.
 - Assets aprovados não podem ser substituídos sem autorização explícita.
 - Nome comercial: Estrelar. Domínio principal: `estrelar.app`.
-- Prioridade de execução (2026-09-12): 1) lições, 2) QR Code/link de avaliação, 3) colocar o app no ar. Gamificação não é prioridade — ver "Foco vigente".
+- Prioridade de execução (2026-09-12, histórica): 1) lições, 2) QR Code/link de avaliação, 3) colocar o app no ar. Substituída em 2026-09-13 pela prioridade P0–P4 — ver "Foco vigente".
+- Posicionamento (2026-09-13): produto é "o assistente do pequeno negócio para cuidar do Perfil da Empresa no Google", não um "curso de SEO local com IA". Free = aprender (currículo/missões/QR Code, motor de aquisição). Premium = fazer (assinatura, referência R$19,90/mês por 1 negócio, conecta ao Google via OAuth, sempre com aprovação do usuário antes de publicar qualquer coisa — nunca automático). Planos com múltiplos negócios (Profissional/Agência) ficam para depois, nunca no plano de entrada. Ver seção "Reposicionamento estratégico" acima e `docs/02-ROADMAP.md`.
 
 ## Decisões abertas
 

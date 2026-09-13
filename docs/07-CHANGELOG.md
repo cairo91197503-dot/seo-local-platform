@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-13 — Reposicionamento estratégico: Free (aprender) + Premium (conectar ao Google e fazer)
+
+A partir de uma análise de viabilidade de mercado feita pelo usuário, foi fechada uma decisão de posicionamento: o produto deixa de ser vendido como "curso de SEO local com IA" e passa a ser "o assistente do pequeno negócio para cuidar do Perfil da Empresa no Google". O currículo/missões/QR Code (Free) continuam gratuitos, mas passam a ser o motor de aquisição e onboarding de um plano Premium (referência inicial R$19,90/mês, 1 negócio) que conecta a conta Google do usuário via OAuth e usa as APIs oficiais do Business Profile/Performance/Reviews para diagnosticar o perfil e, sempre com aprovação explícita do usuário antes de publicar qualquer coisa, executar ações (responder avaliação, atualizar informação, criar post, preparar foto).
+
+**Documentação atualizada:** `docs/02-ROADMAP.md` ganhou uma seção "Reposicionamento estratégico" e a prioridade de execução foi reordenada para P0 (produto Free) → P1 (monetização/integração Google) → P2 (assistente) → P3 (inteligência/performance) → P4 (escala/multi-negócio/B2B2C), substituindo a lista de prioridade de 2026-09-12. `.ai/context.md` espelha a mesma decisão.
+
+**Risco já conhecido, não hipotético:** o LocalPulse (versão anterior deste projeto) parou de evoluir justamente por nunca ter conseguido acesso oficial à API do Google Business Profile (`docs/10-HERANCA-LOCALPULSE.md`). Por isso, solicitar esse acesso (ação do usuário — conta Google, projeto no Google Cloud, justificativa comercial, site válido; análise de até 14 dias pelo Google) foi tratado como a ação mais urgente de P1, registrada antes de qualquer código de integração.
+
+**Esboço de arquitetura criado** em `docs/17-INTEGRACAO-GOOGLE-BUSINESS-PROFILE.md`: descreve a camada isolada de integração (para o Free nunca depender dela, e para não repetir a fragilidade do LocalPulse), o fluxo de OAuth/consentimento como um segundo consentimento separado do login normal, a desvinculação obrigatória em até 7 dias úteis, e o padrão "IA sugere → usuário aprova → Estrelar publica" para toda ação de escrita. Nenhuma chamada real às APIs foi implementada — é só o esboço, aguardando aprovação de acesso.
+
+**Pequeno ajuste de conteúdo:** a cena final da Lição 12 (`choose-your-next-action`, `src/content/lessons/choose-your-next-action.ts`) passou a mencionar que, no futuro, o Estrelar vai poder ajudar a executar as melhorias identificadas, sempre com aprovação do usuário — plantando a semente do Premium sem criar nenhum botão ou CTA funcional (a integração ainda não existe). Como essa lição ainda não tinha áudio integrado, o ajuste de texto não invalidou nenhuma narração já gravada. Validado com `npm run lint` e `npm run build`, ambos limpos.
+
 ## 2026-09-13 — Auditoria Editorial das 12 lições (sem alteração de código)
 
 A pedido do usuário, feita uma Auditoria Editorial completa das 12 lições, seguindo sua própria recomendação explícita de fazer isso antes de produzir qualquer lição ou imagem nova. Escopo: reler os 12 roteiros de narração na íntegra, visualizar e classificar as 48 imagens (4 por lição), conferir a duração real do áudio contra o `duration` exibido, e checar o alinhamento lição → missão. **Nenhum código ou conteúdo foi alterado** — é um documento de diagnóstico, entregue em `docs/16-AUDITORIA-EDITORIAL-LICOES.md`.

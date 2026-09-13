@@ -1,14 +1,30 @@
 # Roadmap do Projeto
 
-## Prioridade atual (definida pelo usuário em 2026-09-12)
+## Reposicionamento estratégico (decisão fechada em 2026-09-13)
 
-As fases abaixo continuam descrevendo o escopo completo do produto, mas **não representam mais a ordem de execução**. A prioridade real, na ordem em que devem ser atacadas, é:
+O usuário fechou uma decisão de posicionamento que muda a função de cada parte do produto, a partir de uma análise de viabilidade de mercado que ele mesmo conduziu (mercado de ~24 milhões de pequenos negócios no Brasil, 52% já usando IA no dia a dia, concorrência nacional cobrando de R$197 a R$700/mês por gestão de perfil, e ferramentas internacionais como BrightLocal/Whitespark). Resumo da decisão:
 
-1. **Currículo/lições (Fase 3).** ✅ Concluído em 2026-09-12 — as 12 lições e 12 missões do currículo do MVP (`docs/13-CURRICULO-MVP.md`) estão implementadas (texto; produção audiovisual pendente, lição por lição). Ver `docs/07-CHANGELOG.md`.
-2. **QR Code e link para avaliações (Fase 5, adiantada).** ✅ Concluído em 2026-09-13 — ferramenta implementada em `/ferramentas`: o usuário cola o link de avaliação, o app valida formato de URL e gera um QR Code (com opção de baixar como PNG e copiar o link). Ver `docs/12-ESPECIFICACAO-MVP.md`, seção "Link e QR Code para avaliações", e `docs/07-CHANGELOG.md`.
-3. **Colocar o app no ar.** Concluir a parte de Fase 2 que depende de ação do usuário: projeto Firebase real configurado (✅ concluído em 2026-09-12 — Authentication com Google e Firestore ativos, login testado e funcionando), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe).
+- **O produto deixa de ser vendido como "curso de SEO local com IA"** e passa a ser posicionado como *"o assistente do pequeno negócio para cuidar do Perfil da Empresa no Google"*.
+- **Free = Aprender.** As 12 lições, a gamificação, as missões e o QR Code continuam gratuitos — mas deixam de ser o produto final e passam a ser o motor de aquisição e onboarding pedagógico de um SaaS. O currículo ensina o usuário a reconhecer o que precisa de atenção no próprio perfil; a última lição (`choose-your-next-action`) planta a semente de que, no futuro, o Estrelar pode fazer isso automaticamente (ver `docs/07-CHANGELOG.md`).
+- **Premium = Fazer.** Um plano pago (referência inicial: R$19,90/mês, 1 negócio por assinatura) que conecta a conta Google do usuário via OAuth e usa as APIs oficiais do Google Business Profile (perfil, avaliações, performance) para diagnosticar o perfil, sugerir melhorias e — sempre com aprovação explícita do usuário antes de publicar qualquer coisa — executar ações reais (responder avaliação, atualizar informação, criar post, preparar foto). Nunca publica nada automaticamente sem esse passo de aprovação, seguindo a política do próprio Google.
+- **Risco crítico já conhecido deste projeto, não hipotético:** a versão anterior do produto (LocalPulse) chegou a implementar OAuth e um proxy para dados do Google Business Profile, mas nunca obteve acesso oficial à API — isso foi o principal motivo de a evolução ter parado (ver `docs/10-HERANCA-LOCALPULSE.md`). Por isso, solicitar o acesso à API é tratado como a ação mais urgente de todo este roadmap, não como um detalhe técnico a resolver depois — o processo de aprovação do Google pode levar até 14 dias e depende de justificativa comercial, projeto no Google Cloud e site empresarial válido, tudo isso ação do usuário, fora do que a IA pode fazer sozinha.
+- Ver `docs/17-INTEGRACAO-GOOGLE-BUSINESS-PROFILE.md` para o esboço de arquitetura da camada de integração (OAuth, consentimento, desvinculação em até 7 dias úteis, isolamento da API do resto do app).
 
-**Gamificação (Fase 4) não é prioridade agora.** O que já existe (XP, níveis, progresso) permanece funcionando como está — não deve ser removido — mas não deve receber novo trabalho (mais mecânicas, conquistas, sequência de dias etc.) até que as três prioridades acima estejam concluídas ou o usuário mude essa decisão explicitamente.
+## Prioridade atual (P0–P4, definida pelo usuário em 2026-09-13, substitui a lista de 2026-09-12 abaixo)
+
+1. **P0 — Produto Free.** ✅ Currículo (12 lições/12 missões, `docs/13-CURRICULO-MVP.md`) e QR Code/link de avaliações (`docs/12-ESPECIFICACAO-MVP.md`) concluídos. Falta: onboarding/conta, landing page, e o deploy real (ver item 3 abaixo, agora pré-requisito de tudo que vem depois, inclusive da publicação Android já preparada em `docs/15-PUBLICACAO-ANDROID.md`).
+2. **P1 — Monetização.** Assinatura Premium R$19,90/mês (1 negócio); Google OAuth; conexão com o Google Business Profile; tela "Meu Perfil" (resumo + próximas ações, sem "nota de SEO"); avaliações com resposta sugerida por IA (usuário sempre aprova antes de publicar). **Bloqueado até a API do Google ser aprovada** — ação do usuário, ver acima.
+3. **P2 — Assistente.** Fotos (melhorar, nunca inventar — o Google exige que fotos representem a realidade), posts, alertas, check-up automático, IA contextual (por tarefa: responder avaliação / melhorar informação / criar post / entender o perfil — não um chat genérico).
+4. **P3 — Inteligência.** Performance (buscas, chamadas, rotas, termos de pesquisa via API de Performance) traduzida em linguagem simples pela IA, não em números soltos.
+5. **P4 — Escala.** Planos Profissional (3–5 negócios) e Agência (múltiplos perfis) — nunca no plano de R$19,90, que é 1 negócio só, para não quebrar a economia do plano de entrada. Depois disso, oportunidade B2B2C (contadores, associações comerciais, Sebrae local, agências pequenas) para reduzir CAC.
+
+**Gamificação (Fase 4, na numeração de fases abaixo) não é prioridade agora.** O que já existe (XP, níveis, progresso) permanece funcionando como está — não deve ser removido — mas não deve receber novo trabalho (mais mecânicas, conquistas, sequência de dias etc.) até que P0–P1 estejam concluídos ou o usuário mude essa decisão explicitamente.
+
+### Prioridade anterior (2026-09-12, para referência histórica)
+
+1. Currículo/lições (Fase 3) — ✅ concluído em 2026-09-12.
+2. QR Code e link para avaliações (Fase 5, adiantada) — ✅ concluído em 2026-09-13.
+3. Colocar o app no ar — projeto Firebase real configurado (✅ concluído em 2026-09-12), variáveis de ambiente publicadas no serviço de deploy, e o primeiro deploy real no Render (`render.yaml` já existe) ainda pendentes.
 
 ## Fase 0 — Fundação
 
@@ -162,29 +178,35 @@ Status: planejado.
 
 ## Fase 7 — Integração Google
 
+**Reclassificada em 2026-09-13: esta fase agora é P1 do roadmap de prioridade (ver seção no topo deste documento), não mais uma fase distante.** Ela é a base técnica do plano Premium.
+
 Objetivo: automatizar tarefas quando houver acesso oficial às APIs necessárias.
 
 Possíveis entregas:
 
-- conectar conta Google
+- conectar conta Google (OAuth 2.0, com consentimento explícito, revogação e desvinculação em até 7 dias úteis)
 
 - listar empresas administradas pelo usuário
 
-- avaliações
+- avaliações (listar, ler, responder — resposta sempre preparada por IA e aprovada pelo usuário antes de publicar, nunca automática)
 
 - respostas
 
-- métricas permitidas
+- métricas permitidas (API de Performance — buscas, chamadas, rotas, termos de pesquisa)
 
-- informações do perfil
+- informações do perfil (API do Business Profile)
 
-A integração com Google não deve ser requisito para o funcionamento principal da plataforma.
+A integração com Google **continua não sendo requisito para o funcionamento principal da plataforma** — o Free (currículo, missões, QR Code) funciona inteiramente sem ela. Ela é requisito só do Premium.
 
-O protótipo anterior (LocalPulse) chegou a implementar login OAuth e um proxy para dados do Google Business Profile, mas nunca obteve acesso oficial à API — esse foi o principal motivo de a evolução ter parado. Ver `docs/10-HERANCA-LOCALPULSE.md`.
+O protótipo anterior (LocalPulse) chegou a implementar login OAuth e um proxy para dados do Google Business Profile, mas nunca obteve acesso oficial à API — esse foi o principal motivo de a evolução ter parado. Ver `docs/10-HERANCA-LOCALPULSE.md`. **Por isso, solicitar acesso à API (ação do usuário: conta Google, projeto no Google Cloud, justificativa comercial, site empresarial válido — análise de até 14 dias) é a primeira ação prática desta fase**, antes de qualquer código de integração.
 
-Status: planejado.
+Ver `docs/17-INTEGRACAO-GOOGLE-BUSINESS-PROFILE.md` para o esboço de arquitetura (camada isolada, fluxo de OAuth/consentimento, e como isso se conecta ao modelo de créditos de IA do Premium).
+
+Status: em planejamento ativo (P1 do roadmap de prioridade), bloqueada pela aprovação de acesso à API.
 
 ## Fase 8 — Comercialização
+
+**Reclassificada em 2026-09-13:** parte desta fase (plano Premium R$19,90/mês, 1 negócio) é P1; planos Profissional/Agência (múltiplos negócios) e o canal B2B2C (contadores, associações comerciais, Sebrae local, agências) são P4, só depois de validar o Premium com os primeiros usuários reais.
 
 Objetivo: transformar o produto em negócio recorrente.
 
@@ -192,16 +214,16 @@ Entregas:
 
 - landing page
 
-- planos
+- planos (Free, Premium R$19,90/1 negócio, e futuramente Profissional/Agência — nunca múltiplos negócios no plano de entrada, para não quebrar a economia dele)
 
 - pagamentos
 
 - onboarding
 
-- analytics
+- analytics (funil completo: cadastro → 1ª lição concluída → QR Code gerado → Google conectado → paywall → assinatura → cancelamento; é a métrica mais importante para validar a tese antes de investir em mais IA)
 
 - programa beta
 
-- primeiros clientes
+- primeiros clientes (meta inicial de referência: 20–50 usuários reais no Premium para validar a proposta antes de expandir os recursos de IA)
 
-Status: planejado.
+Status: planejamento ativo — depende do deploy (P0) e da integração Google (P1, Fase 7) estarem prontos antes de abrir cobrança de verdade.
