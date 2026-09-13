@@ -37,11 +37,11 @@ Nenhum serviço Render chegou a ser criado — `render.yaml` era só um blueprin
 O que já foi preparado no repositório:
 
 - `firebase.json` (public: `dist`, rewrite de SPA para `index.html`) e `.firebaserc` (projeto `estrelar-cc725`).
-- `.github/workflows/firebase-hosting-deploy.yml`: build (`npm ci && npm run build`) e deploy automático a cada push em `main`, equivalente ao que o Render faria sozinho.
+- `.github/workflows/firebase-hosting-merge.yml` (deploy em push na `main`) e `firebase-hosting-pull-request.yml` (preview automático por Pull Request) — gerados por `firebase init hosting:github`, que também criou a service account `github-action-1325354707` (permissão Firebase Hosting Admin) e já subiu o secret `FIREBASE_SERVICE_ACCOUNT_ESTRELAR_CC725` no GitHub sozinho. Os dois workflows foram ajustados para passar os 6 `VITE_FIREBASE_*` como env vars no passo de build.
 
 O que ainda depende de ação do usuário (fora do que a IA pode fazer sozinha):
 
-- Criar os secrets no GitHub (Settings > Secrets and variables > Actions): os 6 `VITE_FIREBASE_*` (mesmos valores de `.env.local`) e `FIREBASE_SERVICE_ACCOUNT_ESTRELAR_CC725`. Caminho mais simples para o secret da service account: rodar `firebase init hosting:github` localmente.
+- Criar os 6 secrets `VITE_FIREBASE_*` no GitHub (Settings > Secrets and variables > Actions), mesmos valores de `.env.local`. O secret da service account já existe (criado automaticamente pelo assistente do Firebase).
 - Primeiro deploy de verdade (depois que os secrets existirem, basta dar push em `main`).
 - Depois do primeiro deploy: adicionar o domínio do Firebase Hosting (e depois `estrelar.app`, quando comprado) à lista de domínios autorizados do Firebase Authentication — sem isso o login com Google falha no domínio novo.
 
