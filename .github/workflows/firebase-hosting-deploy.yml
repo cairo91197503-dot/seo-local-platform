@@ -1,0 +1,65 @@
+# Deploy do Estrelar FREE (front estático) no Firebase Hosting a cada push
+# na branch main. Substitui o plano de deploy no Render, que nunca chegou a
+# ser aplicado (ver render.yaml, marcado como obsoleto, e docs/02-ROADMAP.md).
+#
+# Auth e Firestore já vivem no mesmo projeto Firebase (estrelar-cc725) desde
+# 2026-09-12; este workflow só cobre a hospedagem do front (dist/).
+#
+# PRÉ-REQUISITO — sem isto o job "deploy" falha (o build continua passando):
+# criar estes secrets em Settings > Secrets and variables > Actions deste
+# repositório no GitHub:
+#
+#   VITE_FIREBASE_API_KEY
+#   VITE_FIREBASE_AUTH_DOMAIN
+#   VITE_FIREBASE_PROJECT_ID
+#   VITE_FIREBASE_STORAGE_BUCKET
+#   VITE_FIREBASE_MESSAGING_SENDER_ID
+#   VITE_FIREBASE_APP_ID
+#     (os mesmos 6 valores já configurados em .env.local — nunca commitar
+#     esse arquivo; ver .gitignore)
+#
+#   FIREBASE_SERVICE_ACCOUNT_ESTRELAR_CC725
+#     (JSON de uma service account com permissão de deploy no Hosting)
+#
+# Forma recomendada de criar o secret da service account e já deixar tudo
+# ligado: rodar `firebase init hosting:github` localmente (Firebase CLI,
+# logado com a conta dona do projeto estrelar-cc725) e apontar para este
+# repositório — o assistente cria a service account, salva o secret no
+# GitHub e pode até sobrescrever este arquivo (tudo bem, o resultado é
+# equivalente). Os 6 secrets de VITE_FIREBASE_* continuam precisando ser
+# adicionados manualmente, pois o assistente não sabe desses valores.
+
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ESTRELAR_CC725 }}'
+          channelId: live
+          projectId: estrelar-cc725
