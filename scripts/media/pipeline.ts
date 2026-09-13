@@ -255,12 +255,19 @@ function deriveCanonicalSegments(
   tokens: { startSeconds: number; endSeconds: number }[],
 ): TimestampSegment[] {
   const ranges = sentenceRanges(script)
+  let previousLastIndex = -1
   return ranges.map(({ start, end }) => {
-    const firstIndex = Math.min(tokens.length - 1, Math.floor((start / script.length) * tokens.length))
-    const lastIndex = Math.min(tokens.length - 1, Math.max(firstIndex, Math.ceil((end / script.length) * tokens.length) - 1))
+    const proportionalFirst = Math.floor((start / script.length) * tokens.length)
+    // Cada frase precisa começar num token depois do último usado pela frase anterior,
+    // senão a fronteira entre frases arredonda para o mesmo índice e os timestamps
+    // resultantes se sobrepõem (start da próxima < end da anterior).
+    const firstIndex = Math.min(tokens.length - 1, Math.max(previousLastIndex + 1, proportionalFirst))
+    const proportionalLast = Math.ceil((end / script.length) * tokens.length) - 1
+    const lastIndex = Math.min(tokens.length - 1, Math.max(firstIndex, proportionalLast))
     const first = tokens[firstIndex]
     const last = tokens[lastIndex]
     if (!first || !last) throw new Error('Alinhamento sem tokens suficientes')
+    previousLastIndex = lastIndex
     return { textStart: start, textEnd: end, startSeconds: first.startSeconds, endSeconds: last.endSeconds }
   })
 }

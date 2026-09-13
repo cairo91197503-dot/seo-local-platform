@@ -17,6 +17,10 @@ export const explainWhatYouOfferLesson: Lesson = {
       },
       narration: {
         script: 'Antes de entrar em contato, o cliente quer entender rapidamente o que o seu negócio oferece.',
+        audioSrc: '/audio/lessons/explain-what-you-offer/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 92, startSeconds: 0, endSeconds: 4.64 },
+        ],
       },
     },
     {
@@ -32,6 +36,12 @@ export const explainWhatYouOfferLesson: Lesson = {
       narration: {
         script:
           'Descrever com clareza os serviços ou produtos ajuda o cliente a decidir sem precisar perguntar o básico primeiro. E o critério aqui é simples: não coloque uma informação porque o Google gosta dela. Coloque porque o cliente precisa dela para decidir.',
+        audioSrc: '/audio/lessons/explain-what-you-offer/clarity/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 114, startSeconds: 0, endSeconds: 5.31 },
+          { textStart: 114, textEnd: 198, startSeconds: 5.42, endSeconds: 9.76 },
+          { textStart: 198, textEnd: 249, startSeconds: 9.81, endSeconds: 12.32 },
+        ],
       },
     },
     {
@@ -45,6 +55,10 @@ export const explainWhatYouOfferLesson: Lesson = {
       narration: {
         script:
           'Na prática, uma lista de serviços clara e atualizada economiza tempo seu e do cliente, e evita expectativas erradas.',
+        audioSrc: '/audio/lessons/explain-what-you-offer/example/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 116, startSeconds: 0, endSeconds: 6.64 },
+        ],
       },
     },
     {
@@ -58,6 +72,11 @@ export const explainWhatYouOfferLesson: Lesson = {
       narration: {
         script:
           'Você já sabe por que isso importa. A próxima missão é revisar como o seu negócio descreve o que oferece.',
+        audioSrc: '/audio/lessons/explain-what-you-offer/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 35, startSeconds: 0, endSeconds: 1.91 },
+          { textStart: 35, textEnd: 104, startSeconds: 1.91, endSeconds: 5.24 },
+        ],
       },
     },
   ],

@@ -11,33 +11,120 @@
         "sha256": "dbc9abc0a5ba984fd9167dc9ac985e9086be3c966abf488372d0a98725dedc08"
       },
       "narration": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "piper",
+          "adapterVersion": "1",
+          "model": "pt_BR-faber-medium.onnx",
+          "voice": "pt_BR-faber-medium"
+        },
+        "sourceHash": "815833d8d908d8c4ba837b13dbb261883f75eeac157a62636d8addac1c46b9fb",
+        "artifact": {
+          "workingPath": ".media/cache/piper/815833d8d908d8c4ba837b13dbb261883f75eeac157a62636d8addac1c46b9fb/narration.wav",
+          "sha256": "5bebf4031338c05dff3eba2792f33f67c87c76b43f9cf9c730cfb168574f4389",
+          "durationSeconds": 8.544943310657596,
+          "format": {
+            "container": "wav",
+            "channels": 1,
+            "sampleRateHz": 22050,
+            "bitsPerSample": 16
+          },
+          "publicPath": "/audio/lessons/accurate-business-info/intro/narration-v001.wav"
+        },
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T21:24:34.118Z",
+          "artifactHash": "5bebf4031338c05dff3eba2792f33f67c87c76b43f9cf9c730cfb168574f4389",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T21:24:34.313Z",
+          "reviewedBy": "Cairo",
+          "artifactHash": "5bebf4031338c05dff3eba2792f33f67c87c76b43f9cf9c730cfb168574f4389",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T21:24:34.503Z",
+          "approvedBy": "Cairo",
+          "artifactHash": "5bebf4031338c05dff3eba2792f33f67c87c76b43f9cf9c730cfb168574f4389"
         }
       },
       "alignment": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "whisper-cpp-dtw",
+          "adapterVersion": "1",
+          "model": "ggml-tiny-q5_1.bin"
+        },
+        "sourceHash": "35019d865e49199ddc5af894479c0882e359c66e60f166995b0cf8d1d490ee68",
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T21:24:34.126Z",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T21:24:34.635Z",
+          "reviewedBy": "Cairo",
+          "artifactHash": "35019d865e49199ddc5af894479c0882e359c66e60f166995b0cf8d1d490ee68",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T21:24:34.828Z",
+          "approvedBy": "Cairo",
+          "artifactHash": "35019d865e49199ddc5af894479c0882e359c66e60f166995b0cf8d1d490ee68"
+        },
+        "source": {
+          "scriptHash": "dbc9abc0a5ba984fd9167dc9ac985e9086be3c966abf488372d0a98725dedc08",
+          "audioHash": "5bebf4031338c05dff3eba2792f33f67c87c76b43f9cf9c730cfb168574f4389"
+        },
+        "rawArtifactPath": ".media/cache/whisper-cpp-dtw/35019d865e49199ddc5af894479c0882e359c66e60f166995b0cf8d1d490ee68/alignment.json",
+        "timestamps": [
+          {
+            "textStart": 0,
+            "textEnd": 171,
+            "startSeconds": 0,
+            "endSeconds": 8.44
+          }
+        ]
+      },
+      "narrationHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
         }
-      }
+      ],
+      "alignmentHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
+        }
+      ]
     },
     "what-matters": {
       "script": {
@@ -45,33 +132,126 @@
         "sha256": "30cab7a66fad346969cff76e14ccfda8de494e9f872e4718da2baa4091652945"
       },
       "narration": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "piper",
+          "adapterVersion": "1",
+          "model": "pt_BR-faber-medium.onnx",
+          "voice": "pt_BR-faber-medium"
+        },
+        "sourceHash": "9df8cb405827addc8c944fc9b4c67fab91ea22f51b4be92327b2e09c30fad043",
+        "artifact": {
+          "workingPath": ".media/cache/piper/9df8cb405827addc8c944fc9b4c67fab91ea22f51b4be92327b2e09c30fad043/narration.wav",
+          "sha256": "ff45079e564ecda199d98dc12b66b65c64bbb35a216c4b694c94860174b1a507",
+          "durationSeconds": 16.834467120181404,
+          "format": {
+            "container": "wav",
+            "channels": 1,
+            "sampleRateHz": 22050,
+            "bitsPerSample": 16
+          },
+          "publicPath": "/audio/lessons/accurate-business-info/what-matters/narration-v001.wav"
+        },
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:01:57.599Z",
+          "artifactHash": "ff45079e564ecda199d98dc12b66b65c64bbb35a216c4b694c94860174b1a507",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:01:58.122Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "ff45079e564ecda199d98dc12b66b65c64bbb35a216c4b694c94860174b1a507",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:01:58.397Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "ff45079e564ecda199d98dc12b66b65c64bbb35a216c4b694c94860174b1a507"
         }
       },
       "alignment": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "whisper-cpp-dtw",
+          "adapterVersion": "1",
+          "model": "ggml-tiny-q5_1.bin"
+        },
+        "sourceHash": "94fa3513d1c0ca835a36811f6bfd87c2eb8113956fbd2492efa0117b891d9ad4",
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:01:57.608Z",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:01:58.605Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "94fa3513d1c0ca835a36811f6bfd87c2eb8113956fbd2492efa0117b891d9ad4",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:01:58.802Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "94fa3513d1c0ca835a36811f6bfd87c2eb8113956fbd2492efa0117b891d9ad4"
+        },
+        "source": {
+          "scriptHash": "30cab7a66fad346969cff76e14ccfda8de494e9f872e4718da2baa4091652945",
+          "audioHash": "ff45079e564ecda199d98dc12b66b65c64bbb35a216c4b694c94860174b1a507"
+        },
+        "rawArtifactPath": ".media/cache/whisper-cpp-dtw/94fa3513d1c0ca835a36811f6bfd87c2eb8113956fbd2492efa0117b891d9ad4/alignment.json",
+        "timestamps": [
+          {
+            "textStart": 0,
+            "textEnd": 158,
+            "startSeconds": 0,
+            "endSeconds": 8.8
+          },
+          {
+            "textStart": 158,
+            "textEnd": 304,
+            "startSeconds": 8.8,
+            "endSeconds": 16.8
+          }
+        ]
+      },
+      "narrationHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
         }
-      }
+      ],
+      "alignmentHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
+        }
+      ]
     },
     "keep-updated": {
       "script": {
@@ -79,33 +259,126 @@
         "sha256": "629bee6a433be79b1bf7c681a4fc58cc355bcd5d4ddb91bd01a5fbd2daf518fa"
       },
       "narration": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "piper",
+          "adapterVersion": "1",
+          "model": "pt_BR-faber-medium.onnx",
+          "voice": "pt_BR-faber-medium"
+        },
+        "sourceHash": "4dc492761222ca79a2d00810b232cd97b66fddf94405f8ac7e8e8953ff7edf6e",
+        "artifact": {
+          "workingPath": ".media/cache/piper/4dc492761222ca79a2d00810b232cd97b66fddf94405f8ac7e8e8953ff7edf6e/narration.wav",
+          "sha256": "b338ec0ea2b111455614c1c99d4fb98164ab2245268072c413cf028526e3801a",
+          "durationSeconds": 11.609977324263038,
+          "format": {
+            "container": "wav",
+            "channels": 1,
+            "sampleRateHz": 22050,
+            "bitsPerSample": 16
+          },
+          "publicPath": "/audio/lessons/accurate-business-info/keep-updated/narration-v001.wav"
+        },
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:03:25.800Z",
+          "artifactHash": "b338ec0ea2b111455614c1c99d4fb98164ab2245268072c413cf028526e3801a",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:03:26.713Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "b338ec0ea2b111455614c1c99d4fb98164ab2245268072c413cf028526e3801a",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:03:27.197Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "b338ec0ea2b111455614c1c99d4fb98164ab2245268072c413cf028526e3801a"
         }
       },
       "alignment": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "whisper-cpp-dtw",
+          "adapterVersion": "1",
+          "model": "ggml-tiny-q5_1.bin"
+        },
+        "sourceHash": "5ffab64a1fae7e3a9bc6466ded4b4191ecf99a1be262caf59725c4ae4dc79da2",
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:03:25.804Z",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:03:27.511Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "5ffab64a1fae7e3a9bc6466ded4b4191ecf99a1be262caf59725c4ae4dc79da2",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:03:27.720Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "5ffab64a1fae7e3a9bc6466ded4b4191ecf99a1be262caf59725c4ae4dc79da2"
+        },
+        "source": {
+          "scriptHash": "629bee6a433be79b1bf7c681a4fc58cc355bcd5d4ddb91bd01a5fbd2daf518fa",
+          "audioHash": "b338ec0ea2b111455614c1c99d4fb98164ab2245268072c413cf028526e3801a"
+        },
+        "rawArtifactPath": ".media/cache/whisper-cpp-dtw/5ffab64a1fae7e3a9bc6466ded4b4191ecf99a1be262caf59725c4ae4dc79da2/alignment.json",
+        "timestamps": [
+          {
+            "textStart": 0,
+            "textEnd": 49,
+            "startSeconds": 0,
+            "endSeconds": 2.4
+          },
+          {
+            "textStart": 49,
+            "textEnd": 212,
+            "startSeconds": 2.47,
+            "endSeconds": 11.44
+          }
+        ]
+      },
+      "narrationHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
         }
-      }
+      ],
+      "alignmentHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
+        }
+      ]
     },
     "action": {
       "script": {
@@ -113,33 +386,126 @@
         "sha256": "e15d5613a6e39742afc546b4b9e64536b7017a902aa4f7f9326a633c8bda12e7"
       },
       "narration": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "piper",
+          "adapterVersion": "1",
+          "model": "pt_BR-faber-medium.onnx",
+          "voice": "pt_BR-faber-medium"
+        },
+        "sourceHash": "290f2d7c89f1e14d3ae44e2bb1ccdf88c6c640f99b3f5f6b5efab88e9353211a",
+        "artifact": {
+          "workingPath": ".media/cache/piper/290f2d7c89f1e14d3ae44e2bb1ccdf88c6c640f99b3f5f6b5efab88e9353211a/narration.wav",
+          "sha256": "315a325e59211eb6923730f7c7475c4886f38f7561b7f9f316af24934cc0a1b1",
+          "durationSeconds": 7.058866213151927,
+          "format": {
+            "container": "wav",
+            "channels": 1,
+            "sampleRateHz": 22050,
+            "bitsPerSample": 16
+          },
+          "publicPath": "/audio/lessons/accurate-business-info/action/narration-v001.wav"
+        },
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:04:45.896Z",
+          "artifactHash": "315a325e59211eb6923730f7c7475c4886f38f7561b7f9f316af24934cc0a1b1",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:04:46.297Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "315a325e59211eb6923730f7c7475c4886f38f7561b7f9f316af24934cc0a1b1",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:04:46.431Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "315a325e59211eb6923730f7c7475c4886f38f7561b7f9f316af24934cc0a1b1"
         }
       },
       "alignment": {
-        "assetVersion": 0,
-        "status": "pending",
+        "assetVersion": 1,
+        "status": "integrated",
+        "provider": {
+          "id": "whisper-cpp-dtw",
+          "adapterVersion": "1",
+          "model": "ggml-tiny-q5_1.bin"
+        },
+        "sourceHash": "654a6da741d6474b1369b8e827ef4e029a7118bd663e66923698c10d83b12f95",
         "validation": {
-          "status": "not-run",
+          "status": "passed",
+          "validatedAt": "2026-09-12T22:04:45.899Z",
           "issues": []
         },
         "review": {
-          "status": "not-reviewed"
+          "status": "accepted",
+          "reviewedAt": "2026-09-12T22:04:46.617Z",
+          "reviewedBy": "automação-vm",
+          "artifactHash": "654a6da741d6474b1369b8e827ef4e029a7118bd663e66923698c10d83b12f95",
+          "notes": ""
         },
         "approval": {
-          "status": "not-approved"
+          "status": "approved",
+          "approvedAt": "2026-09-12T22:04:46.805Z",
+          "approvedBy": "automação-vm",
+          "artifactHash": "654a6da741d6474b1369b8e827ef4e029a7118bd663e66923698c10d83b12f95"
+        },
+        "source": {
+          "scriptHash": "e15d5613a6e39742afc546b4b9e64536b7017a902aa4f7f9326a633c8bda12e7",
+          "audioHash": "315a325e59211eb6923730f7c7475c4886f38f7561b7f9f316af24934cc0a1b1"
+        },
+        "rawArtifactPath": ".media/cache/whisper-cpp-dtw/654a6da741d6474b1369b8e827ef4e029a7118bd663e66923698c10d83b12f95/alignment.json",
+        "timestamps": [
+          {
+            "textStart": 0,
+            "textEnd": 61,
+            "startSeconds": 0,
+            "endSeconds": 3.38
+          },
+          {
+            "textStart": 61,
+            "textEnd": 128,
+            "startSeconds": 3.41,
+            "endSeconds": 6.96
+          }
+        ]
+      },
+      "narrationHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
         }
-      }
+      ],
+      "alignmentHistory": [
+        {
+          "assetVersion": 0,
+          "status": "pending",
+          "validation": {
+            "status": "not-run",
+            "issues": []
+          },
+          "review": {
+            "status": "not-reviewed"
+          },
+          "approval": {
+            "status": "not-approved"
+          }
+        }
+      ]
     }
   }
 }

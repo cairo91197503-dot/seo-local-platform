@@ -37,6 +37,40 @@
         "approval": {
           "status": "not-approved"
         }
+      },
+      "narrationCandidate": {
+        "assetVersion": 1,
+        "status": "validated",
+        "provider": {
+          "id": "piper",
+          "adapterVersion": "1",
+          "model": "pt_BR-faber-medium.onnx",
+          "voice": "pt_BR-faber-medium"
+        },
+        "sourceHash": "f50b5598ba1022a74a10383bd08338a090f16d021feaa19fd60133f047834ffb",
+        "artifact": {
+          "workingPath": ".media/cache/piper/f50b5598ba1022a74a10383bd08338a090f16d021feaa19fd60133f047834ffb/narration.wav",
+          "sha256": "33b5ca99ed473e63191187f67f9757b52a4b63676fcb67372f344fb973eab7aa",
+          "durationSeconds": 7.174965986394557,
+          "format": {
+            "container": "wav",
+            "channels": 1,
+            "sampleRateHz": 22050,
+            "bitsPerSample": 16
+          }
+        },
+        "validation": {
+          "status": "passed",
+          "validatedAt": "2026-09-12T23:11:27.431Z",
+          "artifactHash": "33b5ca99ed473e63191187f67f9757b52a4b63676fcb67372f344fb973eab7aa",
+          "issues": []
+        },
+        "review": {
+          "status": "not-reviewed"
+        },
+        "approval": {
+          "status": "not-approved"
+        }
       }
     },
     "choose": {

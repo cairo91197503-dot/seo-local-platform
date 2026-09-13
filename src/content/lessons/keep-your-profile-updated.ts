@@ -13,6 +13,10 @@ export const keepYourProfileUpdatedLesson: Lesson = {
       text: 'Configurar o perfil uma vez não é o fim do trabalho — é só o começo.',
       narration: {
         script: 'Configurar o perfil uma vez não é o fim do trabalho — é só o começo.',
+        audioSrc: '/audio/lessons/keep-your-profile-updated/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 68, startSeconds: 0, endSeconds: 3.58 },
+        ],
       },
     },
     {
@@ -23,6 +27,11 @@ export const keepYourProfileUpdatedLesson: Lesson = {
       narration: {
         script:
           'Sempre que algo mudar no seu negócio — horário, serviço, endereço — o perfil deve mudar junto. Ele não é uma configuração feita uma única vez; é uma representação viva do seu negócio.',
+        audioSrc: '/audio/lessons/keep-your-profile-updated/living-profile/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 95, startSeconds: 0, endSeconds: 5.12 },
+          { textStart: 95, textEnd: 183, startSeconds: 5.12, endSeconds: 9.96 },
+        ],
       },
     },
     {
@@ -32,6 +41,10 @@ export const keepYourProfileUpdatedLesson: Lesson = {
       narration: {
         script:
           'Um perfil desatualizado pode fazer o cliente confiar menos, mesmo que o negócio em si esteja ótimo.',
+        audioSrc: '/audio/lessons/keep-your-profile-updated/consequence/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 99, startSeconds: 0, endSeconds: 5.68 },
+        ],
       },
     },
     {
@@ -41,6 +54,11 @@ export const keepYourProfileUpdatedLesson: Lesson = {
       narration: {
         script:
           'Você já entende por que isso é uma rotina, não uma tarefa única. A próxima missão é fazer uma revisão rápida agora.',
+        audioSrc: '/audio/lessons/keep-your-profile-updated/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 65, startSeconds: 0, endSeconds: 3.8 },
+          { textStart: 65, textEnd: 115, startSeconds: 3.84, endSeconds: 6.52 },
+        ],
       },
     },
   ],

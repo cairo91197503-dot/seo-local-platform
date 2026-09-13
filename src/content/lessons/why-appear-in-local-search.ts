@@ -18,6 +18,11 @@ export const whyAppearInLocalSearchLesson: Lesson = {
       narration: {
         script:
           'Quando alguém precisa de algo perto de casa ou do trabalho, a primeira coisa que costuma fazer é pesquisar no Google. Essa busca já representa uma necessidade concreta, acontecendo naquele exato momento.',
+        audioSrc: '/audio/lessons/why-appear-in-local-search/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 118, startSeconds: 0, endSeconds: 5.62 },
+          { textStart: 118, textEnd: 203, startSeconds: 5.68, endSeconds: 10.36 },
+        ],
       },
     },
     {
@@ -33,6 +38,11 @@ export const whyAppearInLocalSearchLesson: Lesson = {
       narration: {
         script:
           'Essa pessoa não está só curiosa: ela já está tentando resolver algo agora. E aparecer nessas buscas é o primeiro passo — antes de ser escolhido, o negócio precisa ser encontrado.',
+        audioSrc: '/audio/lessons/why-appear-in-local-search/first-step/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 75, startSeconds: 0, endSeconds: 4 },
+          { textStart: 75, textEnd: 178, startSeconds: 4.04, endSeconds: 9.62 },
+        ],
       },
     },
     {
@@ -46,6 +56,10 @@ export const whyAppearInLocalSearchLesson: Lesson = {
       narration: {
         script:
           'Esses resultados locais aparecem em mais de um lugar: tanto na Pesquisa Google quanto no Google Maps.',
+        audioSrc: '/audio/lessons/why-appear-in-local-search/where/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 101, startSeconds: 0, endSeconds: 5.36 },
+        ],
       },
     },
     {
@@ -59,6 +73,11 @@ export const whyAppearInLocalSearchLesson: Lesson = {
       narration: {
         script:
           'Você já entende por que aparecer nas buscas locais importa. Agora, a próxima missão é descobrir como o seu negócio aparece hoje.',
+        audioSrc: '/audio/lessons/why-appear-in-local-search/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 60, startSeconds: 0, endSeconds: 2.77 },
+          { textStart: 60, textEnd: 128, startSeconds: 2.86, endSeconds: 6.64 },
+        ],
       },
     },
   ],

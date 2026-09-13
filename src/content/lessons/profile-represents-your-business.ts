@@ -18,6 +18,10 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
       narration: {
         script:
           'O Perfil da Empresa no Google costuma ser o primeiro contato de alguém com o seu negócio — muitas vezes antes mesmo de visitar ou ligar.',
+        audioSrc: '/audio/lessons/profile-represents-your-business/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 136, startSeconds: 0, endSeconds: 7 },
+        ],
       },
     },
     {
@@ -33,6 +37,12 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
       narration: {
         script:
           'Nome, fotos e descrição ajudam a formar essa primeira impressão. Um perfil desatualizado pode passar a impressão errada, mesmo quando o negócio real é ótimo. O perfil não substitui o negócio — ele representa o negócio para quem ainda não o conhece.',
+        audioSrc: '/audio/lessons/profile-represents-your-business/first-impression/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 65, startSeconds: 0, endSeconds: 3.1 },
+          { textStart: 65, textEnd: 158, startSeconds: 3.18, endSeconds: 8.11 },
+          { textStart: 158, textEnd: 248, startSeconds: 8.14, endSeconds: 13.2 },
+        ],
       },
     },
     {
@@ -46,6 +56,10 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
       narration: {
         script:
           'A boa notícia é que isso está sob o seu controle: você pode revisar e ajustar as informações do perfil sempre que quiser, para que ele reflita melhor o negócio de verdade.',
+        audioSrc: '/audio/lessons/profile-represents-your-business/control/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 171, startSeconds: 0, endSeconds: 9.04 },
+        ],
       },
     },
     {
@@ -58,6 +72,11 @@ export const profileRepresentsYourBusinessLesson: Lesson = {
       },
       narration: {
         script: 'Você já entende o papel do perfil. Agora, a próxima missão é dar uma olhada geral nele.',
+        audioSrc: '/audio/lessons/profile-represents-your-business/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 35, startSeconds: 0, endSeconds: 1.96 },
+          { textStart: 35, textEnd: 87, startSeconds: 2.01, endSeconds: 4.84 },
+        ],
       },
     },
   ],
