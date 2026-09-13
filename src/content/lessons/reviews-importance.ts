@@ -31,13 +31,13 @@ export const reviewsImportanceLesson: Lesson = {
       id: 'trust',
       title: 'Avaliações ajudam a gerar confiança',
       text: 'Experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer seu negócio.',
+      illustration: {
+        src: '/images/lessons/reviews-importance/cena-02.jpg',
+        alt: 'Várias pessoas pequenas ao redor de um símbolo de confiança formado por avaliações com estrelas.',
+      },
       narration: {
         script:
           'Avaliações também ajudam a gerar confiança: experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer o seu negócio.',
-        audioSrc: '/audio/lessons/reviews-importance/trust/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 172, startSeconds: 0, endSeconds: 9.16 },
-        ],
       },
     },
     {
@@ -46,27 +46,25 @@ export const reviewsImportanceLesson: Lesson = {
       text: 'Depois de um atendimento ou experiência real, você pode convidar o cliente a compartilhar espontaneamente a opinião dele.',
       highlight:
         'Peça uma opinião sincera. Não peça uma nota específica.',
+      illustration: {
+        src: '/images/lessons/reviews-importance/cena-03.jpg',
+        alt: 'Empresário se despedindo com um aperto de mão de um cliente satisfeito, convidando-o gentilmente a deixar uma avaliação sincera.',
+      },
       narration: {
         script:
           'O melhor momento para pedir uma avaliação é depois de um atendimento ou experiência real — você pode convidar o cliente a compartilhar espontaneamente a opinião dele. E o importante é pedir uma opinião sincera, nunca uma nota específica.',
-        audioSrc: '/audio/lessons/reviews-importance/timing/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 167, startSeconds: 0, endSeconds: 8.94 },
-          { textStart: 167, textEnd: 237, startSeconds: 8.94, endSeconds: 12.48 },
-        ],
       },
     },
     {
       id: 'action',
       title: 'Agora é sua vez',
       text: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
+      illustration: {
+        src: '/images/lessons/reviews-importance/cena-04.jpg',
+        alt: 'Empresário confiante se preparando para colocar em prática o que aprendeu sobre avaliações.',
+      },
       narration: {
         script: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
-        audioSrc: '/audio/lessons/reviews-importance/action/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 60, startSeconds: 0, endSeconds: 3.3 },
-          { textStart: 60, textEnd: 102, startSeconds: 3.33, endSeconds: 5.08 },
-        ],
       },
     },
   ],

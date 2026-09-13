@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-13 — Imagens implementadas nas lições 6 a 12, completando as 12 lições (Fase 3)
+
+A pedido do usuário ("o restante das imagens estao na pasta! coloca elas no app"), integradas as 27 imagens restantes do currículo — as 4 cenas das lições 6, 8, 9, 10, 11 e 12, mais as 3 cenas que faltavam da lição 7 (a cena 1 já estava implementada desde 2026-09-12). Com isso, as 12 lições do currículo passam a ter imagem nas 4 cenas.
+
+**Imagens identificadas e integradas:** como nas lições 1 a 5, os arquivos vieram do Gemini com nomes genéricos (ex.: `Gemini_Generated_Image_kx013ykx013ykx01.jpg`), agrupados em `OneDrive\Imagens\seo\Nova pasta (6)` até `Nova pasta (12)` (uma pasta por lição). Cada uma das 27 imagens foi aberta e comparada ao texto em português presente na própria imagem e à descrição de cena em `docs/14-PROMPTS-DE-IMAGEM-LICOES.md` para determinar a correspondência correta antes de copiar. Copiadas para `public/images/lessons/<lesson-id>/cena-0N.jpg` e referenciadas no campo `illustration` de cada cena em `src/content/lessons/{photos-help-customers-decide,reviews-importance,review-request-message,how-to-respond-to-reviews,keep-your-profile-updated,first-profile-checkup,choose-your-next-action}.ts`.
+
+Restaram 6 arquivos na raiz de `OneDrive\Imagens\seo` (fora de qualquer pasta "Nova pasta") sem correspondência clara a nenhuma cena — não foram usados; vale perguntar ao usuário o que são.
+
+`docs/13-CURRICULO-MVP.md` atualizado: tabela do currículo e parágrafo de resumo revisados para refletir que as 12 lições têm imagem completa, enquanto o status de integração de áudio (roteiro escrito para as 12, mas geração/integração ainda em andamento entre a VM Oracle e o restante do projeto) permanece descrito como "a confirmar" por lição, evitando afirmar um status que ainda não foi verificado ponta a ponta. Validado com `npm run lint` e `npm run build` (ambos limpos).
+
 ## 2026-09-12 — Roteiros de narração escritos para as 48 cenas; pipeline de áudio habilitado para todas as lições (Fase 3)
 
 A pedido do usuário ("agora preciso do comando para gerar os áudios e subir pro GitHub", confirmando o escopo via pergunta: "roteiro para as 4 cenas de todas as 12 lições"), foi escrito o campo `narration.script` em cada uma das 48 cenas do currículo (12 lições × 4 cenas). Cada roteiro é uma paráfrase falada natural do `title`/`text`/`highlight` da cena — não necessariamente idêntica ao texto visual, como já previsto em `docs/09-PADRAO-DE-LICOES.md`.
