@@ -1,9 +1,10 @@
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { AppShell } from '../components/layout/AppShell'
 import { Mascot } from '../components/mascot/Mascot'
 import { AuthProvider } from '../lib/auth/AuthContext'
 import { useAuth } from '../lib/auth/useAuth'
 import { HomePage } from '../pages/HomePage'
+import { LandingPage } from '../pages/LandingPage'
 import { LearnPage } from '../pages/LearnPage'
 import { LessonPage } from '../pages/LessonPage'
 import { LoginPage } from '../pages/LoginPage'
@@ -27,9 +28,17 @@ function OnboardingGuard() {
  * (`configError`) do caso de simplesmente não estar logado ainda, para que
  * um ambiente sem `.env` mostre uma mensagem clara em vez de travar em
  * "Carregando…" ou quebrar a tela de login sem explicação.
+ *
+ * Landing Page (2026-09-13, `docs/02-ROADMAP.md`, prioridade P0): quando não
+ * há usuário logado e a rota é exatamente `/`, mostra a `LandingPage`
+ * pública em vez da tela de login — é a nova porta de entrada do produto.
+ * Qualquer outra rota protegida (deep link para `/aprender`, `/missoes`
+ * etc. sem login) continua caindo na tela de login de sempre, sem mudança
+ * de comportamento.
  */
 function AuthGate() {
   const { user, loading, configError } = useAuth()
+  const location = useLocation()
 
   if (configError) {
     return (
@@ -50,10 +59,31 @@ function AuthGate() {
   }
 
   if (!user) {
-    return <LoginPage />
+    return location.pathname === '/' ? <LandingPage /> : <LoginPage />
   }
 
   return <Outlet />
+}
+
+/**
+ * Rota `/login`, alcançável a partir dos CTAs da `LandingPage` (link real de
+ * navegação, não uma tela só encaixada dentro de outra rota). Um usuário já
+ * autenticado que caia aqui (ex.: link salvo) é redirecionado para `/` em
+ * vez de ver a tela de login de novo — mesmo princípio de "encaminhamento
+ * mais coerente" já usado no restante do `AuthGate`.
+ */
+function LoginRoute() {
+  const { user, loading } = useAuth()
+
+  if (loading) {
+    return (
+      <main className="login-page">
+        <p className="login-page__description">Carregando…</p>
+      </main>
+    )
+  }
+
+  return user ? <Navigate to="/" replace /> : <LoginPage />
 }
 
 function App() {
@@ -62,6 +92,7 @@ function App() {
       <JourneyProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="login" element={<LoginRoute />} />
             <Route element={<AuthGate />}>
               <Route path="onboarding" element={<OnboardingPage />} />
               <Route element={<OnboardingGuard />}>
