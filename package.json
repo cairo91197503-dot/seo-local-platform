@@ -18,6 +18,7 @@
     "media:approve": "npm run media -- approve",
     "media:integrate": "npm run media -- integrate",
     "media:generate-all": "node scripts/media/generate-all.mjs",
+    "gen:icons": "node scripts/gen-icons.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -36,8 +37,10 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
+    "sharp": "^0.35.4",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.65.0",
-    "vite": "^8.2.0"
+    "vite": "^8.2.0",
+    "vite-plugin-pwa": "^1.3.0"
   }
 }

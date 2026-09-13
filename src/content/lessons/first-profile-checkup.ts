@@ -18,6 +18,11 @@ export const firstProfileCheckupLesson: Lesson = {
       narration: {
         script:
           'Você já aprendeu várias partes do seu perfil, uma de cada vez. Agora é hora de olhar para ele como um todo.',
+        audioSrc: '/audio/lessons/first-profile-checkup/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 63, startSeconds: 0, endSeconds: 3.69 },
+          { textStart: 63, textEnd: 107, startSeconds: 3.69, endSeconds: 5.52 },
+        ],
       },
     },
     {
@@ -31,6 +36,10 @@ export const firstProfileCheckupLesson: Lesson = {
       narration: {
         script:
           'Esse check-up completo junta tudo o que você já revisou — informações, horários, serviços, fotos, avaliações — num único olhar.',
+        audioSrc: '/audio/lessons/first-profile-checkup/what-it-means/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 127, startSeconds: 0, endSeconds: 7.38 },
+        ],
       },
     },
     {
@@ -45,6 +54,11 @@ export const firstProfileCheckupLesson: Lesson = {
       narration: {
         script:
           'Mas esse olhar não é sobre nota ou posição no Google. É sobre identificar o que ainda pode representar melhor o seu negócio real.',
+        audioSrc: '/audio/lessons/first-profile-checkup/purpose/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 54, startSeconds: 0, endSeconds: 2.71 },
+          { textStart: 54, textEnd: 129, startSeconds: 2.88, endSeconds: 6.52 },
+        ],
       },
     },
     {
@@ -57,6 +71,10 @@ export const firstProfileCheckupLesson: Lesson = {
       },
       narration: {
         script: 'Agora é sua vez: faça esse olhar completo e identifique o que ainda pode melhorar.',
+        audioSrc: '/audio/lessons/first-profile-checkup/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 82, startSeconds: 0, endSeconds: 4.2 },
+        ],
       },
     },
   ],

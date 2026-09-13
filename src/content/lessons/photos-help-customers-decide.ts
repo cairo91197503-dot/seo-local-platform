@@ -18,6 +18,10 @@ export const photosHelpCustomersDecideLesson: Lesson = {
       narration: {
         script:
           'Fotos são, muitas vezes, a primeira coisa que uma pessoa olha — antes mesmo de ler qualquer texto sobre o negócio.',
+        audioSrc: '/audio/lessons/photos-help-customers-decide/intro/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 114, startSeconds: 0, endSeconds: 6.08 },
+        ],
       },
     },
     {
@@ -33,6 +37,12 @@ export const photosHelpCustomersDecideLesson: Lesson = {
       narration: {
         script:
           'Fotos e vídeos ajudam o cliente a conhecer o que o negócio oferece, e podem destacar características da empresa. O importante é usar fotos reais — do ambiente, dos produtos, do resultado do seu trabalho. Não é sobre ter fotos bonitas, é sobre mostrar a verdade.',
+        audioSrc: '/audio/lessons/photos-help-customers-decide/what-photos-do/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 113, startSeconds: 0, endSeconds: 5.98 },
+          { textStart: 113, textEnd: 204, startSeconds: 5.98, endSeconds: 11.17 },
+          { textStart: 204, textEnd: 261, startSeconds: 11.17, endSeconds: 14.08 },
+        ],
       },
     },
     {
@@ -46,6 +56,10 @@ export const photosHelpCustomersDecideLesson: Lesson = {
       narration: {
         script:
           'Isso tem efeito direto na confiança: um cliente que vê fotos reais e recentes se sente mais seguro do que quando não vê nenhuma foto, ou vê fotos antigas e genéricas.',
+        audioSrc: '/audio/lessons/photos-help-customers-decide/trust/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 166, startSeconds: 0, endSeconds: 9.2 },
+        ],
       },
     },
     {
@@ -58,6 +72,10 @@ export const photosHelpCustomersDecideLesson: Lesson = {
       },
       narration: {
         script: 'Agora é sua vez: dê uma olhada nas fotos do seu perfil e veja se elas ainda representam o seu negócio hoje.',
+        audioSrc: '/audio/lessons/photos-help-customers-decide/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 107, startSeconds: 0, endSeconds: 6 },
+        ],
       },
     },
   ],

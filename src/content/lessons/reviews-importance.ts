@@ -38,6 +38,10 @@ export const reviewsImportanceLesson: Lesson = {
       narration: {
         script:
           'Avaliações também ajudam a gerar confiança: experiências reais compartilhadas por clientes podem ajudar outras pessoas a se sentirem mais seguras ao conhecer o seu negócio.',
+        audioSrc: '/audio/lessons/reviews-importance/trust/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 172, startSeconds: 0, endSeconds: 9.16 },
+        ],
       },
     },
     {
@@ -53,6 +57,11 @@ export const reviewsImportanceLesson: Lesson = {
       narration: {
         script:
           'O melhor momento para pedir uma avaliação é depois de um atendimento ou experiência real — você pode convidar o cliente a compartilhar espontaneamente a opinião dele. E o importante é pedir uma opinião sincera, nunca uma nota específica.',
+        audioSrc: '/audio/lessons/reviews-importance/timing/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 167, startSeconds: 0, endSeconds: 8.94 },
+          { textStart: 167, textEnd: 237, startSeconds: 8.94, endSeconds: 12.48 },
+        ],
       },
     },
     {
@@ -65,6 +74,11 @@ export const reviewsImportanceLesson: Lesson = {
       },
       narration: {
         script: 'Você já sabe por que avaliações autênticas são importantes. O próximo passo é colocar isso em prática.',
+        audioSrc: '/audio/lessons/reviews-importance/action/narration-v001.wav',
+        segments: [
+          { textStart: 0, textEnd: 60, startSeconds: 0, endSeconds: 3.3 },
+          { textStart: 60, textEnd: 102, startSeconds: 3.33, endSeconds: 5.08 },
+        ],
       },
     },
   ],
