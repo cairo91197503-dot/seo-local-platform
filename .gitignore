@@ -28,6 +28,9 @@ id_ed25519.*
 # Dependencies
 node_modules
 
+# Cache local da Firebase CLI (gerado por `firebase deploy`/emuladores)
+.firebase/
+
 # Build outputs
 build/
 dist/
