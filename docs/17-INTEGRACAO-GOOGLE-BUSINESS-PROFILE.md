@@ -68,7 +68,11 @@ IA sugere → Estrelar publica
 
 ## 6. Onde isso se conecta ao modelo de créditos do Premium
 
-A análise do usuário propôs limitar o uso de IA por créditos mensais (ex.: resposta de avaliação = 1 crédito, edição de foto = 5, geração de imagem = 10) em vez de "IA ilimitada" por R$19,90. Esse controle de créditos fica **fora** do módulo de integração Google descrito aqui — ele é uma camada de negócio (quantas vezes o usuário pode chamar a IA este mês), enquanto o módulo de integração é uma camada técnica (como falar com a API do Google). Separar os dois evita que uma mudança de regra de negócio (ex.: mudar de 100 para 150 créditos) exija tocar no código que fala com o Google, e vice-versa.
+Decisão do usuário (2026-09-13): o Premium terá um **limite de uso de IA incluso na mensalidade** (quantidade a calibrar com uso real dos primeiros usuários — a análise inicial sugeriu algo como resposta de avaliação = 1 crédito, edição de foto = 5, geração de imagem = 10) e, além disso, **recompra de créditos extras** como fonte de receita adicional quando o usuário estourar o limite mensal — não é só um teto que bloqueia o uso, é também um mecanismo de monetização extra.
+
+Esse controle de créditos fica **fora** do módulo de integração Google descrito aqui — ele é uma camada de negócio (quantas vezes o usuário pode chamar a IA este mês, e o que acontece quando ele quer mais), enquanto o módulo de integração é uma camada técnica (como falar com a API do Google). Separar os dois evita que uma mudança de regra de negócio (ex.: mudar de 100 para 150 créditos, ou o preço do pacote de recompra) exija tocar no código que fala com o Google, e vice-versa.
+
+Implicações práticas de ter recompra (e não só um limite fixo): precisa de um segundo fluxo de cobrança além da assinatura recorrente (compra avulsa de pacote de créditos), e o saldo de créditos passa a ser um dado que o usuário provavelmente vai querer ver ("quantos créditos me restam este mês") — diferente da proposta inicial de esconder isso da interface. Vale decidir isso junto da escolha de gateway de pagamento (P1).
 
 ## 7. O que fica pendente de decisão
 
