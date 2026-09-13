@@ -123,7 +123,7 @@ Os itens abaixo não devem ser inferidos ou implementados sem aprovação:
 - **DECISÃO NECESSÁRIA:** quantidade fixa de cenas (na prática, as lições já implementadas usam quantidade variável; segue sem decisão formal além disso);
 - **DECISÃO NECESSÁRIA:** critérios de conclusão pedagógica;
 - **DECISÃO NECESSÁRIA:** sistema definitivo de XP;
-- **DECISÃO NECESSÁRIA:** persistência de progresso;
+- ✅ ~~persistência de progresso~~ (mecanismo técnico) — decidido em 2026-09-13: Firestore, `users/{uid}/progress/journey`, ver `docs/05-BANCO-DE-DADOS.md`. O formato definitivo de XP/missão/quiz continua em aberto nos itens abaixo — mudar a forma do progresso no futuro não muda onde ele mora;
 - **DECISÃO NECESSÁRIA:** formato e regras de quizzes;
 - **DECISÃO NECESSÁRIA:** modelo definitivo de missão;
 - **DECISÃO NECESSÁRIA:** métricas de sucesso;

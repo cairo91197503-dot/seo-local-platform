@@ -10,17 +10,23 @@ rules_version = '2';
 // fica bloqueada por padrão, então adicionar uma coleção nova ao produto
 // exige adicionar a regra correspondente aqui antes de usá-la.
 //
-// Estas regras cobrem apenas o que já está decidido: identidade e perfil
-// básico do usuário. Coleções de progresso, XP, missões e lições NÃO estão
-// aqui porque o formato definitivo desses dados ainda é uma
-// `DECISÃO NECESSÁRIA` pedagógica (docs/08-ARQUITETURA-PEDAGOGICA.md) — não
-// devem ser inferidas. Antes de revisar para produção, reler
-// docs/04-REGRAS.md, item "Revisar regras de segurança do Firebase antes de
-// produção".
+// Identidade/perfil básico do usuário (`users/{userId}`) e progresso da
+// jornada (`users/{userId}/progress/journey`, ver
+// `docs/05-BANCO-DE-DADOS.md`) seguem a mesma regra: só o dono da conta lê e
+// escreve. O formato definitivo de XP, missão e quiz ainda é uma
+// `DECISÃO NECESSÁRIA` pedagógica (docs/08-ARQUITETURA-PEDAGOGICA.md) — só o
+// mecanismo técnico de persistência foi resolvido aqui; não inferir campos
+// novos além do que `src/state/journey.ts` já define. Antes de revisar para
+// produção, reler docs/04-REGRAS.md, item "Revisar regras de segurança do
+// Firebase antes de produção".
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      match /progress/{progressId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
     }
 
     // Bloqueio explícito por padrão para qualquer outro caminho.

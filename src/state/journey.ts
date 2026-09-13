@@ -1,6 +1,29 @@
 import { lessonCatalog } from '../content/lessons/catalog'
 
-export const JOURNEY_STORAGE_KEY = 'estrelar-journey-v2'
+/**
+ * Prefixo da chave de cache local por conta (ver `docs/05-BANCO-DE-DADOS.md`,
+ * seção "Progresso da jornada"): cada usuário autenticado tem sua própria
+ * chave (`estrelar-journey-v2:{uid}`), para que o navegador possa guardar um
+ * cache offline/instantâneo sem misturar o progresso de contas Google
+ * diferentes no mesmo dispositivo. O Firestore (`users/{uid}/progress/journey`)
+ * é a fonte de verdade; este cache local só acelera a primeira renderização
+ * e permite uso offline — ver `src/state/journeyRemote.ts` e
+ * `src/state/JourneyProvider.tsx`.
+ */
+const JOURNEY_STORAGE_KEY_PREFIX = 'estrelar-journey-v2'
+
+/**
+ * Chave legada (anterior a esta conta ter progresso salvo no Firestore): um
+ * único valor global, sem separar por usuário. Mantida só para migrar, no
+ * primeiro login de cada dispositivo, um progresso local que já existia
+ * antes desta funcionalidade — ver `readLegacyJourney` e
+ * `src/state/JourneyProvider.tsx`.
+ */
+const LEGACY_JOURNEY_STORAGE_KEY = 'estrelar-journey-v2'
+
+function getJourneyStorageKey(uid: string): string {
+  return `${JOURNEY_STORAGE_KEY_PREFIX}:${uid}`
+}
 
 const LESSON_COMPLETION_XP = 20
 const MISSION_COMPLETION_XP = 40
@@ -90,7 +113,7 @@ function isMissionStatusRecord(value: unknown): value is Record<string, MissionS
   return Object.values(value as Record<string, unknown>).every(isMissionStatus)
 }
 
-function isJourneyState(value: unknown): value is JourneyState {
+export function isJourneyState(value: unknown): value is JourneyState {
   if (!value || typeof value !== 'object') {
     return false
   }
@@ -117,27 +140,51 @@ export function getInitialJourneyState(): JourneyState {
   }
 }
 
-export function readJourney(): JourneyState {
+function readJourneyFromKey(key: string): JourneyState | null {
   if (typeof window === 'undefined') {
-    return getInitialJourneyState()
+    return null
   }
 
   try {
-    const storedJourney = window.localStorage.getItem(JOURNEY_STORAGE_KEY)
+    const storedJourney = window.localStorage.getItem(key)
     if (!storedJourney) {
-      return getInitialJourneyState()
+      return null
     }
 
     const parsedJourney: unknown = JSON.parse(storedJourney)
-    return isJourneyState(parsedJourney) ? parsedJourney : getInitialJourneyState()
+    return isJourneyState(parsedJourney) ? parsedJourney : null
   } catch {
-    return getInitialJourneyState()
+    return null
   }
 }
 
-export function persistJourney(journey: JourneyState): boolean {
+/** Lê o cache local do progresso de uma conta (`uid` do Firebase Authentication). */
+export function readJourney(uid: string): JourneyState {
+  return readJourneyFromKey(getJourneyStorageKey(uid)) ?? getInitialJourneyState()
+}
+
+/**
+ * Como `readJourney`, mas retorna `null` (em vez de um estado inicial) quando
+ * não há nada salvo para esta conta neste dispositivo — usado só para saber
+ * se existe progresso local a migrar (ver `src/state/JourneyProvider.tsx`).
+ */
+export function readStoredJourney(uid: string): JourneyState | null {
+  return readJourneyFromKey(getJourneyStorageKey(uid))
+}
+
+/**
+ * Lê a chave global antiga (anterior ao progresso ser salvo por conta), só
+ * para migração pontual no primeiro login de um dispositivo — ver
+ * `src/state/JourneyProvider.tsx`.
+ */
+export function readLegacyJourney(): JourneyState | null {
+  return readJourneyFromKey(LEGACY_JOURNEY_STORAGE_KEY)
+}
+
+/** Grava o cache local do progresso de uma conta (`uid` do Firebase Authentication). */
+export function persistJourney(uid: string, journey: JourneyState): boolean {
   try {
-    window.localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(journey))
+    window.localStorage.setItem(getJourneyStorageKey(uid), JSON.stringify(journey))
     return true
   } catch {
     return false
