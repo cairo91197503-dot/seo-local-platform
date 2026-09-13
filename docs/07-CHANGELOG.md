@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-13 — Auditoria Editorial das 12 lições (sem alteração de código)
+
+A pedido do usuário, feita uma Auditoria Editorial completa das 12 lições, seguindo sua própria recomendação explícita de fazer isso antes de produzir qualquer lição ou imagem nova. Escopo: reler os 12 roteiros de narração na íntegra, visualizar e classificar as 48 imagens (4 por lição), conferir a duração real do áudio contra o `duration` exibido, e checar o alinhamento lição → missão. **Nenhum código ou conteúdo foi alterado** — é um documento de diagnóstico, entregue em `docs/16-AUDITORIA-EDITORIAL-LICOES.md`.
+
+Antes de auditar, foi feita uma verificação de origem: as 48 imagens do clone local desta sessão conferem byte a byte com `origin/main`, mas os dados de narração/áudio do clone local estavam desatualizados em 5 lições (a VM Oracle já tinha integrado áudio que este clone não tinha puxado ainda) — as durações reais citadas na auditoria foram recalculadas a partir do `origin/main` atual, não do clone local.
+
+**Principais achados:** (1) a tela da lição hoje só mostra a ilustração — `title`/`text`/`highlight` são `visually-hidden` em `SceneView.tsx` — então qualquer texto embutido numa imagem passou a ser, na prática, a única legenda visível daquela cena; (2) 10 das 48 imagens têm defeitos técnicos de geração por IA (texto ilegível/sem sentido, ou códigos hexadecimais de cor vazados como texto visível dentro da cena) e precisam ser regeradas; (3) a grande maioria das imagens tem uma legenda embutida duplicando a narração quase palavra por palavra, incluindo 5 casos em que a legenda da imagem não corresponde mais ao roteiro atual (texto de uma versão anterior do roteiro); (4) a Lição 1 tem duas frases no roteiro que afirmam com certeza indevida que toda busca representa urgência real; (5) confirmado que o campo `duration: '1 min'` está sistematicamente incorreto — a duração real fica entre 24 e 44 segundos em todas as lições com áudio; (6) alinhamento lição → missão está correto nas 12 lições, sem achados. Nenhuma lição precisou de veredito "refazer" no nível do roteiro — os problemas estão concentrados em imagens específicas e em legendas embutidas, não no conteúdo pedagógico em si. Detalhes completos, lição por lição, com o texto exato de cada mudança sugerida, em `docs/16-AUDITORIA-EDITORIAL-LICOES.md`.
+
 ## 2026-09-13 — QR Code e link de avaliações implementados (Fase 5, adiantada)
 
 A pedido do usuário ("implementa o qr code"), implementada a ferramenta de link e QR Code para avaliações descrita em `docs/12-ESPECIFICACAO-MVP.md`, fechando a prioridade nº 2 do roadmap (`docs/02-ROADMAP.md`).
