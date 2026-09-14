@@ -10,10 +10,18 @@
  * Nenhuma afirmação de coleta/publicação automática de avaliações,
  * acesso a dados privados do Google ou geração automática de link — a
  * ferramenta real só transforma um link que o próprio usuário fornece.
+ *
+ * `id="ferramentas"` (Etapa 3): âncora usada pela navegação do
+ * `LandingFooter` — verificado que nenhum outro elemento da Landing usa
+ * esse id.
  */
 export function ReviewToolSection() {
   return (
-    <section className="landing-section" aria-labelledby="landing-review-tool-title">
+    <section
+      className="landing-section"
+      id="ferramentas"
+      aria-labelledby="landing-review-tool-title"
+    >
       <div className="landing-review-tool__layout">
         <div className="landing-review-tool__content">
           <h2 id="landing-review-tool-title" className="landing-section__title landing-section__title--left">

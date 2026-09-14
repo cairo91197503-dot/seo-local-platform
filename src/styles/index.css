@@ -1261,7 +1261,8 @@ body {
   .landing-header__bar,
   .landing-hero,
   .landing-trust,
-  .landing-section {
+  .landing-section,
+  .landing-footer {
     padding-right: max(1rem, env(safe-area-inset-right));
     padding-left: max(1rem, env(safe-area-inset-left));
   }
@@ -1583,5 +1584,135 @@ body {
 
   .landing-audience__grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/*
+ * Etapa 3 da Landing Page (acabamento): CTA final e rodapé, depois da
+ * última seção de conteúdo da Etapa 2. Reaproveita `.landing-section`
+ * (título/lead) e os botões já existentes (`.home-block__button`,
+ * `.landing-hero__secondary`) — nenhuma cor ou componente novo de botão.
+ */
+.landing-final-cta {
+  border-top: 1px solid var(--color-line);
+  background: rgba(227, 162, 60, 0.08);
+}
+
+.landing-final-cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 20rem;
+  margin: 1.5rem auto 0;
+}
+
+.landing-final-cta__cta {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .landing-final-cta__actions {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .landing-final-cta__cta {
+    width: auto;
+  }
+}
+
+/* Rodapé */
+.landing-footer {
+  border-top: 1px solid var(--color-line);
+  padding: 2rem 1.25rem;
+  background: #fff;
+}
+
+.landing-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.landing-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.landing-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.landing-footer__logo:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.landing-footer__wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.landing-footer__description {
+  margin: 0;
+  max-width: 26rem;
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+}
+
+.landing-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.landing-footer__link {
+  color: var(--color-ink);
+  font-size: 0.875rem;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.landing-footer__link:hover {
+  text-decoration: underline;
+}
+
+.landing-footer__link:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.landing-footer__notice {
+  max-width: 64rem;
+  margin: 1.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-secondary);
+  font-size: 0.8125rem;
+}
+
+@media (min-width: 768px) {
+  .landing-footer__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .landing-footer__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 }

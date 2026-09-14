@@ -8,6 +8,10 @@ import { lessonCatalog } from '../../content/lessons/catalog'
  * `src/content/lessons/catalog.ts` — a mesma fonte usada por `LearnPage` —
  * escolhendo 6 ids reais que representam a amplitude do currículo (início,
  * informações, fotos, avaliações e manutenção do perfil).
+ *
+ * `id="conteudo"` (Etapa 3): âncora usada pela navegação do
+ * `LandingFooter` — verificado que nenhum outro elemento da Landing usa
+ * esse id.
  */
 const FEATURED_LESSON_IDS = [
   'why-appear-in-local-search',
@@ -24,7 +28,11 @@ const featuredThemes = FEATURED_LESSON_IDS.map((id) =>
 
 export function LearningSection() {
   return (
-    <section className="landing-section" aria-labelledby="landing-learning-title">
+    <section
+      className="landing-section"
+      id="conteudo"
+      aria-labelledby="landing-learning-title"
+    >
       <h2 id="landing-learning-title" className="landing-section__title">
         Tudo começa pelo básico.
       </h2>

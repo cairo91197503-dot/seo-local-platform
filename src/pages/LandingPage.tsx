@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ActionSection } from '../components/landing/ActionSection'
 import { AudienceSection } from '../components/landing/AudienceSection'
+import { FinalCtaSection } from '../components/landing/FinalCtaSection'
 import { GamificationSection } from '../components/landing/GamificationSection'
 import { HowItWorksSection } from '../components/landing/HowItWorksSection'
+import { LandingFooter } from '../components/landing/LandingFooter'
 import { LandingHeader } from '../components/landing/LandingHeader'
 import { LearningSection } from '../components/landing/LearningSection'
 import { ProblemSection } from '../components/landing/ProblemSection'
@@ -20,11 +22,13 @@ import { Mascot } from '../components/mascot/Mascot'
  * do app normalmente; esta página nunca aparece pra ele.
  *
  * Etapa 1 (fundação): cabeçalho, hero e a faixa de números abaixo dele.
- * Etapa 2 (parte central de conteúdo, atual): sete seções explicando o
- * produto — problema, método, o que se aprende, como o aprendizado vira
- * ação, gamificação, a ferramenta de QR Code e para quem é o produto. Cada
- * seção é um componente próprio em `src/components/landing/`, na mesma
- * pasta dos componentes da Etapa 1.
+ * Etapa 2 (parte central de conteúdo): sete seções explicando o produto —
+ * problema, método, o que se aprende, como o aprendizado vira ação,
+ * gamificação, a ferramenta de QR Code e para quem é o produto.
+ * Etapa 3 (acabamento, atual): CTA final e rodapé fecham a página; SEO
+ * básico (title/description/canonical/Open Graph) foi ajustado em
+ * `index.html`, que é compartilhado por toda a SPA. Cada seção é um
+ * componente próprio em `src/components/landing/`.
  */
 
 const TRUST_ITEMS = ['12 lições práticas', '12 missões', 'XP e progresso', 'Ferramenta de QR Code']
@@ -79,7 +83,10 @@ export function LandingPage() {
         <GamificationSection />
         <ReviewToolSection />
         <AudienceSection />
+        <FinalCtaSection />
       </main>
+
+      <LandingFooter />
     </div>
   )
 }
