@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
+import { ActionSection } from '../components/landing/ActionSection'
+import { AudienceSection } from '../components/landing/AudienceSection'
+import { GamificationSection } from '../components/landing/GamificationSection'
+import { HowItWorksSection } from '../components/landing/HowItWorksSection'
 import { LandingHeader } from '../components/landing/LandingHeader'
+import { LearningSection } from '../components/landing/LearningSection'
+import { ProblemSection } from '../components/landing/ProblemSection'
+import { ReviewToolSection } from '../components/landing/ReviewToolSection'
 import { Mascot } from '../components/mascot/Mascot'
 
 /**
@@ -12,9 +19,12 @@ import { Mascot } from '../components/mascot/Mascot'
  * comportamento. Um usuário já logado que acesse `/` continua vendo a Home
  * do app normalmente; esta página nunca aparece pra ele.
  *
- * Etapa 1 (fundação): só cabeçalho, hero e a faixa de números abaixo dele.
- * Seções adicionais (problema, como funciona em detalhe, gamificação etc.)
- * ficam para a próxima etapa, autorizada separadamente.
+ * Etapa 1 (fundação): cabeçalho, hero e a faixa de números abaixo dele.
+ * Etapa 2 (parte central de conteúdo, atual): sete seções explicando o
+ * produto — problema, método, o que se aprende, como o aprendizado vira
+ * ação, gamificação, a ferramenta de QR Code e para quem é o produto. Cada
+ * seção é um componente próprio em `src/components/landing/`, na mesma
+ * pasta dos componentes da Etapa 1.
  */
 
 const TRUST_ITEMS = ['12 lições práticas', '12 missões', 'XP e progresso', 'Ferramenta de QR Code']
@@ -61,6 +71,14 @@ export function LandingPage() {
             ))}
           </ul>
         </section>
+
+        <ProblemSection />
+        <HowItWorksSection />
+        <LearningSection />
+        <ActionSection />
+        <GamificationSection />
+        <ReviewToolSection />
+        <AudienceSection />
       </main>
     </div>
   )
