@@ -26,10 +26,6 @@ export function HomePage() {
             <dt className="progress-stats__label">XP</dt>
             <dd className="progress-stats__value">{journey.xp}</dd>
           </div>
-          <div className="progress-stats__item">
-            <dt className="progress-stats__label">Sequência</dt>
-            <dd className="progress-stats__value">0 dias</dd>
-          </div>
         </dl>
       </section>
 

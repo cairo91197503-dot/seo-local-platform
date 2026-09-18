@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-09-13/14 — Landing page pública implementada (P0, 3 etapas)
+
+Landing page do Estrelar implementada em 3 commits (código já estava em `main`, sem registro aqui até agora):
+
+- **Etapa 1 (2026-09-13):** `LandingPage.tsx` + `LandingHeader` (hero) e rota pública `/` para deslogados via `AuthGate` (`src/app/App.tsx`); rota `/login` dedicada para os CTAs.
+- **Etapa 2 (2026-09-14):** 7 seções de conteúdo (`Problem`, `HowItWorks`, `Learning`, `Action`, `Gamification`, `ReviewTool`, `Audience`) em `src/components/landing/`.
+- **Etapa 3 (2026-09-14):** CTA final + rodapé, SEO básico (title/description/canonical/Open Graph/Twitter) em `index.html` e `public/og-image.jpg` (1200×630).
+
+Comportamento: deslogado em `/` vê a landing; qualquer outra rota protegida sem login continua na `LoginPage`; logado em `/` continua vendo a Home. Com isso, o P0 fica com currículo, QR Code, onboarding, landing page e deploy concluídos — restam 5 cenas sem áudio e as dívidas de `docs/16-AUDITORIA-EDITORIAL-LICOES.md`. Ver `docs/02-ROADMAP.md`.
+
+## 2026-09-14 — Removido card "Sequência" (dado falso) da Home
+
+A pedido do usuário, removido da Home (`src/pages/HomePage.tsx`) o item "Sequência" do bloco de progresso, que exibia permanentemente o texto fixo "0 dias" sem nenhuma ligação com dado real — `JourneyState` (`src/state/journey.ts`) nunca guardou data de atividade nem contagem de dias consecutivos, então o valor era inventado na tela, não um placeholder inofensivo.
+
+**Decisão:** entre implementar a sequência de verdade agora ou remover o card até a funcionalidade ser priorizada, o usuário escolheu remover. Isso está alinhado com o que já era decisão canônica: `docs/12-ESPECIFICACAO-MVP.md` já registrava "Streak está fora do P0" e `docs/02-ROADMAP.md` já listava "sequência de dias" como gamificação de Fase 4, pausada e sem trabalho novo até P0–P1 concluídos. O card, portanto, estava em desacordo com a própria especificação — não era uma feature parcialmente implementada, era uma tela adiantada de uma decisão que nunca foi tomada.
+
+**O que mudou:** apenas o item `<dt>`/`<dd>` "Sequência" removido de `progress-stats` em `HomePage.tsx`. Nenhuma classe CSS ficou órfã (`.progress-stats__item` continua em uso pelos itens Nível e XP). Nenhuma outra parte do app referenciava esse texto.
+
+Validação: revisão manual do JSX (mudança de remoção simples, sem lógica nova). `npm run lint`, `npm run build` e `git diff --check` confirmados limpos em 2026-09-18, na consolidação do P0.
+
+## 2026-09-14 — Onboarding real: coleta de nome e segmento do negócio
+
+A pedido do usuário, implementada a parte de `docs/02-ROADMAP.md` (P0 — Produto Free) que ainda faltava em `src/pages/OnboardingPage.tsx`: antes, a tela só mostrava um botão "Começar jornada" sem coletar nada do negócio do usuário.
+
+**O que mudou:** a tela ganhou um formulário curto (nome do negócio e segmento/ramo de atuação, ambos texto livre — sem taxonomia fixa de segmentos, para não criar lógica específica de nicho no core do produto, conforme a decisão de posicionamento de `docs/02-ROADMAP.md`), com validação simples (os dois campos são obrigatórios). Nova função `saveBusinessProfile` (`src/lib/auth/userProfile.ts`) grava `businessName`/`businessSegment` em `users/{uid}` (`merge: true`, sem tocar nos campos de identidade já geridos por `upsertUserProfile`). `docs/05-BANCO-DE-DADOS.md` atualizado com os dois campos novos no tipo `UserProfile`. `firestore.rules` não precisou mudar — a regra do documento `users/{userId}` já cobre o documento inteiro.
+
+A gravação segue o mesmo padrão best-effort já usado no resto do app: se falhar (ex.: sem conexão), o erro só é registrado no console e o onboarding é concluído normalmente, porque o produto deve continuar funcionando sem depender de uma escrita de rede (`docs/04-REGRAS.md`). `src/styles/index.css` ganhou as classes `.onboarding-page*` (a tela usava classes que não existiam ainda em CSS).
+
+Validado com `npm run lint` e `npm run build`, ambos limpos. Teste manual do fluxo real (conferir no console do Firebase que `businessName`/`businessSegment` são salvos em `users/{uid}`) fica para o usuário confirmar no próprio deploy.
+
 ## 2026-09-13 — Progresso da jornada passa a ser salvo por conta (Firestore)
 
 A pedido do usuário ("resolver o bd para salvar progresso da conta"), resolvido o mecanismo técnico da `DECISÃO NECESSÁRIA` "persistência de progresso" (`docs/08-ARQUITETURA-PEDAGOGICA.md`): o progresso da jornada (onboarding, lições concluídas, status das missões, XP, marcos já premiados — o mesmo `JourneyState` de `src/state/journey.ts`) agora é salvo no Firestore, em `users/{uid}/progress/journey`, um documento por conta. Antes, esse estado só existia em `localStorage`, então trocar de aparelho ou navegador (ou reinstalar o PWA) apagava todo o progresso; a estrutura dos dados em si (XP definitivo, modelo de missão definitivo, formato de quiz) não mudou e continua em aberto.

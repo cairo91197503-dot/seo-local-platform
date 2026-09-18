@@ -16,7 +16,7 @@ O usuário fechou uma decisão de posicionamento que muda a função de cada par
 
 ## Prioridade atual (P0–P4, definida pelo usuário em 2026-09-13, substitui a lista de 2026-09-12 abaixo)
 
-1. **P0 — Produto Free.** ✅ Currículo (12 lições/12 missões, `docs/13-CURRICULO-MVP.md`) e QR Code/link de avaliações (`docs/12-ESPECIFICACAO-MVP.md`) concluídos. Falta: onboarding/conta, landing page, e o deploy real no Firebase Hosting (ver item 3 abaixo, agora pré-requisito de tudo que vem depois, inclusive da publicação Android já preparada em `docs/15-PUBLICACAO-ANDROID.md`).
+1. **P0 — Produto Free.** ✅ Currículo (12 lições/12 missões, `docs/13-CURRICULO-MVP.md`), ✅ QR Code/link de avaliações (`docs/12-ESPECIFICACAO-MVP.md`), ✅ onboarding/conta (coleta de nome/segmento, 2026-09-14), ✅ landing page pública (`/` para deslogados, 2026-09-13/14) e ✅ deploy real no Firebase Hosting (2026-09-13) concluídos. Resta: 5 cenas sem áudio (1 de `business-hours-matter` + 4 de `choose-your-next-action`) e as dívidas da auditoria editorial (`docs/16-AUDITORIA-EDITORIAL-LICOES.md`) — ver `docs/07-CHANGELOG.md`.
 2. **P1 — Monetização.** Assinatura Premium R$19,90/mês (1 negócio); Google OAuth; conexão com o Google Business Profile; tela "Meu Perfil" (resumo + próximas ações, sem "nota de SEO"); avaliações com resposta sugerida por IA (usuário sempre aprova antes de publicar). **Bloqueado até a API do Google ser aprovada** — ação do usuário, ver acima.
 3. **P2 — Assistente.** Fotos (melhorar, nunca inventar — o Google exige que fotos representem a realidade), posts, alertas, check-up automático, IA contextual (por tarefa: responder avaliação / melhorar informação / criar post / entender o perfil — não um chat genérico).
 4. **P3 — Inteligência.** Performance (buscas, chamadas, rotas, termos de pesquisa via API de Performance) traduzida em linguagem simples pela IA, não em números soltos.
@@ -28,7 +28,7 @@ O usuário fechou uma decisão de posicionamento que muda a função de cada par
 
 1. Currículo/lições (Fase 3) — ✅ concluído em 2026-09-12.
 2. QR Code e link para avaliações (Fase 5, adiantada) — ✅ concluído em 2026-09-13.
-3. Colocar o app no ar — projeto Firebase real configurado (✅ concluído em 2026-09-12); decisão de 2026-09-13: deploy do front no Firebase Hosting (não mais Render — ver seção "Decisão de hospedagem" abaixo). `firebase.json`, `.firebaserc` e o workflow de deploy automático já existem; faltam os secrets no GitHub e o primeiro deploy de verdade (ação do usuário).
+3. Colocar o app no ar — projeto Firebase real configurado (✅ concluído em 2026-09-12); deploy do front no Firebase Hosting (decisão de 2026-09-13) ✅ concluído em 2026-09-13 (secrets criados, primeiro deploy publicado — ver seção "Decisão de hospedagem" abaixo).
 
 ## Decisão de hospedagem (2026-09-13): Firebase Hosting em vez de Render
 
@@ -39,11 +39,10 @@ O que já foi preparado no repositório:
 - `firebase.json` (public: `dist`, rewrite de SPA para `index.html`) e `.firebaserc` (projeto `estrelar-cc725`).
 - `.github/workflows/firebase-hosting-merge.yml` (deploy em push na `main`) e `firebase-hosting-pull-request.yml` (preview automático por Pull Request) — gerados por `firebase init hosting:github`, que também criou a service account `github-action-1325354707` (permissão Firebase Hosting Admin) e já subiu o secret `FIREBASE_SERVICE_ACCOUNT_ESTRELAR_CC725` no GitHub sozinho. Os dois workflows foram ajustados para passar os 6 `VITE_FIREBASE_*` como env vars no passo de build.
 
-O que ainda depende de ação do usuário (fora do que a IA pode fazer sozinha):
+O que já foi concluído (2026-09-13, ver `docs/07-CHANGELOG.md`):
 
-- Criar os 6 secrets `VITE_FIREBASE_*` no GitHub (Settings > Secrets and variables > Actions), mesmos valores de `.env.local`. O secret da service account já existe (criado automaticamente pelo assistente do Firebase).
-- Primeiro deploy de verdade (depois que os secrets existirem, basta dar push em `main`).
-- Depois do primeiro deploy: adicionar o domínio do Firebase Hosting (e depois `estrelar.app`, quando comprado) à lista de domínios autorizados do Firebase Authentication — sem isso o login com Google falha no domínio novo.
+- Os 6 secrets `VITE_FIREBASE_*` foram criados no GitHub e o workflow `firebase-hosting-merge.yml` publicou o primeiro deploy — Estrelar FREE no ar.
+- Resta, como ação do usuário: adicionar o domínio do Firebase Hosting (e depois `estrelar.app`, quando comprado) à lista de domínios autorizados do Firebase Authentication — sem isso o login com Google falha no domínio novo.
 
 ## Fase 0 — Fundação
 
@@ -111,7 +110,7 @@ Entregas:
 
 - ambiente de desenvolvimento consistente
 
-Status: quase concluída. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`, `docs/07-CHANGELOG.md`, 2026-09-12) e todo o app exige login antes de qualquer rota. **O projeto Firebase real foi criado em 2026-09-12** (`estrelar-cc725`): Authentication (Google) e Firestore (produção, `southamerica-east1`) ativos, regras de segurança publicadas, `.env.local` configurado localmente — login testado e funcionando de verdade. Falta só o deploy: a hospedagem do front migrou de Render para **Firebase Hosting** (decisão de 2026-09-13 — ver seção "Decisão de hospedagem" acima); `firebase.json`, `.firebaserc` e o workflow de deploy automático já existem, faltam os secrets no GitHub e o primeiro deploy — ação do usuário, fora do que a IA pode fazer sozinha.
+Status: concluída. React, TypeScript, Vite, roteamento real por URL (React Router, com `/`, `/aprender`, `/missoes`, `/ferramentas`) e estrutura inicial de interface estão implementados. Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`, `docs/07-CHANGELOG.md`, 2026-09-12) e todo o app exige login antes de qualquer rota — exceto a landing page pública em `/`, mostrada a deslogados (2026-09-13/14). **O projeto Firebase real foi criado em 2026-09-12** (`estrelar-cc725`): Authentication (Google) e Firestore (produção, `southamerica-east1`) ativos, regras de segurança publicadas, `.env.local` configurado localmente — login testado e funcionando de verdade. Deploy no **Firebase Hosting** (decisão de 2026-09-13 — ver seção "Decisão de hospedagem" acima) ✅ publicado em 2026-09-13 via workflow automático; cada push em `main` publica de novo.
 
 ## Fase 3 — Academia
 
@@ -231,7 +230,7 @@ Objetivo: transformar o produto em negócio recorrente.
 
 Entregas:
 
-- landing page
+- landing page — ✅ implementada em 2026-09-13/14 (pública em `/` para deslogados, via `AuthGate`; SEO básico + OG em `index.html`); ver `docs/07-CHANGELOG.md`
 
 - planos (Free, Premium R$19,90/1 negócio, e futuramente Profissional/Agência — nunca múltiplos negócios no plano de entrada, para não quebrar a economia dele)
 

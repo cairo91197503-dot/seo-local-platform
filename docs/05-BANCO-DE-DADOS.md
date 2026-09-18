@@ -14,7 +14,7 @@ Login apenas com conta Google (Firebase Authentication, `GoogleAuthProvider`). S
 
 ### `users/{uid}`
 
-Um documento por usuário autenticado, com `{uid}` igual ao UID do Firebase Authentication. Contém apenas dados de identidade/perfil:
+Um documento por usuário autenticado, com `{uid}` igual ao UID do Firebase Authentication. Contém dados de identidade/perfil e, desde 2026-09-14, os dados básicos do negócio coletados no onboarding:
 
 ```ts
 type UserProfile = {
@@ -23,8 +23,12 @@ type UserProfile = {
   email: string | null
   photoURL: string | null
   createdAt: Timestamp
+  businessName: string | null
+  businessSegment: string | null
 }
 ```
+
+`businessName` e `businessSegment` são coletados uma única vez em `src/pages/OnboardingPage.tsx` (texto livre, sem taxonomia fixa de segmentos — ver nota abaixo) e gravados por `saveBusinessProfile` (`src/lib/auth/userProfile.ts`); ficam `null` até o usuário concluir esse formulário. São só dados de perfil/identidade do negócio, para futura personalização (ex.: Mentor IA, Fase 6) — não criam lógica condicional por segmento no core do produto, conforme a decisão de posicionamento registrada em `docs/02-ROADMAP.md` ("nicho é só ângulo de marketing/apresentação").
 
 Regra de acesso: o usuário só pode ler e escrever o próprio documento (`firestore.rules`, na raiz do repositório).
 

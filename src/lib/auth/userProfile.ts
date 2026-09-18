@@ -31,3 +31,20 @@ export async function upsertUserProfile(user: User): Promise<void> {
     await setDoc(ref, { ...profile, createdAt: serverTimestamp() })
   }
 }
+
+/**
+ * Grava o nome e o segmento/ramo do negócio, coletados no onboarding
+ * (`src/pages/OnboardingPage.tsx`, `docs/05-BANCO-DE-DADOS.md`). Usa
+ * `merge: true` para só atualizar esses dois campos, sem tocar em
+ * `displayName`/`email`/`photoURL`/`createdAt` (geridos por
+ * `upsertUserProfile`) nem em progresso/XP (documento separado, ver
+ * `journeyRemote.ts`).
+ */
+export async function saveBusinessProfile(
+  uid: string,
+  data: { businessName: string; businessSegment: string },
+): Promise<void> {
+  const firestore = getFirebaseFirestore()
+  const ref = doc(firestore, 'users', uid)
+  await setDoc(ref, data, { merge: true })
+}
