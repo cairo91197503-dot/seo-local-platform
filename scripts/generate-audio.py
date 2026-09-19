@@ -56,6 +56,9 @@ SCENES = [
     ("why-appear-in-local-search", "action", "Você já entende por que aparecer nas buscas locais importa. Agora, a próxima missão é descobrir como o seu negócio aparece hoje."),
 ]
 
+# Prompt universal de voz — DOCUMENTAÇÃO, não enviar ao edge-tts (ver
+# comentário em generate()). Mantido aqui para referência e paridade com
+# scripts/generate-lesson-audio.ps1 e docs/09-PADRAO-DE-LICOES.md.
 PROMPT = """Narração em português do Brasil para um app que ajuda pequenos empresários. Voz masculina adulta, brasileira, calorosa e natural — tom de parceiro de confiança, não de locutor de rádio nem de professor. Ritmo pausado e claro, sem pressa, sem dramatização. Pronúncia natural das palavras, sem soletrar nada. Grave exatamente o texto abaixo, palavra por palavra, sem acrescentar, remover ou improvisar nada:"""
 
 async def generate(scene_id, lesson_id, scene_name, text):
@@ -66,7 +69,14 @@ async def generate(scene_id, lesson_id, scene_name, text):
         print(f"  SKIP (ja existe): {lesson_id}/{scene_name}")
         return True
     
-    full_text = f"{PROMPT}\n\n{text}"
+    # ATENÇÃO (correção 2026-09-19): enviar SÓ o roteiro da cena.
+    # O edge-tts é um TTS literal — ele narra em voz alta tudo que recebe,
+    # inclusive instruções. Enviar o PROMPT junto (como a versão anterior
+    # fazia) produziu 48 áudios com ~30 s de instrução narrada antes do
+    # roteiro (ver docs/07-CHANGELOG.md). O prompt universal de voz serve
+    # só para IAs de voz que seguem instruções (Gemini TTS, ChatGPT com
+    # voz) — ver docs/09-PADRAO-DE-LICOES.md.
+    full_text = text
     
     try:
         communicate = edge_tts.Communicate(full_text, VOICE)

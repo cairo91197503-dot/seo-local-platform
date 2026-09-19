@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-19 — Causa raiz dos áudios incorretos encontrada e corrigida (prompt narrado em voz alta)
+
+Na verificação por escuta, o usuário reportou dois problemas: (1) duração exibida `1 min` fixa e incorreta; (2) conteúdo dos áudios incorreto. Investigação nesta sessão:
+
+**FATO CONFIRMADO (problema 2):** `scripts/generate-audio.py` enviava `full_text = PROMPT + roteiro` ao `edge_tts.Communicate`. O edge-tts é um TTS literal — narra tudo que recebe, **inclusive a instrução**. Prova pela matemática: o prompt tem ~380 caracteres ≈ 27 s de fala; a média medida dos 48 MP3s (via `MediaPlayer.NaturalDuration`, arquivo a arquivo) é 39,4 s/cena contra ~12 s esperados para roteiros de ~150–200 caracteres — excesso de ~27 s, exatamente o tamanho do prompt. Todo MP3 começa com ~30 s de "Narração em português do Brasil... grave exatamente o texto abaixo..." antes do roteiro real.
+
+**Correção aplicada:** `generate-audio.py` passa a enviar só o roteiro (com comentário explicando o porquê); `docs/09` ganhou o aviso de que o prompt universal é só para IAs que seguem instruções. **Falta regenerar os 48** (ação do usuário, mesma máquina que gerou — apagar os MP3s atuais e rodar o script corrigido) e devolver os arquivos para reintegração.
+
+**Problema 1 (duração):** o `duration: '1 min'` fixo continua errado e será substituído pelos totais reais por lição — mas só depois da regeneração, porque as durações vão mudar. Na reintegração, a IA mede os 48 MP3s novos e grava o total real em cada `.ts`.
+
 ## 2026-09-19 — Narração 48/48 integrada + melhorias de qualidade, code splitting e testes
 
 Commit externo `1e2db6d` (feito fora das sessões anteriores, verificado nesta sessão com `lint` limpo, `build` ok, **43/43 testes passando**, `npm audit` 0 vulnerabilidades):
