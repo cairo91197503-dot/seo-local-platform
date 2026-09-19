@@ -3,6 +3,7 @@ import QRCode from 'qrcode'
 import {
   clearReviewLink,
   isValidReviewLinkUrl,
+  persistReviewLink,
   readReviewLink,
   setReviewLink,
   type ReviewLinkState,
@@ -73,10 +74,13 @@ export function ToolsPage() {
 
     setFormError(null)
     setReviewLinkState(next)
+    persistReviewLink(next)
   }
 
   const handleChangeLink = () => {
-    setReviewLinkState(clearReviewLink())
+    const cleared = clearReviewLink()
+    setReviewLinkState(cleared)
+    persistReviewLink(cleared)
     setInputValue('')
     setFormError(null)
   }
