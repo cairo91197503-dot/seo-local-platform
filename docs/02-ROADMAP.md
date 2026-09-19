@@ -130,7 +130,7 @@ Entregas:
 
 - conclusão de aulas
 
-Status: currículo do MVP concluído. As 12 lições e 12 missões de `docs/13-CURRICULO-MVP.md` (1 trilha, 5 módulos) estão implementadas em texto; só a primeira cena da lição "Por que as avaliações importam?" tem áudio/imagem aprovados — produção audiovisual das outras 11 é trabalho separado, lição por lição, via `scripts/generate-lesson.ts`. O modelo de estado (`src/state/journey.ts`) suporta qualquer número de lições/missões via um currículo derivado do catálogo, em vez de uma lição/missão fixa — acrescentar novas lições não exigiu mudar a lógica de estado. Progresso persistente entre dispositivos, quizzes e "retomar da última cena" continuam planejados ou dependem de decisão. Ver `docs/07-CHANGELOG.md` e `docs/13-CURRICULO-MVP.md`.
+Status: currículo do MVP concluído. As 12 lições e 12 missões de `docs/13-CURRICULO-MVP.md` (1 trilha, 5 módulos) estão implementadas em texto e com narração em áudio (48 cenas, edge-tts, voz `pt-BR-AntonioNeural`). Produção de áudio nova segue o fluxo simples de `docs/09-PADRAO-DE-LICOES.md` (qualquer IA de voz). O modelo de estado (`src/state/journey.ts`) suporta qualquer número de lições/missões via um currículo derivado do catálogo, em vez de uma lição/missão fixa — acrescentar novas lições não exigiu mudar a lógica de estado. Progresso persistente entre dispositivos, quizzes e "retomar da última cena" continuam planejados ou dependem de decisão. Ver `docs/07-CHANGELOG.md` e `docs/13-CURRICULO-MVP.md`.
 
 ## Fase 4 — Gamificação
 

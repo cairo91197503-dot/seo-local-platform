@@ -186,7 +186,7 @@ Por que isso basta: a interface (`SceneView`) consome só `narration.script` (tr
 
 ### Prompt universal de voz (colar uma vez, vale para todas as cenas)
 
-> ⚠️ Este prompt é SÓ para IAs de voz que seguem instruções (Gemini TTS, ChatGPT com voz, ElevenLabs com system prompt). APIs de TTS literal (ex.: edge-tts via `scripts/generate-audio.py`) devem receber **só o script da cena, sem este prompt** — elas narram em voz alta tudo que recebem, inclusive a instrução (foi exatamente isso que produziu os 48 áudios com ~30 s de instrução narrada em 2026-09-19 — ver `docs/07-CHANGELOG.md`).
+> ⚠️ Este prompt é SÓ para IAs de voz que seguem instruções (Gemini TTS, ChatGPT com voz, ElevenLabs com system prompt). APIs de TTS literal (ex.: edge-tts, qualquer ferramenta que narra texto literalmente) devem receber **só o script da cena, sem este prompt** — elas narram em voz alta tudo que recebem, inclusive a instrução (foi exatamente isso que produziu os 48 áudios com ~30 s de instrução narrada em 2026-09-19 — ver `docs/07-CHANGELOG.md`).
 
 ```text
 Narração em português do Brasil para um app que ajuda pequenos empresários. Voz masculina adulta, brasileira, calorosa e natural — tom de parceiro de confiança, não de locutor de rádio nem de professor. Ritmo pausado e claro, sem pressa, sem dramatização. Pronúncia natural das palavras, sem soletrar nada. Grave exatamente o texto abaixo, palavra por palavra, sem acrescentar, remover ou improvisar nada:
