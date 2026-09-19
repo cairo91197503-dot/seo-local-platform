@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-19 — Lote das imagens com defeito zerado: 11 de 11 integradas
+
+Terceira leva (`cena-01.jpg` em `imagens-correçao`): a estratégia do R10v3 funcionou — sem barra de cabeçalho na composição, o modelo não teve onde escrever inglês. `first-profile-checkup/cena-01` aprovada (nome, 4 blocos com checks, estrelas, legenda, zero texto estrangeiro) e integrada. Com ela, **as 11 imagens com defeito técnico do lote R1–R11 estão todas substituídas** (8 na 1ª rodada + 2 na 2ª + esta). Validado com `npm run lint` e `npm run build`, ambos limpos.
+
 ## 2026-09-19 — Segunda rodada: 2 das 3 devolvidas aprovadas; `first-checkup/cena-01` volta pela 2ª vez
 
 Segunda leva do usuário em `imagens-correçao` (pasta substituída, 3 arquivos: `cena-01`, `cena-03`, `cena-04`), contra os prompts corrigidos R2v2/R7v2/R10v2.
