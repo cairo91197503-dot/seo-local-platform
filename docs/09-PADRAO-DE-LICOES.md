@@ -176,11 +176,54 @@ type LessonScene = {
 - `narration.segments` (legenda sincronizada) e `estimatedDurationSeconds` continuam fazendo parte do tipo, mas não têm mais efeito visual nenhum — a interface não exibe legenda sincronizada nem estática. Novo conteúdo não precisa mais gerar `segments`.
 - `mascot` e `animation` fazem parte do tipo, mas ainda não são consumidos por `SceneView`.
 
-Nenhuma lição tem narração no momento (a única que tinha, a cena `intro` de `reviews-importance`, teve o áudio removido em 2026-09-12, a pedido do usuário — ver `docs/07-CHANGELOG.md`). Isso significa que, hoje, todas as cenas de todas as lições aparecem só com a ilustração (quando existir) e sem nenhum texto ou áudio visível/audível — a experiência de leitura de texto foi deliberadamente removida antes de haver narração pronta para substituí-la. Produzir narração para as lições é o próximo passo pendente para essa experiência voltar a ter conteúdo perceptível além da imagem.
+43 das 48 cenas do currículo têm narração integrada; faltam 5 (ver lista em "Produção de narração (fluxo simples)" acima), geráveis em qualquer IA de voz sem depender de pipeline. Enquanto uma cena não tiver áudio, ela aparece só com a ilustração — sem texto visível nem audível, já que a legenda visível foi removida da interface em 2026-09-12 (ver `docs/07-CHANGELOG.md`).
 
-## Pipeline assistida para rascunhos
+## Produção de narração (fluxo simples, 2026-09-19)
 
-O comando fica fora do app React e não publica conteúdo:
+Decisão: a narração de cada cena é **um arquivo de áudio comum + uma linha no `.ts` da lição**. Nada de Piper, whisper.cpp, manifestos, alinhamento por palavra, VM ou CLI — qualquer IA com voz em português resolve (Gemini TTS, ElevenLabs, ChatGPT com voz, etc.).
+
+Por que isso basta: a interface (`SceneView`) consome só `narration.script` (transcript acessível) e `narration.audioSrc` (o `<audio>`). `segments` e `estimatedDurationSeconds` continuam no tipo como legado opcional, mas não têm efeito visual nenhum — produzir narração nova **não** exige gerá-los.
+
+### Prompt universal de voz (colar uma vez, vale para todas as cenas)
+
+```text
+Narração em português do Brasil para um app que ajuda pequenos empresários. Voz masculina adulta, brasileira, calorosa e natural — tom de parceiro de confiança, não de locutor de rádio nem de professor. Ritmo pausado e claro, sem pressa, sem dramatização. Pronúncia natural das palavras, sem soletrar nada. Grave exatamente o texto abaixo, palavra por palavra, sem acrescentar, remover ou improvisar nada:
+```
+
+### Passo a passo por cena
+
+```text
+1. copiar o `narration.script` da cena (está no `.ts` da lição, em `src/content/lessons/`)
+2. colar o prompt de voz acima + o script na IA de voz e gerar
+3. baixar o áudio (de preferência MP3 — ocupa ~10x menos que WAV; os 43 WAVs atuais somam 14,9 MB no precache do PWA)
+4. salvar em `public/audio/lessons/<lesson-id>/<scene-id>/narration-v001.mp3`
+5. no `.ts` da lição, dentro do `narration` da cena, adicionar:
+   audioSrc: '/audio/lessons/<lesson-id>/<scene-id>/narration-v001.mp3',
+6. `npm run lint` + `npm run build`
+```
+
+Revisão humana continua obrigatória antes de publicar: ouvir o áudio conferindo que não há palavra trocada, cortada ou com pronúncia estranha (nome próprio, número, sigla). Se houver, regenerar — nunca editar o `script` para "acompanhar" um áudio errado; o `script` é a fonte canônica do roteiro.
+
+### As 5 cenas sem áudio (prontas para gerar hoje)
+
+Destino e script de cada uma — é só colar o prompt universal + o script:
+
+1. `business-hours-matter` / `action` → `public/audio/lessons/business-hours-matter/action/narration-v001.mp3`
+   > Agora é sua vez: confira se o horário do seu perfil está correto, incluindo os próximos feriados ou exceções que você já souber.
+2. `choose-your-next-action` / `intro` → `public/audio/lessons/choose-your-next-action/intro/narration-v001.mp3`
+   > Você chegou ao fim do currículo, mas não ao fim da jornada. Cuidar da presença do seu negócio no Google é uma rotina contínua.
+3. `choose-your-next-action` / `choose` → `public/audio/lessons/choose-your-next-action/choose/narration-v001.mp3`
+   > De tudo que você aprendeu, escolha uma ação concreta para fazer agora. O objetivo não é terminar o curso do Estrelar — é saber cuidar do seu negócio no Google, de forma contínua.
+4. `choose-your-next-action` / `example` → `public/audio/lessons/choose-your-next-action/example/narration-v001.mp3`
+   > Pode ser qualquer uma das três melhorias que você identificou na missão anterior — o importante é escolher uma e executar.
+5. `choose-your-next-action` / `action` → `public/audio/lessons/choose-your-next-action/action/narration-v001.mp3`
+   > Escolha uma das melhorias que você identificou e coloque em prática agora. Você já sabe cuidar disso sozinho — e, no futuro, o Estrelar vai poder ajudar a fazer parte disso por você, sempre com a sua aprovação antes de qualquer mudança.
+
+Depois de gerar as 5, a integração (adicionar os 5 `audioSrc`) é feita pela IA em seguida.
+
+## Pipeline assistida para rascunhos (LEGADO/PAUSADO para áudio desde 2026-09-19)
+
+O comando fica fora do app React e não publica conteúdo. **Parte de áudio (Piper local, WAV por cena, `audio-timings.json`) está pausada desde 2026-09-19** — ver "Produção de narração (fluxo simples)" acima, que substitui esse caminho. O restante (roteiro textual + prompts de imagem via Gemini) continua válido como rascunho:
 
 ```bash
 npm run generate:lesson -- \
@@ -249,8 +292,8 @@ As decisões estruturais completas são mantidas em `docs/08-ARQUITETURA-PEDAGOG
 
 ## Fonte canônica de roteiro e legendas
 
-O campo `narration.script` da cena é a fonte oficial do roteiro narrado. Manifestos de mídia devem referenciá-lo por ID e hash, sem copiar o texto como outra fonte editorial.
+O campo `narration.script` da cena é a fonte oficial do roteiro narrado. Desde 2026-09-19, ele também é o texto a colar na IA de voz (ver "Produção de narração (fluxo simples)" acima) — o roteiro escrito à mão e o texto narrado são o mesmo, sem camada intermediária.
 
-Legendas sincronizadas devem usar offsets `textStart` e `textEnd` sobre o roteiro canônico. Transcrições produzidas por ferramentas de alinhamento são diagnósticas: não substituem automaticamente roteiro, legenda ou transcrição acessível.
+`segments` e `estimatedDurationSeconds` são legado do pipeline antigo (Piper + whisper.cpp, `scripts/media/`, pausado): continuam nos arquivos das 43 cenas já integradas por registro histórico, mas não são consumidos pela interface e **não precisam ser produzidos para narração nova**. Os manifestos em `media/manifests/` ficam como registro do que foi gerado por aquele pipeline, não como etapa do fluxo atual.
 
-Alterar o roteiro invalida a narração e os timestamps dependentes. Alterar o WAV invalida os timestamps, mas não altera o roteiro.
+Alterar o roteiro invalida a narração dependente dele. Regenerar o áudio nunca altera o roteiro.

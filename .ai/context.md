@@ -86,7 +86,7 @@ O usuário fechou uma mudança de posicionamento do produto, a partir de anális
 
 Uma auditoria completa do repositório contra `docs/08`, `docs/09`, `docs/11` e `docs/12` foi feita em 2026-09-12 e entregue ao usuário fora do repositório (não commitada) — ela lista com precisão o que está implementado, parcial, ausente ou contraditório em cada uma dessas três frentes, e vale como ponto de partida antes de detalhar qualquer uma delas em tarefas menores.
 
-O MVP do pipeline de mídia está validado na Oracle VM com Node.js, Piper/Faber e whisper.cpp configurados.
+O pipeline antigo de narração (Piper + whisper.cpp via `scripts/media/`, com manifestos e alinhamento por palavra) foi aposentado em 2026-09-19: a interface só consome `audioSrc` + `script`, então narração nova é um arquivo de áudio comum gerável em qualquer IA de voz — ver fluxo simples e as 5 cenas pendentes em `docs/09-PADRAO-DE-LICOES.md`.
 
 Login com Google está conectado à interface (`AuthGate` em `src/app/App.tsx`) e funciona de fato desde 2026-09-12, com o projeto Firebase real criado e configurado — ver `docs/07-CHANGELOG.md`.
 

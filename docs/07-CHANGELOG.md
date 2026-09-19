@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-19 — Arquitetura de áudio simplificada: qualquer IA com prompt simples
+
+A pedido do usuário ("a arquitetura de criação de áudio está muito complexa, quero simplificar para fazer em qualquer IA com prompt simples"), aposentado o pipeline Piper + whisper.cpp (`scripts/media/`, manifestos, candidatos, alinhamento por palavra, dependência da VM Oracle).
+
+**Evidência que autoriza a simplificação:** a interface (`SceneView`) consome só `narration.script` e `narration.audioSrc` — `segments`/`estimatedDurationSeconds` já não têm efeito visual desde 2026-09-12. Todo o maquinário complexo existia para produzir dados que ninguém exibe. Nenhuma linha de código precisou mudar (os campos já são opcionais em `src/content/lessons/types.ts`).
+
+**Fluxo novo (`docs/09-PADRAO-DE-LICOES.md`):** prompt universal de voz + colar o `narration.script` da cena em qualquer IA de voz → baixar (MP3 de preferência; os 43 WAVs atuais somam 14,9 MB no precache) → salvar em `public/audio/lessons/<lesson>/<scene>/narration-v001.mp3` → adicionar o `audioSrc` no `.ts`. Voz definida como masculina brasileira para combinar com as 43 cenas existentes (voz Faber). As 5 cenas sem áudio estão listadas no mesmo documento com script e destino prontos para gerar hoje; a integração dos `audioSrc` é feita pela IA em seguida.
+
 ## 2026-09-19 — Lote das imagens com defeito zerado: 11 de 11 integradas
 
 Terceira leva (`cena-01.jpg` em `imagens-correçao`): a estratégia do R10v3 funcionou — sem barra de cabeçalho na composição, o modelo não teve onde escrever inglês. `first-profile-checkup/cena-01` aprovada (nome, 4 blocos com checks, estrelas, legenda, zero texto estrangeiro) e integrada. Com ela, **as 11 imagens com defeito técnico do lote R1–R11 estão todas substituídas** (8 na 1ª rodada + 2 na 2ª + esta). Validado com `npm run lint` e `npm run build`, ambos limpos.
