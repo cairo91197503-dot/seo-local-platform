@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-19 — Segunda rodada: 2 das 3 devolvidas aprovadas; `first-checkup/cena-01` volta pela 2ª vez
+
+Segunda leva do usuário em `imagens-correçao` (pasta substituída, 3 arquivos: `cena-01`, `cena-03`, `cena-04`), contra os prompts corrigidos R2v2/R7v2/R10v2.
+
+**Aprovadas e integradas (2):** `profile-represents-your-business/cena-03` (frase exata, campo sem rótulo, ícones sem texto — perfeita) e `photos-help-customers-decide/cena-04` ("Antes"/"Depois", selo verde só com ícone — perfeita). Com elas, **10 das 11 imagens do lote estão zeradas**.
+
+**Devolvida de novo (1):** `cena-01.jpg` (era `first-profile-checkup/cena-01`, R10v2) — o cabeçalho do celular continua em inglês ("Company Profile"; antes era "Company Profile summary"). Duas tentativas com instrução de "cabeçalho sem palavras" falharam no mesmo ponto, então a correção muda de estratégia: o R10v3 abaixo remove a barra de cabeçalho da composição (a tela do celular começa direto no nome do negócio), em vez de pedir para esvaziá-la. Arquivo antigo com defeito continua no ar só nesta cena.
+
+Validado com `npm run lint` e `npm run build`, ambos limpos.
+
 ## 2026-09-19 — 8 das 11 imagens regeneradas integradas; 3 devolvidas para regenerar
 
 A pedido do usuário ("criei uma pasta imagens-correçao, faz uma analise das imagens e implementa no projeto"), analisadas uma a uma as 11 imagens de `C:\Users\kairo\Documents\Projetos\imagens-correçao` (nomes genéricos `cena-0N`, mapeadas pelo conteúdo visível) contra os prompts R1–R11 de `docs/14-PROMPTS-DE-IMAGEM-LICOES.md` e os critérios da auditoria (`docs/16`, sem inglês, sem palavra inventada, sem código vazado).
