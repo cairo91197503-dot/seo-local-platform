@@ -302,6 +302,58 @@ body {
   margin: 0;
 }
 
+.missions-page__back {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--color-ink-secondary);
+  font-size: 0.9375rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.missions-page__back:hover {
+  color: var(--color-ink);
+}
+
+.mission-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mission-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mission-list__item:hover {
+  border-color: var(--color-accent-star);
+}
+
+.mission-list__item--completed {
+  opacity: 0.7;
+}
+
+.mission-list__title {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.mission-list__status {
+  font-size: 0.8125rem;
+  color: var(--color-ink-secondary);
+}
+
 .mission-meta {
   display: flex;
   flex-direction: column;
