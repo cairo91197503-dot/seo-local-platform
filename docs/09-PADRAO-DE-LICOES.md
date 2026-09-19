@@ -206,6 +206,8 @@ Revisão humana continua obrigatória antes de publicar: ouvir o áudio conferin
 
 ### As 5 cenas sem áudio (prontas para gerar hoje)
 
+Decisão do usuário em 2026-09-19: em vez de só completar as 5, **substituir todos os 48 áudios** (os 43 do pipeline antigo + as 5 pendentes) por narrações novas numa voz só. O lote completo está em `docs/18-SUBSTITUICAO-NARRACAO-COMPLETA.md` (prompt universal + blocos N1–N48 com script e destino) — é por lá que a geração acontece. As 5 pendentes (N8–N12 do lote) são:
+
 Destino e script de cada uma — é só colar o prompt universal + o script:
 
 1. `business-hours-matter` / `action` → `public/audio/lessons/business-hours-matter/action/narration-v001.mp3`

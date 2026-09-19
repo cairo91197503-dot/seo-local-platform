@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-19 — Lote completo de substituição da narração (N1–N48)
+
+A pedido do usuário ("atualização da documentação e implementação substituindo todos os áudios"), preparado o lote completo de substituição: `docs/18-SUBSTITUICAO-NARRACAO-COMPLETA.md` traz o prompt universal de voz + os 48 blocos (N1–N48) com roteiro extraído diretamente dos `narration.script` e destino por cena (mesma pasta do `.wav` atual, em `.mp3`; única exceção, `reviews-importance/intro`, que mantém o nome plano `cena-01.mp3`).
+
+**Implementação pela IA nesta sessão:** documentação do lote + regra de integração (trocar os 48 `audioSrc`, apagar os 43 `.wav`, validar, commitar). **Geração dos 48 MP3s fica com o usuário** (qualquer IA de voz, uma voz só para o lote todo). Quando os arquivos chegarem, a integração é feita em seguida.
+
 ## 2026-09-19 — Arquitetura de áudio simplificada: qualquer IA com prompt simples
 
 A pedido do usuário ("a arquitetura de criação de áudio está muito complexa, quero simplificar para fazer em qualquer IA com prompt simples"), aposentado o pipeline Piper + whisper.cpp (`scripts/media/`, manifestos, candidatos, alinhamento por palavra, dependência da VM Oracle).
