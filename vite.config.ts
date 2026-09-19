@@ -53,7 +53,7 @@ export default defineConfig({
         // index.html cacheado; os assets versionados (JS/CSS/imagens) usam
         // cache-first automático do Workbox.
         navigateFallback: '/index.html',
-        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,woff2,mp3}'],
       },
     }),
   ],
