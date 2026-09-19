@@ -10,6 +10,7 @@ import { LandingPage } from '../pages/LandingPage'
 import { LoginPage } from '../pages/LoginPage'
 import { OnboardingPage } from '../pages/OnboardingPage'
 import { PrivacyPolicyPage } from '../pages/PrivacyPolicyPage'
+import { AccountDeletionPage } from '../pages/AccountDeletionPage'
 import { JourneyProvider } from '../state/JourneyProvider'
 import { useJourney } from '../state/useJourney'
 
@@ -115,6 +116,7 @@ function App() {
             <Routes>
               <Route path="login" element={<LoginRoute />} />
               <Route path="privacidade" element={<PrivacyPolicyPage />} />
+              <Route path="exclusao-de-conta" element={<AccountDeletionPage />} />
               <Route element={<AuthGate />}>
                 <Route path="onboarding" element={<OnboardingPage />} />
                 <Route element={<OnboardingGuard />}>
