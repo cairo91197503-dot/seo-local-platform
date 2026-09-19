@@ -1,31 +1,42 @@
+import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import { BottomNav } from './BottomNav'
+import styles from './AppShell.module.css'
 
 export function AppShell() {
-  // AppShell só é renderizado dentro do AuthGate (src/app/App.tsx), então
-  // `user` sempre existe aqui — não precisa tratar o caso `null`.
   const { user, signOut } = useAuth()
+  const [signingOut, setSigningOut] = useState(false)
   const firstName = user?.displayName?.split(' ')[0]
 
-  const handleSignOut = () => {
-    void signOut()
+  const handleSignOut = async () => {
+    setSigningOut(true)
+    try {
+      await signOut()
+    } catch {
+      setSigningOut(false)
+    }
   }
 
   return (
-    <div className="app-shell">
-      <header className="app-header">
-        <Link className="app-header__home" to="/">
-          Início
+    <div className={styles.shell}>
+      <header className={styles.header}>
+        <Link className={styles.home} to="/">
+          Inicio
         </Link>
-        <div className="app-header__user">
-          {firstName && <span className="app-header__greeting">Olá, {firstName}</span>}
-          <button type="button" className="app-header__logout" onClick={handleSignOut}>
-            Sair
+        <div className={styles.user}>
+          {firstName && <span className={styles.greeting}>Ola, {firstName}</span>}
+          <button
+            type="button"
+            className={styles.logout}
+            onClick={handleSignOut}
+            disabled={signingOut}
+          >
+            {signingOut ? 'Saindo...' : 'Sair'}
           </button>
         </div>
       </header>
-      <main className="app-content">
+      <main className={styles.content}>
         <Outlet />
       </main>
       <BottomNav />

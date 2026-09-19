@@ -18,11 +18,7 @@ export const howToRespondToReviewsLesson: Lesson = {
       narration: {
         script:
           'Receber uma avaliação é só metade do caminho. Responder também faz parte de cuidar da reputação do seu negócio.',
-        audioSrc: '/audio/lessons/how-to-respond-to-reviews/intro/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 46, startSeconds: 0, endSeconds: 2.46 },
-          { textStart: 46, textEnd: 111, startSeconds: 2.56, endSeconds: 6.04 },
-        ],
+        audioSrc: '/audio/lessons/how-to-respond-to-reviews/intro/narration-v001.mp3',
       },
     },
     {
@@ -38,11 +34,7 @@ export const howToRespondToReviewsLesson: Lesson = {
       narration: {
         script:
           'O Google recomenda responder às avaliações e tratar o feedback dos clientes com atenção. Responder bem a uma avaliação positiva agradece; responder bem a uma negativa mostra que você se importa, sem hostilidade.',
-        audioSrc: '/audio/lessons/how-to-respond-to-reviews/why-respond/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 89, startSeconds: 0, endSeconds: 4.91 },
-          { textStart: 89, textEnd: 211, startSeconds: 4.91, endSeconds: 11.26 },
-        ],
+        audioSrc: '/audio/lessons/how-to-respond-to-reviews/why-respond/narration-v001.mp3',
       },
     },
     {
@@ -56,11 +48,7 @@ export const howToRespondToReviewsLesson: Lesson = {
       narration: {
         script:
           'Numa avaliação positiva, um agradecimento simples e específico já ajuda. Numa negativa, reconhecer o problema e mostrar disposição para resolver vale muito mais do que se justificar ou discutir.',
-        audioSrc: '/audio/lessons/how-to-respond-to-reviews/example/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 73, startSeconds: 0, endSeconds: 4.09 },
-          { textStart: 73, textEnd: 194, startSeconds: 4.1, endSeconds: 10.88 },
-        ],
+        audioSrc: '/audio/lessons/how-to-respond-to-reviews/example/narration-v001.mp3',
       },
     },
     {
@@ -73,11 +61,7 @@ export const howToRespondToReviewsLesson: Lesson = {
       },
       narration: {
         script: 'Você já sabe como pensar sobre isso. A próxima missão é responder a uma avaliação de verdade.',
-        audioSrc: '/audio/lessons/how-to-respond-to-reviews/action/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 37, startSeconds: 0, endSeconds: 2.22 },
-          { textStart: 37, textEnd: 93, startSeconds: 2.27, endSeconds: 5.22 },
-        ],
+        audioSrc: '/audio/lessons/how-to-respond-to-reviews/action/narration-v001.mp3',
       },
     },
   ],

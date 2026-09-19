@@ -18,6 +18,7 @@ export const chooseYourNextActionLesson: Lesson = {
       narration: {
         script:
           'Você chegou ao fim do currículo, mas não ao fim da jornada. Cuidar da presença do seu negócio no Google é uma rotina contínua.',
+        audioSrc: '/audio/lessons/choose-your-next-action/intro/narration-v001.mp3',
       },
     },
     {
@@ -33,6 +34,7 @@ export const chooseYourNextActionLesson: Lesson = {
       narration: {
         script:
           'De tudo que você aprendeu, escolha uma ação concreta para fazer agora. O objetivo não é terminar o curso do Estrelar — é saber cuidar do seu negócio no Google, de forma contínua.',
+        audioSrc: '/audio/lessons/choose-your-next-action/choose/narration-v001.mp3',
       },
     },
     {
@@ -46,6 +48,7 @@ export const chooseYourNextActionLesson: Lesson = {
       narration: {
         script:
           'Pode ser qualquer uma das três melhorias que você identificou na missão anterior — o importante é escolher uma e executar.',
+        audioSrc: '/audio/lessons/choose-your-next-action/example/narration-v001.mp3',
       },
     },
     {
@@ -59,6 +62,7 @@ export const chooseYourNextActionLesson: Lesson = {
       narration: {
         script:
           'Escolha uma das melhorias que você identificou e coloque em prática agora. Você já sabe cuidar disso sozinho — e, no futuro, o Estrelar vai poder ajudar a fazer parte disso por você, sempre com a sua aprovação antes de qualquer mudança.',
+        audioSrc: '/audio/lessons/choose-your-next-action/action/narration-v001.mp3',
       },
     },
   ],

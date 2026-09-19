@@ -1,24 +1,15 @@
 import { type FirebaseApp, getApps, initializeApp } from 'firebase/app'
 import { type Auth, getAuth } from 'firebase/auth'
-import { type Firestore, getFirestore } from 'firebase/firestore'
 
 /**
- * Inicialização do Firebase para o app React.
+ * Inicializacao do Firebase para o app React.
  *
- * Os valores de configuração vêm exclusivamente de variáveis de ambiente
- * (`VITE_FIREBASE_*`, lidas pelo Vite e expostas via `import.meta.env`).
- * Nenhum valor é fixado no código-fonte.
+ * Os valores de configuracao vem exclusivamente de variaveis de ambiente
+ * (VITE_FIREBASE_*, lidas pelo Vite e expostas via import.meta.env).
+ * Nenhum valor e fixado no codigo-fonte.
  *
- * Importante: a configuração web do Firebase (apiKey, projectId etc.) não é
- * um segredo — ela é pública por design; a proteção real dos dados vem das
- * regras de segurança do Firestore (`firestore.rules`), não do sigilo desses
- * valores. Mesmo assim, seguimos o padrão do projeto de nunca fixar valores
- * de configuração de ambiente diretamente no código (`docs/04-REGRAS.md`,
- * seção "Segurança").
- *
- * Nenhum projeto Firebase real foi criado ainda — ver `docs/05-BANCO-DE-DADOS.md`
- * e `.ai/context.md` para o que depende de ação humana antes deste código
- * funcionar de fato.
+ * firebase/firestore e carregado via dynamic import() para manter
+ * ~180KB fora do bundle inicial (so necessario apos login).
  */
 
 const ENV_VAR_NAMES = {
@@ -47,7 +38,7 @@ function readFirebaseConfig() {
   if (missingKeys.length > 0) {
     const missingEnvVars = missingKeys.map((key) => ENV_VAR_NAMES[key]).join(', ')
     throw new Error(
-      `Configuração do Firebase incompleta. Defina estas variáveis de ambiente (veja .env.example): ${missingEnvVars}`,
+      `Configuracao do Firebase incompleta. Defina estas variaveis de ambiente (veja .env.example): ${missingEnvVars}`,
     )
   }
 
@@ -56,9 +47,7 @@ function readFirebaseConfig() {
 
 let app: FirebaseApp | undefined
 let auth: Auth | undefined
-let firestore: Firestore | undefined
 
-/** Retorna a instância única do app Firebase, inicializando na primeira chamada. */
 export function getFirebaseApp(): FirebaseApp {
   if (!app) {
     const existingApps = getApps()
@@ -68,7 +57,6 @@ export function getFirebaseApp(): FirebaseApp {
   return app
 }
 
-/** Retorna a instância única do Firebase Authentication. */
 export function getFirebaseAuth(): Auth {
   if (!auth) {
     auth = getAuth(getFirebaseApp())
@@ -77,11 +65,35 @@ export function getFirebaseAuth(): Auth {
   return auth
 }
 
-/** Retorna a instância única do Firestore. */
-export function getFirebaseFirestore(): Firestore {
-  if (!firestore) {
-    firestore = getFirestore(getFirebaseApp())
-  }
+type FirestoreModule = typeof import('firebase/firestore')
 
-  return firestore
+let firestoreModulePromise: Promise<FirestoreModule> | null = null
+
+function loadFirestoreModule(): Promise<FirestoreModule> {
+  if (!firestoreModulePromise) {
+    firestoreModulePromise = import('firebase/firestore')
+  }
+  return firestoreModulePromise
+}
+
+let firestoreInstancePromise: Promise<import('firebase/firestore').Firestore> | null = null
+
+export async function getFirestoreInstance(): Promise<import('firebase/firestore').Firestore> {
+  if (!firestoreInstancePromise) {
+    firestoreInstancePromise = loadFirestoreModule().then(({ getFirestore }) =>
+      getFirestore(getFirebaseApp()),
+    )
+  }
+  return firestoreInstancePromise
+}
+
+export async function loadFirestoreHelpers() {
+  const [firestore, mod] = await Promise.all([getFirestoreInstance(), loadFirestoreModule()])
+  return {
+    firestore,
+    doc: mod.doc,
+    getDoc: mod.getDoc,
+    setDoc: mod.setDoc,
+    serverTimestamp: mod.serverTimestamp,
+  }
 }

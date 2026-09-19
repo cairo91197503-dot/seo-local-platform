@@ -18,11 +18,7 @@ export const reviewRequestMessageLesson: Lesson = {
       narration: {
         script:
           'Pedir uma avaliação é normal, e ajuda o seu negócio a ser conhecido. Mas a forma como você pede também importa.',
-        audioSrc: '/audio/lessons/review-request-message/intro/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 69, startSeconds: 0, endSeconds: 3.8 },
-          { textStart: 69, textEnd: 111, startSeconds: 3.83, endSeconds: 5.94 },
-        ],
+        audioSrc: '/audio/lessons/review-request-message/intro/narration-v001.mp3',
       },
     },
     {
@@ -38,11 +34,7 @@ export const reviewRequestMessageLesson: Lesson = {
       narration: {
         script:
           'Um pedido genuíno é educado e sincero: você convida a pessoa a compartilhar a opinião real dela, sem tentar controlar o resultado. Por isso, nunca peça uma nota específica, nem ofereça desconto, brinde ou qualquer troca por uma avaliação.',
-        audioSrc: '/audio/lessons/review-request-message/right-way/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 131, startSeconds: 0, endSeconds: 7.69 },
-          { textStart: 131, textEnd: 238, startSeconds: 7.69, endSeconds: 13.04 },
-        ],
+        audioSrc: '/audio/lessons/review-request-message/right-way/narration-v001.mp3',
       },
     },
     {
@@ -56,10 +48,7 @@ export const reviewRequestMessageLesson: Lesson = {
       narration: {
         script:
           'O melhor momento para pedir é logo depois de uma experiência positiva real, quando a lembrança ainda está fresca para o cliente.',
-        audioSrc: '/audio/lessons/review-request-message/timing/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 128, startSeconds: 0, endSeconds: 6.2 },
-        ],
+        audioSrc: '/audio/lessons/review-request-message/timing/narration-v001.mp3',
       },
     },
     {
@@ -73,11 +62,7 @@ export const reviewRequestMessageLesson: Lesson = {
       narration: {
         script:
           'Você já sabe como pedir avaliações de forma genuína. A próxima missão é preparar a sua própria mensagem de solicitação.',
-        audioSrc: '/audio/lessons/review-request-message/action/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 53, startSeconds: 0, endSeconds: 2.88 },
-          { textStart: 53, textEnd: 119, startSeconds: 2.88, endSeconds: 6.2 },
-        ],
+        audioSrc: '/audio/lessons/review-request-message/action/narration-v001.mp3',
       },
     },
   ],

@@ -18,10 +18,7 @@ export const businessHoursMatterLesson: Lesson = {
       narration: {
         script:
           'Um horário errado pode fazer um cliente ir até o seu negócio e encontrar a porta fechada — e isso já é uma má primeira experiência.',
-        audioSrc: '/audio/lessons/business-hours-matter/intro/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 131, startSeconds: 0, endSeconds: 6.9 },
-        ],
+        audioSrc: '/audio/lessons/business-hours-matter/intro/narration-v001.mp3',
       },
     },
     {
@@ -37,11 +34,7 @@ export const businessHoursMatterLesson: Lesson = {
       narration: {
         script:
           'Além do horário normal, o Google permite informar horários especiais, como feriados e fechamentos temporários. Esses horários podem e devem ser atualizados sempre que mudarem — não só no dia a dia comum, mas também nessas situações especiais.',
-        audioSrc: '/audio/lessons/business-hours-matter/special-hours/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 111, startSeconds: 0, endSeconds: 6 },
-          { textStart: 111, textEnd: 242, startSeconds: 6.03, endSeconds: 13.2 },
-        ],
+        audioSrc: '/audio/lessons/business-hours-matter/special-hours/narration-v001.mp3',
       },
     },
     {
@@ -55,10 +48,7 @@ export const businessHoursMatterLesson: Lesson = {
       narration: {
         script:
           'Na prática, um cliente que vê "aberto" no perfil, vai até lá num feriado e encontra tudo fechado, acaba perdendo confiança — mesmo sem culpa do negócio em si.',
-        audioSrc: '/audio/lessons/business-hours-matter/consequence/narration-v001.wav',
-        segments: [
-          { textStart: 0, textEnd: 158, startSeconds: 0, endSeconds: 8.88 },
-        ],
+        audioSrc: '/audio/lessons/business-hours-matter/consequence/narration-v001.mp3',
       },
     },
     {
@@ -72,6 +62,7 @@ export const businessHoursMatterLesson: Lesson = {
       narration: {
         script:
           'Agora é sua vez: confira se o horário do seu perfil está correto, incluindo os próximos feriados ou exceções que você já souber.',
+        audioSrc: '/audio/lessons/business-hours-matter/action/narration-v001.mp3',
       },
     },
   ],

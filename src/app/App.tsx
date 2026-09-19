@@ -1,18 +1,37 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { AppShell } from '../components/layout/AppShell'
 import { Mascot } from '../components/mascot/Mascot'
+import { ErrorBoundary } from '../components/ui/ErrorBoundary'
 import { AuthProvider } from '../lib/auth/AuthContext'
 import { useAuth } from '../lib/auth/useAuth'
 import { HomePage } from '../pages/HomePage'
 import { LandingPage } from '../pages/LandingPage'
-import { LearnPage } from '../pages/LearnPage'
-import { LessonPage } from '../pages/LessonPage'
 import { LoginPage } from '../pages/LoginPage'
-import { MissionsPage } from '../pages/MissionsPage'
 import { OnboardingPage } from '../pages/OnboardingPage'
-import { ToolsPage } from '../pages/ToolsPage'
 import { JourneyProvider } from '../state/JourneyProvider'
 import { useJourney } from '../state/useJourney'
+
+const LearnPage = lazy(() =>
+  import('../pages/LearnPage').then((m) => ({ default: m.LearnPage })),
+)
+const LessonPage = lazy(() =>
+  import('../pages/LessonPage').then((m) => ({ default: m.LessonPage })),
+)
+const MissionsPage = lazy(() =>
+  import('../pages/MissionsPage').then((m) => ({ default: m.MissionsPage })),
+)
+const ToolsPage = lazy(() =>
+  import('../pages/ToolsPage').then((m) => ({ default: m.ToolsPage })),
+)
+
+function PageLoader() {
+  return (
+    <div className="page-loader">
+      <Mascot pose="neutral" size={48} />
+    </div>
+  )
+}
 
 function OnboardingGuard() {
   const { journey } = useJourney()
@@ -88,28 +107,58 @@ function LoginRoute() {
 
 function App() {
   return (
-    <AuthProvider>
-      <JourneyProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="login" element={<LoginRoute />} />
-            <Route element={<AuthGate />}>
-              <Route path="onboarding" element={<OnboardingPage />} />
-              <Route element={<OnboardingGuard />}>
-                <Route element={<AppShell />}>
-                  <Route index element={<HomePage />} />
-                  <Route path="aprender" element={<LearnPage />} />
-                  <Route path="licao/:id" element={<LessonPage />} />
-                  <Route path="missoes" element={<MissionsPage />} />
-                  <Route path="ferramentas" element={<ToolsPage />} />
+    <ErrorBoundary>
+      <AuthProvider>
+        <JourneyProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="login" element={<LoginRoute />} />
+              <Route element={<AuthGate />}>
+                <Route path="onboarding" element={<OnboardingPage />} />
+                <Route element={<OnboardingGuard />}>
+                  <Route element={<AppShell />}>
+                    <Route index element={<HomePage />} />
+                    <Route
+                      path="aprender"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          <LearnPage />
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="licao/:id"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          <LessonPage />
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="missoes"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          <MissionsPage />
+                        </Suspense>
+                      }
+                    />
+                    <Route
+                      path="ferramentas"
+                      element={
+                        <Suspense fallback={<PageLoader />}>
+                          <ToolsPage />
+                        </Suspense>
+                      }
+                    />
+                  </Route>
                 </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </JourneyProvider>
-    </AuthProvider>
+            </Routes>
+          </BrowserRouter>
+        </JourneyProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   )
 }
 

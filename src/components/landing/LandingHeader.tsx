@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mascot } from '../mascot/Mascot'
 
@@ -17,8 +17,43 @@ import { Mascot } from '../mascot/Mascot'
  */
 export function LandingHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
 
   const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMenu()
+        toggleRef.current?.focus()
+        return
+      }
+
+      if (e.key === 'Tab' && navRef.current) {
+        const focusables = navRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )
+        if (focusables.length === 0) return
+
+        const first = focusables[0]
+        const last = focusables[focusables.length - 1]
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [menuOpen])
 
   return (
     <header className="landing-header">
@@ -29,6 +64,7 @@ export function LandingHeader() {
         </Link>
 
         <button
+          ref={toggleRef}
           type="button"
           className="landing-header__menu-toggle"
           aria-expanded={menuOpen}
@@ -39,6 +75,7 @@ export function LandingHeader() {
         </button>
 
         <nav
+          ref={navRef}
           id="landing-header-nav"
           className={`landing-header__nav${menuOpen ? ' landing-header__nav--open' : ''}`}
           aria-label="Navegação principal"

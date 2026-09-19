@@ -116,7 +116,7 @@ export function SceneView({ scene, sceneNumber, totalScenes }: SceneViewProps) {
             <audio
               ref={audioRef}
               src={audioSrc}
-              preload="metadata"
+              preload="auto"
               onPlay={() => setAudioState('playing')}
               onPause={() => {
                 if (!audioRef.current?.ended) {

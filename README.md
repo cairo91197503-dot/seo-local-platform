@@ -1,75 +1,70 @@
-# React + TypeScript + Vite
+# Estrelar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O assistente do pequeno negócio para cuidar do Perfil da Empresa no Google.
 
-Currently, two official plugins are available:
+## Sobre
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O Estrelar ajuda pequenos empresários brasileiros a cuidar da presença do negócio no Google por meio de educação prática, missões, gamificação e ferramentas para reputação e SEO local.
 
-## React Compiler
+- **Free = Aprender** — 12 lições, missões, gamificação e QR Code para avaliações
+- **Premium = Fazer** — (em breve) conexão com Google Business Profile, diagnóstico e ações com IA
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+- React 19 + TypeScript + Vite
+- Firebase (Authentication, Firestore, Hosting)
+- React Router v7
+- PWA (vite-plugin-pwa)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como rodar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# 1. Instalar dependências
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 2. Configurar variáveis de ambiente
+cp .env.example .env.local
+# Preencher com as credenciais do Firebase
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+# 3. Iniciar desenvolvimento
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Comandos
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento com HMR |
+| `npm run build` | Build de produção (tsc + vite) |
+| `npm run preview` | Preview do build local |
+| `npm run lint` | Verificação de código com ESLint |
+| `npm run test` | Executa testes unitários (vitest) |
+| `npm run test:watch` | Testes em modo watch |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estrutura
 
 ```
+src/
+├── app/App.tsx          # Roteamento e guards
+├── components/          # Componentes React
+├── content/             # Lições e missões (dados)
+├── lib/                 # Firebase, auth
+├── pages/               # Páginas do app
+├── state/               # Estado da jornada
+└── index.css            # Estilos globais
+```
+
+## Documentação
+
+A documentação completa do projeto está em `docs/`:
+
+- `docs/01-PROJETO.md` — Visão do produto
+- `docs/02-ROADMAP.md` — Prioridades e fases
+- `docs/03-ARQUITETURA.md` — Arquitetura técnica
+- `docs/08-ARQUITETURA-PEDAGOGICA.md` — Sistema educacional
+- `docs/09-PADRAO-DE-LICOES.md` — Padrão de produção de lições
+- `docs/13-CURRICULO-MVP.md` — Currículo do MVP (12 lições)
+
+## Licença
+
+Projeto privado.
