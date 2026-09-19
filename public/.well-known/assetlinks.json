@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.estrelar.twa",
+    "sha256_cert_fingerprints": ["85:47:9A:A6:6A:66:CB:BC:32:CE:78:A5:F3:BB:D4:AB:20:A4:FE:8D:E5:E8:18:14:F9:35:41:28:F9:AD:E9:67"]
+  }
+}]
