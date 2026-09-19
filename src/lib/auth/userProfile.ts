@@ -2,11 +2,15 @@ import type { User } from 'firebase/auth'
 import { loadFirestoreHelpers } from '../firebase'
 
 /**
- * Cria ou atualiza o documento de identidade do usuario em users/{uid}.
- * So dados de identidade/perfil basico do Firebase Authentication.
+ * Cria ou atualiza o documento de identidade do usuário em `users/{uid}`
+ * (`docs/05-BANCO-DE-DADOS.md`): só dados de identidade/perfil básico do
+ * Firebase Authentication. Progresso, XP e missões ficam de fora — formato
+ * ainda é `DECISÃO NECESSÁRIA` pedagógica (`docs/08-ARQUITETURA-PEDAGOGICA.md`),
+ * não devem ser inferidos aqui.
  *
- * createdAt so e gravado na primeira vez (documento nao existe ainda);
- * chamadas seguintes so atualizam os campos que podem mudar no Google.
+ * `createdAt` só é gravado na primeira vez (documento não existe ainda);
+ * chamadas seguintes (login em uma nova sessão) só atualizam os campos que
+ * podem mudar no Google (nome, e-mail, foto).
  */
 export async function upsertUserProfile(user: User): Promise<void> {
   const { firestore, doc, getDoc, setDoc, serverTimestamp } = await loadFirestoreHelpers()
@@ -28,8 +32,12 @@ export async function upsertUserProfile(user: User): Promise<void> {
 }
 
 /**
- * Grava o nome e o segmento/ramo do negocio, coletados no onboarding.
- * Usa merge: true para so atualizar esses dois campos.
+ * Grava o nome e o segmento/ramo do negócio, coletados no onboarding
+ * (`src/pages/OnboardingPage.tsx`, `docs/05-BANCO-DE-DADOS.md`). Usa
+ * `merge: true` para só atualizar esses dois campos, sem tocar em
+ * `displayName`/`email`/`photoURL`/`createdAt` (geridos por
+ * `upsertUserProfile`) nem em progresso/XP (documento separado, ver
+ * `journeyRemote.ts`).
  */
 export async function saveBusinessProfile(
   uid: string,

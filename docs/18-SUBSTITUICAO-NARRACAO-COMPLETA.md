@@ -15,7 +15,7 @@ Narração em português do Brasil para um app que ajuda pequenos empresários. 
 - Uma voz só para os 48 (não trocar de voz no meio do lote).
 - Revisão humana obrigatória: ouvir cada áudio conferindo palavra trocada, cortada ou com pronúncia estranha; regenerar se preciso — nunca editar o `script` para acompanhar um áudio errado.
 - Destino: mesmo pasta do `.wav` atual, com o nome indicado (`.mp3`). A única exceção é `reviews-importance/intro`, que usa o nome plano histórico (`cena-01.mp3`).
-- Quando os 48 MP3s chegarem, a IA troca os 48 `audioSrc` nos `.ts`, apaga os 43 `.wav` antigos, valida (`lint` + `build`) e commita.
+- **Lote concluído em 2026-09-19** (commit externo `1e2db6d`): 48 MP3s gerados via edge-tts (voz `pt-BR-AntonioNeural`), 48 `audioSrc` atualizados, 43 `.wav` apagados. Ver `docs/07-CHANGELOG.md`. Resta a aprovação por escuta abaixo.
 
 ## N1 - accurate-business-info / intro
 
@@ -352,3 +352,24 @@ Gerar com: prompt universal de voz + o script abaixo.
 Salvar como: public/audio/lessons/why-appear-in-local-search/action/narration-v001.mp3 (substitui o .wav atual)
 
 > Você já entende por que aparecer nas buscas locais importa. Agora, a próxima missão é descobrir como o seu negócio aparece hoje.
+
+---
+
+## Aprovação por escuta (checklist, 2026-09-19)
+
+Os 48 arquivos existem e tocam, mas máquina não avalia pronúncia. Ouvir cada cena com o roteiro (blocos N1–N48 acima) ao lado e marcar. Critérios de reprovação: palavra trocada/omitida, corte no início ou fim, pronúncia estranha em nome próprio/número/sigla, ruído ou volume muito diferente das demais. Reprovada → regenerar só aquela cena (mesmo prompt universal + script) e avisar a IA para integrar.
+
+- [ ] Lição 1 `why-appear-in-local-search` (intro, first-step, where, action) — atenção: "Café da Esquina" não é narrado aqui, só conferir fluidez
+- [ ] Lição 2 `profile-represents-your-business` (intro, first-impression, control, action)
+- [ ] Lição 3 `accurate-business-info` (intro, what-matters, keep-updated, action) — atenção: número de telefone em keep-updated
+- [ ] Lição 4 `business-hours-matter` (intro, special-hours, consequence, action) — atenção: "Padaria Central", feriados
+- [ ] Lição 5 `explain-what-you-offer` (intro, clarity, example, action) — atenção: "Salão Belíssima"
+- [ ] Lição 6 `photos-help-customers-decide` (intro, what-photos-do, trust, action)
+- [ ] Lição 7 `reviews-importance` (intro, trust, timing, action)
+- [ ] Lição 8 `review-request-message` (intro, right-way, timing, action)
+- [ ] Lição 9 `how-to-respond-to-reviews` (intro, why-respond, example, action) — atenção: nomes "Ana Silva" e "Carlos Mendes"
+- [ ] Lição 10 `keep-your-profile-updated` (intro, living-profile, consequence, action)
+- [ ] Lição 11 `first-profile-checkup` (intro, what-it-means, purpose, action) — atenção: "Artesanato Dona Cila" (fala-se "Dona Sila"? deve soar "Cila" com C)
+- [ ] Lição 12 `choose-your-next-action` (intro, choose, example, action)
+
+Quando as 12 estiverem marcadas (ou com a lista das reprovadas), a IA registra a aprovação no changelog e o áudio sai de "pendente".

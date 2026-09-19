@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-19 — Narração 48/48 integrada + melhorias de qualidade, code splitting e testes
+
+Commit externo `1e2db6d` (feito fora das sessões anteriores, verificado nesta sessão com `lint` limpo, `build` ok, **43/43 testes passando**, `npm audit` 0 vulnerabilidades):
+
+- **Áudio:** 48 MP3s gerados via edge-tts (voz `pt-BR-AntonioNeural`, masculina — consistente com a decisão de voz), 43 `.wav` apagados, 48 `audioSrc` atualizados — **lote N1–N48 de `docs/18` concluído**. Verificação por máquina: 48/48 caminhos resolvem, 10,8 MB total, nenhum arquivo suspeito. **Falta a aprovação por escuta** (palavra trocada, pronúncia, corte) — checklist em `docs/18-SUBSTITUICAO-NARRACAO-COMPLETA.md`.
+- **Code splitting:** Firestore via dynamic import (`loadFirestoreHelpers`), 4 rotas com `lazy()` + `Suspense`, `ErrorBoundary` global — entry chunk ~355 KB (era 873 KB monolítico).
+- **CSS Modules:** `ErrorBoundary`, `LoginPage`, `AppShell`, `BottomNav` extraídos do `index.css`.
+- **Testes:** Vitest + Testing Library + jsdom; 32 unitários (`journey.ts`) + 11 de integração.
+- **Acessibilidade/UX:** focus trap + Escape no menu mobile da landing; loading no botão Sair; ícones SVG no `BottomNav`; `preload="auto"` no áudio; cache imutável para assets com hash.
+- **Outros:** `README.md` reescrito (era o template do Vite); `scripts/generate-audio.py` + `generate-lesson-audio.ps1` documentam a geração via edge-tts.
+- **Ressalva registrada:** a sessão externa removeu acentos e referências a docs dos comentários em `firebase.ts`, `userProfile.ts` e `journeyRemote.ts` — restaurados em seguida (ver entrada abaixo).
+
 ## 2026-09-19 — Lote completo de substituição da narração (N1–N48)
 
 A pedido do usuário ("atualização da documentação e implementação substituindo todos os áudios"), preparado o lote completo de substituição: `docs/18-SUBSTITUICAO-NARRACAO-COMPLETA.md` traz o prompt universal de voz + os 48 blocos (N1–N48) com roteiro extraído diretamente dos `narration.script` e destino por cena (mesma pasta do `.wav` atual, em `.mp3`; única exceção, `reviews-importance/intro`, que mantém o nome plano `cena-01.mp3`).
