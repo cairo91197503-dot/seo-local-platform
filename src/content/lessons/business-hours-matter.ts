@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const businessHoursMatterLesson: Lesson = {
   id: 'business-hours-matter',
   title: 'Horários também fazem parte da experiência',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

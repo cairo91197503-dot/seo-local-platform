@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const profileRepresentsYourBusinessLesson: Lesson = {
   id: 'profile-represents-your-business',
   title: 'Seu perfil representa seu negócio',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

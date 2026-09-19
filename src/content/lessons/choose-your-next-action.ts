@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const chooseYourNextActionLesson: Lesson = {
   id: 'choose-your-next-action',
   title: 'Escolha sua próxima ação',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const explainWhatYouOfferLesson: Lesson = {
   id: 'explain-what-you-offer',
   title: 'Faça o cliente entender o que você oferece',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

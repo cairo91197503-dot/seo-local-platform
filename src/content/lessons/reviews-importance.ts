@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const reviewsImportanceLesson: Lesson = {
   id: 'reviews-importance',
   title: 'Por que as avaliações importam?',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

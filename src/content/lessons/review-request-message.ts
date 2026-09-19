@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const reviewRequestMessageLesson: Lesson = {
   id: 'review-request-message',
   title: 'Como fazer um pedido de avaliação genuíno',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

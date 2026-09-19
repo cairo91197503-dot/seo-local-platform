@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const keepYourProfileUpdatedLesson: Lesson = {
   id: 'keep-your-profile-updated',
   title: 'Seu perfil precisa continuar atualizado',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

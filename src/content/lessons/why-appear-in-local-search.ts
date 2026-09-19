@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const whyAppearInLocalSearchLesson: Lesson = {
   id: 'why-appear-in-local-search',
   title: 'Por que aparecer nas buscas locais importa',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

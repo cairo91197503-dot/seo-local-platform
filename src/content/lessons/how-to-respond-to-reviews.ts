@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const howToRespondToReviewsLesson: Lesson = {
   id: 'how-to-respond-to-reviews',
   title: 'Como responder avaliações',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

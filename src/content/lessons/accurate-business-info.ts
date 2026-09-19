@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const accurateBusinessInfoLesson: Lesson = {
   id: 'accurate-business-info',
   title: 'Informações corretas ajudam o cliente a entender o negócio',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [

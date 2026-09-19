@@ -25,13 +25,11 @@ export type LessonScene = {
   illustration?: SceneIllustration
   animation?: string
   narration?: SceneNarration
-  estimatedDurationSeconds?: number
 }
 
 export type Lesson = {
   id: string
   title: string
-  duration: string
   level: string
   futureReward: string
   scenes: LessonScene[]

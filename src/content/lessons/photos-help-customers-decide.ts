@@ -3,7 +3,6 @@ import type { Lesson } from './types.js'
 export const photosHelpCustomersDecideLesson: Lesson = {
   id: 'photos-help-customers-decide',
   title: 'Fotos ajudam o cliente a decidir',
-  duration: '1 min',
   level: 'Iniciante',
   futureReward: '20 XP',
   scenes: [
