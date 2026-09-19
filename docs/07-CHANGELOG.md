@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-19 — 8 das 11 imagens regeneradas integradas; 3 devolvidas para regenerar
+
+A pedido do usuário ("criei uma pasta imagens-correçao, faz uma analise das imagens e implementa no projeto"), analisadas uma a uma as 11 imagens de `C:\Users\kairo\Documents\Projetos\imagens-correçao` (nomes genéricos `cena-0N`, mapeadas pelo conteúdo visível) contra os prompts R1–R11 de `docs/14-PROMPTS-DE-IMAGEM-LICOES.md` e os critérios da auditoria (`docs/16`, sem inglês, sem palavra inventada, sem código vazado).
+
+**Integradas (8, sobrescrevendo os arquivos com defeito, mesmo caminho — sem mudança nos `.ts`):** `business-hours-matter/cena-01`, `explain-what-you-offer/cena-01` e `cena-02`, `how-to-respond-to-reviews/cena-01`, `choose-your-next-action/cena-01`, `why-appear-in-local-search/cena-03`, `accurate-business-info/cena-03`, `keep-your-profile-updated/cena-04`. Ressalvas aceitas e registradas: `explain/cena-02` saiu com "precisa,não" (vírgula sem espaço após — detalhe tipográfico, sem impacto na leitura); `business-hours/cena-01` veio com composição levemente diferente do R4 (selo "ABERTO AGORA" em vez de faixa + manchete parcial no canto, texto correto em ambos).
+
+**Devolvidas para regenerar (3, NÃO integradas — os arquivos com defeito antigo continuam no ar):**
+- `cena-01(3).jpg` (era `first-profile-checkup/cena-01`, R10): cabeçalho do celular saiu em inglês, "Company Profile summary" — viola o critério "sem inglês" da auditoria. Regenerar com o R10 pedindo cabeçalho só com seta de voltar + ícone, sem nenhuma palavra.
+- `cena-03(1).jpg` (era `profile-represents-your-business/cena-03`, R2): legenda com palavra duplicada ("seu perfil perfil") + campo rotulado "Name" em inglês. Regenerar com o R2 reforçando frase exata e campo sem rótulo.
+- `cena-04.jpg` (era `photos-help-customers-decide/cena-04`, R7): selo verde com a palavra "update" em inglês (o R7 permitia só "Antes"/"Depois"). Regenerar com o R7 pedindo só o ícone de atualizar, sem palavra no selo.
+
+Validado com `npm run lint` e `npm run build`, ambos limpos. Restam 3 imagens com defeito antigo no ar até a segunda rodada chegar.
+
 ## 2026-09-19 — Prompts de regeneração das imagens com defeito preparados (sem troca de asset)
 
 A pedido do usuário ("imagens com defeito"), atacada a dívida nº 1 de `docs/16-AUDITORIA-EDITORIAL-LICOES.md` (10 imagens com defeito técnico). Feito nesta sessão: recontagem file a file + conferência visual por amostragem (defeitos confirmados nos arquivos atuais, inalterados desde a auditoria) e escrita de prompts de regeneração corrigidos — **nenhuma imagem foi gerada, aprovada ou substituída** (geração continua manual, via Gemini, pelo usuário).
