@@ -60,18 +60,18 @@ describe('getJourneyLevel', () => {
     expect(getJourneyLevel(19)).toBe('Início')
   })
 
-  it('retorna Fundamentos para xp 20-39', () => {
+  it('retorna Fundamentos para xp 20-59', () => {
     expect(getJourneyLevel(20)).toBe('Fundamentos')
-    expect(getJourneyLevel(39)).toBe('Fundamentos')
+    expect(getJourneyLevel(59)).toBe('Fundamentos')
   })
 
-  it('retorna Em prática para xp 40-69', () => {
-    expect(getJourneyLevel(40)).toBe('Em prática')
-    expect(getJourneyLevel(69)).toBe('Em prática')
+  it('retorna Em prática para xp 60-99', () => {
+    expect(getJourneyLevel(60)).toBe('Em prática')
+    expect(getJourneyLevel(99)).toBe('Em prática')
   })
 
-  it('retorna Em evolução para xp >= 70', () => {
-    expect(getJourneyLevel(70)).toBe('Em evolução')
+  it('retorna Em evolução para xp >= 100', () => {
+    expect(getJourneyLevel(100)).toBe('Em evolução')
     expect(getJourneyLevel(200)).toBe('Em evolução')
   })
 })

@@ -127,7 +127,7 @@ Os itens abaixo não devem ser inferidos ou implementados sem aprovação:
 - **DECISÃO NECESSÁRIA:** formato e regras de quizzes;
 - **DECISÃO NECESSÁRIA:** modelo definitivo de missão;
 - **DECISÃO NECESSÁRIA:** métricas de sucesso;
-- **DECISÃO NECESSÁRIA:** voz padrão para todas as lições;
+- ✅ ~~voz padrão para todas as lições~~ — decidido em 2026-09-19: `pt-BR-AntonioNeural` (edge-tts) para todas as 48 cenas, ver `docs/18-SUBSTITUICAO-NARRACAO-COMPLETA.md`;
 - **DECISÃO NECESSÁRIA:** padrão visual definitivo;
 - ✅ ~~currículo final do MVP~~ — decidido em 2026-09-12, ver `docs/13-CURRICULO-MVP.md`.
 

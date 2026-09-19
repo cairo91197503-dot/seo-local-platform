@@ -208,11 +208,11 @@ function grantMilestone(
 }
 
 export function getJourneyLevel(xp: number): JourneyLevel {
-  if (xp >= 70) {
+  if (xp >= 100) {
     return 'Em evolução'
   }
 
-  if (xp >= 40) {
+  if (xp >= 60) {
     return 'Em prática'
   }
 

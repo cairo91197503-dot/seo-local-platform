@@ -288,10 +288,10 @@ As decisões estruturais completas são mantidas em `docs/08-ARQUITETURA-PEDAGOG
 - **DECISÃO NECESSÁRIA:** quantidade fixa de cenas;
 - **DECISÃO NECESSÁRIA:** critérios de conclusão pedagógica;
 - **DECISÃO NECESSÁRIA:** sistema definitivo de XP;
-- **DECISÃO NECESSÁRIA:** persistência de progresso;
+- **RESOLVIDA (2026-09-13):** persistência de progresso — Firestore (`users/{uid}/progress/journey`), ver `docs/05-BANCO-DE-DADOS.md`;
 - **DECISÃO NECESSÁRIA:** formato e regras de quizzes;
 - **DECISÃO NECESSÁRIA:** modelo definitivo de missão;
-- **DECISÃO NECESSÁRIA:** voz padrão para todas as lições;
+- **RESOLVIDA (2026-09-19):** voz padrão — `pt-BR-AntonioNeural` (edge-tts) para todas as 48 cenas;
 - **DECISÃO NECESSÁRIA:** padrão visual definitivo.
 
 ## Fonte canônica de roteiro e legendas

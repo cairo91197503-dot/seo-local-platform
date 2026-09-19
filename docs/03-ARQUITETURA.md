@@ -82,25 +82,19 @@ O produto deve continuar funcional sem essa integração.
 
 ## Infraestrutura
 
-Planejado atualmente:
+Implementado:
 
-- GitHub — código e versionamento
-
-- Render — hospedagem/deploy
-
-- Firebase — autenticação e dados
-
-- Oracle Cloud — possível ambiente remoto de desenvolvimento
+- GitHub — código, versionamento e deploy automático via GitHub Actions
+- Firebase Hosting — hospedagem do app (projeto `estrelar-cc725`, deploy a cada push na `main`)
+- Firebase Authentication — login com Google
+- Firestore — dados do usuário e progresso da jornada
+- Oracle Cloud — ambiente remoto de desenvolvimento
 
 ## Ambientes
 
-Inicialmente teremos:
-
-- desenvolvimento local
-
-- produção
-
-Outros ambientes serão adicionados somente quando houver necessidade.
+- desenvolvimento local (PC principal)
+- staging (PR previews via Firebase Hosting)
+- produção (Firebase Hosting, `estrelar-cc725`)
 
 ## Segurança
 

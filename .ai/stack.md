@@ -10,19 +10,27 @@ Este documento diferencia o que está implementado, planejado ou em avaliação.
 - React Router (`react-router-dom`), para roteamento real por URL entre as áreas do app;
 - ESLint;
 - Node.js 22, definido em `.nvmrc`;
-- npm, com `package-lock.json`.
+- npm, com `package-lock.json`;
+- Firebase SDK (app, auth, firestore) — projeto real `estrelar-cc725` criado em 2026-09-12;
+- Firebase Authentication (login com Google via `signInWithPopup`) — conectado e funcionando;
+- Firestore — produção (`southamerica-east1`), regras publicadas, `users/{uid}` + `users/{uid}/progress/journey`;
+- Firebase Hosting — deploy automático via GitHub Actions (`firebase-hosting-merge.yml`);
+- PWA instalável (manifest, service worker via `vite-plugin-pwa`, ícones);
+- Vitest + React Testing Library + jsdom (43 testes);
+- edge-tts (voz `pt-BR-AntonioNeural`) para narração de lições;
+- Code splitting (Firestore via dynamic import, 4 rotas lazy);
+- CSS Modules (ErrorBoundary, LoginPage, AppShell, BottomNav).
 
 Antes de usar versões ou comandos específicos, confira os arquivos atuais do repositório, especialmente `package.json`, `package-lock.json` e `.nvmrc`.
 
-## Planejado (scaffolding no código, nenhum serviço real conectado)
+## Planejado
 
-- Firebase (SDK instalado; `src/lib/firebase.ts` lê configuração só de variáveis de ambiente `VITE_FIREBASE_*`, ainda não definidas em nenhum lugar real);
-- Firebase Authentication (login com Google; `src/lib/auth/AuthContext.tsx`, ainda não conectado a nenhuma tela);
-- Firestore (regras de segurança em rascunho em `firestore.rules`; modelo de dados em `docs/05-BANCO-DE-DADOS.md`);
-- Render para hospedagem/deploy (`render.yaml` em rascunho);
-- integração futura com APIs do Google.
-
-Nenhum projeto Firebase ou serviço Render real foi criado. O código acima só funciona depois que essas contas existirem e as variáveis de ambiente forem preenchidas — não trate como operacional sem nova inspeção.
+- Google OAuth / Business Profile API — **bloqueado até aprovação da API** (ação do usuário);
+- Assinatura Premium (R$19,90/mês);
+- IA contextual por tarefa (fotos, posts, alertas, check-up automático);
+- Performance (buscas/chamadas/rotas/termos) traduzida em linguagem simples;
+- Planos Profissional/Agência (múltiplos negócios);
+- Canal B2B2C (contadores, associações, Sebrae local, agências).
 
 ## Em avaliação
 
@@ -30,8 +38,7 @@ Nenhum projeto Firebase ou serviço Render real foi criado. O código acima só 
 - solução para animações educacionais;
 - sistema definitivo de gamificação;
 - provedor e modelo de IA;
-- arquitetura de funções de backend;
-- estratégia definitiva de deploy.
+- arquitetura de funções de backend.
 
 ## Princípio de arquitetura
 
@@ -59,8 +66,15 @@ Integrações externas devem ficar desacopladas da interface. A aplicação deve
 ### GitHub
 
 - repositório remoto e mecanismo de versionamento e sincronização;
+- deploy automático via GitHub Actions para Firebase Hosting;
 - não é ambiente de execução;
 - referências remotas locais podem estar desatualizadas até uma operação de rede explicitamente autorizada.
+
+### Firebase Hosting
+
+- produção do app (`estrelar-cc725`);
+- deploy automático a cada push na `main` via `firebase-hosting-merge.yml`;
+- preview por PR via `firebase-hosting-pull-request.yml`.
 
 ### Celular / Termux
 
