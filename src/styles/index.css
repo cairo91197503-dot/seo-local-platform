@@ -437,6 +437,37 @@ body {
   color: var(--color-ink-secondary);
 }
 
+.privacy-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.privacy-page__header {
+  margin: 0;
+}
+
+.privacy-page__footer {
+  margin-top: 1rem;
+}
+
+.privacy-list {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+  color: var(--color-ink-secondary);
+}
+
+.privacy-list li {
+  margin-bottom: 0.5rem;
+}
+
+.privacy-list li:last-child {
+  margin-bottom: 0;
+}
+
 .learn-page {
   display: flex;
   flex-direction: column;

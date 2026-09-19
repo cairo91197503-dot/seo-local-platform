@@ -25,10 +25,11 @@ Isso já é uma melhoria standalone do app web, independente da Play Store: em q
 
 ## Pré-requisitos que ainda faltam
 
-1. **Colocar o app no ar (prioridade nº 3 do roadmap, já pendente antes disso).** O TWA precisa de uma URL HTTPS real e estável — não dá pra gerar o pacote Android apontando pro `localhost`. Falta: criar a conta/serviço no Render (`render.yaml` já tem o blueprint pronto) e configurar as variáveis de ambiente do Firebase lá.
-2. **Decidir o domínio final.** `docs/01-PROJETO.md` planeja `estrelar.app`, mas ainda não há confirmação de registro. Sem domínio próprio, dá pra publicar com a URL padrão do Render (algo como `estrelar.onrender.com`) e trocar depois — mas trocar de domínio depois exige gerar de novo o arquivo `assetlinks.json` (passo abaixo) e reenviar o app pra Play Store.
-3. **Política de privacidade publicada numa URL.** A Play Store exige uma URL de política de privacidade para qualquer app que faça login (o Estrelar usa login com Google/Firebase) ou colete dados. Ainda não existe um documento de política de privacidade no projeto — precisa ser escrito e publicado (pode ser uma página simples dentro do próprio app, ex. `/privacidade`) antes de submeter à Play Store.
-4. **Conta de desenvolvedor Google Play.** Custo único de US$ 25, criada em https://play.google.com/console — só o usuário pode criar (é uma conta/pagamento pessoal ou da empresa).
+1. ~~**Colocar o app no ar.**~~ ✅ Concluído: app publicado no Firebase Hosting (`estrelar-cc725.web.app`), deploy automático via GitHub Actions.
+2. ~~**Decidir o domínio final.**~~ O app está na URL padrão do Firebase (`estrelar-cc725.web.app`). Domínio próprio (`estrelar.app`) pode ser configurado depois — trocar de domínio exige gerar de novo o arquivo `assetlinks.json`.
+3. ~~**Política de privacidade publicada numa URL.**~~ ✅ Concluído: página `/privacidade` implementada dentro do app, acessível sem login.
+4. **Bubblewrap CLI** — gerar o pacote Android (ver passo a passo abaixo).
+5. **Conta de desenvolvedor Google Play.** Custo único de US$ 25, criada em https://play.google.com/console — **já possui**.
 
 ## Passo a passo para gerar o pacote Android (depois que o app estiver no ar)
 
@@ -90,9 +91,9 @@ Como este é um app Vite, o jeito mais simples é criar `public/.well-known/asse
 
 ## Resumo do que falta, em ordem
 
-1. Escrever e publicar a política de privacidade dentro do app.
-2. Deploy no Render (variáveis de ambiente do Firebase já documentadas em `.env.example`).
-3. Decidir se usa a URL do Render ou espera confirmar `estrelar.app`.
+1. ~~Escrever e publicar a política de privacidade dentro do app.~~ ✅ Feito (`/privacidade`).
+2. ~~Deploy no Render~~ → Deploy no Firebase Hosting ✅ Feito (`estrelar-cc725.web.app`).
+3. Decidir se usa a URL do Firebase ou espera confirmar domínio próprio (`estrelar.app`).
 4. Rodar `bubblewrap init` + `bubblewrap build`, guardar a keystore com segurança.
 5. Publicar `public/.well-known/assetlinks.json` com o fingerprint real e fazer novo deploy.
-6. Criar a conta de desenvolvedor Google Play (US$ 25) e submeter o `.aab`.
+6. Criar a conta de desenvolvedor Google Play (US$ 25) — **já possui** — e submeter o `.aab`.

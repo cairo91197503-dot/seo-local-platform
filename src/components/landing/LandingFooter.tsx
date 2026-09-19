@@ -45,6 +45,9 @@ export function LandingFooter() {
           <Link to="/login" className="landing-footer__link">
             Começar gratuitamente
           </Link>
+          <Link to="/privacidade" className="landing-footer__link">
+            Política de Privacidade
+          </Link>
         </nav>
       </div>
 
