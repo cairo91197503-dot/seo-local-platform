@@ -915,3 +915,165 @@ Personagem: pequeno empresário ou empresária brasileiro(a), expressão de "mã
 
 Cena: o empresário já está com o dedo no celular, editando ou confirmando a melhoria escolhida agora mesmo, com um pequeno ícone verde (#4E9E6E) de "em andamento" ou "salvando" visível. Tom geral: ação imediata, sem adiamento.
 ```
+
+---
+
+# Regeneração das imagens com defeito técnico (lote 2026-09-19)
+
+Lote de regeneração a partir de `docs/16-AUDITORIA-EDITORIAL-LICOES.md` (seções 1.2, 1.3 e vereditos REFAZER). Escopo: só defeito técnico visível (texto ilegível/sem sentido ou código de cor vazado como texto) — nenhuma mudança de composição, roteiro ou legenda além do necessário para remover o defeito.
+
+**Divergência de contagem, registrada de propósito:** a auditoria resume "10 das 48 imagens", mas a recontagem file a file em 2026-09-19 (com conferência visual por amostragem: `first-profile-checkup/cena-01`, `how-to-respond-to-reviews/cena-01`, `business-hours-matter/cena-01` e `explain-what-you-offer/cena-01` — defeitos confirmados) encontra **11 arquivos distintos** com defeito técnico visível: 9 com veredito REFAZER + 2 com vazamento de código de cor classificados como AJUSTAR (`business-hours-matter/cena-01`, com `8C8478` visível na base do mockup do celular; `explain-what-you-offer/cena-01`, com `8C8478` no lugar da contagem de avaliações e `(E3)` após as estrelas). O lote abaixo cobre as 11.
+
+**Causa raiz (por que regerar com prompt diferente, não só "de novo"):** os 48 prompts originais acima descrevem a paleta com códigos hexadecimais literais (`#FAF6EF`, `#2A2420`, `#E3A23C`, `#4E9E6E`, `#8C8478`, `#E7E1D6`) — o modelo de imagem renderizou esses códigos como texto visível dentro da cena. Os prompts deste lote descrevem as mesmas cores **por extenso, sem nenhum código hexadecimal**, e trazem uma lista fechada dos únicos textos em português permitidos em cada imagem.
+
+**Regras válidas para os 11 prompts (já embutidas em cada um, repetidas para cada prompt continuar independente):**
+
+- Cores por extenso: fundo creme quente quase branco; traços e texto principal em marrom bem escuro quase preto; amarelo-dourado para estrelas e destaques; verde-folha para checks e sucesso; bege-claro para cartões. Nunca azul, nunca cinza corporativo, nunca gradientes.
+- Renderizar **somente** os textos em português listados em cada prompt, com a grafia exata. Nenhum outro texto, número, código, rótulo de aba, endereço, horário ou placeholder — onde o prompt original pedia um dado qualquer, este lote manda usar barras/campos cinzentos vazios (formas, sem letras).
+- Proibido: texto em inglês, palavras inventadas, texto espelhado/de cabeça para baixo, códigos de cor ou qualquer sequência alfanumérica solta.
+- Proporção: `1408x768` (paisagem) salvo indicação contrária; `explain-what-you-offer` cenas 1 e 2 são `843x1264` (retrato) — manter a orientação do arquivo atual.
+
+Fluxo após gerar: o mesmo da seção inicial deste documento (revisar em zoom antes de aprovar → revisão humana → copiar para `public/images/lessons/<lesson-id>/cena-0N.jpg`, mesmo nome e pasta, sobrescrevendo o arquivo com defeito → sem mudança no `.ts` da lição, que já referencia esse caminho).
+
+## R1 — `why-appear-in-local-search/cena-03.jpg` (`where`)
+
+- Substitui o arquivo atual (parágrafo em inglês sem sentido + placar de estrelas com texto solto).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Cartões com cantos arredondados, tipografia arredondada e amigável. Proporção paisagem.
+
+Cena: um celular ao centro com a tela dividida ao meio por uma linha sutil. Lado esquerdo: lista de resultados de busca com o nome "Café da Esquina" em destaque e, abaixo dele, apenas uma fileira de estrelas douradas como formas (sem números, sem texto) e duas barras cinzentas vazias representando linhas de texto. Lado direito: mapa estilizado com um único pino grande destacado, sem nomes de ruas e sem nenhum texto dentro do mapa. Acima das duas metades, os rótulos "Pesquisa Google" e "Google Maps".
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Café da Esquina", "Pesquisa Google", "Google Maps". Todo o resto que pareceria texto (linhas da lista, nomes de ruas) deve ser barra ou forma vazia, sem letras. Proibido inglês, palavras inventadas, texto espelhado e códigos alfanuméricos.
+```
+
+## R2 — `profile-represents-your-business/cena-03.jpg` (`control`)
+
+- Substitui o arquivo atual (parágrafo sem sentido + "Descripção" com erro de grafia).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro, roupa casual de trabalho, expressão confiante. Cartões com cantos arredondados, tipografia amigável. Proporção paisagem.
+
+Cena: o empresário segura o celular e toca com o dedo num ícone de lápis arredondado ao lado de um campo do perfil. Ao redor, três ícones simples sem texto (câmera para foto, silhueta para nome, linhas para descrição). Um cartão com cantos arredondados traz a frase: "Você pode revisar e ajustar seu perfil sempre que quiser."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Você pode revisar e ajustar seu perfil sempre que quiser." Nenhum parágrafo, nenhuma descrição longa, nenhum rótulo nos ícones. Proibido inglês, palavras inventadas e códigos alfanuméricos.
+```
+
+## R3 — `accurate-business-info/cena-03.jpg` (`keep-updated`)
+
+- Substitui o arquivo atual (texto "Secondary information labels" em inglês vazado de instrução de design + bloco de texto espelhado).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro, roupa casual de trabalho. Cartões com cantos arredondados, tipografia amigável. Proporção paisagem.
+
+Cena: dois momentos ligados por uma seta curva. Primeiro momento: o empresário risca com caneta o telefone antigo numa agenda de papel aberta (a agenda mostra só linhas vazias e um número riscado, sem palavras). Segundo momento: o mesmo empresário toca com o dedo o campo de telefone no celular, que mostra o rótulo "Telefone" e o número "(11) 98765-4321". Um cartão com cantos arredondados traz a frase: "Sempre que algo mudar, atualize o quanto antes."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Telefone", "(11) 98765-4321", "Sempre que algo mudar, atualize o quanto antes." Proibido inglês, texto espelhado, rótulos de instrução de design e códigos alfanuméricos.
+```
+
+## R4 — `business-hours-matter/cena-01.jpg` (`intro`)
+
+- Substitui o arquivo atual (código `8C8478` visível na base do mockup do celular; composição aprovada, só remover o vazamento).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Proporção paisagem.
+
+Cena: um cliente chega a pé em frente a uma pequena loja e encontra a porta fechada, com uma plaquinha pendurada escrito "Fechado". Ao lado, o celular do cliente mostra o Perfil da Empresa: cabeçalho "Perfil da Empresa", nome "Padaria Central", fileira de estrelas douradas como formas (sem números), duas barras cinzentas vazias abaixo das estrelas (sem texto) e um selo em destaque escrito "ABERTO AGORA". Expressão do cliente: confusão leve, sem exagero. Um cartão com cantos arredondados traz a frase: "Um horário errado pode virar uma porta fechada."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Fechado", "Perfil da Empresa", "Padaria Central", "ABERTO AGORA", "Um horário errado pode virar uma porta fechada." Proibido qualquer número, contagem, código ou texto além desses.
+```
+
+## R5 — `explain-what-you-offer/cena-01.jpg` (`intro`)
+
+- Substitui o arquivo atual (código `8C8478` no lugar da contagem de avaliações + `(E3)` após as estrelas; composição aprovada).
+- Orientação: retrato `843x1264` (manter a orientação do arquivo atual).
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Proporção retrato (vertical).
+
+Cena: um cliente olha para o celular, que mostra o perfil de um salão de beleza: nome "Salão Belíssima", fileira de estrelas douradas como formas (sem números, sem letras após as estrelas), a palavra "Local" sozinha abaixo das estrelas, e a lista "Nossos Serviços" com três itens: "Corte de cabelo", "Barba", "Sobrancelha". Um balão de pensamento pequeno mostra um ponto de interrogação se transformando em um check verde (símbolos, sem letras). Um cartão com cantos arredondados traz a frase: "Clareza ajuda o cliente a decidir."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Salão Belíssima", "Local", "Nossos Serviços", "Corte de cabelo", "Barba", "Sobrancelha", "Clareza ajuda o cliente a decidir." Proibido qualquer código, sigla entre parênteses ou texto além desses.
+```
+
+## R6 — `explain-what-you-offer/cena-02.jpg` (`clarity`)
+
+- Substitui o arquivo atual (parágrafo "Comena com manutenção de logal e ar-condicionado." sem sentido).
+- Orientação: retrato `843x1264` (manter a orientação do arquivo atual).
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Proporção retrato (vertical).
+
+Cena: um balão de pergunta de um cliente com o texto "Vocês fazem manutenção de ar-condicionado?" aponta para uma lista curta de serviços no Perfil da Empresa contendo exatamente estes itens: "Manutenção de ar-condicionado", "Instalação", "Limpeza de filtro". Um check verde ao lado da lista indica pergunta já respondida. Um cartão com cantos arredondados traz a frase: "Coloque porque o cliente precisa, não porque o Google gosta."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Vocês fazem manutenção de ar-condicionado?", "Manutenção de ar-condicionado", "Instalação", "Limpeza de filtro", "Coloque porque o cliente precisa, não porque o Google gosta." Nenhum parágrafo corrido além dessas frases. Proibido inglês, palavras inventadas e códigos alfanuméricos.
+```
+
+## R7 — `photos-help-customers-decide/cena-04.jpg` (`action`)
+
+- Substitui o arquivo atual (três códigos de cor vazados como texto).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro. Proporção paisagem.
+
+Cena: o empresário segura o celular comparando duas fotos do próprio negócio lado a lado: à esquerda uma foto antiga desbotada marcada com o rótulo "Antes", à direita uma foto nova nítida marcada com o rótulo "Depois" e um pequeno ícone verde de atualizar ao lado dela.
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Antes", "Depois". Nenhum código, número ou texto além desses dois rótulos.
+```
+
+## R8 — `how-to-respond-to-reviews/cena-01.jpg` (`intro`)
+
+- Substitui o arquivo atual (um terço da imagem ocupado por texto sem sentido + código `#2A24E0` + "Ana SIlva" com erro de caixa).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequena empresária brasileira, expressão atenta e cuidadosa, sentada com o celular nas mãos. Proporção paisagem.
+
+Cena: à esquerda, apenas a ilustração da empresária na loja (sem nenhum título ou bloco de texto grande ao lado dela). À direita, dois cartões pequenos de avaliação: o primeiro com 5 estrelas douradas como formas, o nome "Ana Silva", o comentário "Adorei o atendimento!" e abaixo o início de resposta "Obrigada, Ana!"; o segundo com 3 estrelas douradas como formas, o nome "Carlos Mendes", o comentário "Espaço bom, voltarei!" e abaixo o início de resposta "Obrigado, Carlos!". Abaixo dos cartões, um cartão com cantos arredondados traz a frase: "Responder também faz parte de cuidar da reputação."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Ana Silva", "Adorei o atendimento!", "Obrigada, Ana!", "Carlos Mendes", "Espaço bom, voltarei!", "Obrigado, Carlos!", "Responder também faz parte de cuidar da reputação." Proibido inglês, palavras inventadas e códigos alfanuméricos.
+```
+
+## R9 — `keep-your-profile-updated/cena-04.jpg` (`action`)
+
+- Substitui o arquivo atual (várias linhas sem sentido + "Artesansto" e "Clla" com erro de grafia).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro, expressão tranquila e disposta, segurando o celular prestes a abrir o próprio perfil. Proporção paisagem.
+
+Cena: o empresário segura o celular mostrando apenas ícones de aplicativo como formas (sem palavras na tela). Ao lado, um pequeno relógio estilizado de mostrador liso, com ponteiros e sem numerais, reforçando que a revisão é rápida.
+
+Textos permitidos nesta imagem: nenhum. Não incluir nenhuma letra, palavra, número ou código em lugar nenhum da imagem — apenas formas, ícones e o relógio sem numerais.
+```
+
+## R10 — `first-profile-checkup/cena-01.jpg` (`intro`)
+
+- Substitui o arquivo atual (a imagem com mais defeitos do currículo: abas ilegíveis, endereço/horário sem sentido, quatro códigos de cor vazados).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro atrás de um balcão de loja de artesanato. Proporção paisagem.
+
+Cena: um celular grande mostra a tela de resumo do Perfil da Empresa com o cabeçalho "Artesanato Dona Cila" e, abaixo, quatro blocos lado a lado, cada um com um ícone simples e um check verde pequeno: "Informações básicas", "Horários", "Fotos", "Avaliações". Abaixo do nome do negócio, apenas uma fileira de estrelas douradas como formas e duas barras cinzentas vazias (sem endereço, sem horário, sem nenhum texto). Um cartão com cantos arredondados traz a frase: "Um check-up completo, tudo junto."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Artesanato Dona Cila", "Resumo do Check-up", "Informações básicas", "Horários", "Fotos", "Avaliações", "Um check-up completo, tudo junto." Nenhuma aba com texto, nenhum endereço, nenhum horário escrito. Proibido inglês, palavras inventadas e códigos alfanuméricos.
+```
+
+## R11 — `choose-your-next-action/cena-01.jpg` (`intro`)
+
+- Substitui o arquivo atual (três códigos de cor vazados como texto).
+- Orientação: paisagem `1408x768`.
+
+```text
+Ilustração vetorial plana (flat illustration), estilo caloroso e acolhedor, para um app brasileiro que ajuda pequenos empresários. Cores: fundo creme quente quase branco; traços e textos em marrom bem escuro quase preto; detalhes em amarelo-dourado e verde-folha; sem azul, sem cinza corporativo, sem gradientes, sem códigos de cor escritos em lugar nenhum. Personagem: pequeno empresário brasileiro, postura confiante e tranquila (cena de continuidade, não de formatura). Proporção paisagem.
+
+Cena: o empresário está em pé diante de três pequenos cartões flutuantes com cantos arredondados, cada um com apenas um ícone simples e sem texto (lápis para informações, câmera para fotos, estrela para avaliações), apontando para um deles. Um cartão maior com cantos arredondados traz a frase: "Continue cuidando do seu negócio, uma ação de cada vez."
+
+Textos permitidos nesta imagem, com grafia exata, e nenhum outro: "Continue cuidando do seu negócio, uma ação de cada vez." Nenhum texto nos três cartões pequenos. Proibido inglês, palavras inventadas e códigos alfanuméricos.
+```

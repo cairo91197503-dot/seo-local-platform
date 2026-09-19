@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-19 — Prompts de regeneração das imagens com defeito preparados (sem troca de asset)
+
+A pedido do usuário ("imagens com defeito"), atacada a dívida nº 1 de `docs/16-AUDITORIA-EDITORIAL-LICOES.md` (10 imagens com defeito técnico). Feito nesta sessão: recontagem file a file + conferência visual por amostragem (defeitos confirmados nos arquivos atuais, inalterados desde a auditoria) e escrita de prompts de regeneração corrigidos — **nenhuma imagem foi gerada, aprovada ou substituída** (geração continua manual, via Gemini, pelo usuário).
+
+**FATO CONFIRMADO — divergência de contagem registrada:** a auditoria resume "10 imagens", mas a recontagem encontra **11 arquivos distintos** com defeito técnico visível: 9 com veredito REFAZER + 2 com vazamento de código de cor classificados como AJUSTAR (`business-hours-matter/cena-01`, `8C8478` na base do mockup; `explain-what-you-offer/cena-01`, `8C8478` + `(E3)` na área de avaliações — ambos confirmados visualmente). O lote cobre as 11.
+
+**Causa raiz encontrada:** os 48 prompts originais de `docs/14-PROMPTS-DE-IMAGEM-LICOES.md` descrevem a paleta com códigos hexadecimais literais — o modelo renderizou esses códigos como texto dentro da cena. Os 11 prompts novos (R1–R11, nova seção ao final de `docs/14`) descrevem as mesmas cores por extenso, trazem lista fechada dos únicos textos em português permitidos por imagem (grafia exata) e proíbem inglês, palavras inventadas, texto espelhado e qualquer sequência alfanumérica solta; onde o prompt original pedia um dado qualquer, o novo manda barra/campo vazio. Composição e legendas corretas preservadas de propósito — a simplificação geral das legendas embutidas (achado 1.5 da auditoria) fica diferida para rodada própria, fora deste escopo.
+
+**O que mudou:** só `docs/14-PROMPTS-DE-IMAGEM-LICOES.md` (seção nova) + este registro. Próximo passo: o usuário gera as 11 no Gemini colando cada prompt R1–R11, revisa em zoom e devolve os arquivos — a integração (copiar para `public/images/lessons/...` com o mesmo nome) é feita pela IA em seguida, sem mudança nos `.ts` das lições.
+
 ## 2026-09-13/14 — Landing page pública implementada (P0, 3 etapas)
 
 Landing page do Estrelar implementada em 3 commits (código já estava em `main`, sem registro aqui até agora):
